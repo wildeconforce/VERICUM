@@ -11,12 +11,9 @@ export function createClient() {
     {
       auth: {
         flowType: "pkce",
-        lock: {
-          acquireLock: async (_name: string, _acquireTimeout: number, fn: () => Promise<any>) => {
-            return await fn();
-          },
-          releaseLock: async () => {},
-        } as any,
+        lock: async (_name: string, _acquireTimeout: number, fn: () => Promise<any>) => {
+          return await fn();
+        },
       },
     }
   );
