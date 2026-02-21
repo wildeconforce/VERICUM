@@ -52,7 +52,7 @@ function LoginContent() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/callback?redirect=${redirect}`,
+        redirectTo: `${window.location.origin}/api/auth/callback?redirect=${redirect}`,
       },
     });
     if (error) {

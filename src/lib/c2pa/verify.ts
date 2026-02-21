@@ -247,11 +247,16 @@ export async function verifyContent(
   const uniquenessScore = uniqueness.isDuplicate ? 0 : 1;
 
   // Step 6: Calculate composite score
-  const overallScore =
+  let overallScore =
     c2paResult.score * VERIFICATION_WEIGHTS.c2pa +
     metadataScore.score * VERIFICATION_WEIGHTS.metadata +
     aiDetection.score * VERIFICATION_WEIGHTS.aiDetection +
     uniquenessScore * VERIFICATION_WEIGHTS.uniqueness;
+
+  // C2PA validity bonus: a valid C2PA manifest is strong proof of provenance
+  if (c2paResult.present && c2paResult.valid) {
+    overallScore = Math.max(overallScore, VERIFICATION_THRESHOLDS.verified);
+  }
 
   // Determine status
   let status: "verified" | "rejected" | "manual_review";

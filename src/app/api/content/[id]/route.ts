@@ -26,13 +26,13 @@ export async function GET(
     return NextResponse.json({ error: "Content not found" }, { status: 404 });
   }
 
-  // Generate public URL from file_key if preview_url is missing
+  // Generate signed URL from original_url if preview_url is missing
   if (!content.preview_url && content.original_url) {
-    const { data: publicUrlData } = supabase.storage
+    const { data: signedUrlData } = await supabase.storage
       .from("vericum-content")
-      .getPublicUrl(content.original_url);
-    if (publicUrlData?.publicUrl) {
-      (content as any).preview_url = publicUrlData.publicUrl;
+      .createSignedUrl(content.original_url, 3600);
+    if (signedUrlData?.signedUrl) {
+      (content as any).preview_url = signedUrlData.signedUrl;
     }
   }
 
@@ -62,11 +62,26 @@ export async function GET(
     .neq("id", id)
     .limit(4);
 
+  // Generate signed URLs for related content previews
+  const relatedWithPreviews = await Promise.all(
+    (related || []).map(async (item: any) => {
+      if (!item.preview_url && item.original_url) {
+        const { data: signedUrlData } = await supabase.storage
+          .from("vericum-content")
+          .createSignedUrl(item.original_url, 3600);
+        if (signedUrlData?.signedUrl) {
+          item.preview_url = signedUrlData.signedUrl;
+        }
+      }
+      return item;
+    })
+  );
+
   return NextResponse.json({
     content,
     verification,
     seller,
-    related: related || [],
+    related: relatedWithPreviews,
   });
 }
 

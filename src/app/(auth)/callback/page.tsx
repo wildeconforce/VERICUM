@@ -13,13 +13,29 @@ function CallbackContent() {
   useEffect(() => {
     const supabase = createClient();
 
-    supabase.auth.onAuthStateChange((event) => {
+    // Handle PKCE code exchange (from URL query params)
+    const code = searchParams.get("code");
+    if (code) {
+      supabase.auth.exchangeCodeForSession(code).then(({ error }) => {
+        if (!error) {
+          router.push(redirect);
+          router.refresh();
+        }
+      });
+    }
+
+    // Fallback: listen for auth state change (covers implicit flow & token refresh)
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event) => {
       if (event === "SIGNED_IN") {
         router.push(redirect);
         router.refresh();
       }
     });
-  }, [router, redirect]);
+
+    return () => subscription.unsubscribe();
+  }, [router, redirect, searchParams]);
 
   return (
     <div className="min-h-screen flex items-center justify-center">
