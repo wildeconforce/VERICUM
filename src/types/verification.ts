@@ -45,10 +45,10 @@ export interface ProvenanceEvent {
 }
 
 export const VERIFICATION_WEIGHTS = {
-  c2pa: 0.40,
-  metadata: 0.20,
-  aiDetection: 0.30,
-  uniqueness: 0.10,
+  c2pa: 0.50,
+  metadata: 0.15,
+  aiDetection: 0.20,
+  uniqueness: 0.15,
 } as const;
 
 export const VERIFICATION_THRESHOLDS = {
