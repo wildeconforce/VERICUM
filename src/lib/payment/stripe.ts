@@ -1,9 +1,14 @@
 import Stripe from "stripe";
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2026-01-28.clover",
-  typescript: true,
-});
+function getStripe() {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error("STRIPE_SECRET_KEY is not configured");
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: "2026-01-28.clover",
+    typescript: true,
+  });
+}
 
 export async function createCheckoutSession({
   contentId,
@@ -26,6 +31,7 @@ export async function createCheckoutSession({
   successUrl: string;
   cancelUrl: string;
 }) {
+  const stripe = getStripe();
   const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [
     {
       price_data: {
@@ -40,7 +46,6 @@ export async function createCheckoutSession({
       quantity: 1,
     },
   ];
-
   const sessionParams: Stripe.Checkout.SessionCreateParams = {
     mode: "payment",
     line_items: lineItems,
@@ -52,8 +57,6 @@ export async function createCheckoutSession({
       commission_amount: commissionAmount.toString(),
     },
   };
-
-  // If seller has a Stripe Connect account, use destination charges
   if (sellerStripeAccountId) {
     sessionParams.payment_intent_data = {
       transfer_data: {
@@ -62,11 +65,11 @@ export async function createCheckoutSession({
       },
     };
   }
-
   return stripe.checkout.sessions.create(sessionParams);
 }
 
 export async function createConnectAccount(email: string, country: string = "US") {
+  const stripe = getStripe();
   return stripe.accounts.create({
     type: "express",
     email,
@@ -78,6 +81,7 @@ export async function createConnectAccount(email: string, country: string = "US"
 }
 
 export async function createConnectOnboardingLink(accountId: string, returnUrl: string) {
+  const stripe = getStripe();
   return stripe.accountLinks.create({
     account: accountId,
     refresh_url: returnUrl,
@@ -87,5 +91,6 @@ export async function createConnectOnboardingLink(accountId: string, returnUrl: 
 }
 
 export function constructWebhookEvent(body: string | Buffer, signature: string) {
+  const stripe = getStripe();
   return stripe.webhooks.constructEvent(body, signature, process.env.STRIPE_WEBHOOK_SECRET!);
 }
