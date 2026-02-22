@@ -25,6 +25,7 @@ import {
   ShieldCheck,
   Heart,
   ShoppingBag,
+  Download,
 } from "lucide-react";
 
 export function Header() {
@@ -132,6 +133,12 @@ export function Header() {
                     <Link href="/purchases">
                       <ShoppingBag className="h-4 w-4 mr-2" />
                       Purchases
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/downloads">
+                      <Download className="h-4 w-4 mr-2" />
+                      Downloads
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>

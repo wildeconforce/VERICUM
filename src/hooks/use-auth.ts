@@ -53,6 +53,7 @@ export function useAuth() {
     const supabase = createClient();
     await supabase.auth.signOut();
     reset();
+    window.location.href = "/";
   };
 
   return {
