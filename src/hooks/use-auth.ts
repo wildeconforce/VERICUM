@@ -51,9 +51,9 @@ export function useAuth() {
 
   const signOut = async () => {
     const supabase = createClient();
-    await supabase.auth.signOut();
     reset();
     window.location.href = "/";
+    await supabase.auth.signOut({ scope: "local" });
   };
 
   return {
@@ -61,7 +61,7 @@ export function useAuth() {
     profile,
     isLoading,
     isAuthenticated: !!user,
-    isSeller: profile?.role === "seller" || profile?.role === "admin",
+    isSeller: !!user,
     isAdmin: profile?.role === "admin",
     signOut,
   };
