@@ -11,6 +11,8 @@ import {
   BarChart3,
   ArrowRight,
   CheckCircle,
+  Crown,
+  Percent,
 } from "lucide-react";
 
 export default function LandingPage() {
@@ -20,7 +22,8 @@ export default function LandingPage() {
       <main className="flex-1">
         {/* Hero */}
         <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background py-24 lg:py-32">
-          <div className="container mx-auto px-4 text-center">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
+          <div className="container mx-auto px-4 text-center relative">
             <div className="inline-flex items-center gap-2 rounded-full border bg-background/80 px-4 py-1.5 text-sm mb-8 backdrop-blur">
               <ShieldCheck className="h-4 w-4 text-primary" />
               <span>Powered by C2PA authenticity technology</span>
@@ -78,12 +81,12 @@ export default function LandingPage() {
                   icon: BarChart3,
                   title: "Fair Marketplace",
                   description:
-                    "Sellers keep 80% of every sale. Transparent commission structure with instant payouts via Stripe Connect.",
+                    "Sellers keep 85% of every sale. Transparent 15% commission structure with instant payouts via Stripe Connect.",
                 },
               ].map((feature) => (
                 <div
                   key={feature.title}
-                  className="relative rounded-2xl border bg-card p-8 hover:shadow-lg transition-shadow"
+                  className="relative rounded-2xl border bg-card p-8 hover:shadow-lg transition-all hover:-translate-y-1"
                 >
                   <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
                     <feature.icon className="h-6 w-6 text-primary" />
@@ -144,8 +147,70 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Pricing / Commission */}
+        {/* Sale Types */}
         <section className="py-24 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Flexible Sale Options
+              </h2>
+              <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
+                Choose how you want to sell your content. Two sale types to fit your strategy.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <div className="rounded-2xl border bg-card p-8 hover:shadow-lg transition-all">
+                <div className="h-12 w-12 rounded-xl bg-amber/10 flex items-center justify-center mb-5">
+                  <Crown className="h-6 w-6 text-amber" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Premium Sale</h3>
+                <p className="text-muted-foreground mb-4">
+                  Higher price with no secondary creation royalties. Buyers get full usage rights for their license type.
+                </p>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    Full price per license
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    No ongoing royalty obligations
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    Best for exclusive content
+                  </li>
+                </ul>
+              </div>
+              <div className="rounded-2xl border bg-card p-8 hover:shadow-lg transition-all">
+                <div className="h-12 w-12 rounded-xl bg-emerald/10 flex items-center justify-center mb-5">
+                  <Percent className="h-6 w-6 text-emerald" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Royalty Sale</h3>
+                <p className="text-muted-foreground mb-4">
+                  Lower price with 5-10% royalty on secondary creations. More accessible to buyers, ongoing revenue for sellers.
+                </p>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    40% discounted price for buyers
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    5-10% royalty on derivative works
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    Great for high-volume content
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing / Commission */}
+        <section className="py-24">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold">
@@ -159,19 +224,19 @@ export default function LandingPage() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between py-3 border-b">
                   <span className="text-muted-foreground">Seller receives</span>
-                  <span className="text-2xl font-bold text-primary">80%</span>
+                  <span className="text-2xl font-bold text-primary">85%</span>
                 </div>
                 <div className="flex items-center justify-between py-3 border-b">
                   <span className="text-muted-foreground">
-                    Platform commission
+                    Platform commission (seller side)
                   </span>
-                  <span className="text-lg font-semibold">20%</span>
+                  <span className="text-lg font-semibold">15%</span>
                 </div>
                 <div className="flex items-center justify-between py-3">
                   <span className="text-muted-foreground">
                     Buyer verification fee
                   </span>
-                  <span className="text-lg font-semibold">5%</span>
+                  <span className="text-lg font-semibold">15%</span>
                 </div>
               </div>
               <div className="mt-6 space-y-2 text-sm text-muted-foreground">
@@ -187,13 +252,17 @@ export default function LandingPage() {
                   <CheckCircle className="h-4 w-4 text-emerald mt-0.5 shrink-0" />
                   <span>Free C2PA verification on all uploads</span>
                 </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-emerald mt-0.5 shrink-0" />
+                  <span>Personal, Standard, Extended &amp; Exclusive license options</span>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="py-24">
+        <section className="py-24 bg-gradient-to-t from-primary/5 to-background">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold max-w-2xl mx-auto">
               Ready to trade in verified content?

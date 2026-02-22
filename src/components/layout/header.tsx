@@ -12,6 +12,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SearchBar } from "@/components/search/search-bar";
+import { ThemeToggle } from "./theme-toggle";
+import { LanguageSelector } from "./language-selector";
 import { MobileNav } from "./mobile-nav";
 import {
   Upload,
@@ -21,6 +23,8 @@ import {
   Settings,
   LogOut,
   ShieldCheck,
+  Heart,
+  ShoppingBag,
 } from "lucide-react";
 
 export function Header() {
@@ -58,11 +62,13 @@ export function Header() {
           <SearchBar />
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1">
+          <LanguageSelector />
+          <ThemeToggle />
           {isAuthenticated ? (
             <>
               {isSeller && (
-                <Button variant="outline" size="sm" asChild className="hidden sm:flex">
+                <Button variant="outline" size="sm" asChild className="hidden sm:flex ml-2">
                   <Link href="/upload">
                     <Upload className="h-4 w-4 mr-2" />
                     Upload
@@ -73,7 +79,7 @@ export function Header() {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="relative h-9 w-9 rounded-full"
+                    className="relative h-9 w-9 rounded-full ml-1"
                   >
                     <Avatar className="h-9 w-9">
                       <AvatarImage
@@ -124,8 +130,14 @@ export function Header() {
                   )}
                   <DropdownMenuItem asChild>
                     <Link href="/purchases">
-                      <Package className="h-4 w-4 mr-2" />
+                      <ShoppingBag className="h-4 w-4 mr-2" />
                       Purchases
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/bookmarks">
+                      <Heart className="h-4 w-4 mr-2" />
+                      Bookmarks
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
@@ -143,7 +155,7 @@ export function Header() {
               </DropdownMenu>
             </>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 ml-2">
               <Button variant="ghost" size="sm" asChild>
                 <Link href="/login">Sign In</Link>
               </Button>

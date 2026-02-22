@@ -1,0 +1,298 @@
+{
+  "common": {
+    "appName": "Vericum",
+    "tagline": "Marketplace de conteúdo verificado",
+    "loading": "Carregando...",
+    "error": "Algo deu errado",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "search": "Pesquisar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "viewAll": "Ver tudo",
+    "learnMore": "Saiba mais",
+    "getStarted": "Começar",
+    "signIn": "Entrar",
+    "signUp": "Cadastrar",
+    "signOut": "Sair",
+    "email": "E-mail",
+    "password": "Senha",
+    "username": "Nome de usuário",
+    "displayName": "Nome de exibição",
+    "bio": "Biografia",
+    "or": "ou",
+    "noResults": "Nenhum resultado encontrado",
+    "page": "Página",
+    "of": "de",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "close": "Fechar",
+    "share": "Compartilhar",
+    "download": "Baixar",
+    "upload": "Enviar",
+    "purchase": "Comprar",
+    "purchased": "Comprado",
+    "verified": "Verificado",
+    "pending": "Pendente",
+    "rejected": "Rejeitado",
+    "all": "Todos",
+    "views": "visualizações",
+    "likes": "curtidas",
+    "downloads": "downloads",
+    "sales": "vendas"
+  },
+  "nav": {
+    "explore": "Explorar",
+    "upload": "Enviar",
+    "dashboard": "Painel",
+    "myContent": "Meu conteúdo",
+    "earnings": "Ganhos",
+    "purchases": "Compras",
+    "settings": "Configurações",
+    "blog": "Blog"
+  },
+  "landing": {
+    "hero": {
+      "badge": "Alimentado pela tecnologia de autenticidade C2PA",
+      "title": "O marketplace de conteúdo digital {highlight}",
+      "highlight": "verificado",
+      "subtitle": "Compre e venda fotos autênticas com procedência garantida. Todo conteúdo é verificado usando padrões C2PA para total transparência.",
+      "exploreBtn": "Explorar conteúdo",
+      "sellBtn": "Começar a vender"
+    },
+    "features": {
+      "title": "Por que Vericum?",
+      "subtitle": "O primeiro marketplace de conteúdo que garante autenticidade por meio de tecnologia de verificação de ponta.",
+      "c2pa": {
+        "title": "Verificação C2PA",
+        "description": "Cada upload é analisado quanto a manifestos C2PA, dados EXIF e marcadores de geração por IA. Saiba exatamente de onde vem seu conteúdo."
+      },
+      "provenance": {
+        "title": "Rastreamento de procedência",
+        "description": "Cadeia de custódia completa da câmera ao marketplace. Veja o histórico completo de como o conteúdo foi criado e editado."
+      },
+      "marketplace": {
+        "title": "Marketplace justo",
+        "description": "Vendedores ficam com 85% de cada venda. Estrutura de comissão transparente com pagamentos instantâneos via Stripe Connect."
+      }
+    },
+    "howItWorks": {
+      "title": "Como funciona",
+      "subtitle": "Três passos simples para conteúdo verificado",
+      "step1": {
+        "title": "Enviar",
+        "description": "Arraste e solte sua foto original. Suportamos formatos JPG, PNG, WebP, TIFF e RAW de até 50 MB."
+      },
+      "step2": {
+        "title": "Verificar",
+        "description": "Nosso mecanismo verifica automaticamente manifestos C2PA, metadados EXIF e executa detecção de IA para avaliar a autenticidade."
+      },
+      "step3": {
+        "title": "Vender",
+        "description": "Defina seu preço e tipo de licença. Compradores podem comprar com confiança sabendo que cada peça é verificada."
+      }
+    },
+    "pricing": {
+      "title": "Preços simples e transparentes",
+      "subtitle": "Sem taxas ocultas. Vendedores ficam com a maior parte de cada venda.",
+      "sellerReceives": "Vendedor recebe",
+      "platformCommission": "Comissão da plataforma",
+      "buyerFee": "Taxa de verificação do comprador",
+      "noMonthly": "Sem mensalidades ou assinaturas",
+      "instantPayouts": "Pagamentos instantâneos via Stripe Connect",
+      "freeVerification": "Verificação C2PA gratuita em todos os uploads"
+    },
+    "cta": {
+      "title": "Pronto para negociar conteúdo verificado?",
+      "subtitle": "Junte-se ao Vericum hoje e faça parte do movimento por conteúdo digital autêntico e verificado.",
+      "createAccount": "Criar conta gratuita",
+      "browseContent": "Explorar conteúdo"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Bem-vindo de volta",
+      "subtitle": "Entre na sua conta",
+      "continueWith": "Continuar com {provider}",
+      "forgotPassword": "Esqueceu a senha?",
+      "noAccount": "Não tem uma conta?",
+      "signUpLink": "Cadastre-se"
+    },
+    "register": {
+      "title": "Crie sua conta",
+      "subtitle": "Comece a comprar e vender conteúdo verificado",
+      "hasAccount": "Já tem uma conta?",
+      "signInLink": "Entrar",
+      "success": "Conta criada! Verifique seu e-mail para confirmar."
+    }
+  },
+  "explore": {
+    "title": "Explorar",
+    "subtitle": "{count} conteúdo{plural} verificado disponível",
+    "filters": {
+      "title": "Filtros",
+      "clearAll": "Limpar tudo",
+      "verification": "Verificação",
+      "verifiedOnly": "Apenas verificados",
+      "category": "Categoria",
+      "contentType": "Tipo de conteúdo",
+      "priceRange": "Faixa de preço",
+      "minPrice": "Preço mínimo",
+      "maxPrice": "Preço máximo"
+    },
+    "sort": {
+      "newest": "Mais recente",
+      "popular": "Mais popular",
+      "priceAsc": "Preço: menor para maior",
+      "priceDesc": "Preço: maior para menor"
+    }
+  },
+  "content": {
+    "notFound": "Conteúdo não encontrado",
+    "verificationDetails": "Detalhes da verificação",
+    "overallScore": "Pontuação geral",
+    "c2pa": "C2PA",
+    "present": "Presente",
+    "notFoundShort": "Não encontrado",
+    "aiScore": "Pontuação IA",
+    "human": "Humano",
+    "status": "Status",
+    "provenanceChain": "Cadeia de procedência",
+    "licenseType": "Tipo de licença",
+    "relatedContent": "Conteúdo relacionado",
+    "purchaseComplete": "Compra concluída! Agora você pode baixar seu conteúdo.",
+    "shareContent": "Compartilhar este conteúdo"
+  },
+  "license": {
+    "personal": "Uso pessoal",
+    "standard": "Comercial padrão",
+    "extended": "Comercial estendida",
+    "exclusive": "Direitos exclusivos",
+    "personalDesc": "Apenas para uso pessoal e não comercial",
+    "standardDesc": "Uso comercial em um único projeto",
+    "extendedDesc": "Uso comercial em projetos ilimitados",
+    "exclusiveDesc": "Transferência total de direitos ao comprador"
+  },
+  "saleType": {
+    "title": "Tipo de venda",
+    "premium": "Venda premium",
+    "premiumDesc": "Preço mais alto, sem royalties sobre criações secundárias. Comprador obtém direitos de uso completos.",
+    "royalty": "Venda com royalties",
+    "royaltyDesc": "Preço mais baixo com {rate}% de royalty sobre criações secundárias.",
+    "royaltyRate": "Taxa de royalty"
+  },
+  "dashboard": {
+    "title": "Painel",
+    "welcome": "Bem-vindo de volta, {name}!",
+    "totalEarnings": "Ganhos totais",
+    "totalSales": "Vendas totais",
+    "myUploads": "Meus uploads",
+    "purchasesCount": "Compras",
+    "uploadContent": "Enviar conteúdo",
+    "recentActivity": "Atividade recente"
+  },
+  "earnings": {
+    "title": "Ganhos",
+    "totalEarnings": "Ganhos totais",
+    "totalSales": "Vendas totais",
+    "pendingPayout": "Pagamento pendente",
+    "lastPayout": "Último pagamento",
+    "revenueOverTime": "Receita ao longo do tempo",
+    "noData": "Nenhum dado de ganhos ainda",
+    "week": "Semana",
+    "month": "Mês",
+    "year": "Ano",
+    "allTime": "Todo o período",
+    "contentSales": "Vendas de conteúdo",
+    "settlementHistory": "Histórico de liquidações",
+    "dailyRevenue": "Receita diária",
+    "weeklyRevenue": "Receita semanal",
+    "monthlyRevenue": "Receita mensal"
+  },
+  "purchases": {
+    "title": "Minhas compras",
+    "empty": "Nenhuma compra ainda",
+    "browseContent": "Explorar conteúdo",
+    "view": "Ver",
+    "downloadFile": "Baixar"
+  },
+  "settings": {
+    "title": "Configurações",
+    "profile": "Perfil",
+    "profileDesc": "Atualize suas informações de perfil",
+    "accountType": "Tipo de conta",
+    "accountTypeDesc": "Seu papel e permissões atuais da conta",
+    "currentRole": "Papel atual",
+    "upgradeToSeller": "Atualizar para vendedor",
+    "upgradeDesc": "Atualize para uma conta de vendedor para enviar e vender seu conteúdo verificado.",
+    "saveChanges": "Salvar alterações",
+    "profileUpdated": "Perfil atualizado",
+    "stripeConnect": "Stripe Connect",
+    "stripeConnectDesc": "Conecte sua conta Stripe para receber pagamentos",
+    "connectStripe": "Conectar conta Stripe",
+    "stripeConnected": "Conta Stripe conectada"
+  },
+  "seller": {
+    "dashboard": {
+      "contentStats": "Estatísticas de conteúdo",
+      "downloadsTracking": "Rastreamento de downloads",
+      "viewsTracking": "Rastreamento de visualizações",
+      "topContent": "Conteúdo mais popular",
+      "revenueByContent": "Receita por conteúdo"
+    }
+  },
+  "buyer": {
+    "downloadPage": "Biblioteca de downloads",
+    "bookmarks": "Favoritos",
+    "purchaseHistory": "Histórico de compras"
+  },
+  "search": {
+    "placeholder": "Pesquisar conteúdo verificado...",
+    "tags": "Tags",
+    "categories": {
+      "photojournalism": "Fotojornalismo",
+      "nature-wildlife": "Natureza e vida selvagem",
+      "street-urban": "Rua e urbano",
+      "portrait": "Retrato",
+      "event-documentary": "Evento e documentário",
+      "aerial-drone": "Aéreo e drone",
+      "food-lifestyle": "Gastronomia e estilo de vida",
+      "architecture": "Arquitetura",
+      "sports": "Esportes",
+      "abstract": "Abstrato",
+      "other": "Outro"
+    }
+  },
+  "footer": {
+    "description": "Marketplace de conteúdo verificado alimentado pela tecnologia de autenticidade C2PA.",
+    "marketplace": "Marketplace",
+    "company": "Empresa",
+    "forSellers": "Para vendedores",
+    "explore": "Explorar",
+    "blog": "Blog",
+    "terms": "Termos de serviço",
+    "privacy": "Política de privacidade",
+    "startSelling": "Começar a vender",
+    "uploadContent": "Enviar conteúdo",
+    "copyright": "\u00a9 {year} Vericum. Todos os direitos reservados."
+  },
+  "share": {
+    "title": "Compartilhar",
+    "copyLink": "Copiar link",
+    "copied": "Link copiado!",
+    "shareOn": "Compartilhar no {platform}"
+  },
+  "theme": {
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
+  },
+  "email": {
+    "saleComplete": "Venda concluída",
+    "purchaseConfirmation": "Confirmação de compra",
+    "verificationComplete": "Verificação concluída"
+  }
+}

@@ -1,0 +1,298 @@
+{
+  "common": {
+    "appName": "Vericum",
+    "tagline": "सत्यापित सामग्री बाज़ार",
+    "loading": "लोड हो रहा है...",
+    "error": "कुछ गलत हो गया",
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "delete": "हटाएं",
+    "edit": "संपादित करें",
+    "search": "खोजें",
+    "filter": "फ़िल्टर",
+    "sort": "क्रमबद्ध करें",
+    "viewAll": "सभी देखें",
+    "learnMore": "और जानें",
+    "getStarted": "शुरू करें",
+    "signIn": "साइन इन",
+    "signUp": "साइन अप",
+    "signOut": "साइन आउट",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "username": "उपयोगकर्ता नाम",
+    "displayName": "प्रदर्शन नाम",
+    "bio": "परिचय",
+    "or": "या",
+    "noResults": "कोई परिणाम नहीं मिला",
+    "page": "पृष्ठ",
+    "of": "का",
+    "back": "वापस",
+    "next": "अगला",
+    "previous": "पिछला",
+    "close": "बंद करें",
+    "share": "साझा करें",
+    "download": "डाउनलोड",
+    "upload": "अपलोड",
+    "purchase": "खरीदें",
+    "purchased": "खरीदा गया",
+    "verified": "सत्यापित",
+    "pending": "लंबित",
+    "rejected": "अस्वीकृत",
+    "all": "सभी",
+    "views": "दृश्य",
+    "likes": "पसंद",
+    "downloads": "डाउनलोड",
+    "sales": "बिक्री"
+  },
+  "nav": {
+    "explore": "खोजें",
+    "upload": "अपलोड",
+    "dashboard": "डैशबोर्ड",
+    "myContent": "मेरी सामग्री",
+    "earnings": "कमाई",
+    "purchases": "खरीदारी",
+    "settings": "सेटिंग्स",
+    "blog": "ब्लॉग"
+  },
+  "landing": {
+    "hero": {
+      "badge": "C2PA प्रामाणिकता तकनीक द्वारा संचालित",
+      "title": "{highlight} डिजिटल सामग्री के लिए बाज़ार",
+      "highlight": "सत्यापित",
+      "subtitle": "गारंटीकृत उत्पत्ति के साथ प्रामाणिक तस्वीरें खरीदें और बेचें। पूर्ण पारदर्शिता के लिए प्रत्येक सामग्री को C2PA मानकों का उपयोग करके सत्यापित किया जाता है।",
+      "exploreBtn": "सामग्री खोजें",
+      "sellBtn": "बेचना शुरू करें"
+    },
+    "features": {
+      "title": "Vericum क्यों?",
+      "subtitle": "पहला सामग्री बाज़ार जो अत्याधुनिक सत्यापन तकनीक के माध्यम से प्रामाणिकता की गारंटी देता है।",
+      "c2pa": {
+        "title": "C2PA सत्यापन",
+        "description": "प्रत्येक अपलोड का C2PA मैनिफेस्ट, EXIF डेटा और AI-जनरेशन मार्करों के लिए विश्लेषण किया जाता है। जानें कि आपकी सामग्री कहां से आती है।"
+      },
+      "provenance": {
+        "title": "उत्पत्ति ट्रैकिंग",
+        "description": "कैमरे से बाज़ार तक पूर्ण संरक्षण श्रृंखला। देखें कि सामग्री कैसे बनाई और संपादित की गई।"
+      },
+      "marketplace": {
+        "title": "निष्पक्ष बाज़ार",
+        "description": "विक्रेता हर बिक्री का 85% रखते हैं। Stripe Connect के माध्यम से तत्काल भुगतान के साथ पारदर्शी कमीशन संरचना।"
+      }
+    },
+    "howItWorks": {
+      "title": "यह कैसे काम करता है",
+      "subtitle": "सत्यापित सामग्री के लिए तीन सरल चरण",
+      "step1": {
+        "title": "अपलोड",
+        "description": "अपनी मूल तस्वीर को ड्रैग और ड्रॉप करें। हम 50MB तक JPG, PNG, WebP, TIFF और RAW प्रारूपों का समर्थन करते हैं।"
+      },
+      "step2": {
+        "title": "सत्यापन",
+        "description": "हमारा इंजन स्वचालित रूप से C2PA मैनिफेस्ट, EXIF मेटाडेटा की जांच करता है और प्रामाणिकता स्कोर करने के लिए AI पहचान चलाता है।"
+      },
+      "step3": {
+        "title": "बेचें",
+        "description": "अपनी कीमत और लाइसेंस प्रकार निर्धारित करें। खरीदार आत्मविश्वास से खरीद सकते हैं यह जानते हुए कि हर सामग्री सत्यापित है।"
+      }
+    },
+    "pricing": {
+      "title": "सरल, पारदर्शी मूल्य निर्धारण",
+      "subtitle": "कोई छिपी हुई फीस नहीं। विक्रेता हर बिक्री का अधिकांश हिस्सा रखते हैं।",
+      "sellerReceives": "विक्रेता को प्राप्त",
+      "platformCommission": "प्लेटफॉर्म कमीशन",
+      "buyerFee": "खरीदार सत्यापन शुल्क",
+      "noMonthly": "कोई मासिक शुल्क या सदस्यता नहीं",
+      "instantPayouts": "Stripe Connect के माध्यम से तत्काल भुगतान",
+      "freeVerification": "सभी अपलोड पर मुफ्त C2PA सत्यापन"
+    },
+    "cta": {
+      "title": "सत्यापित सामग्री में व्यापार करने के लिए तैयार हैं?",
+      "subtitle": "आज ही Vericum से जुड़ें और प्रामाणिक, सत्यापित डिजिटल सामग्री की दिशा में आंदोलन का हिस्सा बनें।",
+      "createAccount": "मुफ्त खाता बनाएं",
+      "browseContent": "सामग्री ब्राउज़ करें"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "पुनः स्वागत है",
+      "subtitle": "अपने खाते में साइन इन करें",
+      "continueWith": "{provider} से जारी रखें",
+      "forgotPassword": "पासवर्ड भूल गए?",
+      "noAccount": "खाता नहीं है?",
+      "signUpLink": "साइन अप करें"
+    },
+    "register": {
+      "title": "अपना खाता बनाएं",
+      "subtitle": "सत्यापित सामग्री खरीदना और बेचना शुरू करें",
+      "hasAccount": "पहले से खाता है?",
+      "signInLink": "साइन इन करें",
+      "success": "खाता बनाया गया! कृपया पुष्टि के लिए अपना ईमेल जांचें।"
+    }
+  },
+  "explore": {
+    "title": "खोजें",
+    "subtitle": "{count} सत्यापित सामग्री{plural} उपलब्ध",
+    "filters": {
+      "title": "फ़िल्टर",
+      "clearAll": "सभी साफ़ करें",
+      "verification": "सत्यापन",
+      "verifiedOnly": "केवल सत्यापित",
+      "category": "श्रेणी",
+      "contentType": "सामग्री प्रकार",
+      "priceRange": "मूल्य सीमा",
+      "minPrice": "न्यूनतम मूल्य",
+      "maxPrice": "अधिकतम मूल्य"
+    },
+    "sort": {
+      "newest": "नवीनतम",
+      "popular": "सबसे लोकप्रिय",
+      "priceAsc": "मूल्य: कम से अधिक",
+      "priceDesc": "मूल्य: अधिक से कम"
+    }
+  },
+  "content": {
+    "notFound": "सामग्री नहीं मिली",
+    "verificationDetails": "सत्यापन विवरण",
+    "overallScore": "समग्र स्कोर",
+    "c2pa": "C2PA",
+    "present": "मौजूद",
+    "notFoundShort": "नहीं मिला",
+    "aiScore": "AI स्कोर",
+    "human": "मानव",
+    "status": "स्थिति",
+    "provenanceChain": "उत्पत्ति श्रृंखला",
+    "licenseType": "लाइसेंस प्रकार",
+    "relatedContent": "संबंधित सामग्री",
+    "purchaseComplete": "खरीदारी पूर्ण! अब आप अपनी सामग्री डाउनलोड कर सकते हैं।",
+    "shareContent": "यह सामग्री साझा करें"
+  },
+  "license": {
+    "personal": "व्यक्तिगत उपयोग",
+    "standard": "मानक वाणिज्यिक",
+    "extended": "विस्तारित वाणिज्यिक",
+    "exclusive": "विशेष अधिकार",
+    "personalDesc": "केवल व्यक्तिगत, गैर-वाणिज्यिक उपयोग के लिए",
+    "standardDesc": "एक परियोजना में वाणिज्यिक उपयोग",
+    "extendedDesc": "असीमित परियोजनाओं में वाणिज्यिक उपयोग",
+    "exclusiveDesc": "खरीदार को पूर्ण अधिकार हस्तांतरण"
+  },
+  "saleType": {
+    "title": "बिक्री प्रकार",
+    "premium": "प्रीमियम बिक्री",
+    "premiumDesc": "ऊंची कीमत, द्वितीयक रचनाओं पर कोई रॉयल्टी नहीं। खरीदार को पूर्ण उपयोग अधिकार मिलते हैं।",
+    "royalty": "रॉयल्टी बिक्री",
+    "royaltyDesc": "कम कीमत, द्वितीयक रचनाओं पर {rate}% रॉयल्टी।",
+    "royaltyRate": "रॉयल्टी दर"
+  },
+  "dashboard": {
+    "title": "डैशबोर्ड",
+    "welcome": "पुनः स्वागत है, {name}!",
+    "totalEarnings": "कुल कमाई",
+    "totalSales": "कुल बिक्री",
+    "myUploads": "मेरे अपलोड",
+    "purchasesCount": "खरीदारी",
+    "uploadContent": "सामग्री अपलोड करें",
+    "recentActivity": "हाल की गतिविधि"
+  },
+  "earnings": {
+    "title": "कमाई",
+    "totalEarnings": "कुल कमाई",
+    "totalSales": "कुल बिक्री",
+    "pendingPayout": "लंबित भुगतान",
+    "lastPayout": "अंतिम भुगतान",
+    "revenueOverTime": "समय के साथ राजस्व",
+    "noData": "अभी तक कोई कमाई डेटा नहीं",
+    "week": "सप्ताह",
+    "month": "महीना",
+    "year": "वर्ष",
+    "allTime": "सभी समय",
+    "contentSales": "सामग्री बिक्री",
+    "settlementHistory": "निपटान इतिहास",
+    "dailyRevenue": "दैनिक राजस्व",
+    "weeklyRevenue": "साप्ताहिक राजस्व",
+    "monthlyRevenue": "मासिक राजस्व"
+  },
+  "purchases": {
+    "title": "मेरी खरीदारी",
+    "empty": "अभी तक कोई खरीदारी नहीं",
+    "browseContent": "सामग्री ब्राउज़ करें",
+    "view": "देखें",
+    "downloadFile": "डाउनलोड"
+  },
+  "settings": {
+    "title": "सेटिंग्स",
+    "profile": "प्रोफ़ाइल",
+    "profileDesc": "अपनी प्रोफ़ाइल जानकारी अपडेट करें",
+    "accountType": "खाता प्रकार",
+    "accountTypeDesc": "आपकी वर्तमान खाता भूमिका और अनुमतियां",
+    "currentRole": "वर्तमान भूमिका",
+    "upgradeToSeller": "विक्रेता में अपग्रेड करें",
+    "upgradeDesc": "अपनी सत्यापित सामग्री अपलोड और बेचने के लिए विक्रेता खाते में अपग्रेड करें।",
+    "saveChanges": "परिवर्तन सहेजें",
+    "profileUpdated": "प्रोफ़ाइल अपडेट की गई",
+    "stripeConnect": "Stripe Connect",
+    "stripeConnectDesc": "भुगतान प्राप्त करने के लिए अपना Stripe खाता कनेक्ट करें",
+    "connectStripe": "Stripe खाता कनेक्ट करें",
+    "stripeConnected": "Stripe खाता कनेक्ट हो गया"
+  },
+  "seller": {
+    "dashboard": {
+      "contentStats": "सामग्री आंकड़े",
+      "downloadsTracking": "डाउनलोड ट्रैकिंग",
+      "viewsTracking": "दृश्य ट्रैकिंग",
+      "topContent": "शीर्ष प्रदर्शन करने वाली सामग्री",
+      "revenueByContent": "सामग्री के अनुसार राजस्व"
+    }
+  },
+  "buyer": {
+    "downloadPage": "डाउनलोड लाइब्रेरी",
+    "bookmarks": "बुकमार्क",
+    "purchaseHistory": "खरीदारी इतिहास"
+  },
+  "search": {
+    "placeholder": "सत्यापित सामग्री खोजें...",
+    "tags": "टैग",
+    "categories": {
+      "photojournalism": "फोटो पत्रकारिता",
+      "nature-wildlife": "प्रकृति और वन्यजीव",
+      "street-urban": "सड़क और शहरी",
+      "portrait": "पोर्ट्रेट",
+      "event-documentary": "इवेंट और डॉक्यूमेंट्री",
+      "aerial-drone": "हवाई और ड्रोन",
+      "food-lifestyle": "खाना और जीवनशैली",
+      "architecture": "वास्तुकला",
+      "sports": "खेल",
+      "abstract": "अमूर्त",
+      "other": "अन्य"
+    }
+  },
+  "footer": {
+    "description": "C2PA प्रामाणिकता तकनीक द्वारा संचालित सत्यापित सामग्री बाज़ार।",
+    "marketplace": "बाज़ार",
+    "company": "कंपनी",
+    "forSellers": "विक्रेताओं के लिए",
+    "explore": "खोजें",
+    "blog": "ब्लॉग",
+    "terms": "सेवा की शर्तें",
+    "privacy": "गोपनीयता नीति",
+    "startSelling": "बेचना शुरू करें",
+    "uploadContent": "सामग्री अपलोड करें",
+    "copyright": "\u00a9 {year} Vericum. सर्वाधिकार सुरक्षित।"
+  },
+  "share": {
+    "title": "साझा करें",
+    "copyLink": "लिंक कॉपी करें",
+    "copied": "लिंक कॉपी हो गया!",
+    "shareOn": "{platform} पर साझा करें"
+  },
+  "theme": {
+    "light": "लाइट",
+    "dark": "डार्क",
+    "system": "सिस्टम"
+  },
+  "email": {
+    "saleComplete": "बिक्री पूर्ण",
+    "purchaseConfirmation": "खरीदारी की पुष्टि",
+    "verificationComplete": "सत्यापन पूर्ण"
+  }
+}

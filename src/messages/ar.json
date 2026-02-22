@@ -1,0 +1,298 @@
+{
+  "common": {
+    "appName": "Vericum",
+    "tagline": "سوق المحتوى الموثّق",
+    "loading": "جارٍ التحميل...",
+    "error": "حدث خطأ ما",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "search": "بحث",
+    "filter": "تصفية",
+    "sort": "ترتيب",
+    "viewAll": "عرض الكل",
+    "learnMore": "اعرف المزيد",
+    "getStarted": "ابدأ الآن",
+    "signIn": "تسجيل الدخول",
+    "signUp": "إنشاء حساب",
+    "signOut": "تسجيل الخروج",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "username": "اسم المستخدم",
+    "displayName": "الاسم المعروض",
+    "bio": "نبذة شخصية",
+    "or": "أو",
+    "noResults": "لم يتم العثور على نتائج",
+    "page": "صفحة",
+    "of": "من",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "close": "إغلاق",
+    "share": "مشاركة",
+    "download": "تحميل",
+    "upload": "رفع",
+    "purchase": "شراء",
+    "purchased": "تم الشراء",
+    "verified": "موثّق",
+    "pending": "قيد المراجعة",
+    "rejected": "مرفوض",
+    "all": "الكل",
+    "views": "مشاهدات",
+    "likes": "إعجابات",
+    "downloads": "تحميلات",
+    "sales": "مبيعات"
+  },
+  "nav": {
+    "explore": "استكشاف",
+    "upload": "رفع",
+    "dashboard": "لوحة التحكم",
+    "myContent": "محتواي",
+    "earnings": "الأرباح",
+    "purchases": "المشتريات",
+    "settings": "الإعدادات",
+    "blog": "المدونة"
+  },
+  "landing": {
+    "hero": {
+      "badge": "مدعوم بتقنية مصداقية C2PA",
+      "title": "سوق المحتوى الرقمي {highlight}",
+      "highlight": "الموثّق",
+      "subtitle": "قم بشراء وبيع الصور الأصلية مع ضمان المصدر. يتم التحقق من كل محتوى باستخدام معايير C2PA لتحقيق الشفافية الكاملة.",
+      "exploreBtn": "استكشاف المحتوى",
+      "sellBtn": "ابدأ البيع"
+    },
+    "features": {
+      "title": "لماذا Vericum؟",
+      "subtitle": "أول سوق محتوى يضمن المصداقية من خلال تقنية التحقق المتطورة.",
+      "c2pa": {
+        "title": "التحقق بمعيار C2PA",
+        "description": "يتم تحليل كل ملف مرفوع للتحقق من بيانات C2PA وبيانات EXIF ومؤشرات التوليد بالذكاء الاصطناعي. اعرف بالضبط من أين يأتي محتواك."
+      },
+      "provenance": {
+        "title": "تتبع المصدر",
+        "description": "سلسلة حفظ كاملة من الكاميرا إلى السوق. اطّلع على التاريخ الكامل لكيفية إنشاء المحتوى وتعديله."
+      },
+      "marketplace": {
+        "title": "سوق عادل",
+        "description": "يحتفظ البائعون بنسبة 85% من كل عملية بيع. هيكل عمولة شفاف مع دفعات فورية عبر Stripe Connect."
+      }
+    },
+    "howItWorks": {
+      "title": "كيف يعمل",
+      "subtitle": "ثلاث خطوات بسيطة للمحتوى الموثّق",
+      "step1": {
+        "title": "الرفع",
+        "description": "اسحب وأفلت صورتك الأصلية. نحن ندعم صيغ JPG و PNG و WebP و TIFF و RAW حتى 50 ميغابايت."
+      },
+      "step2": {
+        "title": "التحقق",
+        "description": "يقوم محركنا تلقائيًا بفحص بيانات C2PA وبيانات EXIF الوصفية وتشغيل كشف الذكاء الاصطناعي لتقييم المصداقية."
+      },
+      "step3": {
+        "title": "البيع",
+        "description": "حدد سعرك ونوع الترخيص. يمكن للمشترين الشراء بثقة مع العلم أن كل قطعة تم التحقق منها."
+      }
+    },
+    "pricing": {
+      "title": "تسعير بسيط وشفاف",
+      "subtitle": "لا رسوم خفية. يحتفظ البائعون بالجزء الأكبر من كل عملية بيع.",
+      "sellerReceives": "يتلقى البائع",
+      "platformCommission": "عمولة المنصة",
+      "buyerFee": "رسوم التحقق للمشتري",
+      "noMonthly": "لا رسوم شهرية أو اشتراكات",
+      "instantPayouts": "دفعات فورية عبر Stripe Connect",
+      "freeVerification": "تحقق C2PA مجاني على جميع الملفات المرفوعة"
+    },
+    "cta": {
+      "title": "هل أنت مستعد للتداول في المحتوى الموثّق؟",
+      "subtitle": "انضم إلى Vericum اليوم وكن جزءًا من الحركة نحو محتوى رقمي أصيل وموثّق.",
+      "createAccount": "إنشاء حساب مجاني",
+      "browseContent": "تصفح المحتوى"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "مرحبًا بعودتك",
+      "subtitle": "سجّل الدخول إلى حسابك",
+      "continueWith": "المتابعة باستخدام {provider}",
+      "forgotPassword": "هل نسيت كلمة المرور؟",
+      "noAccount": "ليس لديك حساب؟",
+      "signUpLink": "إنشاء حساب"
+    },
+    "register": {
+      "title": "أنشئ حسابك",
+      "subtitle": "ابدأ بشراء وبيع المحتوى الموثّق",
+      "hasAccount": "لديك حساب بالفعل؟",
+      "signInLink": "تسجيل الدخول",
+      "success": "تم إنشاء الحساب! يرجى التحقق من بريدك الإلكتروني للتأكيد."
+    }
+  },
+  "explore": {
+    "title": "استكشاف",
+    "subtitle": "{count} محتوى موثّق{plural} متاح",
+    "filters": {
+      "title": "التصفية",
+      "clearAll": "مسح الكل",
+      "verification": "التحقق",
+      "verifiedOnly": "الموثّق فقط",
+      "category": "الفئة",
+      "contentType": "نوع المحتوى",
+      "priceRange": "نطاق السعر",
+      "minPrice": "الحد الأدنى للسعر",
+      "maxPrice": "الحد الأقصى للسعر"
+    },
+    "sort": {
+      "newest": "الأحدث",
+      "popular": "الأكثر شعبية",
+      "priceAsc": "السعر: من الأقل إلى الأعلى",
+      "priceDesc": "السعر: من الأعلى إلى الأقل"
+    }
+  },
+  "content": {
+    "notFound": "المحتوى غير موجود",
+    "verificationDetails": "تفاصيل التحقق",
+    "overallScore": "النتيجة الإجمالية",
+    "c2pa": "C2PA",
+    "present": "موجود",
+    "notFoundShort": "غير موجود",
+    "aiScore": "نتيجة الذكاء الاصطناعي",
+    "human": "بشري",
+    "status": "الحالة",
+    "provenanceChain": "سلسلة المصدر",
+    "licenseType": "نوع الترخيص",
+    "relatedContent": "محتوى ذو صلة",
+    "purchaseComplete": "تمت عملية الشراء! يمكنك الآن تحميل المحتوى الخاص بك.",
+    "shareContent": "مشاركة هذا المحتوى"
+  },
+  "license": {
+    "personal": "استخدام شخصي",
+    "standard": "تجاري قياسي",
+    "extended": "تجاري موسّع",
+    "exclusive": "حقوق حصرية",
+    "personalDesc": "للاستخدام الشخصي غير التجاري فقط",
+    "standardDesc": "استخدام تجاري في مشروع واحد",
+    "extendedDesc": "استخدام تجاري في مشاريع غير محدودة",
+    "exclusiveDesc": "نقل كامل للحقوق إلى المشتري"
+  },
+  "saleType": {
+    "title": "نوع البيع",
+    "premium": "بيع متميز",
+    "premiumDesc": "سعر أعلى، بدون عوائد على الإبداعات الثانوية. يحصل المشتري على حقوق استخدام كاملة.",
+    "royalty": "بيع بعوائد",
+    "royaltyDesc": "سعر أقل مع عوائد بنسبة {rate}% على الإبداعات الثانوية.",
+    "royaltyRate": "نسبة العوائد"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "welcome": "مرحبًا بعودتك، {name}!",
+    "totalEarnings": "إجمالي الأرباح",
+    "totalSales": "إجمالي المبيعات",
+    "myUploads": "ملفاتي المرفوعة",
+    "purchasesCount": "المشتريات",
+    "uploadContent": "رفع محتوى",
+    "recentActivity": "النشاط الأخير"
+  },
+  "earnings": {
+    "title": "الأرباح",
+    "totalEarnings": "إجمالي الأرباح",
+    "totalSales": "إجمالي المبيعات",
+    "pendingPayout": "دفعة معلّقة",
+    "lastPayout": "آخر دفعة",
+    "revenueOverTime": "الإيرادات عبر الزمن",
+    "noData": "لا توجد بيانات أرباح بعد",
+    "week": "أسبوع",
+    "month": "شهر",
+    "year": "سنة",
+    "allTime": "كل الأوقات",
+    "contentSales": "مبيعات المحتوى",
+    "settlementHistory": "سجل التسويات",
+    "dailyRevenue": "الإيرادات اليومية",
+    "weeklyRevenue": "الإيرادات الأسبوعية",
+    "monthlyRevenue": "الإيرادات الشهرية"
+  },
+  "purchases": {
+    "title": "مشترياتي",
+    "empty": "لا توجد مشتريات بعد",
+    "browseContent": "تصفح المحتوى",
+    "view": "عرض",
+    "downloadFile": "تحميل"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "profile": "الملف الشخصي",
+    "profileDesc": "قم بتحديث معلومات ملفك الشخصي",
+    "accountType": "نوع الحساب",
+    "accountTypeDesc": "دور حسابك الحالي وصلاحياتك",
+    "currentRole": "الدور الحالي",
+    "upgradeToSeller": "الترقية إلى بائع",
+    "upgradeDesc": "قم بالترقية إلى حساب بائع لرفع وبيع محتواك الموثّق.",
+    "saveChanges": "حفظ التغييرات",
+    "profileUpdated": "تم تحديث الملف الشخصي",
+    "stripeConnect": "Stripe Connect",
+    "stripeConnectDesc": "اربط حساب Stripe الخاص بك لتلقي المدفوعات",
+    "connectStripe": "ربط حساب Stripe",
+    "stripeConnected": "تم ربط حساب Stripe"
+  },
+  "seller": {
+    "dashboard": {
+      "contentStats": "إحصائيات المحتوى",
+      "downloadsTracking": "تتبع التحميلات",
+      "viewsTracking": "تتبع المشاهدات",
+      "topContent": "المحتوى الأكثر أداءً",
+      "revenueByContent": "الإيرادات حسب المحتوى"
+    }
+  },
+  "buyer": {
+    "downloadPage": "مكتبة التحميلات",
+    "bookmarks": "الإشارات المرجعية",
+    "purchaseHistory": "سجل المشتريات"
+  },
+  "search": {
+    "placeholder": "البحث عن محتوى موثّق...",
+    "tags": "الوسوم",
+    "categories": {
+      "photojournalism": "التصوير الصحفي",
+      "nature-wildlife": "الطبيعة والحياة البرية",
+      "street-urban": "الشارع والمدينة",
+      "portrait": "البورتريه",
+      "event-documentary": "الأحداث والوثائقي",
+      "aerial-drone": "التصوير الجوي والدرون",
+      "food-lifestyle": "الطعام ونمط الحياة",
+      "architecture": "العمارة",
+      "sports": "الرياضة",
+      "abstract": "التجريدي",
+      "other": "أخرى"
+    }
+  },
+  "footer": {
+    "description": "سوق المحتوى الموثّق المدعوم بتقنية مصداقية C2PA.",
+    "marketplace": "السوق",
+    "company": "الشركة",
+    "forSellers": "للبائعين",
+    "explore": "استكشاف",
+    "blog": "المدونة",
+    "terms": "شروط الخدمة",
+    "privacy": "سياسة الخصوصية",
+    "startSelling": "ابدأ البيع",
+    "uploadContent": "رفع محتوى",
+    "copyright": "\u00a9 {year} Vericum. جميع الحقوق محفوظة."
+  },
+  "share": {
+    "title": "مشاركة",
+    "copyLink": "نسخ الرابط",
+    "copied": "تم نسخ الرابط!",
+    "shareOn": "مشاركة على {platform}"
+  },
+  "theme": {
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "النظام"
+  },
+  "email": {
+    "saleComplete": "تمت عملية البيع",
+    "purchaseConfirmation": "تأكيد الشراء",
+    "verificationComplete": "اكتمل التحقق"
+  }
+}

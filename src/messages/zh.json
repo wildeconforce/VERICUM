@@ -1,0 +1,298 @@
+{
+  "common": {
+    "appName": "Vericum",
+    "tagline": "认证内容交易平台",
+    "loading": "加载中...",
+    "error": "出了点问题",
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "search": "搜索",
+    "filter": "筛选",
+    "sort": "排序",
+    "viewAll": "查看全部",
+    "learnMore": "了解更多",
+    "getStarted": "开始使用",
+    "signIn": "登录",
+    "signUp": "注册",
+    "signOut": "退出",
+    "email": "电子邮箱",
+    "password": "密码",
+    "username": "用户名",
+    "displayName": "显示名称",
+    "bio": "个人简介",
+    "or": "或",
+    "noResults": "未找到结果",
+    "page": "页",
+    "of": "/",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "close": "关闭",
+    "share": "分享",
+    "download": "下载",
+    "upload": "上传",
+    "purchase": "购买",
+    "purchased": "已购买",
+    "verified": "已认证",
+    "pending": "待审核",
+    "rejected": "已拒绝",
+    "all": "全部",
+    "views": "浏览量",
+    "likes": "点赞",
+    "downloads": "下载量",
+    "sales": "销售量"
+  },
+  "nav": {
+    "explore": "探索",
+    "upload": "上传",
+    "dashboard": "仪表盘",
+    "myContent": "我的内容",
+    "earnings": "收益",
+    "purchases": "购买记录",
+    "settings": "设置",
+    "blog": "博客"
+  },
+  "landing": {
+    "hero": {
+      "badge": "由C2PA真实性技术驱动",
+      "title": "{highlight}数字内容的交易平台",
+      "highlight": "认证",
+      "subtitle": "购买和出售具有保证来源的真实照片。每件内容均通过C2PA标准验证，确保完全透明。",
+      "exploreBtn": "探索内容",
+      "sellBtn": "开始销售"
+    },
+    "features": {
+      "title": "为什么选择Vericum？",
+      "subtitle": "首个通过尖端验证技术保证真实性的内容交易平台。",
+      "c2pa": {
+        "title": "C2PA验证",
+        "description": "每次上传都会分析C2PA清单、EXIF数据和AI生成标记。准确了解您的内容来源。"
+      },
+      "provenance": {
+        "title": "来源追踪",
+        "description": "从相机到交易平台的完整监管链。查看内容创建和编辑的完整历史记录。"
+      },
+      "marketplace": {
+        "title": "公平的交易平台",
+        "description": "卖家保留每笔销售额的85%。透明的佣金结构，通过Stripe Connect即时付款。"
+      }
+    },
+    "howItWorks": {
+      "title": "使用方法",
+      "subtitle": "获取认证内容的三个简单步骤",
+      "step1": {
+        "title": "上传",
+        "description": "拖放您的原始照片。我们支持JPG、PNG、WebP、TIFF和RAW格式，最大50MB。"
+      },
+      "step2": {
+        "title": "验证",
+        "description": "我们的引擎自动检查C2PA清单、EXIF元数据，并运行AI检测以评估真实性。"
+      },
+      "step3": {
+        "title": "销售",
+        "description": "设定您的价格和许可类型。买家可以放心购买，因为每件作品都经过验证。"
+      }
+    },
+    "pricing": {
+      "title": "简单透明的定价",
+      "subtitle": "没有隐藏费用。卖家获得每笔销售的大部分收入。",
+      "sellerReceives": "卖家收入",
+      "platformCommission": "平台佣金",
+      "buyerFee": "买家验证费用",
+      "noMonthly": "无月费或订阅费",
+      "instantPayouts": "通过Stripe Connect即时付款",
+      "freeVerification": "所有上传均可免费进行C2PA验证"
+    },
+    "cta": {
+      "title": "准备好交易认证内容了吗？",
+      "subtitle": "立即加入Vericum，成为真实认证数字内容运动的一部分。",
+      "createAccount": "创建免费账户",
+      "browseContent": "浏览内容"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "欢迎回来",
+      "subtitle": "登录您的账户",
+      "continueWith": "使用{provider}继续",
+      "forgotPassword": "忘记密码？",
+      "noAccount": "还没有账户？",
+      "signUpLink": "注册"
+    },
+    "register": {
+      "title": "创建您的账户",
+      "subtitle": "开始购买和销售认证内容",
+      "hasAccount": "已经有账户了？",
+      "signInLink": "登录",
+      "success": "账户已创建！请检查您的电子邮件以确认。"
+    }
+  },
+  "explore": {
+    "title": "探索",
+    "subtitle": "{count}个认证内容{plural}可供选择",
+    "filters": {
+      "title": "筛选",
+      "clearAll": "清除全部",
+      "verification": "认证",
+      "verifiedOnly": "仅显示已认证",
+      "category": "分类",
+      "contentType": "内容类型",
+      "priceRange": "价格范围",
+      "minPrice": "最低价格",
+      "maxPrice": "最高价格"
+    },
+    "sort": {
+      "newest": "最新",
+      "popular": "最热门",
+      "priceAsc": "价格：从低到高",
+      "priceDesc": "价格：从高到低"
+    }
+  },
+  "content": {
+    "notFound": "未找到内容",
+    "verificationDetails": "验证详情",
+    "overallScore": "综合评分",
+    "c2pa": "C2PA",
+    "present": "存在",
+    "notFoundShort": "未找到",
+    "aiScore": "AI评分",
+    "human": "人类",
+    "status": "状态",
+    "provenanceChain": "来源链",
+    "licenseType": "许可类型",
+    "relatedContent": "相关内容",
+    "purchaseComplete": "购买完成！您现在可以下载内容了。",
+    "shareContent": "分享此内容"
+  },
+  "license": {
+    "personal": "个人使用",
+    "standard": "标准商用",
+    "extended": "扩展商用",
+    "exclusive": "独家权利",
+    "personalDesc": "仅限个人非商业用途",
+    "standardDesc": "单个项目的商业使用",
+    "extendedDesc": "无限项目的商业使用",
+    "exclusiveDesc": "全部权利转让给买家"
+  },
+  "saleType": {
+    "title": "销售类型",
+    "premium": "高级销售",
+    "premiumDesc": "较高价格，无二次创作版税。买家获得完全使用权。",
+    "royalty": "版税销售",
+    "royaltyDesc": "较低价格，二次创作需支付{rate}%版税。",
+    "royaltyRate": "版税率"
+  },
+  "dashboard": {
+    "title": "仪表盘",
+    "welcome": "欢迎回来，{name}！",
+    "totalEarnings": "总收益",
+    "totalSales": "总销售额",
+    "myUploads": "我的上传",
+    "purchasesCount": "购买次数",
+    "uploadContent": "上传内容",
+    "recentActivity": "最近活动"
+  },
+  "earnings": {
+    "title": "收益",
+    "totalEarnings": "总收益",
+    "totalSales": "总销售额",
+    "pendingPayout": "待付款",
+    "lastPayout": "上次付款",
+    "revenueOverTime": "时段收益",
+    "noData": "暂无收益数据",
+    "week": "周",
+    "month": "月",
+    "year": "年",
+    "allTime": "全部时间",
+    "contentSales": "内容销售",
+    "settlementHistory": "结算记录",
+    "dailyRevenue": "日收益",
+    "weeklyRevenue": "周收益",
+    "monthlyRevenue": "月收益"
+  },
+  "purchases": {
+    "title": "我的购买",
+    "empty": "暂无购买记录",
+    "browseContent": "浏览内容",
+    "view": "查看",
+    "downloadFile": "下载"
+  },
+  "settings": {
+    "title": "设置",
+    "profile": "个人资料",
+    "profileDesc": "更新您的个人资料信息",
+    "accountType": "账户类型",
+    "accountTypeDesc": "您当前的账户角色和权限",
+    "currentRole": "当前角色",
+    "upgradeToSeller": "升级为卖家",
+    "upgradeDesc": "升级到卖家账户以上传和销售您的认证内容。",
+    "saveChanges": "保存更改",
+    "profileUpdated": "个人资料已更新",
+    "stripeConnect": "Stripe Connect",
+    "stripeConnectDesc": "连接您的Stripe账户以接收付款",
+    "connectStripe": "连接Stripe账户",
+    "stripeConnected": "Stripe账户已连接"
+  },
+  "seller": {
+    "dashboard": {
+      "contentStats": "内容统计",
+      "downloadsTracking": "下载追踪",
+      "viewsTracking": "浏览追踪",
+      "topContent": "热门内容",
+      "revenueByContent": "按内容分类的收益"
+    }
+  },
+  "buyer": {
+    "downloadPage": "下载库",
+    "bookmarks": "收藏夹",
+    "purchaseHistory": "购买历史"
+  },
+  "search": {
+    "placeholder": "搜索认证内容...",
+    "tags": "标签",
+    "categories": {
+      "photojournalism": "新闻摄影",
+      "nature-wildlife": "自然与野生动物",
+      "street-urban": "街头与都市",
+      "portrait": "人像",
+      "event-documentary": "活动与纪实",
+      "aerial-drone": "航拍与无人机",
+      "food-lifestyle": "美食与生活方式",
+      "architecture": "建筑",
+      "sports": "体育",
+      "abstract": "抽象",
+      "other": "其他"
+    }
+  },
+  "footer": {
+    "description": "由C2PA真实性技术驱动的认证内容交易平台。",
+    "marketplace": "交易平台",
+    "company": "公司",
+    "forSellers": "卖家专区",
+    "explore": "探索",
+    "blog": "博客",
+    "terms": "服务条款",
+    "privacy": "隐私政策",
+    "startSelling": "开始销售",
+    "uploadContent": "上传内容",
+    "copyright": "\u00a9 {year} Vericum. 保留所有权利。"
+  },
+  "share": {
+    "title": "分享",
+    "copyLink": "复制链接",
+    "copied": "链接已复制！",
+    "shareOn": "分享到{platform}"
+  },
+  "theme": {
+    "light": "浅色",
+    "dark": "深色",
+    "system": "跟随系统"
+  },
+  "email": {
+    "saleComplete": "销售完成",
+    "purchaseConfirmation": "购买确认",
+    "verificationComplete": "验证完成"
+  }
+}

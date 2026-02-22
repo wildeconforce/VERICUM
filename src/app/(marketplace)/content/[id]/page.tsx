@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { VerificationBadge } from "@/components/content/verification-badge";
 import { PriceTag } from "@/components/content/price-tag";
 import { ContentGrid } from "@/components/content/content-grid";
+import { ShareButtons } from "@/components/social/share-buttons";
 import { useAuth } from "@/hooks/use-auth";
 import { formatDate } from "@/lib/utils/format";
 import { LICENSE_LABELS, LICENSE_DESCRIPTIONS } from "@/lib/constants";
@@ -23,6 +24,8 @@ import {
   Camera,
   Loader2,
   CheckCircle,
+  Bookmark,
+  BookmarkCheck,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -34,6 +37,9 @@ function ContentDetailContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [isPurchasing, setIsPurchasing] = useState(false);
   const [selectedLicense, setSelectedLicense] = useState("standard");
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
 
   const justPurchased = searchParams.get("purchased") === "true";
 
@@ -44,6 +50,7 @@ function ContentDetailContent() {
         const json = await res.json();
         setData(json);
         setSelectedLicense(json.content?.license_type || "standard");
+        setLikeCount(json.content?.like_count || 0);
       }
       setIsLoading(false);
     }
@@ -84,6 +91,52 @@ function ContentDetailContent() {
     setIsPurchasing(false);
   };
 
+  const handleBookmark = async () => {
+    if (!isAuthenticated) {
+      toast.error("Please sign in to bookmark");
+      return;
+    }
+    const res = await fetch("/api/bookmarks", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content_id: params.id }),
+    });
+    if (res.ok) {
+      const json = await res.json();
+      setIsBookmarked(json.bookmarked);
+      toast.success(json.bookmarked ? "Bookmarked!" : "Bookmark removed");
+    }
+  };
+
+  const handleLike = async () => {
+    if (!isAuthenticated) {
+      toast.error("Please sign in to like");
+      return;
+    }
+    const supabaseModule = await import("@/lib/supabase/client");
+    const supabase = supabaseModule.createClient();
+    const { data: result } = await supabase.rpc("toggle_like", {
+      p_user_id: user!.id,
+      p_content_id: params.id as string,
+    });
+    setIsLiked(!!result);
+    setLikeCount((prev) => (result ? prev + 1 : prev - 1));
+  };
+
+  const handleDownload = async () => {
+    try {
+      const res = await fetch(`/api/downloads/${params.id}`);
+      const json = await res.json();
+      if (json.download_url) {
+        window.open(json.download_url, "_blank");
+      } else {
+        toast.error(json.error || "Download failed");
+      }
+    } catch {
+      toast.error("Download failed");
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
@@ -100,8 +153,11 @@ function ContentDetailContent() {
     );
   }
 
-  const { content, verification, seller, related } = data;
+  const { content, verification, seller, related, purchased } = data;
   const isOwner = user?.id === content.seller_id;
+  const contentUrl = typeof window !== "undefined"
+    ? `${window.location.origin}/content/${params.id}`
+    : "";
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -126,28 +182,64 @@ function ContentDetailContent() {
 
           <div>
             <div className="flex items-start justify-between gap-4">
-              <h1 className="text-2xl font-bold">{content.title}</h1>
+              <h1 className="text-2xl md:text-3xl font-bold">{content.title}</h1>
               <VerificationBadge status={content.verification_status} size="lg" />
             </div>
             {content.description && (
-              <p className="mt-3 text-muted-foreground">{content.description}</p>
+              <p className="mt-3 text-muted-foreground leading-relaxed">{content.description}</p>
             )}
           </div>
 
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1">
-              <Eye className="h-4 w-4" /> {content.view_count} views
-            </span>
-            <span className="flex items-center gap-1">
-              <Heart className="h-4 w-4" /> {content.like_count} likes
-            </span>
-            <span className="flex items-center gap-1">
-              <Download className="h-4 w-4" /> {content.download_count} downloads
-            </span>
-            <span className="flex items-center gap-1">
-              <Calendar className="h-4 w-4" /> {formatDate(content.created_at)}
-            </span>
+          {/* Stats and actions row */}
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <span className="flex items-center gap-1">
+                <Eye className="h-4 w-4" /> {content.view_count} views
+              </span>
+              <button
+                onClick={handleLike}
+                className={`flex items-center gap-1 hover:text-primary transition-colors ${isLiked ? "text-primary" : ""}`}
+              >
+                <Heart className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`} /> {likeCount} likes
+              </button>
+              <span className="flex items-center gap-1">
+                <Download className="h-4 w-4" /> {content.download_count} downloads
+              </span>
+              <span className="flex items-center gap-1">
+                <Calendar className="h-4 w-4" /> {formatDate(content.created_at)}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleBookmark}
+                className={isBookmarked ? "text-primary" : ""}
+              >
+                {isBookmarked ? (
+                  <BookmarkCheck className="h-4 w-4 mr-2" />
+                ) : (
+                  <Bookmark className="h-4 w-4 mr-2" />
+                )}
+                {isBookmarked ? "Bookmarked" : "Bookmark"}
+              </Button>
+              <ShareButtons url={contentUrl} title={content.title} compact />
+            </div>
           </div>
+
+          {/* Sale type badge */}
+          {content.sale_type && (
+            <div className="flex items-center gap-2">
+              <Badge variant={content.sale_type === "premium" ? "default" : "secondary"}>
+                {content.sale_type === "premium" ? "Premium Sale" : "Royalty Sale"}
+              </Badge>
+              {content.sale_type === "royalty" && content.royalty_rate > 0 && (
+                <span className="text-xs text-muted-foreground">
+                  {(content.royalty_rate * 100).toFixed(0)}% royalty on secondary creations
+                </span>
+              )}
+            </div>
+          )}
 
           {content.tags?.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
@@ -251,8 +343,21 @@ function ContentDetailContent() {
             </CardContent>
           </Card>
 
-          {/* Purchase card */}
-          {!isOwner && (
+          {/* Purchase card or Download card */}
+          {purchased ? (
+            <Card>
+              <CardContent className="p-4 space-y-4">
+                <div className="flex items-center gap-2 text-primary">
+                  <CheckCircle className="h-5 w-5" />
+                  <span className="font-medium">Purchased</span>
+                </div>
+                <Button className="w-full" size="lg" onClick={handleDownload}>
+                  <Download className="h-4 w-4 mr-2" />
+                  Download Original
+                </Button>
+              </CardContent>
+            </Card>
+          ) : !isOwner ? (
             <Card>
               <CardContent className="p-4 space-y-4">
                 <PriceTag
@@ -306,7 +411,7 @@ function ContentDetailContent() {
                 </Button>
               </CardContent>
             </Card>
-          )}
+          ) : null}
         </div>
       </div>
 

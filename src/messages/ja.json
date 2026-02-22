@@ -1,0 +1,298 @@
+{
+  "common": {
+    "appName": "Vericum",
+    "tagline": "認証済みコンテンツマーケットプレイス",
+    "loading": "読み込み中...",
+    "error": "問題が発生しました",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "search": "検索",
+    "filter": "フィルター",
+    "sort": "並べ替え",
+    "viewAll": "すべて表示",
+    "learnMore": "詳しく見る",
+    "getStarted": "始める",
+    "signIn": "ログイン",
+    "signUp": "新規登録",
+    "signOut": "ログアウト",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "username": "ユーザー名",
+    "displayName": "表示名",
+    "bio": "自己紹介",
+    "or": "または",
+    "noResults": "結果が見つかりません",
+    "page": "ページ",
+    "of": "/",
+    "back": "戻る",
+    "next": "次へ",
+    "previous": "前へ",
+    "close": "閉じる",
+    "share": "共有",
+    "download": "ダウンロード",
+    "upload": "アップロード",
+    "purchase": "購入",
+    "purchased": "購入済み",
+    "verified": "認証済み",
+    "pending": "保留中",
+    "rejected": "却下",
+    "all": "すべて",
+    "views": "閲覧数",
+    "likes": "いいね",
+    "downloads": "ダウンロード数",
+    "sales": "販売数"
+  },
+  "nav": {
+    "explore": "探索",
+    "upload": "アップロード",
+    "dashboard": "ダッシュボード",
+    "myContent": "マイコンテンツ",
+    "earnings": "収益",
+    "purchases": "購入履歴",
+    "settings": "設定",
+    "blog": "ブログ"
+  },
+  "landing": {
+    "hero": {
+      "badge": "C2PA認証技術を搭載",
+      "title": "{highlight}デジタルコンテンツのためのマーケットプレイス",
+      "highlight": "認証済み",
+      "subtitle": "保証された出所とともに本物の写真を売買しましょう。すべてのコンテンツは完全な透明性のためにC2PA基準で検証されています。",
+      "exploreBtn": "コンテンツを探す",
+      "sellBtn": "販売を始める"
+    },
+    "features": {
+      "title": "なぜVericum？",
+      "subtitle": "最先端の検証技術により真正性を保証する初のコンテンツマーケットプレイスです。",
+      "c2pa": {
+        "title": "C2PA検証",
+        "description": "すべてのアップロードはC2PAマニフェスト、EXIFデータ、AI生成マーカーを分析します。コンテンツの正確な出所を把握できます。"
+      },
+      "provenance": {
+        "title": "来歴の追跡",
+        "description": "カメラからマーケットプレイスまでの完全な管理チェーン。コンテンツがどのように作成・編集されたかの全履歴を確認できます。"
+      },
+      "marketplace": {
+        "title": "公正なマーケットプレイス",
+        "description": "販売者は売上の85%を受け取ります。透明な手数料構造とStripe Connectによる即時支払い。"
+      }
+    },
+    "howItWorks": {
+      "title": "ご利用方法",
+      "subtitle": "認証済みコンテンツへの3つの簡単なステップ",
+      "step1": {
+        "title": "アップロード",
+        "description": "オリジナルの写真をドラッグ＆ドロップしてください。JPG、PNG、WebP、TIFF、RAW形式を最大50MBまでサポートしています。"
+      },
+      "step2": {
+        "title": "検証",
+        "description": "エンジンがC2PAマニフェスト、EXIFメタデータを自動チェックし、AI検出を実行して真正性をスコアリングします。"
+      },
+      "step3": {
+        "title": "販売",
+        "description": "価格とライセンスタイプを設定してください。購入者はすべてのコンテンツが検証済みであることを確認して安心して購入できます。"
+      }
+    },
+    "pricing": {
+      "title": "シンプルで透明な料金体系",
+      "subtitle": "隠れた手数料はありません。販売者が売上の大部分を受け取ります。",
+      "sellerReceives": "販売者の受取額",
+      "platformCommission": "プラットフォーム手数料",
+      "buyerFee": "購入者検証手数料",
+      "noMonthly": "月額料金やサブスクリプションなし",
+      "instantPayouts": "Stripe Connectによる即時支払い",
+      "freeVerification": "すべてのアップロードでC2PA検証が無料"
+    },
+    "cta": {
+      "title": "認証済みコンテンツの取引を始めませんか？",
+      "subtitle": "今日Vericumに参加して、本物の認証済みデジタルコンテンツへのムーブメントに加わりましょう。",
+      "createAccount": "無料アカウントを作成",
+      "browseContent": "コンテンツを閲覧"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "おかえりなさい",
+      "subtitle": "アカウントにログインしてください",
+      "continueWith": "{provider}で続ける",
+      "forgotPassword": "パスワードをお忘れですか？",
+      "noAccount": "アカウントをお持ちでないですか？",
+      "signUpLink": "新規登録"
+    },
+    "register": {
+      "title": "アカウントを作成",
+      "subtitle": "認証済みコンテンツの売買を始めましょう",
+      "hasAccount": "すでにアカウントをお持ちですか？",
+      "signInLink": "ログイン",
+      "success": "アカウントが作成されました！メールを確認して認証してください。"
+    }
+  },
+  "explore": {
+    "title": "探索",
+    "subtitle": "{count}件の認証済みコンテンツ{plural}が利用可能",
+    "filters": {
+      "title": "フィルター",
+      "clearAll": "すべてクリア",
+      "verification": "検証",
+      "verifiedOnly": "認証済みのみ",
+      "category": "カテゴリー",
+      "contentType": "コンテンツタイプ",
+      "priceRange": "価格帯",
+      "minPrice": "最低価格",
+      "maxPrice": "最高価格"
+    },
+    "sort": {
+      "newest": "新着順",
+      "popular": "人気順",
+      "priceAsc": "価格：安い順",
+      "priceDesc": "価格：高い順"
+    }
+  },
+  "content": {
+    "notFound": "コンテンツが見つかりません",
+    "verificationDetails": "検証の詳細",
+    "overallScore": "総合スコア",
+    "c2pa": "C2PA",
+    "present": "あり",
+    "notFoundShort": "なし",
+    "aiScore": "AIスコア",
+    "human": "人間",
+    "status": "ステータス",
+    "provenanceChain": "来歴チェーン",
+    "licenseType": "ライセンスタイプ",
+    "relatedContent": "関連コンテンツ",
+    "purchaseComplete": "購入が完了しました！コンテンツをダウンロードできます。",
+    "shareContent": "このコンテンツを共有"
+  },
+  "license": {
+    "personal": "個人使用",
+    "standard": "標準商用",
+    "extended": "拡張商用",
+    "exclusive": "独占権",
+    "personalDesc": "個人的・非商用目的のみ",
+    "standardDesc": "単一プロジェクトでの商用利用",
+    "extendedDesc": "無制限のプロジェクトでの商用利用",
+    "exclusiveDesc": "購入者への全権利譲渡"
+  },
+  "saleType": {
+    "title": "販売タイプ",
+    "premium": "プレミアム販売",
+    "premiumDesc": "高価格、二次創作ロイヤリティなし。購入者は完全な使用権を取得します。",
+    "royalty": "ロイヤリティ販売",
+    "royaltyDesc": "低価格で二次創作に{rate}%のロイヤリティを適用。",
+    "royaltyRate": "ロイヤリティ率"
+  },
+  "dashboard": {
+    "title": "ダッシュボード",
+    "welcome": "おかえりなさい、{name}さん！",
+    "totalEarnings": "総収益",
+    "totalSales": "総販売数",
+    "myUploads": "マイアップロード",
+    "purchasesCount": "購入数",
+    "uploadContent": "コンテンツをアップロード",
+    "recentActivity": "最近のアクティビティ"
+  },
+  "earnings": {
+    "title": "収益",
+    "totalEarnings": "総収益",
+    "totalSales": "総販売数",
+    "pendingPayout": "保留中の支払い",
+    "lastPayout": "前回の支払い",
+    "revenueOverTime": "期間別収益",
+    "noData": "収益データはまだありません",
+    "week": "週間",
+    "month": "月間",
+    "year": "年間",
+    "allTime": "全期間",
+    "contentSales": "コンテンツ販売",
+    "settlementHistory": "精算履歴",
+    "dailyRevenue": "日次収益",
+    "weeklyRevenue": "週次収益",
+    "monthlyRevenue": "月次収益"
+  },
+  "purchases": {
+    "title": "購入履歴",
+    "empty": "まだ購入履歴がありません",
+    "browseContent": "コンテンツを閲覧",
+    "view": "表示",
+    "downloadFile": "ダウンロード"
+  },
+  "settings": {
+    "title": "設定",
+    "profile": "プロフィール",
+    "profileDesc": "プロフィール情報を更新してください",
+    "accountType": "アカウントタイプ",
+    "accountTypeDesc": "現在のアカウントの役割と権限",
+    "currentRole": "現在の役割",
+    "upgradeToSeller": "販売者にアップグレード",
+    "upgradeDesc": "販売者アカウントにアップグレードして、認証済みコンテンツをアップロード・販売しましょう。",
+    "saveChanges": "変更を保存",
+    "profileUpdated": "プロフィールが更新されました",
+    "stripeConnect": "Stripe Connect",
+    "stripeConnectDesc": "支払いを受け取るためにStripeアカウントを接続してください",
+    "connectStripe": "Stripeアカウントを接続",
+    "stripeConnected": "Stripeアカウントが接続されました"
+  },
+  "seller": {
+    "dashboard": {
+      "contentStats": "コンテンツ統計",
+      "downloadsTracking": "ダウンロード追跡",
+      "viewsTracking": "閲覧数追跡",
+      "topContent": "人気コンテンツ",
+      "revenueByContent": "コンテンツ別収益"
+    }
+  },
+  "buyer": {
+    "downloadPage": "ダウンロードライブラリ",
+    "bookmarks": "ブックマーク",
+    "purchaseHistory": "購入履歴"
+  },
+  "search": {
+    "placeholder": "認証済みコンテンツを検索...",
+    "tags": "タグ",
+    "categories": {
+      "photojournalism": "フォトジャーナリズム",
+      "nature-wildlife": "自然・野生動物",
+      "street-urban": "ストリート・都市",
+      "portrait": "ポートレート",
+      "event-documentary": "イベント・ドキュメンタリー",
+      "aerial-drone": "空撮・ドローン",
+      "food-lifestyle": "フード・ライフスタイル",
+      "architecture": "建築",
+      "sports": "スポーツ",
+      "abstract": "アブストラクト",
+      "other": "その他"
+    }
+  },
+  "footer": {
+    "description": "C2PA認証技術を搭載した認証済みコンテンツマーケットプレイス。",
+    "marketplace": "マーケットプレイス",
+    "company": "会社情報",
+    "forSellers": "販売者向け",
+    "explore": "探索",
+    "blog": "ブログ",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー",
+    "startSelling": "販売を始める",
+    "uploadContent": "コンテンツをアップロード",
+    "copyright": "\u00a9 {year} Vericum. All rights reserved."
+  },
+  "share": {
+    "title": "共有",
+    "copyLink": "リンクをコピー",
+    "copied": "リンクがコピーされました！",
+    "shareOn": "{platform}で共有"
+  },
+  "theme": {
+    "light": "ライト",
+    "dark": "ダーク",
+    "system": "システム"
+  },
+  "email": {
+    "saleComplete": "販売完了",
+    "purchaseConfirmation": "購入確認",
+    "verificationComplete": "検証完了"
+  }
+}

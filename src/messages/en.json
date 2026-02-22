@@ -1,0 +1,298 @@
+{
+  "common": {
+    "appName": "Vericum",
+    "tagline": "Verified Content Marketplace",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "viewAll": "View All",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "email": "Email",
+    "password": "Password",
+    "username": "Username",
+    "displayName": "Display Name",
+    "bio": "Bio",
+    "or": "or",
+    "noResults": "No results found",
+    "page": "Page",
+    "of": "of",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "share": "Share",
+    "download": "Download",
+    "upload": "Upload",
+    "purchase": "Purchase",
+    "purchased": "Purchased",
+    "verified": "Verified",
+    "pending": "Pending",
+    "rejected": "Rejected",
+    "all": "All",
+    "views": "views",
+    "likes": "likes",
+    "downloads": "downloads",
+    "sales": "sales"
+  },
+  "nav": {
+    "explore": "Explore",
+    "upload": "Upload",
+    "dashboard": "Dashboard",
+    "myContent": "My Content",
+    "earnings": "Earnings",
+    "purchases": "Purchases",
+    "settings": "Settings",
+    "blog": "Blog"
+  },
+  "landing": {
+    "hero": {
+      "badge": "Powered by C2PA authenticity technology",
+      "title": "The Marketplace for {highlight} Digital Content",
+      "highlight": "Verified",
+      "subtitle": "Buy and sell authentic photos with guaranteed provenance. Every piece of content is verified using C2PA standards for complete transparency.",
+      "exploreBtn": "Explore Content",
+      "sellBtn": "Start Selling"
+    },
+    "features": {
+      "title": "Why Vericum?",
+      "subtitle": "The first content marketplace that guarantees authenticity through cutting-edge verification technology.",
+      "c2pa": {
+        "title": "C2PA Verification",
+        "description": "Every upload is analyzed for C2PA manifests, EXIF data, and AI-generation markers. Know exactly where your content comes from."
+      },
+      "provenance": {
+        "title": "Provenance Tracking",
+        "description": "Complete chain of custody from camera to marketplace. See the full history of how content was created and edited."
+      },
+      "marketplace": {
+        "title": "Fair Marketplace",
+        "description": "Sellers keep 85% of every sale. Transparent commission structure with instant payouts via Stripe Connect."
+      }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "subtitle": "Three simple steps to verified content",
+      "step1": {
+        "title": "Upload",
+        "description": "Drag and drop your original photo. We support JPG, PNG, WebP, TIFF, and RAW formats up to 50MB."
+      },
+      "step2": {
+        "title": "Verify",
+        "description": "Our engine automatically checks C2PA manifests, EXIF metadata, and runs AI detection to score authenticity."
+      },
+      "step3": {
+        "title": "Sell",
+        "description": "Set your price and license type. Buyers can purchase with confidence knowing every piece is verified."
+      }
+    },
+    "pricing": {
+      "title": "Simple, Transparent Pricing",
+      "subtitle": "No hidden fees. Sellers keep the majority of every sale.",
+      "sellerReceives": "Seller receives",
+      "platformCommission": "Platform commission",
+      "buyerFee": "Buyer verification fee",
+      "noMonthly": "No monthly fees or subscriptions",
+      "instantPayouts": "Instant payouts via Stripe Connect",
+      "freeVerification": "Free C2PA verification on all uploads"
+    },
+    "cta": {
+      "title": "Ready to trade in verified content?",
+      "subtitle": "Join Vericum today and be part of the movement toward authentic, verified digital content.",
+      "createAccount": "Create Free Account",
+      "browseContent": "Browse Content"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to your account",
+      "continueWith": "Continue with {provider}",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up"
+    },
+    "register": {
+      "title": "Create your account",
+      "subtitle": "Start buying and selling verified content",
+      "hasAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "success": "Account created! Please check your email to confirm."
+    }
+  },
+  "explore": {
+    "title": "Explore",
+    "subtitle": "{count} verified content{plural} available",
+    "filters": {
+      "title": "Filters",
+      "clearAll": "Clear all",
+      "verification": "Verification",
+      "verifiedOnly": "Verified only",
+      "category": "Category",
+      "contentType": "Content Type",
+      "priceRange": "Price Range",
+      "minPrice": "Min price",
+      "maxPrice": "Max price"
+    },
+    "sort": {
+      "newest": "Newest",
+      "popular": "Most Popular",
+      "priceAsc": "Price: Low to High",
+      "priceDesc": "Price: High to Low"
+    }
+  },
+  "content": {
+    "notFound": "Content not found",
+    "verificationDetails": "Verification Details",
+    "overallScore": "Overall Score",
+    "c2pa": "C2PA",
+    "present": "Present",
+    "notFoundShort": "Not found",
+    "aiScore": "AI Score",
+    "human": "Human",
+    "status": "Status",
+    "provenanceChain": "Provenance Chain",
+    "licenseType": "License Type",
+    "relatedContent": "Related Content",
+    "purchaseComplete": "Purchase complete! You can now download your content.",
+    "shareContent": "Share this content"
+  },
+  "license": {
+    "personal": "Personal Use",
+    "standard": "Standard Commercial",
+    "extended": "Extended Commercial",
+    "exclusive": "Exclusive Rights",
+    "personalDesc": "For personal, non-commercial use only",
+    "standardDesc": "Commercial use in a single project",
+    "extendedDesc": "Commercial use in unlimited projects",
+    "exclusiveDesc": "Full rights transfer to buyer"
+  },
+  "saleType": {
+    "title": "Sale Type",
+    "premium": "Premium Sale",
+    "premiumDesc": "Higher price, no secondary creation royalties. Buyer gets full usage rights.",
+    "royalty": "Royalty Sale",
+    "royaltyDesc": "Lower price with {rate}% royalty on secondary creations.",
+    "royaltyRate": "Royalty Rate"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back, {name}!",
+    "totalEarnings": "Total Earnings",
+    "totalSales": "Total Sales",
+    "myUploads": "My Uploads",
+    "purchasesCount": "Purchases",
+    "uploadContent": "Upload Content",
+    "recentActivity": "Recent Activity"
+  },
+  "earnings": {
+    "title": "Earnings",
+    "totalEarnings": "Total Earnings",
+    "totalSales": "Total Sales",
+    "pendingPayout": "Pending Payout",
+    "lastPayout": "Last Payout",
+    "revenueOverTime": "Revenue Over Time",
+    "noData": "No earnings data yet",
+    "week": "Week",
+    "month": "Month",
+    "year": "Year",
+    "allTime": "All Time",
+    "contentSales": "Content Sales",
+    "settlementHistory": "Settlement History",
+    "dailyRevenue": "Daily Revenue",
+    "weeklyRevenue": "Weekly Revenue",
+    "monthlyRevenue": "Monthly Revenue"
+  },
+  "purchases": {
+    "title": "My Purchases",
+    "empty": "No purchases yet",
+    "browseContent": "Browse content",
+    "view": "View",
+    "downloadFile": "Download"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "profileDesc": "Update your profile information",
+    "accountType": "Account Type",
+    "accountTypeDesc": "Your current account role and permissions",
+    "currentRole": "Current role",
+    "upgradeToSeller": "Upgrade to Seller",
+    "upgradeDesc": "Upgrade to a seller account to upload and sell your verified content.",
+    "saveChanges": "Save Changes",
+    "profileUpdated": "Profile updated",
+    "stripeConnect": "Stripe Connect",
+    "stripeConnectDesc": "Connect your Stripe account to receive payments",
+    "connectStripe": "Connect Stripe Account",
+    "stripeConnected": "Stripe account connected"
+  },
+  "seller": {
+    "dashboard": {
+      "contentStats": "Content Statistics",
+      "downloadsTracking": "Downloads Tracking",
+      "viewsTracking": "Views Tracking",
+      "topContent": "Top Performing Content",
+      "revenueByContent": "Revenue by Content"
+    }
+  },
+  "buyer": {
+    "downloadPage": "Download Library",
+    "bookmarks": "Bookmarks",
+    "purchaseHistory": "Purchase History"
+  },
+  "search": {
+    "placeholder": "Search verified content...",
+    "tags": "Tags",
+    "categories": {
+      "photojournalism": "Photojournalism",
+      "nature-wildlife": "Nature & Wildlife",
+      "street-urban": "Street & Urban",
+      "portrait": "Portrait",
+      "event-documentary": "Event & Documentary",
+      "aerial-drone": "Aerial & Drone",
+      "food-lifestyle": "Food & Lifestyle",
+      "architecture": "Architecture",
+      "sports": "Sports",
+      "abstract": "Abstract",
+      "other": "Other"
+    }
+  },
+  "footer": {
+    "description": "Verified content marketplace powered by C2PA authenticity technology.",
+    "marketplace": "Marketplace",
+    "company": "Company",
+    "forSellers": "For Sellers",
+    "explore": "Explore",
+    "blog": "Blog",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "startSelling": "Start Selling",
+    "uploadContent": "Upload Content",
+    "copyright": "\u00a9 {year} Vericum. All rights reserved."
+  },
+  "share": {
+    "title": "Share",
+    "copyLink": "Copy Link",
+    "copied": "Link copied!",
+    "shareOn": "Share on {platform}"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "email": {
+    "saleComplete": "Sale Complete",
+    "purchaseConfirmation": "Purchase Confirmation",
+    "verificationComplete": "Verification Complete"
+  }
+}

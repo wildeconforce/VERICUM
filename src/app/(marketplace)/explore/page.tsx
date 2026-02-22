@@ -23,6 +23,8 @@ function ExploreContent() {
   const type = searchParams.get("type");
   const sort = searchParams.get("sort") || "newest";
   const verifiedOnly = searchParams.get("verified_only") !== "false";
+  const minPrice = searchParams.get("min_price");
+  const maxPrice = searchParams.get("max_price");
 
   const fetchContents = useCallback(async () => {
     setIsLoading(true);
@@ -32,6 +34,8 @@ function ExploreContent() {
     if (type) params.set("type", type);
     params.set("sort", sort);
     params.set("verified_only", String(verifiedOnly));
+    if (minPrice) params.set("min_price", minPrice);
+    if (maxPrice) params.set("max_price", maxPrice);
 
     const res = await fetch(`/api/content?${params}`);
     const data = await res.json();
@@ -39,7 +43,7 @@ function ExploreContent() {
     setTotal(data.total || 0);
     setTotalPages(data.total_pages || 0);
     setIsLoading(false);
-  }, [page, category, type, sort, verifiedOnly]);
+  }, [page, category, type, sort, verifiedOnly, minPrice, maxPrice]);
 
   useEffect(() => {
     fetchContents();
@@ -57,7 +61,7 @@ function ExploreContent() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
         <div>
           <h1 className="text-3xl font-bold">Explore</h1>
           <p className="text-muted-foreground mt-1">
@@ -79,18 +83,40 @@ function ExploreContent() {
       </div>
 
       <div className="flex gap-8">
-        <aside className={`w-64 shrink-0 ${showFilters ? "block" : "hidden lg:block"}`}>
+        <aside
+          className={`w-64 shrink-0 ${
+            showFilters
+              ? "fixed inset-0 z-40 bg-background p-6 overflow-y-auto lg:relative lg:inset-auto lg:z-auto lg:p-0"
+              : "hidden lg:block"
+          }`}
+        >
+          {showFilters && (
+            <div className="flex items-center justify-between mb-4 lg:hidden">
+              <h2 className="text-lg font-semibold">Filters</h2>
+              <Button variant="ghost" size="sm" onClick={() => setShowFilters(false)}>
+                <SlidersHorizontal className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
           <FilterPanel
             selectedCategory={category}
             selectedType={type}
             verifiedOnly={verifiedOnly}
+            minPrice={minPrice ? parseFloat(minPrice) : null}
+            maxPrice={maxPrice ? parseFloat(maxPrice) : null}
             onCategoryChange={(v) => updateParams({ category: v })}
             onTypeChange={(v) => updateParams({ type: v })}
             onVerifiedOnlyChange={(v) => updateParams({ verified_only: String(v) })}
+            onPriceChange={(min, max) =>
+              updateParams({
+                min_price: min !== null ? String(min) : null,
+                max_price: max !== null ? String(max) : null,
+              })
+            }
             onClearAll={() => router.push("/explore")}
           />
         </aside>
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <ContentGrid contents={contents} isLoading={isLoading} />
           {totalPages > 1 && (
             <div className="flex items-center justify-center gap-2 mt-8">

@@ -40,10 +40,15 @@ export async function POST(request: NextRequest) {
   }
 
   const sellerProfile = content.profiles as any;
+  const saleType = (content as any).sale_type || "premium";
+  const royaltyRate = (content as any).royalty_rate || 0;
+
   const commission = calculateCommission(
     content.price,
     license_type || content.license_type,
-    (sellerProfile?.commission_rate || 20) / 100
+    (sellerProfile?.commission_rate || 15) / 100,
+    saleType,
+    royaltyRate
   );
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL!;
