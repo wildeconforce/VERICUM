@@ -10,7 +10,8 @@ if (typeof globalThis !== "undefined" && globalThis.navigator?.locks) {
     value: {
       request: async (_name: string, optionsOrCb: any, maybeCb?: any) => {
         const cb = typeof maybeCb === "function" ? maybeCb : optionsOrCb;
-        return cb();
+        // Pass a mock Lock object so gotrue-js sees a successful acquisition
+        return cb({ name: _name, mode: "exclusive" });
       },
     },
     configurable: true,
