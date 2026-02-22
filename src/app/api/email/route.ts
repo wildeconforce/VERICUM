@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  if (!process.env.RESEND_API_KEY) throw new Error("RESEND_API_KEY not set");
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 interface EmailRequest {
   type: "sale_complete" | "purchase_confirmation" | "verification_complete";
@@ -84,7 +87,7 @@ export async function POST(request: NextRequest) {
   const { subject, html } = template(data);
 
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: "Vericum <noreply@vericum.com>",
       to,
       subject,
