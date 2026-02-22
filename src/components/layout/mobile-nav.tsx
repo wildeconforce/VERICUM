@@ -74,6 +74,12 @@ export function MobileNav() {
                 <Link href="/purchases" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
                   Purchases
                 </Link>
+                <Link href="/downloads" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
+                  Downloads
+                </Link>
+                <Link href="/bookmarks" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
+                  Bookmarks
+                </Link>
                 <Link href="/settings" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
                   Settings
                 </Link>

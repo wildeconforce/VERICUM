@@ -11,6 +11,8 @@ import {
   DollarSign,
   Settings,
   Upload,
+  Heart,
+  Download,
 } from "lucide-react";
 
 const sidebarItems = [
@@ -18,6 +20,8 @@ const sidebarItems = [
   { href: "/my-content", label: "My Content", icon: Package, sellerOnly: true },
   { href: "/upload", label: "Upload", icon: Upload, sellerOnly: true },
   { href: "/purchases", label: "Purchases", icon: ShoppingBag },
+  { href: "/downloads", label: "Downloads", icon: Download },
+  { href: "/bookmarks", label: "Bookmarks", icon: Heart },
   { href: "/earnings", label: "Earnings", icon: DollarSign, sellerOnly: true },
   { href: "/settings", label: "Settings", icon: Settings },
 ];
@@ -35,7 +39,7 @@ export function Sidebar() {
       <nav className="flex flex-col gap-1 p-4">
         {filteredItems.map((item) => {
           const Icon = item.icon;
-          const isActive = pathname === item.href;
+          const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
           return (
             <Link
               key={item.href}
