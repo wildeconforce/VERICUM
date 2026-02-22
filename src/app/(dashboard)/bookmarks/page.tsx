@@ -72,9 +72,9 @@ export default function BookmarksPage() {
             return (
               <Card key={bookmark.id} className="overflow-hidden group">
                 <div className="relative aspect-[4/3] bg-muted">
-                  {content.thumbnail_url && (
+                  {(content.thumbnail_url || content.preview_url) && (
                     <Image
-                      src={content.thumbnail_url}
+                      src={content.thumbnail_url || content.preview_url}
                       alt={content.title}
                       fill
                       className="object-cover"

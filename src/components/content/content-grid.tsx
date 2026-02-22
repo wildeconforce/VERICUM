@@ -40,7 +40,7 @@ export function ContentGrid({ contents, isLoading }: ContentGridProps) {
           key={content.id}
           id={content.id}
           title={content.title}
-          thumbnailUrl={content.thumbnail_url}
+          thumbnailUrl={content.thumbnail_url || (content as any).preview_url}
           price={content.price}
           currency={content.currency}
           contentType={content.content_type}

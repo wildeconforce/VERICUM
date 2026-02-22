@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { ITEMS_PER_PAGE, MAX_ITEMS_PER_PAGE } from "@/lib/constants";
 import { slugify } from "@/lib/utils/format";
+import { attachPreviewUrls } from "@/lib/supabase/preview";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -49,8 +50,11 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
+  // Generate signed preview URLs for items without thumbnails
+  const contentsWithPreviews = await attachPreviewUrls(supabase, data || []);
+
   return NextResponse.json({
-    data: data || [],
+    data: contentsWithPreviews,
     total: count || 0,
     page,
     total_pages: Math.ceil((count || 0) / limit),

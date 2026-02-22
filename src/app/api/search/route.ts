@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { attachPreviewUrls } from "@/lib/supabase/preview";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -41,6 +42,8 @@ export async function GET(request: NextRequest) {
     query = query.range(from, from + limit - 1).order("created_at", { ascending: false });
 
     const { data: fallbackData, count } = await query;
+
+    await attachPreviewUrls(supabase, fallbackData || []);
 
     return NextResponse.json({
       results: fallbackData || [],
