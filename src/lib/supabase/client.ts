@@ -2,21 +2,29 @@ import { createBrowserClient } from "@supabase/ssr";
 
 // Patch navigator.locks globally before any Supabase client is created.
 // The Web Locks API can deadlock when tabs are backgrounded or during
-// concurrent storage uploads, causing signOut and file uploads to hang.
-// This replaces it with a pass-through so that @supabase/ssr's internal
-// navigatorLock adapter (which we cannot override via options) becomes a no-op.
+// concurrent operations. This replaces it with a pass-through so that
+// any code path using navigator.locks directly becomes a no-op.
 if (typeof globalThis !== "undefined" && globalThis.navigator?.locks) {
   Object.defineProperty(globalThis.navigator, "locks", {
     value: {
       request: async (_name: string, optionsOrCb: any, maybeCb?: any) => {
         const cb = typeof maybeCb === "function" ? maybeCb : optionsOrCb;
-        // Pass a mock Lock object so gotrue-js sees a successful acquisition
         return cb({ name: _name, mode: "exclusive" });
       },
     },
     configurable: true,
   });
 }
+
+// No-op lock function that just runs the callback immediately.
+// Passed directly to GoTrueClient via settings.lock (highest priority).
+const lockNoOp = async (
+  _name: string,
+  _acquireTimeout: number,
+  fn: () => Promise<any>
+) => {
+  return fn();
+};
 
 let client: ReturnType<typeof createBrowserClient> | null = null;
 
@@ -29,6 +37,7 @@ export function createClient() {
     {
       auth: {
         flowType: "pkce",
+        lock: lockNoOp,
       },
     }
   );
