@@ -49,10 +49,17 @@ export function useAuth() {
     return () => subscription.unsubscribe();
   }, [setUser, setProfile, setLoading, reset]);
 
-  const signOut = async () => {
-    const supabase = createClient();
+  const signOut = () => {
+    // Clear local state immediately so the UI reacts before any async work.
     reset();
-    await supabase.auth.signOut({ scope: "local" });
+
+    // Fire-and-forget: supabase.auth.signOut can hang when the browser's
+    // navigator.locks API is unavailable or deadlocked. Using scope:"local"
+    // avoids the network call; we don't await to guarantee the redirect fires.
+    const supabase = createClient();
+    supabase.auth.signOut({ scope: "local" }).catch(() => {});
+
+    // Hard redirect clears any remaining in-memory state.
     window.location.href = "/";
   };
 
