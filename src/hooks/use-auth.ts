@@ -59,6 +59,17 @@ export function useAuth() {
     const supabase = createClient();
     supabase.auth.signOut({ scope: "local" }).catch(() => {});
 
+    // Delete all Supabase-related cookies to prevent automatic re-login.
+    document.cookie.split(";").forEach((c) => {
+      const name = c.split("=")[0].trim();
+      if (name.startsWith("sb-") || name.includes("supabase")) {
+        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+      }
+    });
+
+    // Wipe localStorage so no session tokens survive the redirect.
+    localStorage.clear();
+
     // Hard redirect clears any remaining in-memory state.
     window.location.href = "/";
   };
