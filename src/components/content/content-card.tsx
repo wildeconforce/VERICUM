@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { VerificationBadge } from "./verification-badge";
@@ -37,7 +38,11 @@ export function ContentCard({
 }: ContentCardProps) {
   return (
     <Link href={`/content/${id}`}>
-      <Card className="group overflow-hidden transition-all hover:shadow-lg hover:-translate-y-0.5">
+      <motion.div
+        whileHover={{ y: -4 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      >
+      <Card className="group overflow-hidden transition-shadow hover:shadow-lg">
         <div className="relative aspect-[4/3] overflow-hidden bg-muted">
           {thumbnailUrl ? (
             <Image
@@ -84,6 +89,7 @@ export function ContentCard({
           </div>
         </CardContent>
       </Card>
+      </motion.div>
     </Link>
   );
 }
