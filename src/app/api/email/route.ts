@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { createClient } from "@/lib/supabase/server";
 
 function getResend() {
   if (!process.env.RESEND_API_KEY) throw new Error("RESEND_API_KEY not set");
@@ -72,6 +73,20 @@ const EMAIL_TEMPLATES: Record<string, (data: any) => { subject: string; html: st
 };
 
 export async function POST(request: NextRequest) {
+  // Auth: require either a valid user session or internal secret
+  const internalSecret = request.headers.get("x-internal-secret");
+  const isInternalCall =
+    process.env.INTERNAL_EMAIL_SECRET &&
+    internalSecret === process.env.INTERNAL_EMAIL_SECRET;
+
+  if (!isInternalCall) {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+  }
+
   if (!process.env.RESEND_API_KEY) {
     return NextResponse.json({ error: "Email service not configured" }, { status: 503 });
   }

@@ -80,6 +80,22 @@ export async function POST(request: NextRequest) {
   }
 
   const body = await request.json();
+
+  // Input validation
+  if (!body.title || typeof body.title !== "string" || body.title.trim().length < 2) {
+    return NextResponse.json({ error: "Title is required (min 2 characters)" }, { status: 400 });
+  }
+  if (!body.price || typeof body.price !== "number" || body.price < 0.50) {
+    return NextResponse.json({ error: "Price must be at least $0.50" }, { status: 400 });
+  }
+  if (!body.file_key || typeof body.file_key !== "string") {
+    return NextResponse.json({ error: "file_key is required" }, { status: 400 });
+  }
+  const validTypes = ["photo", "video", "document", "audio"];
+  if (!validTypes.includes(body.content_type)) {
+    return NextResponse.json({ error: "Invalid content_type" }, { status: 400 });
+  }
+
   const slug = slugify(body.title) + "-" + Date.now().toString(36);
 
   const { data, error } = await supabase

@@ -18,6 +18,17 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "content_id and file_key required" }, { status: 400 });
   }
 
+  // Verify the user owns this content before allowing verification
+  const { data: contentOwnership } = await supabase
+    .from("contents")
+    .select("seller_id")
+    .eq("id", content_id)
+    .single();
+
+  if (!contentOwnership || contentOwnership.seller_id !== user.id) {
+    return NextResponse.json({ error: "Forbidden: you do not own this content" }, { status: 403 });
+  }
+
   try {
     // Download file from storage
     const { data: fileData, error: downloadError } = await supabase.storage

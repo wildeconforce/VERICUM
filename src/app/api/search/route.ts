@@ -11,14 +11,17 @@ export async function GET(request: NextRequest) {
   const page = parseInt(searchParams.get("page") || "1");
   const limit = parseInt(searchParams.get("limit") || "20");
 
-  if (!q) {
-    return NextResponse.json({ error: "Search query required" }, { status: 400 });
+  if (!q || q.length > 200) {
+    return NextResponse.json({ error: "Valid search query required (max 200 chars)" }, { status: 400 });
   }
+
+  // Sanitize: strip characters that could be problematic
+  const sanitizedQ = q.replace(/[%_\\]/g, "");
 
   const supabase = await createClient();
 
   const { data, error } = await (supabase.rpc as Function)("search_contents", {
-    search_query: q,
+    search_query: sanitizedQ,
     content_type_filter: type || null,
     category_filter: category || null,
     verified_only: verifiedOnly,
@@ -32,7 +35,7 @@ export async function GET(request: NextRequest) {
       .from("contents")
       .select("*, profiles!contents_seller_id_fkey(id, username, display_name, avatar_url)", { count: "exact" })
       .eq("status", "active")
-      .ilike("title", `%${q}%`);
+      .ilike("title", `%${sanitizedQ}%`);
 
     if (verifiedOnly) query = query.eq("verification_status", "verified");
     if (type) query = query.eq("content_type", type);

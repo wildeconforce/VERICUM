@@ -99,9 +99,25 @@ export async function PATCH(
 
   const body = await request.json();
 
+  // Whitelist allowed fields to prevent mass-assignment attacks
+  const ALLOWED_FIELDS = [
+    "title", "description", "price", "currency", "license_type",
+    "tags", "category", "status", "sale_type", "royalty_rate",
+    "meta_title", "meta_description",
+  ] as const;
+
+  const sanitized: Record<string, unknown> = {};
+  for (const key of ALLOWED_FIELDS) {
+    if (key in body) sanitized[key] = body[key];
+  }
+
+  if (Object.keys(sanitized).length === 0) {
+    return NextResponse.json({ error: "No valid fields to update" }, { status: 400 });
+  }
+
   const { data, error } = await supabase
     .from("contents")
-    .update(body as never)
+    .update(sanitized as never)
     .eq("id", id)
     .eq("seller_id", user.id)
     .select()

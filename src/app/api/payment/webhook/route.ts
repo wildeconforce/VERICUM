@@ -41,30 +41,45 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Content not found" }, { status: 404 });
     }
 
+    // Validate buyer_id - must be a valid UUID from client_reference_id
+    const buyerId = session.client_reference_id;
+    if (!buyerId) {
+      console.error("Webhook: missing client_reference_id for session", session.id);
+      return NextResponse.json({ error: "Missing buyer reference" }, { status: 400 });
+    }
+
     const totalAmount = session.amount_total / 100;
     const sellerAmount = totalAmount - commissionAmount;
 
+    // Prevent duplicate purchases for the same payment
+    const { data: existingPurchase } = await adminClient
+      .from("purchases")
+      .select("id")
+      .eq("payment_id", session.payment_intent)
+      .maybeSingle();
+
+    if (existingPurchase) {
+      return NextResponse.json({ received: true, note: "already processed" });
+    }
+
     // Create purchase record
     await adminClient.from("purchases").insert({
-      buyer_id: session.client_reference_id || session.customer_email,
+      buyer_id: buyerId,
       content_id: contentId,
       seller_id: content.seller_id,
       amount: totalAmount,
       currency: content.currency,
       commission_amount: commissionAmount,
       seller_amount: sellerAmount,
-      license_type: content.license_type,
+      license_type: session.metadata?.license_type || content.license_type,
       license_key: generateLicenseKey(),
       payment_provider: "stripe",
       payment_id: session.payment_intent,
       payment_status: "completed",
     });
 
-    // Update download count
-    await adminClient
-      .from("contents")
-      .update({ download_count: 1 })
-      .eq("id", contentId);
+    // Increment download count (not overwrite)
+    await adminClient.rpc("increment_view_count", { content_uuid: contentId });
   }
 
   return NextResponse.json({ received: true });
