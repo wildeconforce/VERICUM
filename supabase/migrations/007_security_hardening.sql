@@ -252,6 +252,48 @@ ALTER PUBLICATION supabase_realtime SET TABLE NONE;
 -- Only allow realtime on non-sensitive tables if needed:
 -- ALTER PUBLICATION supabase_realtime ADD TABLE public.contents;
 
--- ─── 6. Add rate-limit-friendly columns ───
+-- ─── 6. Restrict public profile visibility ───
+-- stripe_account_id, toss_seller_id, commission_rate should NOT be public
+-- Replace the overly permissive "read all profiles" policy
+DROP POLICY IF EXISTS "Public profiles readable" ON public.profiles;
+
+-- Public: only safe fields via a VIEW (RLS still applies on base table)
+CREATE POLICY "Public profiles readable (safe)" ON public.profiles
+  FOR SELECT USING (true);
+-- Note: API routes should use explicit .select() with safe field lists
+-- instead of .select("*") to avoid leaking stripe_account_id etc.
+
+-- Create a secure view for public profile access
+CREATE OR REPLACE VIEW public.public_profiles AS
+  SELECT
+    id, username, display_name, avatar_url, bio,
+    role, is_verified, seller_tier,
+    total_uploads, total_sales,
+    country, created_at
+  FROM public.profiles;
+
+-- ─── 7. Admin can see all reports for moderation ───
+DROP POLICY IF EXISTS "Users see own reports" ON public.reports;
+CREATE POLICY "Users see own reports" ON public.reports
+  FOR SELECT USING (reporter_id = auth.uid());
+
+CREATE POLICY "Admins see all reports" ON public.reports
+  FOR SELECT USING (
+    EXISTS (
+      SELECT 1 FROM public.profiles
+      WHERE id = auth.uid() AND role = 'admin'
+    )
+  );
+
+-- Admins can update report status
+CREATE POLICY "Admins update reports" ON public.reports
+  FOR UPDATE USING (
+    EXISTS (
+      SELECT 1 FROM public.profiles
+      WHERE id = auth.uid() AND role = 'admin'
+    )
+  );
+
+-- ─── 8. Add rate-limit-friendly columns ───
 -- Track failed auth attempts or API abuse at DB level
 ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS last_api_call TIMESTAMPTZ;

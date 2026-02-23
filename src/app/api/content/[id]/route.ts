@@ -36,10 +36,10 @@ export async function GET(
     }
   }
 
-  // Get seller profile
+  // Get seller profile (safe fields only - exclude stripe_account_id, commission_rate, etc.)
   const { data: seller } = await supabase
     .from("profiles")
-    .select("*")
+    .select("id, username, display_name, avatar_url, bio, is_verified, seller_tier, total_sales")
     .eq("id", content.seller_id)
     .single();
 
