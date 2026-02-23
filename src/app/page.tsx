@@ -2,50 +2,286 @@ import Link from "next/link";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
-import { HeroSection } from "@/components/landing/hero-section";
-import { FeaturesSection } from "@/components/landing/features-section";
-import { HowItWorksSection } from "@/components/landing/how-it-works-section";
-import { SaleTypesSection } from "@/components/landing/sale-types-section";
-import { PricingSection } from "@/components/landing/pricing-section";
-import { ArrowRight } from "lucide-react";
-import { FadeIn } from "@/components/ui/motion";
+import {
+  ShieldCheck,
+  Upload,
+  CreditCard,
+  Camera,
+  Fingerprint,
+  BarChart3,
+  ArrowRight,
+  CheckCircle,
+  Crown,
+  Percent,
+} from "lucide-react";
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
-        <HeroSection />
-        <FeaturesSection />
-        <HowItWorksSection />
-        <SaleTypesSection />
-        <PricingSection />
+        {/* Hero */}
+        <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background py-24 lg:py-32">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
+          <div className="container mx-auto px-4 text-center relative">
+            <div className="inline-flex items-center gap-2 rounded-full border bg-background/80 px-4 py-1.5 text-sm mb-8 backdrop-blur">
+              <ShieldCheck className="h-4 w-4 text-primary" />
+              <span>Powered by C2PA authenticity technology</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl mx-auto leading-[1.1]">
+              The Marketplace for{" "}
+              <span className="text-primary">Verified</span> Digital Content
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mt-6">
+              Buy and sell authentic photos with guaranteed provenance.
+              Every piece of content is verified using C2PA standards for
+              complete transparency.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+              <Button size="lg" asChild className="text-base px-8">
+                <Link href="/explore">
+                  Explore Content
+                  <ArrowRight className="h-4 w-4 ml-2" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild className="text-base px-8">
+                <Link href="/register">Start Selling</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Features */}
+        <section className="py-24 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Why Vericum?
+              </h2>
+              <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
+                The first content marketplace that guarantees authenticity
+                through cutting-edge verification technology.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: Fingerprint,
+                  title: "C2PA Verification",
+                  description:
+                    "Every upload is analyzed for C2PA manifests, EXIF data, and AI-generation markers. Know exactly where your content comes from.",
+                },
+                {
+                  icon: Camera,
+                  title: "Provenance Tracking",
+                  description:
+                    "Complete chain of custody from camera to marketplace. See the full history of how content was created and edited.",
+                },
+                {
+                  icon: BarChart3,
+                  title: "Fair Marketplace",
+                  description:
+                    "Sellers keep 85% of every sale. Transparent 15% commission structure with instant payouts via Stripe Connect.",
+                },
+              ].map((feature) => (
+                <div
+                  key={feature.title}
+                  className="relative rounded-2xl border bg-card p-8 hover:shadow-lg transition-all hover:-translate-y-1"
+                >
+                  <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                    <feature.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works */}
+        <section className="py-24">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold">How It Works</h2>
+              <p className="text-muted-foreground mt-3">
+                Three simple steps to verified content
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-12 max-w-4xl mx-auto">
+              {[
+                {
+                  step: "01",
+                  icon: Upload,
+                  title: "Upload",
+                  description:
+                    "Drag and drop your original photo. We support JPG, PNG, WebP, TIFF, and RAW formats up to 50MB.",
+                },
+                {
+                  step: "02",
+                  icon: ShieldCheck,
+                  title: "Verify",
+                  description:
+                    "Our engine automatically checks C2PA manifests, EXIF metadata, and runs AI detection to score authenticity.",
+                },
+                {
+                  step: "03",
+                  icon: CreditCard,
+                  title: "Sell",
+                  description:
+                    "Set your price and license type. Buyers can purchase with confidence knowing every piece is verified.",
+                },
+              ].map((step) => (
+                <div key={step.step} className="text-center">
+                  <div className="text-5xl font-bold text-primary/20 mb-4">
+                    {step.step}
+                  </div>
+                  <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <step.icon className="h-7 w-7 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                  <p className="text-muted-foreground">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Sale Types */}
+        <section className="py-24 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Flexible Sale Options
+              </h2>
+              <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
+                Choose how you want to sell your content. Two sale types to fit your strategy.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <div className="rounded-2xl border bg-card p-8 hover:shadow-lg transition-all">
+                <div className="h-12 w-12 rounded-xl bg-amber/10 flex items-center justify-center mb-5">
+                  <Crown className="h-6 w-6 text-amber" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Premium Sale</h3>
+                <p className="text-muted-foreground mb-4">
+                  Higher price with no secondary creation royalties. Buyers get full usage rights for their license type.
+                </p>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    Full price per license
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    No ongoing royalty obligations
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    Best for exclusive content
+                  </li>
+                </ul>
+              </div>
+              <div className="rounded-2xl border bg-card p-8 hover:shadow-lg transition-all">
+                <div className="h-12 w-12 rounded-xl bg-emerald/10 flex items-center justify-center mb-5">
+                  <Percent className="h-6 w-6 text-emerald" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Royalty Sale</h3>
+                <p className="text-muted-foreground mb-4">
+                  Lower price with 5-10% royalty on secondary creations. More accessible to buyers, ongoing revenue for sellers.
+                </p>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    40% discounted price for buyers
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    5-10% royalty on derivative works
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    Great for high-volume content
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing / Commission */}
+        <section className="py-24">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Simple, Transparent Pricing
+              </h2>
+              <p className="text-muted-foreground mt-3">
+                No hidden fees. Sellers keep the majority of every sale.
+              </p>
+            </div>
+            <div className="max-w-lg mx-auto rounded-2xl border bg-card p-8">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between py-3 border-b">
+                  <span className="text-muted-foreground">Seller receives</span>
+                  <span className="text-2xl font-bold text-primary">85%</span>
+                </div>
+                <div className="flex items-center justify-between py-3 border-b">
+                  <span className="text-muted-foreground">
+                    Platform commission (seller side)
+                  </span>
+                  <span className="text-lg font-semibold">15%</span>
+                </div>
+                <div className="flex items-center justify-between py-3">
+                  <span className="text-muted-foreground">
+                    Buyer verification fee
+                  </span>
+                  <span className="text-lg font-semibold">15%</span>
+                </div>
+              </div>
+              <div className="mt-6 space-y-2 text-sm text-muted-foreground">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-emerald mt-0.5 shrink-0" />
+                  <span>No monthly fees or subscriptions</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-emerald mt-0.5 shrink-0" />
+                  <span>Instant payouts via Stripe Connect</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-emerald mt-0.5 shrink-0" />
+                  <span>Free C2PA verification on all uploads</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-emerald mt-0.5 shrink-0" />
+                  <span>Personal, Standard, Extended &amp; Exclusive license options</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* CTA */}
         <section className="py-24 bg-gradient-to-t from-primary/5 to-background">
           <div className="container mx-auto px-4 text-center">
-            <FadeIn>
-              <h2 className="text-3xl md:text-4xl font-bold max-w-2xl mx-auto">
-                Ready to trade in verified content?
-              </h2>
-              <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-                Join Vericum today and be part of the movement toward
-                authentic, verified digital content.
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-                <Button size="lg" asChild className="text-base px-8 group">
-                  <Link href="/register">
-                    Create Free Account
-                    <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" asChild className="text-base px-8">
-                  <Link href="/explore">Browse Content</Link>
-                </Button>
-              </div>
-            </FadeIn>
+            <h2 className="text-3xl md:text-4xl font-bold max-w-2xl mx-auto">
+              Ready to trade in verified content?
+            </h2>
+            <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+              Join Vericum today and be part of the movement toward
+              authentic, verified digital content.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+              <Button size="lg" asChild className="text-base px-8">
+                <Link href="/register">
+                  Create Free Account
+                  <ArrowRight className="h-4 w-4 ml-2" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild className="text-base px-8">
+                <Link href="/explore">Browse Content</Link>
+              </Button>
+            </div>
           </div>
         </section>
       </main>

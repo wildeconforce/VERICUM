@@ -3,7 +3,6 @@
 import { ContentCard } from "./content-card";
 import { ContentWithSeller } from "@/types/content";
 import { Skeleton } from "@/components/ui/skeleton";
-import { StaggerContainer, StaggerItem } from "@/components/ui/motion";
 
 interface ContentGridProps {
   contents: ContentWithSeller[];
@@ -37,24 +36,23 @@ export function ContentGrid({ contents, isLoading }: ContentGridProps) {
   }
 
   return (
-    <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" staggerDelay={0.06}>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {contents.map((content) => (
-        <StaggerItem key={content.id}>
-          <ContentCard
-            id={content.id}
-            title={content.title}
-            thumbnailUrl={content.thumbnail_url || (content as any).preview_url}
-            price={content.price}
-            currency={content.currency}
-            contentType={content.content_type}
-            verificationStatus={content.verification_status}
-            sellerName={content.profiles?.display_name || content.profiles?.username || "Unknown"}
-            sellerAvatar={content.profiles?.avatar_url}
-            likeCount={content.like_count}
-            viewCount={content.view_count}
-          />
-        </StaggerItem>
+        <ContentCard
+          key={content.id}
+          id={content.id}
+          title={content.title}
+          thumbnailUrl={content.thumbnail_url || (content as any).preview_url}
+          price={content.price}
+          currency={content.currency}
+          contentType={content.content_type}
+          verificationStatus={content.verification_status}
+          sellerName={content.profiles?.display_name || content.profiles?.username || "Unknown"}
+          sellerAvatar={content.profiles?.avatar_url}
+          likeCount={content.like_count}
+          viewCount={content.view_count}
+        />
       ))}
-    </StaggerContainer>
+    </div>
   );
 }
