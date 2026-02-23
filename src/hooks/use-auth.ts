@@ -52,8 +52,8 @@ export function useAuth() {
   const signOut = async () => {
     const supabase = createClient();
     reset();
-    window.location.href = "/";
     await supabase.auth.signOut({ scope: "local" });
+    window.location.href = "/";
   };
 
   return {
