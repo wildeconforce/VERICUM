@@ -29,26 +29,26 @@ export default function MyContentPage() {
         .eq("seller_id", user.id)
         .order("created_at", { ascending: false });
 
-      const items = data || [];
+      const items: (Content & { _previewUrl?: string })[] = (data || []) as any;
 
       // Generate signed preview URLs for items without thumbnails
       const needsUrl = items.filter(
-        (c) => !c.thumbnail_url && !c.preview_url && c.original_url,
+        (c: Content) => !c.thumbnail_url && !c.preview_url && c.original_url,
       );
       if (needsUrl.length > 0) {
         await Promise.all(
-          needsUrl.map(async (c) => {
+          needsUrl.map(async (c: Content & { _previewUrl?: string }) => {
             const { data: signed } = await supabase.storage
               .from("vericum-content")
               .createSignedUrl(c.original_url!, 3600);
             if (signed?.signedUrl) {
-              (c as any)._previewUrl = signed.signedUrl;
+              c._previewUrl = signed.signedUrl;
             }
           }),
         );
       }
 
-      setContents(items as any);
+      setContents(items);
       setIsLoading(false);
     }
     fetchContent();
