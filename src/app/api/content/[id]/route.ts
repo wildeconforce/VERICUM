@@ -111,6 +111,15 @@ export async function PATCH(
     if (key in body) sanitized[key] = body[key];
   }
 
+  // Validate price if being updated
+  if ("price" in sanitized) {
+    const p = sanitized.price;
+    if (typeof p !== "number" || !isFinite(p) || p < 0.50 || p > 50000) {
+      return NextResponse.json({ error: "Price must be between $0.50 and $50,000" }, { status: 400 });
+    }
+    sanitized.price = Math.round(p * 100) / 100;
+  }
+
   if (Object.keys(sanitized).length === 0) {
     return NextResponse.json({ error: "No valid fields to update" }, { status: 400 });
   }
@@ -124,7 +133,12 @@ export async function PATCH(
     .single();
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("Content update error:", error);
+    return NextResponse.json({ error: "Failed to update content" }, { status: 500 });
+  }
+
+  if (!data) {
+    return NextResponse.json({ error: "Content not found or not owned by you" }, { status: 404 });
   }
 
   return NextResponse.json({ content: data });
@@ -142,14 +156,21 @@ export async function DELETE(
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from("contents")
     .update({ status: "removed" } as never)
     .eq("id", id)
-    .eq("seller_id", user.id);
+    .eq("seller_id", user.id)
+    .select()
+    .single();
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("Content delete error:", error);
+    return NextResponse.json({ error: "Failed to remove content" }, { status: 500 });
+  }
+
+  if (!data) {
+    return NextResponse.json({ error: "Content not found or not owned by you" }, { status: 404 });
   }
 
   return NextResponse.json({ success: true });

@@ -54,16 +54,12 @@ export function slugify(text: string): string {
 }
 
 export function generateLicenseKey(): string {
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  const segments = 4;
-  const segmentLength = 4;
-  const parts: string[] = [];
-  for (let i = 0; i < segments; i++) {
-    let part = "";
-    for (let j = 0; j < segmentLength; j++) {
-      part += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    parts.push(part);
-  }
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  const hex = Array.from(bytes)
+    .map((b) => b.toString(16).padStart(2, "0").toUpperCase())
+    .join("");
+  // Format: VRC-XXXX-XXXX-XXXX-XXXX (32 hex chars = 128 bits entropy)
+  const parts = hex.match(/.{1,8}/g)!;
   return `VRC-${parts.join("-")}`;
 }

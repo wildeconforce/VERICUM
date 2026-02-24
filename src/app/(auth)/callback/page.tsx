@@ -5,10 +5,23 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Loader2 } from "lucide-react";
 
+const ALLOWED_REDIRECT_PREFIXES = [
+  "/dashboard", "/marketplace", "/my-content", "/purchases",
+  "/earnings", "/settings", "/upload", "/content/",
+];
+
+function sanitizeRedirect(redirect: string | null): string {
+  if (!redirect) return "/dashboard";
+  if (!redirect.startsWith("/") || redirect.startsWith("//")) return "/dashboard";
+  if (redirect.includes("\\")) return "/dashboard";
+  const isAllowed = ALLOWED_REDIRECT_PREFIXES.some((prefix) => redirect.startsWith(prefix));
+  return isAllowed ? redirect : "/dashboard";
+}
+
 function CallbackContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirect = searchParams.get("redirect") || "/dashboard";
+  const redirect = sanitizeRedirect(searchParams.get("redirect"));
 
   useEffect(() => {
     const supabase = createClient();

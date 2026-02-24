@@ -76,7 +76,8 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (insertError) {
-      return NextResponse.json({ error: insertError.message }, { status: 500 });
+      console.error("Verification insert error:", insertError);
+      return NextResponse.json({ error: "Failed to store verification result" }, { status: 500 });
     }
 
     // Update content verification status

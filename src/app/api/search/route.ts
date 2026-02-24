@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { attachPreviewUrls } from "@/lib/supabase/preview";
+import { CONTENT_TYPES, CATEGORIES, MAX_ITEMS_PER_PAGE } from "@/lib/constants";
+
+function safeInt(val: string | null, fallback: number, min: number, max: number): number {
+  const parsed = parseInt(val || String(fallback));
+  if (isNaN(parsed) || !isFinite(parsed)) return fallback;
+  return Math.max(min, Math.min(max, parsed));
+}
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -8,15 +15,26 @@ export async function GET(request: NextRequest) {
   const type = searchParams.get("type");
   const category = searchParams.get("category");
   const verifiedOnly = searchParams.get("verified_only") !== "false";
-  const page = parseInt(searchParams.get("page") || "1");
-  const limit = parseInt(searchParams.get("limit") || "20");
+  const page = safeInt(searchParams.get("page"), 1, 1, 1000);
+  const limit = safeInt(searchParams.get("limit"), 20, 1, MAX_ITEMS_PER_PAGE);
 
-  if (!q || q.length > 200) {
+  if (!q || q.length === 0 || q.length > 200) {
     return NextResponse.json({ error: "Valid search query required (max 200 chars)" }, { status: 400 });
   }
 
-  // Sanitize: strip characters that could be problematic
-  const sanitizedQ = q.replace(/[%_\\]/g, "");
+  // Validate enum filters
+  if (type && !(CONTENT_TYPES as readonly string[]).includes(type)) {
+    return NextResponse.json({ error: "Invalid type filter" }, { status: 400 });
+  }
+  if (category && !(CATEGORIES as readonly string[]).includes(category)) {
+    return NextResponse.json({ error: "Invalid category filter" }, { status: 400 });
+  }
+
+  // Sanitize: strip SQL/ILIKE special characters
+  const sanitizedQ = q.replace(/[%_\\'";\-\-/*]/g, "").trim();
+  if (sanitizedQ.length === 0) {
+    return NextResponse.json({ results: [], total: 0, suggestions: [] });
+  }
 
   const supabase = await createClient();
 

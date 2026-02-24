@@ -31,35 +31,37 @@ export async function GET(
     return NextResponse.json({ error: "Download limit reached" }, { status: 429 });
   }
 
-  // Get content file URL
+  // Get content file URL — use original_url (the actual storage key)
   const { data: content } = await supabase
     .from("contents")
-    .select("file_url, title")
+    .select("original_url, title")
     .eq("id", contentId)
     .single();
 
-  if (!content?.file_url) {
+  if (!content?.original_url) {
     return NextResponse.json({ error: "File not found" }, { status: 404 });
   }
 
-  // Increment download count
-  await supabase
-    .from("purchases")
-    .update({ download_count: (purchase.download_count || 0) + 1 } as never)
-    .eq("id", purchase.id);
+  // Atomically increment download count to prevent race conditions
+  const { data: allowed } = await supabase.rpc(
+    "increment_download_count" as any,
+    { purchase_uuid: purchase.id }
+  );
 
-  // Increment content download count
-  await supabase.rpc("increment_download_count" as any, { content_uuid: contentId });
+  if (allowed === false) {
+    return NextResponse.json({ error: "Download limit reached" }, { status: 429 });
+  }
+
+  // Increment content-level download count
+  await supabase.rpc("increment_view_count" as any, { content_uuid: contentId });
 
   // Generate signed URL for the file
-  const filePath = content.file_url.split("/storage/v1/object/public/")[1] || content.file_url;
   const { data: signedUrl } = await supabase.storage
-    .from("contents")
-    .createSignedUrl(filePath, 300); // 5 minutes expiry
+    .from("vericum-content")
+    .createSignedUrl(content.original_url, 300); // 5 minutes expiry
 
   if (!signedUrl) {
-    // Fall back to direct URL
-    return NextResponse.json({ download_url: content.file_url });
+    return NextResponse.json({ error: "Failed to generate download URL" }, { status: 500 });
   }
 
   return NextResponse.json({ download_url: signedUrl.signedUrl });
