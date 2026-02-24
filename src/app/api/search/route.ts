@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
   }
 
   // Sanitize: strip SQL/ILIKE special characters
-  const sanitizedQ = q.replace(/[%_\\'";\-\-/*]/g, "").trim();
+  const sanitizedQ = q.replace(/[%_\\'";\-\-\/\*]/g, "").trim();
   if (sanitizedQ.length === 0) {
     return NextResponse.json({ results: [], total: 0, suggestions: [] });
   }

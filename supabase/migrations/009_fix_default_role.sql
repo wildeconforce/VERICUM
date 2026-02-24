@@ -1,7 +1,7 @@
 -- ============================================================
 -- 009: Fix default role for new users
--- New users should default to 'user' role, not 'seller'
--- Seller role should be granted through explicit upgrade flow
+-- New users should default to 'user' role
+-- Elevated role should be granted through explicit upgrade flow
 -- ============================================================
 
 CREATE OR REPLACE FUNCTION public.handle_new_user()
@@ -42,7 +42,7 @@ BEGIN
       NEW.raw_user_meta_data->>'avatar_url',
       NEW.raw_user_meta_data->>'picture'
     ),
-    'user'  -- Default to 'user', not 'seller'
+    'user'  -- Default to 'user' (basic role)
   );
   RETURN NEW;
 EXCEPTION
@@ -61,7 +61,7 @@ EXCEPTION
         NEW.raw_user_meta_data->>'avatar_url',
         NEW.raw_user_meta_data->>'picture'
       ),
-      'user'  -- Default to 'user', not 'seller'
+      'user'  -- Default to 'user' (basic role)
     );
     RETURN NEW;
 END;
