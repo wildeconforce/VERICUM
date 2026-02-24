@@ -1,12 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { FadeIn, FloatingOrb } from "@/components/ui/motion";
 import { ShieldCheck, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function HeroSection() {
+  const t = useTranslations("landing.hero");
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 via-background to-background py-24 lg:py-36">
       {/* Animated background orbs */}
@@ -47,15 +50,15 @@ export function HeroSection() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
             </span>
             <ShieldCheck className="h-4 w-4 text-primary" />
-            <span>Powered by C2PA authenticity technology</span>
+            <span>{t("badge")}</span>
           </motion.div>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-5xl mx-auto leading-[1.1]">
-            Where{" "}
+            {t("titlePre")}{" "}
             <span className="text-primary relative">
-              Real
+              {t("titleHighlight")}
               <svg
                 className="absolute -bottom-2 left-0 w-full"
                 viewBox="0 0 200 12"
@@ -74,14 +77,13 @@ export function HeroSection() {
                 />
               </svg>
             </span>{" "}
-            Content Finds Its Value
+            {t("titlePost")}
           </h1>
         </FadeIn>
 
         <FadeIn delay={0.25}>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mt-6">
-            The verified content marketplace for the post-AI era.
-            Every upload is cryptographically proven authentic through C2PA — so buyers know it&apos;s real, and creators get paid for truth.
+            {t("subtitle")}
           </p>
         </FadeIn>
 
@@ -89,12 +91,12 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
             <Button size="lg" asChild className="text-base px-8 group">
               <Link href="/explore">
-                Explore Content
+                {t("exploreBtn")}
                 <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild className="text-base px-8">
-              <Link href="/register">Start Selling</Link>
+              <Link href="/register">{t("sellBtn")}</Link>
             </Button>
           </div>
         </FadeIn>
@@ -104,15 +106,15 @@ export function HeroSection() {
           <div className="flex flex-wrap items-center justify-center gap-6 mt-16 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <div className="h-1.5 w-1.5 rounded-full bg-emerald" />
-              <span>C2PA Certified</span>
+              <span>{t("trustC2pa")}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="h-1.5 w-1.5 rounded-full bg-emerald" />
-              <span>85% Seller Revenue</span>
+              <span>{t("trustRevenue")}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="h-1.5 w-1.5 rounded-full bg-emerald" />
-              <span>Instant Stripe Payouts</span>
+              <span>{t("trustPayouts")}</span>
             </div>
           </div>
         </FadeIn>

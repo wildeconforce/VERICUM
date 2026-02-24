@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useAuth } from "@/hooks/use-auth";
 import { createClient } from "@/lib/supabase/client";
 import { Content } from "@/types/content";
@@ -16,6 +17,7 @@ import { Plus, Eye, Download, Pencil, ImageIcon } from "lucide-react";
 
 export default function MyContentPage() {
   const { user } = useAuth();
+  const t = useTranslations();
   const [contents, setContents] = useState<(Content & { _previewUrl?: string })[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -57,11 +59,11 @@ export default function MyContentPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold">My Content</h1>
+        <h1 className="text-3xl font-bold">{t("nav.myContent")}</h1>
         <Button asChild>
           <Link href="/upload">
             <Plus className="h-4 w-4 mr-2" />
-            Upload New
+            {t("nav.upload")}
           </Link>
         </Button>
       </div>

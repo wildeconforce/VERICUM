@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createClient } from "@/lib/supabase/client";
@@ -61,6 +62,7 @@ const OAUTH_PROVIDERS: { id: OAuthProvider; name: string; icon: React.ReactNode 
 
 export default function RegisterPage() {
   const router = useRouter();
+  const t = useTranslations();
   const [loadingProvider, setLoadingProvider] = useState<string | null>(null);
 
   const {
@@ -89,7 +91,7 @@ export default function RegisterPage() {
       return;
     }
 
-    toast.success("Account created! Please check your email to confirm.");
+    toast.success(t("auth.register.success"));
     router.push("/login");
   };
 
@@ -116,8 +118,8 @@ export default function RegisterPage() {
             <ShieldCheck className="h-8 w-8 text-primary" />
             <span className="text-2xl font-bold font-serif">Vericum</span>
           </Link>
-          <CardTitle className="text-2xl">Create your account</CardTitle>
-          <CardDescription>Start buying and selling verified content</CardDescription>
+          <CardTitle className="text-2xl">{t("auth.register.title")}</CardTitle>
+          <CardDescription>{t("auth.register.subtitle")}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 gap-2">
@@ -142,14 +144,14 @@ export default function RegisterPage() {
           <div className="relative">
             <Separator />
             <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-card px-2 text-xs text-muted-foreground">
-              or
+              {t("common.or")}
             </span>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-2">
-                <Label htmlFor="username">Username</Label>
+                <Label htmlFor="username">{t("common.username")}</Label>
                 <Input
                   id="username"
                   placeholder="johndoe"
@@ -160,7 +162,7 @@ export default function RegisterPage() {
                 )}
               </div>
               <div className="space-y-2">
-                <Label htmlFor="display_name">Display Name</Label>
+                <Label htmlFor="display_name">{t("common.displayName")}</Label>
                 <Input
                   id="display_name"
                   placeholder="John Doe"
@@ -172,7 +174,7 @@ export default function RegisterPage() {
               </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t("common.email")}</Label>
               <Input
                 id="email"
                 type="email"
@@ -184,7 +186,7 @@ export default function RegisterPage() {
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">{t("common.password")}</Label>
               <Input
                 id="password"
                 type="password"
@@ -197,14 +199,14 @@ export default function RegisterPage() {
             </div>
             <Button type="submit" className="w-full" disabled={isSubmitting}>
               {isSubmitting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-              Create Account
+              {t("common.signUp")}
             </Button>
           </form>
 
           <p className="text-center text-sm text-muted-foreground">
-            Already have an account?{" "}
+            {t("auth.register.hasAccount")}{" "}
             <Link href="/login" className="text-primary hover:underline font-medium">
-              Sign in
+              {t("auth.register.signInLink")}
             </Link>
           </p>
         </CardContent>

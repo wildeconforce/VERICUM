@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -30,6 +31,7 @@ import {
 
 export function Header() {
   const { user, profile, isAuthenticated, isSeller, signOut } = useAuth();
+  const t = useTranslations();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -46,14 +48,14 @@ export function Header() {
               href="/explore"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Explore
+              {t("nav.explore")}
             </Link>
             {isSeller && (
               <Link
                 href="/upload"
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                Upload
+                {t("nav.upload")}
               </Link>
             )}
           </nav>
@@ -72,7 +74,7 @@ export function Header() {
                 <Button variant="outline" size="sm" asChild className="hidden sm:flex ml-2">
                   <Link href="/upload">
                     <Upload className="h-4 w-4 mr-2" />
-                    Upload
+                    {t("nav.upload")}
                   </Link>
                 </Button>
               )}
@@ -110,7 +112,7 @@ export function Header() {
                   <DropdownMenuItem asChild>
                     <Link href="/dashboard">
                       <LayoutDashboard className="h-4 w-4 mr-2" />
-                      Dashboard
+                      {t("nav.dashboard")}
                     </Link>
                   </DropdownMenuItem>
                   {isSeller && (
@@ -118,13 +120,13 @@ export function Header() {
                       <DropdownMenuItem asChild>
                         <Link href="/my-content">
                           <Package className="h-4 w-4 mr-2" />
-                          My Content
+                          {t("nav.myContent")}
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
                         <Link href="/earnings">
                           <DollarSign className="h-4 w-4 mr-2" />
-                          Earnings
+                          {t("nav.earnings")}
                         </Link>
                       </DropdownMenuItem>
                     </>
@@ -132,31 +134,31 @@ export function Header() {
                   <DropdownMenuItem asChild>
                     <Link href="/purchases">
                       <ShoppingBag className="h-4 w-4 mr-2" />
-                      Purchases
+                      {t("nav.purchases")}
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link href="/downloads">
                       <Download className="h-4 w-4 mr-2" />
-                      Downloads
+                      {t("common.download")}
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link href="/bookmarks">
                       <Heart className="h-4 w-4 mr-2" />
-                      Bookmarks
+                      {t("buyer.bookmarks")}
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
                     <Link href="/settings">
                       <Settings className="h-4 w-4 mr-2" />
-                      Settings
+                      {t("nav.settings")}
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={signOut}>
                     <LogOut className="h-4 w-4 mr-2" />
-                    Sign Out
+                    {t("common.signOut")}
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -164,10 +166,10 @@ export function Header() {
           ) : (
             <div className="flex items-center gap-2 ml-2">
               <Button variant="ghost" size="sm" asChild>
-                <Link href="/login">Sign In</Link>
+                <Link href="/login">{t("common.signIn")}</Link>
               </Button>
               <Button size="sm" asChild>
-                <Link href="/register">Get Started</Link>
+                <Link href="/register">{t("common.getStarted")}</Link>
               </Button>
             </div>
           )}

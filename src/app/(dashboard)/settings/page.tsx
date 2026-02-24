@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useAuth } from "@/hooks/use-auth";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -16,6 +17,7 @@ import { toast } from "sonner";
 
 function SettingsContent() {
   const searchParams = useSearchParams();
+  const t = useTranslations();
   const { user, profile, isSeller } = useAuth();
   const [displayName, setDisplayName] = useState("");
   const [bio, setBio] = useState("");
@@ -34,9 +36,9 @@ function SettingsContent() {
 
   useEffect(() => {
     if (stripeConnected) {
-      toast.success("Stripe account connected successfully!");
+      toast.success(t("settings.stripeConnected"));
     }
-  }, [stripeConnected]);
+  }, [stripeConnected, t]);
 
   const handleSave = async () => {
     setIsSaving(true);
@@ -46,9 +48,9 @@ function SettingsContent() {
       body: JSON.stringify({ display_name: displayName, bio }),
     });
     if (res.ok) {
-      toast.success("Profile updated");
+      toast.success(t("settings.profileUpdated"));
     } else {
-      toast.error("Failed to update profile");
+      toast.error(t("common.error"));
     }
     setIsSaving(false);
   };
@@ -62,7 +64,7 @@ function SettingsContent() {
       .update({ role: "seller" } as never)
       .eq("id", user.id);
     if (error) {
-      toast.error("Failed to upgrade account");
+      toast.error(t("common.error"));
     } else {
       toast.success("Account upgraded to seller! Please refresh the page.");
     }
@@ -77,36 +79,36 @@ function SettingsContent() {
       if (data.url) {
         window.location.href = data.url;
       } else {
-        toast.error(data.error || "Failed to connect Stripe");
+        toast.error(data.error || t("common.error"));
       }
     } catch {
-      toast.error("Something went wrong");
+      toast.error(t("common.error"));
     }
     setIsConnectingStripe(false);
   };
 
   return (
     <div className="max-w-2xl">
-      <h1 className="text-3xl font-bold mb-6">Settings</h1>
+      <h1 className="text-3xl font-bold mb-6">{t("settings.title")}</h1>
 
       <div className="space-y-6">
         {/* Profile Card */}
         <Card>
           <CardHeader>
-            <CardTitle>Profile</CardTitle>
-            <CardDescription>Update your profile information</CardDescription>
+            <CardTitle>{t("settings.profile")}</CardTitle>
+            <CardDescription>{t("settings.profileDesc")}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label>Email</Label>
+              <Label>{t("common.email")}</Label>
               <Input value={user?.email || ""} disabled />
             </div>
             <div className="space-y-2">
-              <Label>Username</Label>
+              <Label>{t("common.username")}</Label>
               <Input value={profile?.username || ""} disabled />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="displayName">Display Name</Label>
+              <Label htmlFor="displayName">{t("common.displayName")}</Label>
               <Input
                 id="displayName"
                 value={displayName}
@@ -114,7 +116,7 @@ function SettingsContent() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="bio">Bio</Label>
+              <Label htmlFor="bio">{t("common.bio")}</Label>
               <Textarea
                 id="bio"
                 value={bio}
@@ -124,7 +126,7 @@ function SettingsContent() {
             </div>
             <Button onClick={handleSave} disabled={isSaving}>
               {isSaving ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : <Save className="h-4 w-4 mr-2" />}
-              Save Changes
+              {t("settings.saveChanges")}
             </Button>
           </CardContent>
         </Card>
@@ -132,12 +134,12 @@ function SettingsContent() {
         {/* Account Type Card */}
         <Card>
           <CardHeader>
-            <CardTitle>Account Type</CardTitle>
-            <CardDescription>Your current account role and permissions</CardDescription>
+            <CardTitle>{t("settings.accountType")}</CardTitle>
+            <CardDescription>{t("settings.accountTypeDesc")}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center gap-2">
-              <span className="text-sm">Current role:</span>
+              <span className="text-sm">{t("settings.currentRole")}:</span>
               <Badge variant="outline" className="capitalize">
                 {profile?.role || "user"}
               </Badge>
@@ -147,11 +149,11 @@ function SettingsContent() {
                 <Separator />
                 <div>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Upgrade to a seller account to upload and sell your verified content.
+                    {t("settings.upgradeDesc")}
                   </p>
                   <Button onClick={handleUpgradeToSeller} disabled={isUpgrading}>
                     {isUpgrading && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-                    Upgrade to Seller
+                    {t("settings.upgradeToSeller")}
                   </Button>
                 </div>
               </>
@@ -165,16 +167,16 @@ function SettingsContent() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <CreditCard className="h-5 w-5" />
-                Stripe Connect
+                {t("settings.stripeConnect")}
               </CardTitle>
-              <CardDescription>Connect your Stripe account to receive payments</CardDescription>
+              <CardDescription>{t("settings.stripeConnectDesc")}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {profile?.stripe_account_id ? (
                 <div className="flex items-center gap-3">
                   <CheckCircle className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="text-sm font-medium">Stripe account connected</p>
+                    <p className="text-sm font-medium">{t("settings.stripeConnected")}</p>
                     <p className="text-xs text-muted-foreground">
                       Account ID: {profile.stripe_account_id.slice(0, 8)}...
                     </p>
@@ -192,8 +194,7 @@ function SettingsContent() {
               ) : (
                 <div>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Connect your Stripe account to receive payouts from sales. You&apos;ll be
-                    redirected to Stripe to complete the onboarding process.
+                    {t("settings.stripeConnectDesc")}
                   </p>
                   <Button onClick={handleConnectStripe} disabled={isConnectingStripe}>
                     {isConnectingStripe ? (
@@ -201,16 +202,10 @@ function SettingsContent() {
                     ) : (
                       <CreditCard className="h-4 w-4 mr-2" />
                     )}
-                    Connect Stripe Account
+                    {t("settings.connectStripe")}
                   </Button>
                 </div>
               )}
-              <Separator />
-              <div className="text-xs text-muted-foreground space-y-1">
-                <p>Commission structure: 15% platform fee on each sale</p>
-                <p>You receive 85% of every sale directly to your Stripe account</p>
-                <p>Buyers pay an additional 15% verification fee</p>
-              </div>
             </CardContent>
           </Card>
         )}

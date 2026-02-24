@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useAuth } from "@/hooks/use-auth";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -22,6 +23,7 @@ import { formatPrice } from "@/lib/utils/format";
 
 export default function DashboardPage() {
   const { profile, isSeller } = useAuth();
+  const t = useTranslations();
   const [earnings, setEarnings] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -42,16 +44,16 @@ export default function DashboardPage() {
     <div>
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
         <div>
-          <h1 className="text-3xl font-bold mb-1">Dashboard</h1>
+          <h1 className="text-3xl font-bold mb-1">{t("dashboard.title")}</h1>
           <p className="text-muted-foreground">
-            Welcome back, {profile?.display_name || "there"}!
+            {t("dashboard.welcome", { name: profile?.display_name || "there" })}
           </p>
         </div>
         {isSeller && (
           <Button asChild>
             <Link href="/upload">
               <Upload className="h-4 w-4 mr-2" />
-              Upload Content
+              {t("dashboard.uploadContent")}
             </Link>
           </Button>
         )}
@@ -63,7 +65,7 @@ export default function DashboardPage() {
           <>
             <Card className="border-primary/20">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Total Earnings</CardTitle>
+                <CardTitle className="text-sm font-medium">{t("dashboard.totalEarnings")}</CardTitle>
                 <DollarSign className="h-4 w-4 text-primary" />
               </CardHeader>
               <CardContent>
@@ -78,7 +80,7 @@ export default function DashboardPage() {
             </Card>
             <Card>
               <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Total Sales</CardTitle>
+                <CardTitle className="text-sm font-medium">{t("dashboard.totalSales")}</CardTitle>
                 <TrendingUp className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
@@ -95,7 +97,7 @@ export default function DashboardPage() {
         )}
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">My Uploads</CardTitle>
+            <CardTitle className="text-sm font-medium">{t("dashboard.myUploads")}</CardTitle>
             <Package className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -104,7 +106,7 @@ export default function DashboardPage() {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Purchases</CardTitle>
+            <CardTitle className="text-sm font-medium">{t("dashboard.purchasesCount")}</CardTitle>
             <ShoppingBag className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -114,7 +116,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Quick Actions */}
-      <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
+      <h2 className="text-xl font-semibold mb-4">{t("dashboard.recentActivity")}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
         <Link href="/explore" className="group">
           <Card className="hover:shadow-md transition-all hover:border-primary/30">
@@ -123,8 +125,7 @@ export default function DashboardPage() {
                 <Eye className="h-5 w-5 text-primary" />
               </div>
               <div className="flex-1">
-                <p className="font-medium">Explore Content</p>
-                <p className="text-xs text-muted-foreground">Browse verified marketplace</p>
+                <p className="font-medium">{t("nav.explore")}</p>
               </div>
               <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
             </CardContent>
@@ -137,8 +138,7 @@ export default function DashboardPage() {
                 <Download className="h-5 w-5 text-primary" />
               </div>
               <div className="flex-1">
-                <p className="font-medium">My Downloads</p>
-                <p className="text-xs text-muted-foreground">Access purchased content</p>
+                <p className="font-medium">{t("purchases.title")}</p>
               </div>
               <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
             </CardContent>
@@ -151,8 +151,7 @@ export default function DashboardPage() {
                 <Heart className="h-5 w-5 text-primary" />
               </div>
               <div className="flex-1">
-                <p className="font-medium">Bookmarks</p>
-                <p className="text-xs text-muted-foreground">Saved content for later</p>
+                <p className="font-medium">{t("buyer.bookmarks")}</p>
               </div>
               <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
             </CardContent>
@@ -167,8 +166,7 @@ export default function DashboardPage() {
                     <TrendingUp className="h-5 w-5 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <p className="font-medium">Earnings & Analytics</p>
-                    <p className="text-xs text-muted-foreground">View revenue and stats</p>
+                    <p className="font-medium">{t("nav.earnings")}</p>
                   </div>
                   <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </CardContent>
@@ -181,8 +179,7 @@ export default function DashboardPage() {
                     <Package className="h-5 w-5 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <p className="font-medium">My Content</p>
-                    <p className="text-xs text-muted-foreground">Manage your uploads</p>
+                    <p className="font-medium">{t("nav.myContent")}</p>
                   </div>
                   <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </CardContent>
@@ -198,8 +195,7 @@ export default function DashboardPage() {
                   <CreditCard className="h-5 w-5 text-amber" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium">Connect Stripe</p>
-                  <p className="text-xs text-muted-foreground">Set up payments</p>
+                  <p className="font-medium">{t("settings.connectStripe")}</p>
                 </div>
                 <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-amber transition-colors" />
               </CardContent>

@@ -57,14 +57,30 @@
   "landing": {
     "hero": {
       "badge": "由C2PA真实性技术驱动",
-      "title": "{highlight}数字内容的交易平台",
-      "highlight": "认证",
-      "subtitle": "购买和出售具有保证来源的真实照片。每件内容均通过C2PA标准验证，确保完全透明。",
+      "titlePre": "让",
+      "titleHighlight": "真实",
+      "titlePost": "内容找到其价值",
+      "subtitle": "后AI时代的认证内容交易平台。每次上传都通过C2PA进行加密真实性证明 — 买家知道它是真实的，创作者因真实而获得报酬。",
       "exploreBtn": "探索内容",
-      "sellBtn": "开始销售"
+      "sellBtn": "开始销售",
+      "trustC2pa": "C2PA认证",
+      "trustRevenue": "85%卖家收入",
+      "trustPayouts": "即时Stripe支付"
+    },
+    "manifesto": {
+      "label": "我们的信念",
+      "title": "在无限虚假的时代，",
+      "titleHighlight": "真实成为终极奢侈。",
+      "p1": "AI现在可以生成任何东西。照片、视频、文档 — 都与现实无法区分。但这使得{realThing}比以往任何时候都更有价值。",
+      "realThing": "真品",
+      "p2": "Vericum是真实性被证明而非仅仅声称的地方。我们使用C2PA标准 — 与Adobe、Google、Microsoft和BBC支持的相同技术 — 对我们平台上的每一件内容进行加密验证。",
+      "verifiedOrigin": "验证来源",
+      "fullTransparency": "完全透明",
+      "tamperProof": "防篡改"
     },
     "features": {
-      "title": "为什么选择Vericum？",
+      "label": "为什么选择Vericum",
+      "title": "为后AI时代而构建",
       "subtitle": "首个通过尖端验证技术保证真实性的内容交易平台。",
       "c2pa": {
         "title": "C2PA验证",
@@ -80,8 +96,8 @@
       }
     },
     "howItWorks": {
-      "title": "使用方法",
-      "subtitle": "获取认证内容的三个简单步骤",
+      "label": "使用方法",
+      "title": "认证内容的三个步骤",
       "step1": {
         "title": "上传",
         "description": "拖放您的原始照片。我们支持JPG、PNG、WebP、TIFF和RAW格式，最大50MB。"
@@ -95,7 +111,27 @@
         "description": "设定您的价格和许可类型。买家可以放心购买，因为每件作品都经过验证。"
       }
     },
+    "saleTypes": {
+      "label": "销售选项",
+      "title": "灵活的销售方式",
+      "subtitle": "选择您想要的内容销售方式。两种销售类型满足您的策略需求。",
+      "premium": {
+        "title": "高级销售",
+        "description": "较高价格，无二次创作版税。买家获得其许可类型的完整使用权。",
+        "point1": "每个许可的全额价格",
+        "point2": "无持续版税义务",
+        "point3": "最适合独家内容"
+      },
+      "royalty": {
+        "title": "版税销售",
+        "description": "较低价格，二次创作需支付5-10%版税。对买家更友好，为卖家提供持续收入。",
+        "point1": "买家享受40%折扣价格",
+        "point2": "衍生作品5-10%版税",
+        "point3": "适合大量内容"
+      }
+    },
     "pricing": {
+      "label": "定价",
       "title": "简单透明的定价",
       "subtitle": "没有隐藏费用。卖家获得每笔销售的大部分收入。",
       "sellerReceives": "卖家收入",
@@ -103,11 +139,14 @@
       "buyerFee": "买家验证费用",
       "noMonthly": "无月费或订阅费",
       "instantPayouts": "通过Stripe Connect即时付款",
-      "freeVerification": "所有上传均可免费进行C2PA验证"
+      "freeVerification": "所有上传均可免费进行C2PA验证",
+      "licenseOptions": "个人、标准、扩展和独家许可选项"
     },
     "cta": {
-      "title": "准备好交易认证内容了吗？",
-      "subtitle": "立即加入Vericum，成为真实认证数字内容运动的一部分。",
+      "label": "加入运动",
+      "title": "世界需要证明。",
+      "titleHighlight": "成为证明。",
+      "subtitle": "无论您是创作真实内容还是需要经过验证的原创作品，Vericum是真实交易的地方。",
       "createAccount": "创建免费账户",
       "browseContent": "浏览内容"
     }

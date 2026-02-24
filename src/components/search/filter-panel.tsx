@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { CATEGORIES, CATEGORY_LABELS, Category, CONTENT_TYPES } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -41,6 +42,7 @@ export function FilterPanel({
   onPriceChange,
   onClearAll,
 }: FilterPanelProps) {
+  const t = useTranslations("explore.filters");
   const hasFilters = selectedCategory || selectedType || verifiedOnly || minPrice || maxPrice;
   const [localMin, setLocalMin] = useState(minPrice?.toString() || "");
   const [localMax, setLocalMax] = useState(maxPrice?.toString() || "");
@@ -55,11 +57,11 @@ export function FilterPanel({
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="font-semibold text-sm">Filters</h3>
+        <h3 className="font-semibold text-sm">{t("title")}</h3>
         {hasFilters && (
           <Button variant="ghost" size="sm" onClick={onClearAll} className="text-xs h-7">
             <X className="h-3 w-3 mr-1" />
-            Clear all
+            {t("clearAll")}
           </Button>
         )}
       </div>
@@ -68,7 +70,7 @@ export function FilterPanel({
 
       {/* Verification filter */}
       <div>
-        <h4 className="text-sm font-medium mb-2">Verification</h4>
+        <h4 className="text-sm font-medium mb-2">{t("verification")}</h4>
         <label className="flex items-center gap-2 cursor-pointer">
           <input
             type="checkbox"
@@ -76,7 +78,7 @@ export function FilterPanel({
             onChange={(e) => onVerifiedOnlyChange(e.target.checked)}
             className="rounded accent-primary"
           />
-          <span className="text-sm">Verified only</span>
+          <span className="text-sm">{t("verifiedOnly")}</span>
         </label>
       </div>
 
@@ -84,7 +86,7 @@ export function FilterPanel({
 
       {/* Category filter */}
       <div>
-        <h4 className="text-sm font-medium mb-2">Category</h4>
+        <h4 className="text-sm font-medium mb-2">{t("category")}</h4>
         <div className="flex flex-wrap gap-1.5">
           {CATEGORIES.map((cat) => (
             <Badge
@@ -105,7 +107,7 @@ export function FilterPanel({
 
       {/* Content Type filter */}
       <div>
-        <h4 className="text-sm font-medium mb-2">Content Type</h4>
+        <h4 className="text-sm font-medium mb-2">{t("contentType")}</h4>
         <div className="flex flex-wrap gap-1.5">
           {CONTENT_TYPES.map((type) => (
             <Badge
@@ -127,10 +129,10 @@ export function FilterPanel({
 
       {/* Price Range filter */}
       <div>
-        <h4 className="text-sm font-medium mb-2">Price Range</h4>
+        <h4 className="text-sm font-medium mb-2">{t("priceRange")}</h4>
         <div className="flex items-center gap-2">
           <div className="flex-1">
-            <Label className="text-xs text-muted-foreground">Min</Label>
+            <Label className="text-xs text-muted-foreground">{t("minPrice")}</Label>
             <Input
               type="number"
               placeholder="$0"
@@ -142,7 +144,7 @@ export function FilterPanel({
           </div>
           <span className="text-muted-foreground mt-4">-</span>
           <div className="flex-1">
-            <Label className="text-xs text-muted-foreground">Max</Label>
+            <Label className="text-xs text-muted-foreground">{t("maxPrice")}</Label>
             <Input
               type="number"
               placeholder="$999"
@@ -159,7 +161,7 @@ export function FilterPanel({
           className="w-full mt-2 text-xs h-7"
           onClick={handlePriceApply}
         >
-          Apply Price
+          Apply
         </Button>
       </div>
     </div>

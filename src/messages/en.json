@@ -57,14 +57,30 @@
   "landing": {
     "hero": {
       "badge": "Powered by C2PA authenticity technology",
-      "title": "The Marketplace for {highlight} Digital Content",
-      "highlight": "Verified",
-      "subtitle": "Buy and sell authentic photos with guaranteed provenance. Every piece of content is verified using C2PA standards for complete transparency.",
+      "titlePre": "Where",
+      "titleHighlight": "Real",
+      "titlePost": "Content Finds Its Value",
+      "subtitle": "The verified content marketplace for the post-AI era. Every upload is cryptographically proven authentic through C2PA — so buyers know it's real, and creators get paid for truth.",
       "exploreBtn": "Explore Content",
-      "sellBtn": "Start Selling"
+      "sellBtn": "Start Selling",
+      "trustC2pa": "C2PA Certified",
+      "trustRevenue": "85% Seller Revenue",
+      "trustPayouts": "Instant Stripe Payouts"
+    },
+    "manifesto": {
+      "label": "Our Belief",
+      "title": "In the age of infinite fakes,",
+      "titleHighlight": "truth becomes the ultimate luxury.",
+      "p1": "AI can now generate anything. Photos, videos, documents — all indistinguishable from reality. But that makes the {realThing} more valuable than ever.",
+      "realThing": "real thing",
+      "p2": "Vericum is where authenticity is proven, not just claimed. We use C2PA standards — the same technology backed by Adobe, Google, Microsoft, and the BBC — to cryptographically verify every piece of content on our platform.",
+      "verifiedOrigin": "Verified Origin",
+      "fullTransparency": "Full Transparency",
+      "tamperProof": "Tamper-Proof"
     },
     "features": {
-      "title": "Why Vericum?",
+      "label": "Why Vericum",
+      "title": "Built for the Post-AI Era",
       "subtitle": "The first content marketplace that guarantees authenticity through cutting-edge verification technology.",
       "c2pa": {
         "title": "C2PA Verification",
@@ -80,22 +96,42 @@
       }
     },
     "howItWorks": {
-      "title": "How It Works",
-      "subtitle": "Three simple steps to verified content",
+      "label": "How It Works",
+      "title": "Three Steps to Verified Content",
       "step1": {
         "title": "Upload",
         "description": "Drag and drop your original photo. We support JPG, PNG, WebP, TIFF, and RAW formats up to 50MB."
       },
       "step2": {
         "title": "Verify",
-        "description": "Our engine automatically checks C2PA manifests, EXIF metadata, and runs AI detection to score authenticity."
+        "description": "Our engine checks C2PA manifests, EXIF metadata, and runs AI detection to score authenticity — automatically."
       },
       "step3": {
         "title": "Sell",
-        "description": "Set your price and license type. Buyers can purchase with confidence knowing every piece is verified."
+        "description": "Set your price and license type. Buyers purchase with confidence knowing every piece is verified."
+      }
+    },
+    "saleTypes": {
+      "label": "Sale Options",
+      "title": "Flexible Ways to Sell",
+      "subtitle": "Choose how you want to sell your content. Two sale types to fit your strategy.",
+      "premium": {
+        "title": "Premium Sale",
+        "description": "Higher price with no secondary creation royalties. Buyers get full usage rights for their license type.",
+        "point1": "Full price per license",
+        "point2": "No ongoing royalty obligations",
+        "point3": "Best for exclusive content"
+      },
+      "royalty": {
+        "title": "Royalty Sale",
+        "description": "Lower price with 5-10% royalty on secondary creations. More accessible to buyers, ongoing revenue for sellers.",
+        "point1": "40% discounted price for buyers",
+        "point2": "5-10% royalty on derivative works",
+        "point3": "Great for high-volume content"
       }
     },
     "pricing": {
+      "label": "Pricing",
       "title": "Simple, Transparent Pricing",
       "subtitle": "No hidden fees. Sellers keep the majority of every sale.",
       "sellerReceives": "Seller receives",
@@ -103,11 +139,14 @@
       "buyerFee": "Buyer verification fee",
       "noMonthly": "No monthly fees or subscriptions",
       "instantPayouts": "Instant payouts via Stripe Connect",
-      "freeVerification": "Free C2PA verification on all uploads"
+      "freeVerification": "Free C2PA verification on all uploads",
+      "licenseOptions": "Personal, Standard, Extended & Exclusive license options"
     },
     "cta": {
-      "title": "Ready to trade in verified content?",
-      "subtitle": "Join Vericum today and be part of the movement toward authentic, verified digital content.",
+      "label": "Join the Movement",
+      "title": "The world needs proof.",
+      "titleHighlight": "Be the proof.",
+      "subtitle": "Whether you create authentic content or need verified originals, Vericum is where truth is traded.",
       "createAccount": "Create Free Account",
       "browseContent": "Browse Content"
     }

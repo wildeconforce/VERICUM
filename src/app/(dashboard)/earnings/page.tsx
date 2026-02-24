@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -34,6 +35,7 @@ interface EarningsData {
 }
 
 export default function EarningsPage() {
+  const t = useTranslations();
   const [earnings, setEarnings] = useState<EarningsData | null>(null);
   const [period, setPeriod] = useState("month");
   const [isLoading, setIsLoading] = useState(true);
@@ -53,23 +55,23 @@ export default function EarningsPage() {
   return (
     <div>
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
-        <h1 className="text-3xl font-bold">Earnings</h1>
+        <h1 className="text-3xl font-bold">{t("earnings.title")}</h1>
         <Tabs value={period} onValueChange={setPeriod}>
           <TabsList>
-            <TabsTrigger value="week">Week</TabsTrigger>
-            <TabsTrigger value="month">Month</TabsTrigger>
-            <TabsTrigger value="year">Year</TabsTrigger>
-            <TabsTrigger value="all">All Time</TabsTrigger>
+            <TabsTrigger value="week">{t("earnings.week")}</TabsTrigger>
+            <TabsTrigger value="month">{t("earnings.month")}</TabsTrigger>
+            <TabsTrigger value="year">{t("earnings.year")}</TabsTrigger>
+            <TabsTrigger value="all">{t("earnings.allTime")}</TabsTrigger>
           </TabsList>
         </Tabs>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {[
-          { title: "Total Earnings", value: earnings?.total_earnings, icon: DollarSign },
-          { title: "Total Sales", value: earnings?.sales_count, icon: TrendingUp, isCurrency: false },
-          { title: "Pending Payout", value: earnings?.pending_payout, icon: Clock },
-          { title: "Last Payout", value: earnings?.last_payout, icon: CreditCard },
+          { title: t("earnings.totalEarnings"), value: earnings?.total_earnings, icon: DollarSign },
+          { title: t("earnings.totalSales"), value: earnings?.sales_count, icon: TrendingUp, isCurrency: false },
+          { title: t("earnings.pendingPayout"), value: earnings?.pending_payout, icon: Clock },
+          { title: t("earnings.lastPayout"), value: earnings?.last_payout, icon: CreditCard },
         ].map(({ title, value, icon: Icon, isCurrency = true }) => (
           <Card key={title}>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -92,7 +94,7 @@ export default function EarningsPage() {
       {/* Revenue Chart */}
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>Revenue Over Time</CardTitle>
+          <CardTitle>{t("earnings.revenueOverTime")}</CardTitle>
         </CardHeader>
         <CardContent>
           {isLoading ? (
@@ -142,7 +144,7 @@ export default function EarningsPage() {
             </div>
           ) : (
             <div className="h-64 flex items-center justify-center text-muted-foreground">
-              No earnings data yet
+              {t("earnings.noData")}
             </div>
           )}
         </CardContent>
@@ -151,7 +153,7 @@ export default function EarningsPage() {
       {/* Content Sales Stats */}
       <Card>
         <CardHeader>
-          <CardTitle>Revenue by Content</CardTitle>
+          <CardTitle>{t("seller.dashboard.revenueByContent")}</CardTitle>
         </CardHeader>
         <CardContent>
           {isLoading ? (

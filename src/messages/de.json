@@ -57,14 +57,30 @@
   "landing": {
     "hero": {
       "badge": "Basierend auf C2PA-Authentizitätstechnologie",
-      "title": "Der Marktplatz für {highlight} digitale Inhalte",
-      "highlight": "verifizierte",
-      "subtitle": "Kaufen und verkaufen Sie authentische Fotos mit garantierter Herkunft. Jeder Inhalt wird nach C2PA-Standards für vollständige Transparenz verifiziert.",
+      "titlePre": "Wo",
+      "titleHighlight": "echte",
+      "titlePost": "Inhalte ihren Wert finden",
+      "subtitle": "Der verifizierte Inhalte-Marktplatz für die Post-KI-Ära. Jeder Upload wird kryptografisch durch C2PA als authentisch bewiesen — damit Käufer wissen, dass es echt ist, und Ersteller für die Wahrheit bezahlt werden.",
       "exploreBtn": "Inhalte entdecken",
-      "sellBtn": "Verkauf starten"
+      "sellBtn": "Verkauf starten",
+      "trustC2pa": "C2PA-zertifiziert",
+      "trustRevenue": "85 % Verkäufereinnahmen",
+      "trustPayouts": "Sofortige Stripe-Auszahlungen"
+    },
+    "manifesto": {
+      "label": "Unsere Überzeugung",
+      "title": "Im Zeitalter unendlicher Fälschungen",
+      "titleHighlight": "wird Wahrheit zum ultimativen Luxus.",
+      "p1": "KI kann jetzt alles generieren. Fotos, Videos, Dokumente — alle nicht von der Realität zu unterscheiden. Aber genau das macht das {realThing} wertvoller denn je.",
+      "realThing": "Echte",
+      "p2": "Vericum ist der Ort, an dem Authentizität bewiesen und nicht nur behauptet wird. Wir nutzen C2PA-Standards — dieselbe Technologie, die von Adobe, Google, Microsoft und der BBC unterstützt wird — um jeden Inhalt auf unserer Plattform kryptografisch zu verifizieren.",
+      "verifiedOrigin": "Verifizierter Ursprung",
+      "fullTransparency": "Volle Transparenz",
+      "tamperProof": "Manipulationssicher"
     },
     "features": {
-      "title": "Warum Vericum?",
+      "label": "Warum Vericum",
+      "title": "Gebaut für die Post-KI-Ära",
       "subtitle": "Der erste Marktplatz für Inhalte, der Authentizität durch modernste Verifizierungstechnologie garantiert.",
       "c2pa": {
         "title": "C2PA-Verifizierung",
@@ -80,8 +96,8 @@
       }
     },
     "howItWorks": {
-      "title": "So funktioniert es",
-      "subtitle": "Drei einfache Schritte zu verifizierten Inhalten",
+      "label": "So funktioniert es",
+      "title": "Drei Schritte zu verifizierten Inhalten",
       "step1": {
         "title": "Hochladen",
         "description": "Ziehen Sie Ihr Originalfoto per Drag & Drop. Wir unterstützen JPG, PNG, WebP, TIFF und RAW-Formate bis zu 50 MB."
@@ -95,7 +111,27 @@
         "description": "Legen Sie Ihren Preis und Lizenztyp fest. Käufer können mit Zuversicht kaufen, da jedes Stück verifiziert ist."
       }
     },
+    "saleTypes": {
+      "label": "Verkaufsoptionen",
+      "title": "Flexible Verkaufsmöglichkeiten",
+      "subtitle": "Wählen Sie, wie Sie Ihre Inhalte verkaufen möchten. Zwei Verkaufsarten passend zu Ihrer Strategie.",
+      "premium": {
+        "title": "Premium-Verkauf",
+        "description": "Höherer Preis ohne Lizenzgebühren für Sekundärkreationen. Käufer erhalten volle Nutzungsrechte für ihren Lizenztyp.",
+        "point1": "Voller Preis pro Lizenz",
+        "point2": "Keine laufenden Lizenzgebührenpflichten",
+        "point3": "Ideal für exklusive Inhalte"
+      },
+      "royalty": {
+        "title": "Lizenzgebühren-Verkauf",
+        "description": "Niedrigerer Preis mit 5-10 % Lizenzgebühr auf Sekundärkreationen. Zugänglicher für Käufer, laufende Einnahmen für Verkäufer.",
+        "point1": "40 % Rabatt für Käufer",
+        "point2": "5-10 % Lizenzgebühr auf abgeleitete Werke",
+        "point3": "Ideal für Inhalte mit hohem Volumen"
+      }
+    },
     "pricing": {
+      "label": "Preise",
       "title": "Einfache, transparente Preise",
       "subtitle": "Keine versteckten Gebühren. Verkäufer behalten den Großteil jedes Verkaufs.",
       "sellerReceives": "Verkäufer erhält",
@@ -103,11 +139,14 @@
       "buyerFee": "Verifizierungsgebühr für Käufer",
       "noMonthly": "Keine monatlichen Gebühren oder Abonnements",
       "instantPayouts": "Sofortige Auszahlungen über Stripe Connect",
-      "freeVerification": "Kostenlose C2PA-Verifizierung bei allen Uploads"
+      "freeVerification": "Kostenlose C2PA-Verifizierung bei allen Uploads",
+      "licenseOptions": "Persönliche, Standard-, Erweiterte- und Exklusive-Lizenzoptionen"
     },
     "cta": {
-      "title": "Bereit, mit verifizierten Inhalten zu handeln?",
-      "subtitle": "Treten Sie Vericum noch heute bei und werden Sie Teil der Bewegung für authentische, verifizierte digitale Inhalte.",
+      "label": "Schließen Sie sich der Bewegung an",
+      "title": "Die Welt braucht Beweise.",
+      "titleHighlight": "Seien Sie der Beweis.",
+      "subtitle": "Ob Sie authentische Inhalte erstellen oder verifizierte Originale benötigen — Vericum ist der Ort, an dem Wahrheit gehandelt wird.",
       "createAccount": "Kostenloses Konto erstellen",
       "browseContent": "Inhalte durchsuchen"
     }

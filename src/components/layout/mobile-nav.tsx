@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,6 +18,7 @@ export function MobileNav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const { isAuthenticated, isSeller, signOut } = useAuth();
+  const t = useTranslations();
 
   const close = () => setOpen(false);
 
@@ -38,7 +40,7 @@ export function MobileNav() {
               className="text-sm text-muted-foreground"
               onClick={close}
             >
-              Search content...
+              {t("search.placeholder")}
             </Link>
           </div>
           <nav className="flex flex-col gap-1">
@@ -51,37 +53,37 @@ export function MobileNav() {
                   : "hover:bg-accent"
               }`}
             >
-              Explore
+              {t("nav.explore")}
             </Link>
             {isAuthenticated && (
               <>
                 <Link href="/dashboard" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                  Dashboard
+                  {t("nav.dashboard")}
                 </Link>
                 {isSeller && (
                   <>
                     <Link href="/upload" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                      Upload
+                      {t("nav.upload")}
                     </Link>
                     <Link href="/my-content" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                      My Content
+                      {t("nav.myContent")}
                     </Link>
                     <Link href="/earnings" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                      Earnings
+                      {t("nav.earnings")}
                     </Link>
                   </>
                 )}
                 <Link href="/purchases" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                  Purchases
+                  {t("nav.purchases")}
                 </Link>
                 <Link href="/downloads" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                  Downloads
+                  {t("common.download")}
                 </Link>
                 <Link href="/bookmarks" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                  Bookmarks
+                  {t("buyer.bookmarks")}
                 </Link>
                 <Link href="/settings" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                  Settings
+                  {t("nav.settings")}
                 </Link>
                 <button
                   onClick={() => {
@@ -90,17 +92,17 @@ export function MobileNav() {
                   }}
                   className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent text-left text-destructive"
                 >
-                  Sign Out
+                  {t("common.signOut")}
                 </button>
               </>
             )}
             {!isAuthenticated && (
               <>
                 <Link href="/login" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                  Sign In
+                  {t("common.signIn")}
                 </Link>
                 <Link href="/register" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium bg-primary text-primary-foreground text-center">
-                  Get Started
+                  {t("common.getStarted")}
                 </Link>
               </>
             )}

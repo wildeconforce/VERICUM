@@ -57,14 +57,30 @@
   "landing": {
     "hero": {
       "badge": "Alimentado pela tecnologia de autenticidade C2PA",
-      "title": "O marketplace de conteúdo digital {highlight}",
-      "highlight": "verificado",
-      "subtitle": "Compre e venda fotos autênticas com procedência garantida. Todo conteúdo é verificado usando padrões C2PA para total transparência.",
+      "titlePre": "Onde o conteúdo",
+      "titleHighlight": "real",
+      "titlePost": "encontra seu valor",
+      "subtitle": "O marketplace de conteúdo verificado para a era pós-IA. Cada upload é comprovado criptograficamente como autêntico via C2PA — para que os compradores saibam que é real e os criadores sejam pagos pela verdade.",
       "exploreBtn": "Explorar conteúdo",
-      "sellBtn": "Começar a vender"
+      "sellBtn": "Começar a vender",
+      "trustC2pa": "Certificado C2PA",
+      "trustRevenue": "85% receita do vendedor",
+      "trustPayouts": "Pagamentos Stripe instantâneos"
+    },
+    "manifesto": {
+      "label": "Nossa crença",
+      "title": "Na era das falsificações infinitas,",
+      "titleHighlight": "a verdade se torna o luxo supremo.",
+      "p1": "A IA agora pode gerar qualquer coisa. Fotos, vídeos, documentos — todos indistinguíveis da realidade. Mas isso torna a {realThing} mais valiosa do que nunca.",
+      "realThing": "coisa real",
+      "p2": "Vericum é onde a autenticidade é comprovada, não apenas alegada. Usamos os padrões C2PA — a mesma tecnologia apoiada pela Adobe, Google, Microsoft e BBC — para verificar criptograficamente cada conteúdo em nossa plataforma.",
+      "verifiedOrigin": "Origem verificada",
+      "fullTransparency": "Transparência total",
+      "tamperProof": "À prova de adulteração"
     },
     "features": {
-      "title": "Por que Vericum?",
+      "label": "Por que Vericum",
+      "title": "Construído para a era pós-IA",
       "subtitle": "O primeiro marketplace de conteúdo que garante autenticidade por meio de tecnologia de verificação de ponta.",
       "c2pa": {
         "title": "Verificação C2PA",
@@ -80,8 +96,8 @@
       }
     },
     "howItWorks": {
-      "title": "Como funciona",
-      "subtitle": "Três passos simples para conteúdo verificado",
+      "label": "Como funciona",
+      "title": "Três passos para conteúdo verificado",
       "step1": {
         "title": "Enviar",
         "description": "Arraste e solte sua foto original. Suportamos formatos JPG, PNG, WebP, TIFF e RAW de até 50 MB."
@@ -95,7 +111,27 @@
         "description": "Defina seu preço e tipo de licença. Compradores podem comprar com confiança sabendo que cada peça é verificada."
       }
     },
+    "saleTypes": {
+      "label": "Opções de venda",
+      "title": "Formas flexíveis de vender",
+      "subtitle": "Escolha como você quer vender seu conteúdo. Dois tipos de venda para se adequar à sua estratégia.",
+      "premium": {
+        "title": "Venda premium",
+        "description": "Preço mais alto sem royalties sobre criações secundárias. Compradores obtêm direitos de uso completos para seu tipo de licença.",
+        "point1": "Preço integral por licença",
+        "point2": "Sem obrigações de royalties contínuos",
+        "point3": "Ideal para conteúdo exclusivo"
+      },
+      "royalty": {
+        "title": "Venda com royalties",
+        "description": "Preço mais baixo com 5-10% de royalty sobre criações secundárias. Mais acessível para compradores, receita contínua para vendedores.",
+        "point1": "Preço com 40% de desconto para compradores",
+        "point2": "5-10% de royalty sobre obras derivadas",
+        "point3": "Ideal para conteúdo de alto volume"
+      }
+    },
     "pricing": {
+      "label": "Preços",
       "title": "Preços simples e transparentes",
       "subtitle": "Sem taxas ocultas. Vendedores ficam com a maior parte de cada venda.",
       "sellerReceives": "Vendedor recebe",
@@ -103,11 +139,14 @@
       "buyerFee": "Taxa de verificação do comprador",
       "noMonthly": "Sem mensalidades ou assinaturas",
       "instantPayouts": "Pagamentos instantâneos via Stripe Connect",
-      "freeVerification": "Verificação C2PA gratuita em todos os uploads"
+      "freeVerification": "Verificação C2PA gratuita em todos os uploads",
+      "licenseOptions": "Opções de licença pessoal, padrão, estendida e exclusiva"
     },
     "cta": {
-      "title": "Pronto para negociar conteúdo verificado?",
-      "subtitle": "Junte-se ao Vericum hoje e faça parte do movimento por conteúdo digital autêntico e verificado.",
+      "label": "Junte-se ao movimento",
+      "title": "O mundo precisa de provas.",
+      "titleHighlight": "Seja a prova.",
+      "subtitle": "Seja você um criador de conteúdo autêntico ou alguém que precisa de originais verificados, Vericum é onde a verdade é negociada.",
       "createAccount": "Criar conta gratuita",
       "browseContent": "Explorar conteúdo"
     }

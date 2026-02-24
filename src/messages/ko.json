@@ -57,14 +57,30 @@
   "landing": {
     "hero": {
       "badge": "C2PA 진위 확인 기술 기반",
-      "title": "{highlight} 디지털 콘텐츠를 위한 마켓플레이스",
-      "highlight": "인증된",
-      "subtitle": "보장된 출처와 함께 정품 사진을 사고파세요. 모든 콘텐츠는 완전한 투명성을 위해 C2PA 표준으로 검증됩니다.",
+      "titlePre": "진짜",
+      "titleHighlight": "리얼",
+      "titlePost": "콘텐츠가 가치를 찾는 곳",
+      "subtitle": "포스트 AI 시대를 위한 인증 콘텐츠 마켓플레이스. 모든 업로드는 C2PA를 통해 암호학적으로 진위가 증명됩니다 — 구매자는 진짜임을 알 수 있고, 크리에이터는 진실에 대한 대가를 받습니다.",
       "exploreBtn": "콘텐츠 둘러보기",
-      "sellBtn": "판매 시작하기"
+      "sellBtn": "판매 시작하기",
+      "trustC2pa": "C2PA 인증",
+      "trustRevenue": "85% 판매자 수익",
+      "trustPayouts": "즉시 Stripe 지급"
+    },
+    "manifesto": {
+      "label": "우리의 신념",
+      "title": "무한한 가짜의 시대에,",
+      "titleHighlight": "진실은 궁극의 가치가 됩니다.",
+      "p1": "AI는 이제 무엇이든 생성할 수 있습니다. 사진, 영상, 문서 — 모두 현실과 구별할 수 없습니다. 하지만 그것이 {realThing}을 그 어느 때보다 가치 있게 만듭니다.",
+      "realThing": "진짜",
+      "p2": "Vericum은 진정성이 주장이 아닌 증명되는 곳입니다. 우리는 Adobe, Google, Microsoft, BBC가 지원하는 동일한 기술인 C2PA 표준을 사용하여 플랫폼의 모든 콘텐츠를 암호학적으로 검증합니다.",
+      "verifiedOrigin": "검증된 출처",
+      "fullTransparency": "완전한 투명성",
+      "tamperProof": "위변조 방지"
     },
     "features": {
-      "title": "왜 Vericum인가요?",
+      "label": "왜 Vericum인가",
+      "title": "포스트 AI 시대를 위해 구축됨",
       "subtitle": "최첨단 검증 기술을 통해 진위를 보장하는 최초의 콘텐츠 마켓플레이스입니다.",
       "c2pa": {
         "title": "C2PA 검증",
@@ -80,8 +96,8 @@
       }
     },
     "howItWorks": {
-      "title": "이용 방법",
-      "subtitle": "인증된 콘텐츠를 위한 간단한 세 단계",
+      "label": "이용 방법",
+      "title": "인증 콘텐츠를 위한 세 단계",
       "step1": {
         "title": "업로드",
         "description": "원본 사진을 드래그 앤 드롭하세요. JPG, PNG, WebP, TIFF, RAW 포맷을 최대 50MB까지 지원합니다."
@@ -95,7 +111,27 @@
         "description": "가격과 라이선스 유형을 설정하세요. 구매자는 모든 콘텐츠가 검증되었음을 확인하고 안심하고 구매할 수 있습니다."
       }
     },
+    "saleTypes": {
+      "label": "판매 옵션",
+      "title": "유연한 판매 방식",
+      "subtitle": "콘텐츠 판매 방식을 선택하세요. 전략에 맞는 두 가지 판매 유형을 제공합니다.",
+      "premium": {
+        "title": "프리미엄 판매",
+        "description": "높은 가격으로 2차 창작 로열티가 없습니다. 구매자는 라이선스 유형에 따른 전체 사용 권한을 얻습니다.",
+        "point1": "라이선스당 전액 가격",
+        "point2": "지속적인 로열티 의무 없음",
+        "point3": "독점 콘텐츠에 최적"
+      },
+      "royalty": {
+        "title": "로열티 판매",
+        "description": "낮은 가격으로 2차 창작물에 5-10% 로열티가 적용됩니다. 구매자에게 더 접근하기 쉽고, 판매자에게 지속적인 수익을 제공합니다.",
+        "point1": "구매자에게 40% 할인된 가격",
+        "point2": "파생 작품에 5-10% 로열티",
+        "point3": "대량 콘텐츠에 적합"
+      }
+    },
     "pricing": {
+      "label": "요금제",
       "title": "간단하고 투명한 요금제",
       "subtitle": "숨겨진 수수료가 없습니다. 판매자가 판매 금액의 대부분을 가져갑니다.",
       "sellerReceives": "판매자 수령액",
@@ -103,11 +139,14 @@
       "buyerFee": "구매자 검증 수수료",
       "noMonthly": "월 이용료 또는 구독료 없음",
       "instantPayouts": "Stripe Connect를 통한 즉시 지급",
-      "freeVerification": "모든 업로드에 무료 C2PA 검증"
+      "freeVerification": "모든 업로드에 무료 C2PA 검증",
+      "licenseOptions": "개인, 표준, 확장 및 독점 라이선스 옵션"
     },
     "cta": {
-      "title": "인증된 콘텐츠를 거래할 준비가 되셨나요?",
-      "subtitle": "오늘 Vericum에 가입하고 진정성 있는 인증 디지털 콘텐츠를 향한 움직임에 동참하세요.",
+      "label": "움직임에 동참하세요",
+      "title": "세상은 증거가 필요합니다.",
+      "titleHighlight": "그 증거가 되세요.",
+      "subtitle": "진정한 콘텐츠를 만들든 검증된 원본이 필요하든, Vericum은 진실이 거래되는 곳입니다.",
       "createAccount": "무료 계정 만들기",
       "browseContent": "콘텐츠 둘러보기"
     }

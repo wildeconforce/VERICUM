@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,7 @@ import { Bookmark, ExternalLink, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 export default function BookmarksPage() {
+  const t = useTranslations();
   const [bookmarks, setBookmarks] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -45,7 +47,7 @@ export default function BookmarksPage() {
     <div>
       <div className="flex items-center gap-3 mb-6">
         <Bookmark className="h-7 w-7 text-primary" />
-        <h1 className="text-3xl font-bold">Bookmarks</h1>
+        <h1 className="text-3xl font-bold">{t("buyer.bookmarks")}</h1>
       </div>
 
       {isLoading ? (
@@ -58,9 +60,9 @@ export default function BookmarksPage() {
         <Card>
           <CardContent className="py-16 text-center">
             <Bookmark className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground mb-4">No bookmarks yet</p>
+            <p className="text-muted-foreground mb-4">{t("common.noResults")}</p>
             <Button asChild>
-              <Link href="/explore">Explore Content</Link>
+              <Link href="/explore">{t("nav.explore")}</Link>
             </Button>
           </CardContent>
         </Card>
