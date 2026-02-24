@@ -26,6 +26,11 @@ export async function GET(
     return NextResponse.json({ error: "Not purchased" }, { status: 403 });
   }
 
+  // Check download expiry
+  if (purchase.download_expires && new Date(purchase.download_expires) < new Date()) {
+    return NextResponse.json({ error: "Download link expired" }, { status: 410 });
+  }
+
   // Check download limit
   if (purchase.download_count >= (purchase.max_downloads || 10)) {
     return NextResponse.json({ error: "Download limit reached" }, { status: 429 });

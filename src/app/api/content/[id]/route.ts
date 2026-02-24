@@ -77,11 +77,26 @@ export async function GET(
     })
   );
 
+  // Check if current user has purchased this content
+  let purchased = false;
+  const { data: { user } } = await supabase.auth.getUser();
+  if (user) {
+    const { data: purchase } = await supabase
+      .from("purchases")
+      .select("id")
+      .eq("buyer_id", user.id)
+      .eq("content_id", id)
+      .eq("payment_status", "completed")
+      .maybeSingle();
+    purchased = !!purchase;
+  }
+
   return NextResponse.json({
     content,
     verification,
     seller,
     related: relatedWithPreviews,
+    purchased,
   });
 }
 

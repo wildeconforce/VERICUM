@@ -23,6 +23,8 @@ interface CheckoutModalProps {
   contentTitle: string;
   basePrice: number;
   currency: string;
+  saleType?: "premium" | "royalty";
+  royaltyRate?: number;
 }
 
 export function CheckoutModal({
@@ -32,11 +34,13 @@ export function CheckoutModal({
   contentTitle,
   basePrice,
   currency,
+  saleType = "premium",
+  royaltyRate = 0,
 }: CheckoutModalProps) {
   const [selectedLicense, setSelectedLicense] = useState("standard");
   const [isLoading, setIsLoading] = useState(false);
 
-  const commission = calculateCommission(basePrice, selectedLicense);
+  const commission = calculateCommission(basePrice, selectedLicense, undefined, saleType, royaltyRate);
 
   const handleCheckout = async () => {
     setIsLoading(true);
@@ -71,7 +75,7 @@ export function CheckoutModal({
         </DialogHeader>
         <div className="space-y-4">
           <div className="space-y-2">
-            {["personal", "standard", "extended"].map((license) => (
+            {["personal", "standard", "extended", "exclusive"].map((license) => (
               <label
                 key={license}
                 className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${
@@ -95,7 +99,7 @@ export function CheckoutModal({
                   </p>
                 </div>
                 <PriceTag
-                  price={basePrice * (license === "personal" ? 1 : license === "standard" ? 2 : 5)}
+                  price={basePrice * (license === "personal" ? 1 : license === "standard" ? 2 : license === "extended" ? 5 : 10)}
                   currency={currency}
                   size="sm"
                 />

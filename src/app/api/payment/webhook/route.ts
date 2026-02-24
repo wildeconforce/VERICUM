@@ -62,7 +62,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ received: true, note: "already processed" });
     }
 
-    // Create purchase record
+    // Create purchase record with 30-day download expiry
+    const downloadExpires = new Date();
+    downloadExpires.setDate(downloadExpires.getDate() + 30);
+
     await adminClient.from("purchases").insert({
       buyer_id: buyerId,
       content_id: contentId,
@@ -76,6 +79,7 @@ export async function POST(request: NextRequest) {
       payment_provider: "stripe",
       payment_id: session.payment_intent,
       payment_status: "completed",
+      download_expires: downloadExpires.toISOString(),
     });
 
     // Update seller earnings and sales count
@@ -83,9 +87,6 @@ export async function POST(request: NextRequest) {
       seller_uuid: content.seller_id,
       earning_amount: sellerAmount,
     });
-
-    // Increment content view/purchase count
-    await adminClient.rpc("increment_view_count", { content_uuid: contentId });
   }
 
   return NextResponse.json({ received: true });

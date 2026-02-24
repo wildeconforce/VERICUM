@@ -17,7 +17,7 @@ export function PriceSelector({
   selectedLicense,
   onSelect,
 }: PriceSelectorProps) {
-  const licenses = ["personal", "standard", "extended"];
+  const licenses = ["personal", "standard", "extended", "exclusive"];
 
   return (
     <div className="space-y-2">
