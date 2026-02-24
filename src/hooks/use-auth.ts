@@ -12,11 +12,17 @@ export function useAuth() {
     const supabase = createClient();
 
     async function getSession() {
-      const {
-        data: { user: authUser },
-      } = await supabase.auth.getUser();
+      try {
+        const {
+          data: { user: authUser },
+          error: authError,
+        } = await supabase.auth.getUser();
 
-      if (authUser) {
+        if (authError || !authUser) {
+          setLoading(false);
+          return;
+        }
+
         setUser({ id: authUser.id, email: authUser.email! });
         const { data: profileData } = await supabase
           .from("profiles")
@@ -24,8 +30,11 @@ export function useAuth() {
           .eq("id", authUser.id)
           .single();
         if (profileData) setProfile(profileData);
+      } catch {
+        // Network error or auth service down — fail gracefully
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     }
 
     getSession();
@@ -79,7 +88,7 @@ export function useAuth() {
     profile,
     isLoading,
     isAuthenticated: !!user,
-    isSeller: !!user,
+    isSeller: profile?.role === "seller" || profile?.role === "admin",
     isAdmin: profile?.role === "admin",
     signOut,
   };

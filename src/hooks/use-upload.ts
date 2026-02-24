@@ -92,11 +92,7 @@ export function useUpload() {
         xhr.send(file);
       });
 
-      // Step 3: Fire-and-forget verification (don't block upload success)
-      fetch(`/api/content/${content_id}/verify`, { method: "POST" }).catch(
-        () => {}
-      );
-
+      // Verification is triggered by the upload page after content record is created
       setState((s) => ({ ...s, progress: 100, isUploading: false, fileKey: file_key }));
       return { fileKey: file_key, contentId: content_id };
     } catch (err) {

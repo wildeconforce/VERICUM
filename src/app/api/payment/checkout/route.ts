@@ -26,6 +26,16 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Content not found" }, { status: 404 });
   }
 
+  // Ensure content is verified before allowing purchase
+  if (content.verification_status !== "verified") {
+    return NextResponse.json({ error: "Content is not yet verified" }, { status: 400 });
+  }
+
+  // Prevent self-purchase
+  if (content.seller_id === user.id) {
+    return NextResponse.json({ error: "Cannot purchase your own content" }, { status: 400 });
+  }
+
   // Check if already purchased
   const { data: existing } = await supabase
     .from("purchases")
@@ -57,7 +67,9 @@ export async function POST(request: NextRequest) {
     contentTitle: content.title,
     amount: commission.totalCharge,
     currency: content.currency,
+    buyerId: user.id,
     buyerEmail: user.email!,
+    licenseType: license_type || content.license_type,
     sellerStripeAccountId: sellerProfile?.stripe_account_id || null,
     commissionAmount: commission.commissionAmount,
     successUrl: `${appUrl}/content/${content_id}?purchased=true`,

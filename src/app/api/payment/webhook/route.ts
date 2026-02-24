@@ -78,7 +78,13 @@ export async function POST(request: NextRequest) {
       payment_status: "completed",
     });
 
-    // Increment download count (not overwrite)
+    // Update seller earnings and sales count
+    await adminClient.rpc("increment_seller_earnings" as any, {
+      seller_uuid: content.seller_id,
+      earning_amount: sellerAmount,
+    });
+
+    // Increment content view/purchase count
     await adminClient.rpc("increment_view_count", { content_uuid: contentId });
   }
 

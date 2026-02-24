@@ -52,10 +52,10 @@ export function HeroSection() {
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl mx-auto leading-[1.1]">
-            The Marketplace for{" "}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-5xl mx-auto leading-[1.1]">
+            Where{" "}
             <span className="text-primary relative">
-              Verified
+              Real
               <svg
                 className="absolute -bottom-2 left-0 w-full"
                 viewBox="0 0 200 12"
@@ -74,15 +74,14 @@ export function HeroSection() {
                 />
               </svg>
             </span>{" "}
-            Digital Content
+            Content Finds Its Value
           </h1>
         </FadeIn>
 
         <FadeIn delay={0.25}>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mt-6">
-            Buy and sell authentic photos with guaranteed provenance.
-            Every piece of content is verified using C2PA standards for
-            complete transparency.
+            The verified content marketplace for the post-AI era.
+            Every upload is cryptographically proven authentic through C2PA — so buyers know it&apos;s real, and creators get paid for truth.
           </p>
         </FadeIn>
 

@@ -15,7 +15,9 @@ export async function createCheckoutSession({
   contentTitle,
   amount,
   currency,
+  buyerId,
   buyerEmail,
+  licenseType,
   sellerStripeAccountId,
   commissionAmount,
   successUrl,
@@ -25,7 +27,9 @@ export async function createCheckoutSession({
   contentTitle: string;
   amount: number;
   currency: string;
+  buyerId: string;
   buyerEmail: string;
+  licenseType: string;
   sellerStripeAccountId: string | null;
   commissionAmount: number;
   successUrl: string;
@@ -52,9 +56,11 @@ export async function createCheckoutSession({
     success_url: successUrl,
     cancel_url: cancelUrl,
     customer_email: buyerEmail,
+    client_reference_id: buyerId,
     metadata: {
       content_id: contentId,
       commission_amount: commissionAmount.toString(),
+      license_type: licenseType,
     },
   };
   if (sellerStripeAccountId) {

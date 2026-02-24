@@ -32,6 +32,34 @@ export async function PATCH(request: NextRequest) {
   }
 
   const body = await request.json();
+
+  // Handle seller role upgrade
+  if (body.upgrade_to_seller === true) {
+    const { data: currentProfile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", user.id)
+      .single();
+
+    if (currentProfile?.role === "seller" || currentProfile?.role === "admin") {
+      return NextResponse.json({ error: "Already a seller" }, { status: 400 });
+    }
+
+    const { data: profile, error } = await supabase
+      .from("profiles")
+      .update({ role: "seller" } as never)
+      .eq("id", user.id)
+      .select()
+      .single();
+
+    if (error) {
+      console.error("Seller upgrade error:", error);
+      return NextResponse.json({ error: "Failed to upgrade to seller" }, { status: 500 });
+    }
+
+    return NextResponse.json({ profile });
+  }
+
   const allowedFields = ["display_name", "bio", "avatar_url", "language", "country"];
   const updates: Record<string, unknown> = {};
   for (const field of allowedFields) {

@@ -30,8 +30,8 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Invalid category filter" }, { status: 400 });
   }
 
-  // Sanitize: strip SQL/ILIKE special characters
-  const sanitizedQ = q.replace(/[%_\\'";\-\-\/\*]/g, "").trim();
+  // Sanitize: strip SQL/ILIKE special characters (preserve hyphens and underscores for search terms)
+  const sanitizedQ = q.replace(/[%\\'";\/\*]/g, "").trim();
   if (sanitizedQ.length === 0) {
     return NextResponse.json({ results: [], total: 0, suggestions: [] });
   }
@@ -73,9 +73,21 @@ export async function GET(request: NextRequest) {
     });
   }
 
+  // RPC returns paginated results — run a separate count query for total
+  let total = data?.length || 0;
+  if (total === limit) {
+    // Might have more results; get exact count via fallback
+    const { count } = await supabase
+      .from("contents")
+      .select("id", { count: "exact", head: true })
+      .eq("status", "active")
+      .or(`title.ilike.%${sanitizedQ}%,description.ilike.%${sanitizedQ}%`);
+    if (count !== null) total = count;
+  }
+
   return NextResponse.json({
     results: data || [],
-    total: data?.length || 0,
+    total,
     suggestions: [],
   });
 }

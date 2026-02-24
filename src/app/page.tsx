@@ -1,18 +1,22 @@
 import Link from "next/link";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { HeroSection } from "@/components/landing/hero-section";
 import { Button } from "@/components/ui/button";
 import {
   ShieldCheck,
   Upload,
   CreditCard,
-  Camera,
   Fingerprint,
+  Camera,
   BarChart3,
   ArrowRight,
   CheckCircle,
   Crown,
   Percent,
+  Scan,
+  Eye,
+  Lock,
 } from "lucide-react";
 
 export default function LandingPage() {
@@ -20,33 +24,51 @@ export default function LandingPage() {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
-        {/* Hero */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background py-24 lg:py-32">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
-          <div className="container mx-auto px-4 text-center relative">
-            <div className="inline-flex items-center gap-2 rounded-full border bg-background/80 px-4 py-1.5 text-sm mb-8 backdrop-blur">
-              <ShieldCheck className="h-4 w-4 text-primary" />
-              <span>Powered by C2PA authenticity technology</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl mx-auto leading-[1.1]">
-              The Marketplace for{" "}
-              <span className="text-primary">Verified</span> Digital Content
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mt-6">
-              Buy and sell authentic photos with guaranteed provenance.
-              Every piece of content is verified using C2PA standards for
-              complete transparency.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-              <Button size="lg" asChild className="text-base px-8">
-                <Link href="/explore">
-                  Explore Content
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="text-base px-8">
-                <Link href="/register">Start Selling</Link>
-              </Button>
+        <HeroSection />
+
+        {/* Manifesto — What is Vericum */}
+        <section className="py-28 lg:py-36 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/3 via-transparent to-transparent" />
+          <div className="container mx-auto px-4 relative">
+            <div className="max-w-3xl mx-auto text-center">
+              <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-6">
+                Our Belief
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.2] tracking-tight">
+                In the age of infinite fakes,{" "}
+                <span className="text-primary">truth becomes the ultimate luxury.</span>
+              </h2>
+              <div className="mt-10 space-y-5 text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                <p>
+                  AI can now generate anything. Photos, videos, documents — all indistinguishable from reality.
+                  But that makes the <em className="text-foreground font-medium not-italic">real thing</em> more valuable than ever.
+                </p>
+                <p>
+                  Vericum is where authenticity is proven, not just claimed.
+                  We use C2PA standards — the same technology backed by Adobe, Google, Microsoft, and the BBC —
+                  to cryptographically verify every piece of content on our platform.
+                </p>
+              </div>
+              <div className="mt-12 grid grid-cols-3 gap-8 max-w-lg mx-auto">
+                <div className="text-center">
+                  <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/10 mx-auto mb-3">
+                    <Scan className="h-5 w-5 text-primary" />
+                  </div>
+                  <p className="text-xs font-medium text-muted-foreground">Verified Origin</p>
+                </div>
+                <div className="text-center">
+                  <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/10 mx-auto mb-3">
+                    <Eye className="h-5 w-5 text-primary" />
+                  </div>
+                  <p className="text-xs font-medium text-muted-foreground">Full Transparency</p>
+                </div>
+                <div className="text-center">
+                  <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/10 mx-auto mb-3">
+                    <Lock className="h-5 w-5 text-primary" />
+                  </div>
+                  <p className="text-xs font-medium text-muted-foreground">Tamper-Proof</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -55,8 +77,11 @@ export default function LandingPage() {
         <section className="py-24 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
+              <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-3">
+                Why Vericum
+              </p>
               <h2 className="text-3xl md:text-4xl font-bold">
-                Why Vericum?
+                Built for the Post-AI Era
               </h2>
               <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
                 The first content marketplace that guarantees authenticity
@@ -81,7 +106,7 @@ export default function LandingPage() {
                   icon: BarChart3,
                   title: "Fair Marketplace",
                   description:
-                    "Sellers keep 85% of every sale. Transparent 15% commission structure with instant payouts via Stripe Connect.",
+                    "Sellers keep 85% of every sale. Transparent commission structure with instant payouts via Stripe Connect.",
                 },
               ].map((feature) => (
                 <div
@@ -103,10 +128,12 @@ export default function LandingPage() {
         <section className="py-24">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold">How It Works</h2>
-              <p className="text-muted-foreground mt-3">
-                Three simple steps to verified content
+              <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-3">
+                How It Works
               </p>
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Three Steps to Verified Content
+              </h2>
             </div>
             <div className="grid md:grid-cols-3 gap-12 max-w-4xl mx-auto">
               {[
@@ -122,18 +149,18 @@ export default function LandingPage() {
                   icon: ShieldCheck,
                   title: "Verify",
                   description:
-                    "Our engine automatically checks C2PA manifests, EXIF metadata, and runs AI detection to score authenticity.",
+                    "Our engine checks C2PA manifests, EXIF metadata, and runs AI detection to score authenticity — automatically.",
                 },
                 {
                   step: "03",
                   icon: CreditCard,
                   title: "Sell",
                   description:
-                    "Set your price and license type. Buyers can purchase with confidence knowing every piece is verified.",
+                    "Set your price and license type. Buyers purchase with confidence knowing every piece is verified.",
                 },
               ].map((step) => (
                 <div key={step.step} className="text-center">
-                  <div className="text-5xl font-bold text-primary/20 mb-4">
+                  <div className="text-5xl font-bold text-primary/15 mb-4 font-sans">
                     {step.step}
                   </div>
                   <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
@@ -151,8 +178,11 @@ export default function LandingPage() {
         <section className="py-24 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
+              <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-3">
+                Sale Options
+              </p>
               <h2 className="text-3xl md:text-4xl font-bold">
-                Flexible Sale Options
+                Flexible Ways to Sell
               </h2>
               <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
                 Choose how you want to sell your content. Two sale types to fit your strategy.
@@ -213,6 +243,9 @@ export default function LandingPage() {
         <section className="py-24">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
+              <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-3">
+                Pricing
+              </p>
               <h2 className="text-3xl md:text-4xl font-bold">
                 Simple, Transparent Pricing
               </h2>
@@ -228,7 +261,7 @@ export default function LandingPage() {
                 </div>
                 <div className="flex items-center justify-between py-3 border-b">
                   <span className="text-muted-foreground">
-                    Platform commission (seller side)
+                    Platform commission
                   </span>
                   <span className="text-lg font-semibold">15%</span>
                 </div>
@@ -262,16 +295,21 @@ export default function LandingPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-24 bg-gradient-to-t from-primary/5 to-background">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold max-w-2xl mx-auto">
-              Ready to trade in verified content?
-            </h2>
-            <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-              Join Vericum today and be part of the movement toward
-              authentic, verified digital content.
+        <section className="py-28 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-primary/2 to-transparent" />
+          <div className="container mx-auto px-4 text-center relative">
+            <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-4">
+              Join the Movement
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold max-w-2xl mx-auto leading-tight">
+              The world needs proof.{" "}
+              <span className="text-primary">Be the proof.</span>
+            </h2>
+            <p className="text-muted-foreground mt-5 max-w-xl mx-auto text-lg">
+              Whether you create authentic content or need verified originals,
+              Vericum is where truth is traded.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
               <Button size="lg" asChild className="text-base px-8">
                 <Link href="/register">
                   Create Free Account

@@ -59,10 +59,24 @@ const OAUTH_PROVIDERS: { id: OAuthProvider; name: string; icon: React.ReactNode 
   },
 ];
 
+const ALLOWED_REDIRECT_PREFIXES = [
+  "/dashboard", "/marketplace", "/my-content", "/purchases",
+  "/earnings", "/settings", "/upload", "/content/",
+  "/explore", "/search", "/bookmarks", "/downloads",
+];
+
+function sanitizeRedirect(redirect: string | null): string {
+  if (!redirect) return "/dashboard";
+  if (!redirect.startsWith("/") || redirect.startsWith("//")) return "/dashboard";
+  if (redirect.includes("\\")) return "/dashboard";
+  const isAllowed = ALLOWED_REDIRECT_PREFIXES.some((prefix) => redirect.startsWith(prefix));
+  return isAllowed ? redirect : "/dashboard";
+}
+
 function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirect = searchParams.get("redirect") || "/dashboard";
+  const redirect = sanitizeRedirect(searchParams.get("redirect"));
   const [loadingProvider, setLoadingProvider] = useState<string | null>(null);
 
   const {
