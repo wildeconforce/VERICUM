@@ -4,7 +4,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { FILE_LIMITS, CONTENT_TYPES } from "@/lib/constants";
 
 // Build a flat set of all allowed extensions
-const ALLOWED_EXTENSIONS = new Set(
+const ALLOWED_EXTENSIONS: Set<string> = new Set(
   Object.values(FILE_LIMITS).flatMap((v) => [...v.formats])
 );
 
