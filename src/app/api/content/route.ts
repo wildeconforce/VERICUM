@@ -126,6 +126,15 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid category" }, { status: 400 });
   }
 
+  // Validate sale_type
+  const saleType = body.sale_type === "royalty" ? "royalty" : "premium";
+  let royaltyRate = 0;
+  if (saleType === "royalty") {
+    royaltyRate = typeof body.royalty_rate === "number" && body.royalty_rate >= 0 && body.royalty_rate <= 0.25
+      ? body.royalty_rate
+      : 0.05; // default 5% royalty
+  }
+
   const slug = slugify(body.title) + "-" + Date.now().toString(36);
 
   const { data, error } = await supabase
@@ -142,8 +151,10 @@ export async function POST(request: NextRequest) {
       license_type: body.license_type || "standard",
       tags: body.tags || [],
       category: body.category,
+      sale_type: saleType,
+      royalty_rate: royaltyRate,
       status: "draft",
-    })
+    } as any)
     .select()
     .single();
 

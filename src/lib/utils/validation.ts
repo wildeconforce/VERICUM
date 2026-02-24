@@ -26,6 +26,8 @@ export const contentUploadSchema = z.object({
   license_type: z.enum(LICENSE_TYPES).default("standard"),
   tags: z.array(z.string().max(50)).max(20).default([]),
   category: z.enum(CATEGORIES).optional(),
+  sale_type: z.enum(["premium", "royalty"]).default("premium"),
+  royalty_rate: z.number().min(0).max(0.25).default(0),
 });
 
 export const profileUpdateSchema = z.object({

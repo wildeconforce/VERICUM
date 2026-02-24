@@ -28,6 +28,7 @@ export default function UploadPage() {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(contentUploadSchema),
@@ -36,8 +37,12 @@ export default function UploadPage() {
       currency: "USD",
       license_type: "standard",
       tags: [],
+      sale_type: "premium" as const,
+      royalty_rate: 0,
     },
   });
+
+  const saleType = watch("sale_type");
 
   const addTag = () => {
     const tag = tagInput.trim().toLowerCase();
@@ -178,6 +183,49 @@ export default function UploadPage() {
                   </Select>
                 </div>
               </div>
+
+              <div className="space-y-2">
+                <Label>Sale Type</Label>
+                <Select
+                  defaultValue="premium"
+                  onValueChange={(v) => {
+                    setValue("sale_type", v as "premium" | "royalty");
+                    if (v === "premium") setValue("royalty_rate", 0);
+                    else setValue("royalty_rate", 0.05);
+                  }}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select sale type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="premium">Premium Sale (full price)</SelectItem>
+                    <SelectItem value="royalty">Royalty Sale (40% discount, ongoing royalty)</SelectItem>
+                  </SelectContent>
+                </Select>
+                <p className="text-xs text-muted-foreground">
+                  {saleType === "premium"
+                    ? "Buyers pay full price for complete usage rights."
+                    : "Buyers get a 40% discount but pay royalties on secondary creations."}
+                </p>
+              </div>
+
+              {saleType === "royalty" && (
+                <div className="space-y-2">
+                  <Label htmlFor="royalty_rate">Royalty Rate (%)</Label>
+                  <Input
+                    id="royalty_rate"
+                    type="number"
+                    step="1"
+                    min="5"
+                    max="25"
+                    defaultValue="5"
+                    onChange={(e) => setValue("royalty_rate", parseFloat(e.target.value) / 100 || 0.05)}
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Percentage you earn on secondary creations (5-25%)
+                  </p>
+                </div>
+              )}
 
               <div className="space-y-2">
                 <Label>Tags</Label>

@@ -161,6 +161,21 @@ function ContentDetailContent() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      {/* Owner status banner for non-active content */}
+      {isOwner && content.status !== "active" && (
+        <div className="mb-6 p-4 rounded-lg border border-yellow-500/30 bg-yellow-500/5">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="h-5 w-5 text-yellow-600" />
+            <span className="font-medium text-yellow-700">
+              {content.verification_status === "pending" && "Verification pending — this content is not yet visible to buyers."}
+              {content.verification_status === "rejected" && "Verification failed — this content cannot be sold."}
+              {content.verification_status === "manual_review" && "Under manual review — we'll notify you when it's approved."}
+              {!content.verification_status && "Draft — this content is not yet published."}
+            </span>
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main content */}
         <div className="lg:col-span-2 space-y-6">
@@ -370,7 +385,7 @@ function ContentDetailContent() {
                 <Separator />
                 <div className="space-y-2">
                   <p className="text-sm font-medium">License Type</p>
-                  {["personal", "standard", "extended"].map((license) => (
+                  {["personal", "standard", "extended", "exclusive"].map((license) => (
                     <label
                       key={license}
                       className={`flex items-center gap-3 p-2 rounded-lg border cursor-pointer transition-colors ${

@@ -14,10 +14,10 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
   const { content_id, license_type } = body;
 
-  // Get content and seller info
+  // Get content info
   const { data: content, error: contentError } = await supabase
     .from("contents")
-    .select("*, profiles!contents_seller_id_fkey(stripe_account_id, commission_rate)")
+    .select("*")
     .eq("id", content_id)
     .eq("status", "active")
     .single();
@@ -36,6 +36,20 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Cannot purchase your own content" }, { status: 400 });
   }
 
+  // Get seller profile separately to avoid FK constraint name dependency
+  const { data: sellerProfile } = await supabase
+    .from("profiles")
+    .select("stripe_account_id, commission_rate")
+    .eq("id", content.seller_id)
+    .single();
+
+  if (!sellerProfile?.stripe_account_id) {
+    return NextResponse.json(
+      { error: "This seller has not set up payments yet. Please try again later." },
+      { status: 400 }
+    );
+  }
+
   // Check if already purchased
   const { data: existing } = await supabase
     .from("purchases")
@@ -49,7 +63,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Already purchased" }, { status: 400 });
   }
 
-  const sellerProfile = content.profiles as any;
   const saleType = (content as any).sale_type || "premium";
   const royaltyRate = (content as any).royalty_rate || 0;
 

@@ -26,6 +26,12 @@ export async function GET(
     return NextResponse.json({ error: "Content not found" }, { status: 404 });
   }
 
+  // Non-active content should only be visible to the owner
+  const { data: { user: currentUser } } = await supabase.auth.getUser();
+  if (content.status !== "active" && content.seller_id !== currentUser?.id) {
+    return NextResponse.json({ error: "Content not found" }, { status: 404 });
+  }
+
   // Generate signed URL from original_url if preview_url is missing
   if (!content.preview_url && content.original_url) {
     const { data: signedUrlData } = await supabase.storage
@@ -79,12 +85,11 @@ export async function GET(
 
   // Check if current user has purchased this content
   let purchased = false;
-  const { data: { user } } = await supabase.auth.getUser();
-  if (user) {
+  if (currentUser) {
     const { data: purchase } = await supabase
       .from("purchases")
       .select("id")
-      .eq("buyer_id", user.id)
+      .eq("buyer_id", currentUser.id)
       .eq("content_id", id)
       .eq("payment_status", "completed")
       .maybeSingle();
