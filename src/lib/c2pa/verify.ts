@@ -28,29 +28,360 @@ async function getC2paReader() {
   }
 }
 
-function scoreAIDetection(exif: ReturnType<typeof extractExifData>): {
+// --- AI Detection Sub-Analyzers ---
+
+const AI_SOFTWARE_KEYWORDS = [
+  "stable diffusion",
+  "dall-e",
+  "dall·e",
+  "midjourney",
+  "comfyui",
+  "automatic1111",
+  "a1111",
+  "novelai",
+  "adobe firefly ai",
+  "invoke ai",
+  "invokeai",
+  "dreamstudio",
+  "stability ai",
+  "stablediffusion",
+  "nai diffusion",
+  "artbreeder",
+  "craiyon",
+  "deepai",
+  "nightcafe",
+  "leonardo.ai",
+  "playground ai",
+  "runwayml",
+  "runway",
+  "flux",
+] as const;
+
+const AI_PROMPT_KEYWORDS = [
+  "parameters",
+  "prompt",
+  "negative prompt",
+  "negative_prompt",
+  "sampler",
+  "cfg scale",
+  "cfg_scale",
+  "seed:",
+  "steps:",
+  "denoising",
+  "lora",
+  "checkpoint",
+  "model hash",
+  "model_hash",
+] as const;
+
+/** Common AI generation canvas sizes (width or height) */
+const AI_GENERATION_SIZES: number[] = [
+  256, 384, 512, 576, 640, 768, 832, 896, 960, 1024, 1080, 1152, 1280, 1344, 1536, 2048,
+];
+
+/**
+ * Check if the EXIF software field contains a known AI generation tool.
+ */
+function checkSoftwareField(exif: ReturnType<typeof extractExifData>): {
+  flagged: boolean;
+  software: string | null;
+} {
+  if (!exif?.software) return { flagged: false, software: null };
+
+  const sw = exif.software.toLowerCase();
+  for (const keyword of AI_SOFTWARE_KEYWORDS) {
+    if (sw.includes(keyword)) {
+      return { flagged: true, software: exif.software };
+    }
+  }
+  return { flagged: false, software: exif.software };
+}
+
+/**
+ * Check if image dimensions match common AI generation sizes.
+ * AI tools tend to generate images at exact multiples of 64,
+ * and many use square or specific aspect-ratio canvases.
+ */
+function checkDimensions(exif: ReturnType<typeof extractExifData>): {
+  flagged: boolean;
+  width: number;
+  height: number;
+} {
+  const w = exif?.imageWidth || 0;
+  const h = exif?.imageHeight || 0;
+  if (w === 0 || h === 0) return { flagged: false, width: w, height: h };
+
+  // Both dimensions are exact multiples of 64 (very common in diffusion models)
+  const bothMultipleOf64 = w % 64 === 0 && h % 64 === 0;
+
+  // Check if both dimensions are in the known AI generation sizes list
+  const wInList = AI_GENERATION_SIZES.includes(w as typeof AI_GENERATION_SIZES[number]);
+  const hInList = AI_GENERATION_SIZES.includes(h as typeof AI_GENERATION_SIZES[number]);
+
+  // Square images at AI sizes are highly suspicious
+  const isSquareAI = w === h && wInList;
+
+  const flagged = isSquareAI || (bothMultipleOf64 && wInList && hInList);
+
+  return { flagged, width: w, height: h };
+}
+
+/**
+ * Check for AI-related keywords in raw file bytes (EXIF comments, XMP, IPTC).
+ * Stable Diffusion and other tools often embed prompts directly.
+ */
+function checkPromptInRawBytes(fileBuffer: Buffer): boolean {
+  try {
+    // Only scan the first 64KB where metadata lives
+    const scanSize = Math.min(fileBuffer.length, 65536);
+    const headerStr = fileBuffer.subarray(0, scanSize).toString("latin1").toLowerCase();
+
+    for (const keyword of AI_PROMPT_KEYWORDS) {
+      if (headerStr.includes(keyword)) return true;
+    }
+    // Also check for common AI software names in raw bytes (XMP, IPTC, etc.)
+    for (const keyword of AI_SOFTWARE_KEYWORDS) {
+      if (headerStr.includes(keyword)) return true;
+    }
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Lightweight Shannon entropy calculation on the first N bytes.
+ * AI-generated images often have subtly different entropy characteristics
+ * compared to real camera captures (typically slightly higher uniformity
+ * in the compressed stream).
+ *
+ * Returns entropy in bits (0-8 for byte data).
+ */
+function calculateEntropy(fileBuffer: Buffer): { flagged: boolean; entropy: number } {
+  try {
+    // Sample the first 8KB of pixel data — skip the first 2 bytes (JPEG SOI marker)
+    // and look past typical header area
+    const offset = Math.min(512, fileBuffer.length);
+    const sampleSize = Math.min(8192, fileBuffer.length - offset);
+    if (sampleSize < 256) return { flagged: false, entropy: 0 };
+
+    const sample = fileBuffer.subarray(offset, offset + sampleSize);
+
+    // Build frequency table
+    const freq = new Uint32Array(256);
+    for (let i = 0; i < sample.length; i++) {
+      freq[sample[i]]++;
+    }
+
+    // Shannon entropy
+    let entropy = 0;
+    const len = sample.length;
+    for (let i = 0; i < 256; i++) {
+      if (freq[i] === 0) continue;
+      const p = freq[i] / len;
+      entropy -= p * Math.log2(p);
+    }
+
+    // Heuristic: very high entropy (>7.9) is normal for compressed images.
+    // Unusually low entropy (<6.5) in the compressed stream, or extremely
+    // uniform distribution (>7.98) can indicate synthetic generation.
+    // These are soft signals, not definitive.
+    const flagged = entropy < 6.5 || entropy > 7.98;
+
+    return { flagged, entropy: Math.round(entropy * 1000) / 1000 };
+  } catch {
+    return { flagged: false, entropy: 0 };
+  }
+}
+
+/**
+ * Check JPEG quantization table patterns.
+ * Real cameras use manufacturer-specific quantization tables.
+ * AI-generated JPEGs (or those re-encoded by AI tools) often use
+ * standard/default libjpeg tables or have unusually uniform tables.
+ */
+function checkJpegQuantizationTables(fileBuffer: Buffer): {
+  flagged: boolean;
+  uniformity: number;
+} {
+  try {
+    // JPEG files start with FF D8
+    if (fileBuffer.length < 4 || fileBuffer[0] !== 0xff || fileBuffer[1] !== 0xd8) {
+      return { flagged: false, uniformity: 0 };
+    }
+
+    // Scan for DQT marker (FF DB) — Define Quantization Table
+    const tables: number[][] = [];
+    let pos = 2;
+    const maxScan = Math.min(fileBuffer.length, 65536);
+
+    while (pos < maxScan - 1) {
+      if (fileBuffer[pos] === 0xff && fileBuffer[pos + 1] === 0xdb) {
+        // Found DQT marker
+        const length = fileBuffer.readUInt16BE(pos + 2);
+        let tablePos = pos + 4;
+        const tableEnd = pos + 2 + length;
+
+        while (tablePos < tableEnd && tablePos + 65 <= fileBuffer.length) {
+          const precision = (fileBuffer[tablePos] >> 4) & 0x0f;
+          // const tableId = fileBuffer[tablePos] & 0x0f;
+          tablePos++;
+
+          const tableSize = precision === 0 ? 64 : 128;
+          if (tablePos + tableSize > fileBuffer.length) break;
+
+          const values: number[] = [];
+          for (let i = 0; i < 64; i++) {
+            if (precision === 0) {
+              values.push(fileBuffer[tablePos + i]);
+            } else {
+              values.push(fileBuffer.readUInt16BE(tablePos + i * 2));
+            }
+          }
+          tables.push(values);
+          tablePos += tableSize;
+        }
+
+        pos = tableEnd;
+        continue;
+      }
+
+      // Skip to next marker
+      if (fileBuffer[pos] === 0xff && fileBuffer[pos + 1] !== 0x00) {
+        if (pos + 3 < fileBuffer.length) {
+          const segLen = fileBuffer.readUInt16BE(pos + 2);
+          pos += 2 + segLen;
+        } else {
+          pos++;
+        }
+      } else {
+        pos++;
+      }
+    }
+
+    if (tables.length === 0) return { flagged: false, uniformity: 0 };
+
+    // Analyze table uniformity: compute coefficient of variation for each table
+    // Very uniform tables (low CV) suggest default/synthetic encoding
+    let totalUniformity = 0;
+    for (const table of tables) {
+      const mean = table.reduce((a, b) => a + b, 0) / table.length;
+      if (mean === 0) continue;
+      const variance = table.reduce((a, b) => a + (b - mean) ** 2, 0) / table.length;
+      const cv = Math.sqrt(variance) / mean; // coefficient of variation
+      // Lower CV = more uniform table
+      // Real cameras typically have CV > 0.8 due to perceptual weighting
+      // Default libjpeg tables have CV ~ 0.5-0.7
+      totalUniformity += cv;
+    }
+
+    const avgUniformity = totalUniformity / tables.length;
+
+    // Flag if tables are suspiciously uniform (low variation)
+    // This is a soft signal — many legitimate images can have low CV too
+    const flagged = avgUniformity < 0.5;
+
+    return { flagged, uniformity: Math.round(avgUniformity * 1000) / 1000 };
+  } catch {
+    return { flagged: false, uniformity: 0 };
+  }
+}
+
+// --- Main Scoring Function ---
+
+function scoreAIDetection(
+  exif: ReturnType<typeof extractExifData>,
+  fileBuffer: Buffer
+): {
   isAiGenerated: boolean;
   confidence: number;
   detector: string;
   score: number;
+  details: {
+    exifScore: number;
+    softwareCheck: { flagged: boolean; software: string | null };
+    dimensionCheck: { flagged: boolean; width: number; height: number };
+    entropyCheck: { flagged: boolean; entropy: number };
+    quantizationCheck: { flagged: boolean; uniformity: number };
+    promptInMetadata: boolean;
+  };
 } {
-  // MVP heuristic-based AI detection
-  // Strong EXIF data with device info suggests real camera capture
-  let humanScore = 0;
-
+  // ---- 1. Original EXIF-based human score (backward-compatible weights) ----
+  let exifScore = 0;
   if (exif) {
-    if (exif.make && exif.model) humanScore += 0.3;
-    if (exif.exposureTime && exif.fNumber && exif.iso) humanScore += 0.25;
-    if (exif.gpsLatitude && exif.gpsLongitude) humanScore += 0.2;
-    if (exif.dateTime) humanScore += 0.1;
-    if (exif.focalLength) humanScore += 0.15;
+    if (exif.make && exif.model) exifScore += 0.3;
+    if (exif.exposureTime && exif.fNumber && exif.iso) exifScore += 0.25;
+    if (exif.gpsLatitude && exif.gpsLongitude) exifScore += 0.2;
+    if (exif.dateTime) exifScore += 0.1;
+    if (exif.focalLength) exifScore += 0.15;
   }
+  exifScore = Math.min(exifScore, 1);
+
+  // ---- 2. Software field check ----
+  const softwareCheck = checkSoftwareField(exif);
+
+  // ---- 3. Dimension check ----
+  const dimensionCheck = checkDimensions(exif);
+
+  // ---- 4. Prompt / AI keyword check in raw metadata ----
+  const promptInMetadata = checkPromptInRawBytes(fileBuffer);
+
+  // ---- 5. Entropy analysis ----
+  const entropyCheck = calculateEntropy(fileBuffer);
+
+  // ---- 6. JPEG quantization table analysis ----
+  const quantizationCheck = checkJpegQuantizationTables(fileBuffer);
+
+  // ---- Combine signals into final human score ----
+  // Start with the EXIF-based score as the base (weight: 0.45)
+  // Then apply penalties for AI-indicative signals
+  // and minor bonuses for non-flagged checks
+
+  // Weighted components:
+  //   EXIF score:          45% of final (backward-compatible core)
+  //   Software check:      15%
+  //   Dimension check:     10%
+  //   Prompt metadata:     15%
+  //   Entropy:              5%
+  //   Quantization:        10%
+
+  const softwareScore = softwareCheck.flagged ? 0 : 1;
+  const dimensionScore = dimensionCheck.flagged ? 0.2 : 1; // Soft penalty — many legit images are 1024x1024
+  const promptScore = promptInMetadata ? 0 : 1;
+  const entropyScore = entropyCheck.flagged ? 0.3 : 1;
+  const quantizationScore = quantizationCheck.flagged ? 0.3 : 1;
+
+  let humanScore =
+    exifScore * 0.45 +
+    softwareScore * 0.15 +
+    dimensionScore * 0.10 +
+    promptScore * 0.15 +
+    entropyScore * 0.05 +
+    quantizationScore * 0.10;
+
+  // Hard override: if software is flagged or prompt found, cap the human score
+  if (softwareCheck.flagged || promptInMetadata) {
+    humanScore = Math.min(humanScore, 0.2);
+  }
+
+  humanScore = Math.max(0, Math.min(humanScore, 1));
+
+  // Confidence: how far from the ambiguous midpoint (0.5)
+  const confidence = Math.abs(humanScore - 0.5) * 2;
 
   return {
     isAiGenerated: humanScore < 0.3,
-    confidence: Math.abs(humanScore - 0.5) * 2,
-    detector: "heuristic-exif-v1",
-    score: Math.min(humanScore, 1), // Higher = more likely human
+    confidence,
+    detector: "heuristic-multi-v2",
+    score: humanScore,
+    details: {
+      exifScore,
+      softwareCheck,
+      dimensionCheck,
+      entropyCheck,
+      quantizationCheck,
+      promptInMetadata,
+    },
   };
 }
 
@@ -239,8 +570,8 @@ export async function verifyContent(
     }
   }
 
-  // Step 4: AI detection (heuristic)
-  const aiDetection = scoreAIDetection(exif);
+  // Step 4: AI detection (multi-signal heuristic)
+  const aiDetection = scoreAIDetection(exif, input.fileBuffer);
 
   // Step 5: Duplicate check
   const uniqueness = await checkDuplicateHash(hashes.sha256, supabaseAdmin);

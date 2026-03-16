@@ -24,6 +24,14 @@ export interface VerificationResult {
     confidence: number;
     detector: string;
     score: number;
+    details?: {
+      exifScore: number;
+      softwareCheck: { flagged: boolean; software: string | null };
+      dimensionCheck: { flagged: boolean; width: number; height: number };
+      entropyCheck: { flagged: boolean; entropy: number };
+      quantizationCheck?: { flagged: boolean; uniformity: number };
+      promptInMetadata?: boolean;
+    };
   };
 
   uniqueness: {
