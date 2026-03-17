@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { createClient } from "@/lib/supabase/client";
 import { Loader2 } from "lucide-react";
 
@@ -22,6 +23,7 @@ function CallbackContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = sanitizeRedirect(searchParams.get("redirect"));
+  const t = useTranslations("auth");
 
   useEffect(() => {
     const supabase = createClient();
@@ -54,7 +56,7 @@ function CallbackContent() {
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
         <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
-        <p className="mt-4 text-muted-foreground">Completing sign in...</p>
+        <p className="mt-4 text-muted-foreground">{t("completingSignIn")}</p>
       </div>
     </div>
   );

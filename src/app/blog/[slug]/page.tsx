@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Badge } from "@/components/ui/badge";
@@ -167,6 +168,7 @@ export default async function BlogPostPage({
 }) {
   const { slug } = await params;
   const post = posts[slug];
+  const t = await getTranslations("blog");
 
   if (!post) {
     notFound();
@@ -180,7 +182,7 @@ export default async function BlogPostPage({
           <Button variant="ghost" size="sm" asChild className="mb-8">
             <Link href="/blog">
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Blog
+              {t("backToBlog")}
             </Link>
           </Button>
           <div className="flex items-center gap-3 mb-4">

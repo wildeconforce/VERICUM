@@ -1,6 +1,9 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { ShieldCheck, Clock, ShieldX, ShieldQuestion } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { useTranslations } from "next-intl";
 
 interface VerificationBadgeProps {
   status: "verified" | "pending" | "rejected" | "unverifiable";
@@ -10,22 +13,22 @@ interface VerificationBadgeProps {
 
 const config = {
   verified: {
-    label: "Verified",
+    labelKey: "verified" as const,
     icon: ShieldCheck,
     className: "bg-emerald/10 text-emerald border-emerald/20 hover:bg-emerald/20",
   },
   pending: {
-    label: "Pending",
+    labelKey: "pending" as const,
     icon: Clock,
     className: "bg-amber/10 text-amber border-amber/20 hover:bg-amber/20",
   },
   rejected: {
-    label: "Rejected",
+    labelKey: "rejected" as const,
     icon: ShieldX,
     className: "bg-coral/10 text-coral border-coral/20 hover:bg-coral/20",
   },
   unverifiable: {
-    label: "Unverifiable",
+    labelKey: "unverifiable" as const,
     icon: ShieldQuestion,
     className: "bg-muted text-muted-foreground border-muted hover:bg-muted/80",
   },
@@ -42,13 +45,14 @@ export function VerificationBadge({
   size = "md",
   showLabel = true,
 }: VerificationBadgeProps) {
-  const { label, icon: Icon, className } = config[status];
+  const t = useTranslations("verification");
+  const { labelKey, icon: Icon, className } = config[status];
   const s = sizes[size];
 
   return (
     <Badge variant="outline" className={cn(className, s.padding, "gap-1 font-medium")}>
       <Icon className={s.icon} />
-      {showLabel && <span className={s.text}>{label}</span>}
+      {showLabel && <span className={s.text}>{t(labelKey)}</span>}
     </Badge>
   );
 }

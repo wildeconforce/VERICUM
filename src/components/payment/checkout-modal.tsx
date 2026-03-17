@@ -15,6 +15,7 @@ import { calculateCommission } from "@/lib/payment/commission";
 import { LICENSE_LABELS, LICENSE_DESCRIPTIONS } from "@/lib/constants";
 import { Loader2, CreditCard } from "lucide-react";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface CheckoutModalProps {
   open: boolean;
@@ -33,6 +34,7 @@ export function CheckoutModal({
   basePrice,
   currency,
 }: CheckoutModalProps) {
+  const t = useTranslations("checkout");
   const [selectedLicense, setSelectedLicense] = useState("standard");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -54,10 +56,10 @@ export function CheckoutModal({
       if (data.checkout_url) {
         window.location.href = data.checkout_url;
       } else {
-        toast.error(data.error || "Failed to create checkout");
+        toast.error(data.error || t("failedCheckout"));
       }
     } catch {
-      toast.error("Something went wrong");
+      toast.error(t("somethingWrong"));
     }
     setIsLoading(false);
   };
@@ -66,7 +68,7 @@ export function CheckoutModal({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Purchase Content</DialogTitle>
+          <DialogTitle>{t("purchaseContent")}</DialogTitle>
           <DialogDescription>{contentTitle}</DialogDescription>
         </DialogHeader>
         <div className="space-y-4">
@@ -105,16 +107,16 @@ export function CheckoutModal({
           <Separator />
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Content price</span>
+              <span className="text-muted-foreground">{t("contentPrice")}</span>
               <span>{`$${commission.contentPrice.toFixed(2)}`}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Verification fee (5%)</span>
+              <span className="text-muted-foreground">{t("verificationFee")}</span>
               <span>{`$${commission.buyerFee.toFixed(2)}`}</span>
             </div>
             <Separator />
             <div className="flex justify-between font-semibold">
-              <span>Total</span>
+              <span>{t("total")}</span>
               <span>{`$${commission.totalCharge.toFixed(2)}`}</span>
             </div>
           </div>
@@ -124,7 +126,7 @@ export function CheckoutModal({
             ) : (
               <CreditCard className="h-4 w-4 mr-2" />
             )}
-            Pay ${commission.totalCharge.toFixed(2)}
+            {t("pay", { amount: commission.totalCharge.toFixed(2) })}
           </Button>
         </div>
       </DialogContent>

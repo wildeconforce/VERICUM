@@ -42,7 +42,10 @@
     "views": "مشاهدات",
     "likes": "إعجابات",
     "downloads": "تحميلات",
-    "sales": "مبيعات"
+    "sales": "مبيعات",
+    "content": "محتوى",
+    "view": "عرض",
+    "manage": "إدارة"
   },
   "nav": {
     "explore": "استكشاف",
@@ -54,7 +57,10 @@
     "settings": "الإعدادات",
     "blog": "المدونة",
     "downloads": "التحميلات",
-    "bookmarks": "الإشارات المرجعية"
+    "bookmarks": "الإشارات المرجعية",
+    "menu": "القائمة",
+    "searchContent": "البحث عن محتوى...",
+    "toggleMenu": "تبديل القائمة"
   },
   "landing": {
     "hero": {
@@ -139,15 +145,21 @@
       "continueWith": "المتابعة باستخدام {provider}",
       "forgotPassword": "هل نسيت كلمة المرور؟",
       "noAccount": "ليس لديك حساب؟",
-      "signUpLink": "إنشاء حساب"
+      "signUpLink": "إنشاء حساب",
+      "welcomeBack": "مرحباً بعودتك!",
+      "emailPlaceholder": "you@example.com"
     },
     "register": {
       "title": "أنشئ حسابك",
       "subtitle": "ابدأ بشراء وبيع المحتوى الموثّق",
       "hasAccount": "لديك حساب بالفعل؟",
       "signInLink": "تسجيل الدخول",
-      "success": "تم إنشاء الحساب! يرجى التحقق من بريدك الإلكتروني للتأكيد."
-    }
+      "success": "تم إنشاء الحساب! يرجى التحقق من بريدك الإلكتروني للتأكيد.",
+      "createAccount": "إنشاء حساب",
+      "usernamePlaceholder": "johndoe",
+      "displayNamePlaceholder": "John Doe"
+    },
+    "completingSignIn": "جارٍ إكمال تسجيل الدخول..."
   },
   "explore": {
     "title": "استكشاف",
@@ -184,7 +196,24 @@
     "licenseType": "نوع الترخيص",
     "relatedContent": "محتوى ذو صلة",
     "purchaseComplete": "تمت عملية الشراء! يمكنك الآن تحميل المحتوى الخاص بك.",
-    "shareContent": "مشاركة هذا المحتوى"
+    "shareContent": "مشاركة هذا المحتوى",
+    "previewNotAvailable": "المعاينة غير متاحة",
+    "bookmark": "إشارة مرجعية",
+    "bookmarked": "تم وضع إشارة",
+    "downloadOriginal": "تحميل الأصلي",
+    "royaltyOnSecondary": "{rate}% عوائد على الإبداعات الثانوية",
+    "onPlatform": "على {platform}",
+    "failedCheckout": "فشل في إنشاء الدفع",
+    "signInToBookmark": "سجّل الدخول لوضع إشارة مرجعية",
+    "bookmarkAdded": "تم وضع إشارة مرجعية!",
+    "bookmarkRemoved": "تم إزالة الإشارة المرجعية",
+    "signInToLike": "سجّل الدخول للإعجاب",
+    "downloadFailed": "فشل التحميل",
+    "nA": "غ/م",
+    "noPreview": "لا معاينة",
+    "noContentFound": "لم يتم العثور على محتوى",
+    "adjustFilters": "حاول تعديل الفلاتر أو مصطلحات البحث",
+    "unknown": "غير معروف"
   },
   "license": {
     "personal": "استخدام شخصي",
@@ -212,7 +241,23 @@
     "myUploads": "ملفاتي المرفوعة",
     "purchasesCount": "المشتريات",
     "uploadContent": "رفع محتوى",
-    "recentActivity": "النشاط الأخير"
+    "recentActivity": "النشاط الأخير",
+    "quickActions": "إجراءات سريعة",
+    "exploreContent": "استكشاف المحتوى",
+    "browseVerified": "تصفح السوق الموثق",
+    "myDownloads": "تنزيلاتي",
+    "accessPurchased": "الوصول إلى المحتوى المشترى",
+    "savedForLater": "محتوى محفوظ للاحقاً",
+    "earningsAnalytics": "الأرباح والتحليلات",
+    "viewRevenueStats": "عرض الإيرادات والإحصائيات",
+    "myContent": "محتواي",
+    "manageUploads": "إدارة التحميلات",
+    "connectStripe": "ربط Stripe",
+    "setUpPayments": "إعداد المدفوعات",
+    "noContentYet": "لم يتم رفع أي محتوى بعد",
+    "uploadFirstContent": "ارفع محتواك الأول",
+    "uploadNew": "رفع جديد",
+    "bookmarks": "الإشارات المرجعية"
   },
   "earnings": {
     "title": "الأرباح",
@@ -230,14 +275,19 @@
     "settlementHistory": "سجل التسويات",
     "dailyRevenue": "الإيرادات اليومية",
     "weeklyRevenue": "الإيرادات الأسبوعية",
-    "monthlyRevenue": "الإيرادات الشهرية"
+    "monthlyRevenue": "الإيرادات الشهرية",
+    "revenue": "الإيرادات",
+    "revenueByContent": "الإيرادات حسب المحتوى",
+    "noSalesData": "لا توجد بيانات مبيعات بعد",
+    "salesCount": "{count} مبيعات"
   },
   "purchases": {
     "title": "مشترياتي",
     "empty": "لا توجد مشتريات بعد",
     "browseContent": "تصفح المحتوى",
     "view": "عرض",
-    "downloadFile": "تحميل"
+    "downloadFile": "تحميل",
+    "contentFallback": "محتوى"
   },
   "settings": {
     "title": "الإعدادات",
@@ -253,7 +303,18 @@
     "stripeConnect": "Stripe Connect",
     "stripeConnectDesc": "اربط حساب Stripe الخاص بك لتلقي المدفوعات",
     "connectStripe": "ربط حساب Stripe",
-    "stripeConnected": "تم ربط حساب Stripe"
+    "stripeConnected": "تم ربط حساب Stripe",
+    "stripeConnectedSuccess": "تم ربط حساب Stripe بنجاح!",
+    "stripeOnboardingDesc": "اربط حساب Stripe الخاص بك لتلقي مدفوعات المبيعات. سيتم توجيهك إلى Stripe لإكمال عملية التسجيل.",
+    "failedUpdateProfile": "فشل تحديث الملف الشخصي",
+    "accountUpgraded": "تمت ترقية الحساب إلى بائع! يرجى تحديث الصفحة.",
+    "failedUpgrade": "فشل ترقية الحساب",
+    "failedConnectStripe": "فشل ربط Stripe",
+    "commissionDesc1": "هيكل العمولة: 15% رسوم منصة لكل عملية بيع",
+    "commissionDesc2": "تحصل على 85% من كل عملية بيع مباشرة في حساب Stripe الخاص بك",
+    "commissionDesc3": "يدفع المشترون رسوم تحقق إضافية بنسبة 15%",
+    "accountId": "معرف الحساب",
+    "manage": "إدارة"
   },
   "seller": {
     "dashboard": {
@@ -267,11 +328,23 @@
   "buyer": {
     "downloadPage": "مكتبة التحميلات",
     "bookmarks": "الإشارات المرجعية",
-    "purchaseHistory": "سجل المشتريات"
+    "purchaseHistory": "سجل المشتريات",
+    "noDownloadsYet": "لا توجد تنزيلات بعد",
+    "browseContent": "تصفح المحتوى",
+    "downloadStarted": "بدأ التنزيل",
+    "downloadFailed": "فشل التنزيل",
+    "downloadsCount": "التنزيلات: {current}/{max}",
+    "noBookmarksYet": "لا توجد إشارات مرجعية بعد",
+    "exploreContent": "استكشاف المحتوى",
+    "bookmarkRemoved": "تم إزالة الإشارة المرجعية",
+    "view": "عرض"
   },
   "search": {
     "placeholder": "البحث عن محتوى موثّق...",
     "tags": "الوسوم",
+    "resultsFor": "نتائج البحث عن \"{query}\"",
+    "resultCount": "تم العثور على {total} نتيجة",
+    "resultCountPlural": "تم العثور على {total} نتائج",
     "categories": {
       "photojournalism": "التصوير الصحفي",
       "nature-wildlife": "الطبيعة والحياة البرية",
@@ -307,16 +380,116 @@
     "title": "مشاركة",
     "copyLink": "نسخ الرابط",
     "copied": "تم نسخ الرابط!",
-    "shareOn": "مشاركة على {platform}"
+    "shareOn": "مشاركة على {platform}",
+    "copiedShort": "تم النسخ!",
+    "failedCopy": "فشل في نسخ الرابط",
+    "copyLinkTitle": "نسخ الرابط"
   },
   "theme": {
     "light": "فاتح",
     "dark": "داكن",
-    "system": "النظام"
+    "system": "النظام",
+    "toggleTheme": "تبديل السمة"
   },
   "email": {
     "saleComplete": "تمت عملية البيع",
     "purchaseConfirmation": "تأكيد الشراء",
     "verificationComplete": "اكتمل التحقق"
+  },
+  "uploader": {
+    "dragDrop": "اسحب وأفلت ملفك هنا",
+    "browseHint": "أو انقر للتصفح. يدعم JPG و PNG و WebP و TIFF و RAW (بحد أقصى 50 ميغابايت)",
+    "uploading": "جارٍ الرفع... {progress}%",
+    "uploadFile": "رفع الملف"
+  },
+  "checkout": {
+    "purchaseContent": "شراء المحتوى",
+    "contentPrice": "سعر المحتوى",
+    "verificationFee": "رسوم التحقق (5%)",
+    "total": "المجموع",
+    "pay": "ادفع ${amount}",
+    "failedCheckout": "فشل في إنشاء الدفع",
+    "somethingWrong": "حدث خطأ ما"
+  },
+  "verification": {
+    "c2paDetails": "تفاصيل C2PA",
+    "c2paManifestFound": "تم العثور على بيان C2PA",
+    "noC2paManifest": "لا يوجد بيان C2PA",
+    "issuer": "المُصدر",
+    "timestamp": "الطابع الزمني",
+    "authenticityScore": "درجة المصداقية",
+    "aiDetection": "كشف الذكاء الاصطناعي",
+    "likelyHuman": "{score}% احتمال بشري",
+    "deviceInfo": "معلومات الجهاز",
+    "verifying": "جارٍ التحقق...",
+    "verified": "موثّق",
+    "rejected": "مرفوض",
+    "underReview": "قيد المراجعة",
+    "unverifiable": "غير قابل للتحقق",
+    "processingDesc": "تشغيل محرك التحقق C2PA",
+    "verifiedDesc": "اجتاز المحتوى جميع عمليات التحقق",
+    "rejectedDesc": "لم يجتاز المحتوى التحقق",
+    "reviewDesc": "يتطلب المحتوى مراجعة يدوية",
+    "score": "الدرجة: {score}%"
+  },
+  "provenance": {
+    "title": "سلسلة المصدر",
+    "device": "الجهاز: {value}",
+    "software": "البرنامج: {value}",
+    "platform": "المنصة: {value}",
+    "changes": "التغييرات: {value}"
+  },
+  "filter": {
+    "filters": "التصفية",
+    "clearAll": "مسح الكل",
+    "verification": "التحقق",
+    "verifiedOnly": "الموثّق فقط",
+    "category": "الفئة",
+    "contentType": "نوع المحتوى",
+    "priceRange": "نطاق السعر",
+    "min": "الحد الأدنى",
+    "max": "الحد الأقصى",
+    "applyPrice": "تطبيق السعر",
+    "sortBy": "ترتيب حسب"
+  },
+  "language": {
+    "changeLanguage": "تغيير اللغة"
+  },
+  "upload": {
+    "title": "رفع محتوى",
+    "subtitle": "ارفع محتواك الأصلي للتحقق بمعيار C2PA والإدراج.",
+    "fileUpload": "رفع ملف",
+    "fileUploadDesc": "ارفع ملفك الأصلي. سيتم التحقق منه تلقائيًا.",
+    "fileUploaded": "تم رفع الملف بنجاح",
+    "contentDetails": "تفاصيل المحتوى",
+    "titleLabel": "العنوان",
+    "titlePlaceholder": "أعطِ محتواك عنوانًا",
+    "descriptionLabel": "الوصف",
+    "descriptionPlaceholder": "صف محتواك...",
+    "priceLabel": "السعر (دولار أمريكي)",
+    "categoryLabel": "الفئة",
+    "categoryPlaceholder": "اختر فئة",
+    "tagsLabel": "الوسوم",
+    "tagPlaceholder": "أضف وسمًا...",
+    "addTag": "إضافة",
+    "publishContent": "نشر المحتوى",
+    "verifying": "جارٍ التحقق...",
+    "uploadFileFirst": "يرجى رفع ملف أولاً",
+    "failedToCreate": "فشل في إنشاء المحتوى",
+    "runningVerification": "جارٍ تشغيل التحقق...",
+    "verifiedAndPublished": "تم التحقق من المحتوى ونشره!",
+    "submittedForReview": "تم إرسال المحتوى للمراجعة اليدوية.",
+    "couldNotVerify": "تعذّر التحقق من المحتوى."
+  },
+  "blog": {
+    "title": "المدونة",
+    "subtitle": "رؤى حول مصداقية المحتوى وتقنية C2PA واقتصاد المبدعين.",
+    "readMore": "اقرأ المزيد",
+    "backToBlog": "العودة إلى المدونة"
+  },
+  "legal": {
+    "termsTitle": "شروط الخدمة",
+    "privacyTitle": "سياسة الخصوصية",
+    "lastUpdated": "آخر تحديث: {date}"
   }
 }

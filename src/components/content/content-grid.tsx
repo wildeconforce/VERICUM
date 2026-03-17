@@ -3,6 +3,7 @@
 import { ContentCard } from "./content-card";
 import { ContentWithSeller } from "@/types/content";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useTranslations } from "next-intl";
 
 interface ContentGridProps {
   contents: ContentWithSeller[];
@@ -10,6 +11,7 @@ interface ContentGridProps {
 }
 
 export function ContentGrid({ contents, isLoading }: ContentGridProps) {
+  const t = useTranslations("content");
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -27,9 +29,9 @@ export function ContentGrid({ contents, isLoading }: ContentGridProps) {
   if (contents.length === 0) {
     return (
       <div className="text-center py-16">
-        <p className="text-muted-foreground text-lg">No content found</p>
+        <p className="text-muted-foreground text-lg">{t("noContentFound")}</p>
         <p className="text-muted-foreground text-sm mt-1">
-          Try adjusting your filters or search terms
+          {t("adjustFilters")}
         </p>
       </div>
     );
@@ -47,7 +49,7 @@ export function ContentGrid({ contents, isLoading }: ContentGridProps) {
           currency={content.currency}
           contentType={content.content_type}
           verificationStatus={content.verification_status}
-          sellerName={content.profiles?.display_name || content.profiles?.username || "Unknown"}
+          sellerName={content.profiles?.display_name || content.profiles?.username || t("unknown")}
           sellerAvatar={content.profiles?.avatar_url}
           likeCount={content.like_count}
           viewCount={content.view_count}

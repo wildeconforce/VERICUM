@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Share2, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface ShareButtonsProps {
   url: string;
@@ -72,16 +73,18 @@ const SHARE_PLATFORMS = [
 ];
 
 export function ShareButtons({ url, title, description, compact = false }: ShareButtonsProps) {
+  const t = useTranslations("share");
+  const tc = useTranslations("common");
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
-      toast.success("Link copied!");
+      toast.success(t("copied"));
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      toast.error("Failed to copy link");
+      toast.error(t("failedCopy"));
     }
   };
 
@@ -95,7 +98,7 @@ export function ShareButtons({ url, title, description, compact = false }: Share
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="sm">
             <Share2 className="h-4 w-4 mr-2" />
-            Share
+            {tc("share")}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-48">
@@ -111,7 +114,7 @@ export function ShareButtons({ url, title, description, compact = false }: Share
           ))}
           <DropdownMenuItem onClick={handleCopy} className="cursor-pointer">
             {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-            <span className="ml-2">{copied ? "Copied!" : "Copy Link"}</span>
+            <span className="ml-2">{copied ? t("copiedShort") : t("copyLink")}</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -127,7 +130,7 @@ export function ShareButtons({ url, title, description, compact = false }: Share
           size="icon"
           className="h-9 w-9"
           onClick={() => handleShare(platform.getUrl)}
-          title={`Share on ${platform.name}`}
+          title={t("shareOn", { platform: platform.name })}
         >
           <platform.icon />
         </Button>
@@ -137,7 +140,7 @@ export function ShareButtons({ url, title, description, compact = false }: Share
         size="icon"
         className="h-9 w-9"
         onClick={handleCopy}
-        title="Copy link"
+        title={t("copyLinkTitle")}
       >
         {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
       </Button>

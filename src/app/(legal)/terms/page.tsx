@@ -1,14 +1,17 @@
+import { getTranslations } from "next-intl/server";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const t = await getTranslations("legal");
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1 container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto prose prose-neutral dark:prose-invert">
-          <h1>Terms of Service</h1>
-          <p className="text-muted-foreground">Last updated: February 12, 2026</p>
+          <h1>{t("termsTitle")}</h1>
+          <p className="text-muted-foreground">{t("lastUpdated", { date: "February 12, 2026" })}</p>
 
           <h2>1. Acceptance of Terms</h2>
           <p>By accessing and using Vericum (&quot;the Platform&quot;), you agree to be bound by these Terms of Service. If you do not agree, please do not use the Platform.</p>

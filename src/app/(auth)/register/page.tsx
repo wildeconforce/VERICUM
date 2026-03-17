@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { createClient } from "@/lib/supabase/client";
 import { registerSchema, RegisterInput } from "@/lib/utils/validation";
 import { Button } from "@/components/ui/button";
@@ -62,6 +63,8 @@ const OAUTH_PROVIDERS: { id: OAuthProvider; name: string; icon: React.ReactNode 
 export default function RegisterPage() {
   const router = useRouter();
   const [loadingProvider, setLoadingProvider] = useState<string | null>(null);
+  const t = useTranslations("auth.register");
+  const tc = useTranslations("common");
 
   const {
     register,
@@ -89,7 +92,7 @@ export default function RegisterPage() {
       return;
     }
 
-    toast.success("Account created! Please check your email to confirm.");
+    toast.success(t("success"));
     router.push("/login");
   };
 
@@ -114,10 +117,10 @@ export default function RegisterPage() {
         <CardHeader className="text-center">
           <Link href="/" className="flex items-center justify-center gap-2 mb-4">
             <ShieldCheck className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold font-serif">Vericum</span>
+            <span className="text-2xl font-bold font-serif">{tc("appName")}</span>
           </Link>
-          <CardTitle className="text-2xl">Create your account</CardTitle>
-          <CardDescription>Start buying and selling verified content</CardDescription>
+          <CardTitle className="text-2xl">{t("title")}</CardTitle>
+          <CardDescription>{t("subtitle")}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 gap-2">
@@ -142,17 +145,17 @@ export default function RegisterPage() {
           <div className="relative">
             <Separator />
             <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-card px-2 text-xs text-muted-foreground">
-              or
+              {tc("or")}
             </span>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-2">
-                <Label htmlFor="username">Username</Label>
+                <Label htmlFor="username">{tc("username")}</Label>
                 <Input
                   id="username"
-                  placeholder="johndoe"
+                  placeholder={t("usernamePlaceholder")}
                   {...register("username")}
                 />
                 {errors.username && (
@@ -160,10 +163,10 @@ export default function RegisterPage() {
                 )}
               </div>
               <div className="space-y-2">
-                <Label htmlFor="display_name">Display Name</Label>
+                <Label htmlFor="display_name">{tc("displayName")}</Label>
                 <Input
                   id="display_name"
-                  placeholder="John Doe"
+                  placeholder={t("displayNamePlaceholder")}
                   {...register("display_name")}
                 />
                 {errors.display_name && (
@@ -172,7 +175,7 @@ export default function RegisterPage() {
               </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{tc("email")}</Label>
               <Input
                 id="email"
                 type="email"
@@ -184,7 +187,7 @@ export default function RegisterPage() {
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">{tc("password")}</Label>
               <Input
                 id="password"
                 type="password"
@@ -197,14 +200,14 @@ export default function RegisterPage() {
             </div>
             <Button type="submit" className="w-full" disabled={isSubmitting}>
               {isSubmitting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-              Create Account
+              {t("createAccount")}
             </Button>
           </form>
 
           <p className="text-center text-sm text-muted-foreground">
-            Already have an account?{" "}
+            {t("hasAccount")}{" "}
             <Link href="/login" className="text-primary hover:underline font-medium">
-              Sign in
+              {t("signInLink")}
             </Link>
           </p>
         </CardContent>

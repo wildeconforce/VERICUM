@@ -42,7 +42,10 @@
     "views": "दृश्य",
     "likes": "पसंद",
     "downloads": "डाउनलोड",
-    "sales": "बिक्री"
+    "sales": "बिक्री",
+    "content": "सामग्री",
+    "view": "देखें",
+    "manage": "प्रबंधित करें"
   },
   "nav": {
     "explore": "खोजें",
@@ -54,7 +57,10 @@
     "settings": "सेटिंग्स",
     "blog": "ब्लॉग",
     "downloads": "डाउनलोड",
-    "bookmarks": "बुकमार्क"
+    "bookmarks": "बुकमार्क",
+    "menu": "मेनू",
+    "searchContent": "सामग्री खोजें...",
+    "toggleMenu": "मेनू टॉगल करें"
   },
   "landing": {
     "hero": {
@@ -139,15 +145,21 @@
       "continueWith": "{provider} से जारी रखें",
       "forgotPassword": "पासवर्ड भूल गए?",
       "noAccount": "खाता नहीं है?",
-      "signUpLink": "साइन अप करें"
+      "signUpLink": "साइन अप करें",
+      "welcomeBack": "वापसी पर स्वागत है!",
+      "emailPlaceholder": "aap@udaharan.com"
     },
     "register": {
       "title": "अपना खाता बनाएं",
       "subtitle": "सत्यापित सामग्री खरीदना और बेचना शुरू करें",
       "hasAccount": "पहले से खाता है?",
       "signInLink": "साइन इन करें",
-      "success": "खाता बनाया गया! कृपया पुष्टि के लिए अपना ईमेल जांचें।"
-    }
+      "success": "खाता बनाया गया! कृपया पुष्टि के लिए अपना ईमेल जांचें।",
+      "createAccount": "खाता बनाएं",
+      "usernamePlaceholder": "johndoe",
+      "displayNamePlaceholder": "John Doe"
+    },
+    "completingSignIn": "साइन इन पूरा हो रहा है..."
   },
   "explore": {
     "title": "खोजें",
@@ -184,7 +196,24 @@
     "licenseType": "लाइसेंस प्रकार",
     "relatedContent": "संबंधित सामग्री",
     "purchaseComplete": "खरीदारी पूर्ण! अब आप अपनी सामग्री डाउनलोड कर सकते हैं।",
-    "shareContent": "यह सामग्री साझा करें"
+    "shareContent": "यह सामग्री साझा करें",
+    "previewNotAvailable": "पूर्वावलोकन उपलब्ध नहीं है",
+    "bookmark": "बुकमार्क",
+    "bookmarked": "बुकमार्क किया गया",
+    "downloadOriginal": "मूल डाउनलोड करें",
+    "royaltyOnSecondary": "द्वितीयक रचनाओं पर {rate}% रॉयल्टी",
+    "onPlatform": "{platform} पर",
+    "failedCheckout": "चेकआउट बनाने में विफल",
+    "signInToBookmark": "बुकमार्क करने के लिए साइन इन करें",
+    "bookmarkAdded": "बुकमार्क किया गया!",
+    "bookmarkRemoved": "बुकमार्क हटाया गया",
+    "signInToLike": "पसंद करने के लिए साइन इन करें",
+    "downloadFailed": "डाउनलोड विफल",
+    "nA": "N/A",
+    "noPreview": "कोई पूर्वावलोकन नहीं",
+    "noContentFound": "कोई सामग्री नहीं मिली",
+    "adjustFilters": "अपने फ़िल्टर या खोज शब्दों को समायोजित करके देखें",
+    "unknown": "अज्ञात"
   },
   "license": {
     "personal": "व्यक्तिगत उपयोग",
@@ -212,7 +241,23 @@
     "myUploads": "मेरे अपलोड",
     "purchasesCount": "खरीदारी",
     "uploadContent": "सामग्री अपलोड करें",
-    "recentActivity": "हाल की गतिविधि"
+    "recentActivity": "हाल की गतिविधि",
+    "quickActions": "त्वरित कार्य",
+    "exploreContent": "सामग्री खोजें",
+    "browseVerified": "सत्यापित मार्केटप्लेस ब्राउज़ करें",
+    "myDownloads": "मेरे डाउनलोड",
+    "accessPurchased": "खरीदी गई सामग्री एक्सेस करें",
+    "savedForLater": "बाद के लिए सहेजी गई सामग्री",
+    "earningsAnalytics": "कमाई और विश्लेषण",
+    "viewRevenueStats": "राजस्व और आंकड़े देखें",
+    "myContent": "मेरी सामग्री",
+    "manageUploads": "अपलोड प्रबंधित करें",
+    "connectStripe": "Stripe कनेक्ट करें",
+    "setUpPayments": "भुगतान सेट अप करें",
+    "noContentYet": "अभी तक कोई सामग्री अपलोड नहीं हुई",
+    "uploadFirstContent": "अपनी पहली सामग्री अपलोड करें",
+    "uploadNew": "नया अपलोड",
+    "bookmarks": "बुकमार्क"
   },
   "earnings": {
     "title": "कमाई",
@@ -230,14 +275,19 @@
     "settlementHistory": "निपटान इतिहास",
     "dailyRevenue": "दैनिक राजस्व",
     "weeklyRevenue": "साप्ताहिक राजस्व",
-    "monthlyRevenue": "मासिक राजस्व"
+    "monthlyRevenue": "मासिक राजस्व",
+    "revenue": "राजस्व",
+    "revenueByContent": "सामग्री के अनुसार राजस्व",
+    "noSalesData": "अभी तक बिक्री डेटा नहीं है",
+    "salesCount": "{count} बिक्री"
   },
   "purchases": {
     "title": "मेरी खरीदारी",
     "empty": "अभी तक कोई खरीदारी नहीं",
     "browseContent": "सामग्री ब्राउज़ करें",
     "view": "देखें",
-    "downloadFile": "डाउनलोड"
+    "downloadFile": "डाउनलोड",
+    "contentFallback": "सामग्री"
   },
   "settings": {
     "title": "सेटिंग्स",
@@ -253,7 +303,18 @@
     "stripeConnect": "Stripe Connect",
     "stripeConnectDesc": "भुगतान प्राप्त करने के लिए अपना Stripe खाता कनेक्ट करें",
     "connectStripe": "Stripe खाता कनेक्ट करें",
-    "stripeConnected": "Stripe खाता कनेक्ट हो गया"
+    "stripeConnected": "Stripe खाता कनेक्ट हो गया",
+    "stripeConnectedSuccess": "Stripe खाता सफलतापूर्वक कनेक्ट हो गया!",
+    "stripeOnboardingDesc": "बिक्री से भुगतान प्राप्त करने के लिए अपना Stripe खाता कनेक्ट करें। आपको ऑनबोर्डिंग प्रक्रिया पूरी करने के लिए Stripe पर रीडायरेक्ट किया जाएगा।",
+    "failedUpdateProfile": "प्रोफ़ाइल अपडेट करने में विफल",
+    "accountUpgraded": "खाता विक्रेता में अपग्रेड हो गया! कृपया पेज रीफ्रेश करें।",
+    "failedUpgrade": "खाता अपग्रेड करने में विफल",
+    "failedConnectStripe": "Stripe कनेक्ट करने में विफल",
+    "commissionDesc1": "कमीशन संरचना: प्रति बिक्री 15% प्लेटफॉर्म शुल्क",
+    "commissionDesc2": "आप प्रत्येक बिक्री का 85% सीधे अपने Stripe खाते में प्राप्त करते हैं",
+    "commissionDesc3": "खरीदार अतिरिक्त 15% सत्यापन शुल्क का भुगतान करते हैं",
+    "accountId": "खाता ID",
+    "manage": "प्रबंधित करें"
   },
   "seller": {
     "dashboard": {
@@ -267,11 +328,23 @@
   "buyer": {
     "downloadPage": "डाउनलोड लाइब्रेरी",
     "bookmarks": "बुकमार्क",
-    "purchaseHistory": "खरीदारी इतिहास"
+    "purchaseHistory": "खरीदारी इतिहास",
+    "noDownloadsYet": "अभी तक कोई डाउनलोड नहीं",
+    "browseContent": "सामग्री ब्राउज़ करें",
+    "downloadStarted": "डाउनलोड शुरू हो गया",
+    "downloadFailed": "डाउनलोड विफल",
+    "downloadsCount": "डाउनलोड: {current}/{max}",
+    "noBookmarksYet": "अभी तक कोई बुकमार्क नहीं",
+    "exploreContent": "सामग्री खोजें",
+    "bookmarkRemoved": "बुकमार्क हटा दिया गया",
+    "view": "देखें"
   },
   "search": {
     "placeholder": "सत्यापित सामग्री खोजें...",
     "tags": "टैग",
+    "resultsFor": "\"{query}\" के लिए परिणाम",
+    "resultCount": "{total} परिणाम मिला",
+    "resultCountPlural": "{total} परिणाम मिले",
     "categories": {
       "photojournalism": "फोटो पत्रकारिता",
       "nature-wildlife": "प्रकृति और वन्यजीव",
@@ -307,16 +380,116 @@
     "title": "साझा करें",
     "copyLink": "लिंक कॉपी करें",
     "copied": "लिंक कॉपी हो गया!",
-    "shareOn": "{platform} पर साझा करें"
+    "shareOn": "{platform} पर साझा करें",
+    "copiedShort": "कॉपी हो गया!",
+    "failedCopy": "लिंक कॉपी करने में विफल",
+    "copyLinkTitle": "लिंक कॉपी करें"
   },
   "theme": {
     "light": "लाइट",
     "dark": "डार्क",
-    "system": "सिस्टम"
+    "system": "सिस्टम",
+    "toggleTheme": "थीम बदलें"
   },
   "email": {
     "saleComplete": "बिक्री पूर्ण",
     "purchaseConfirmation": "खरीदारी की पुष्टि",
     "verificationComplete": "सत्यापन पूर्ण"
+  },
+  "uploader": {
+    "dragDrop": "अपनी फ़ाइल यहाँ ड्रैग और ड्रॉप करें",
+    "browseHint": "या ब्राउज़ करने के लिए क्लिक करें। JPG, PNG, WebP, TIFF, RAW समर्थित (अधिकतम 50MB)",
+    "uploading": "अपलोड हो रहा है... {progress}%",
+    "uploadFile": "फ़ाइल अपलोड करें"
+  },
+  "checkout": {
+    "purchaseContent": "सामग्री खरीदें",
+    "contentPrice": "सामग्री मूल्य",
+    "verificationFee": "सत्यापन शुल्क (5%)",
+    "total": "कुल",
+    "pay": "${amount} भुगतान करें",
+    "failedCheckout": "चेकआउट बनाने में विफल",
+    "somethingWrong": "कुछ गलत हो गया"
+  },
+  "verification": {
+    "c2paDetails": "C2PA विवरण",
+    "c2paManifestFound": "C2PA मैनिफेस्ट मिला",
+    "noC2paManifest": "कोई C2PA मैनिफेस्ट नहीं",
+    "issuer": "जारीकर्ता",
+    "timestamp": "समय मुद्रा",
+    "authenticityScore": "प्रामाणिकता स्कोर",
+    "aiDetection": "AI पहचान",
+    "likelyHuman": "{score}% मानव होने की संभावना",
+    "deviceInfo": "डिवाइस जानकारी",
+    "verifying": "सत्यापन हो रहा है...",
+    "verified": "सत्यापित",
+    "rejected": "अस्वीकृत",
+    "underReview": "समीक्षाधीन",
+    "unverifiable": "सत्यापन योग्य नहीं",
+    "processingDesc": "C2PA सत्यापन इंजन चल रहा है",
+    "verifiedDesc": "सामग्री ने सभी सत्यापन जांच पास कीं",
+    "rejectedDesc": "सामग्री सत्यापन पास नहीं कर सकी",
+    "reviewDesc": "सामग्री को मैन्युअल समीक्षा की आवश्यकता है",
+    "score": "स्कोर: {score}%"
+  },
+  "provenance": {
+    "title": "उत्पत्ति श्रृंखला",
+    "device": "डिवाइस: {value}",
+    "software": "सॉफ़्टवेयर: {value}",
+    "platform": "प्लेटफ़ॉर्म: {value}",
+    "changes": "परिवर्तन: {value}"
+  },
+  "filter": {
+    "filters": "फ़िल्टर",
+    "clearAll": "सभी साफ़ करें",
+    "verification": "सत्यापन",
+    "verifiedOnly": "केवल सत्यापित",
+    "category": "श्रेणी",
+    "contentType": "सामग्री प्रकार",
+    "priceRange": "मूल्य सीमा",
+    "min": "न्यूनतम",
+    "max": "अधिकतम",
+    "applyPrice": "मूल्य लागू करें",
+    "sortBy": "क्रमबद्ध करें"
+  },
+  "language": {
+    "changeLanguage": "भाषा बदलें"
+  },
+  "upload": {
+    "title": "सामग्री अपलोड करें",
+    "subtitle": "C2PA सत्यापन और सूचीबद्धता के लिए अपनी मूल सामग्री अपलोड करें।",
+    "fileUpload": "फ़ाइल अपलोड",
+    "fileUploadDesc": "अपनी मूल फ़ाइल अपलोड करें। यह स्वचालित रूप से सत्यापित की जाएगी।",
+    "fileUploaded": "फ़ाइल सफलतापूर्वक अपलोड की गई",
+    "contentDetails": "सामग्री विवरण",
+    "titleLabel": "शीर्षक",
+    "titlePlaceholder": "अपनी सामग्री को एक शीर्षक दें",
+    "descriptionLabel": "विवरण",
+    "descriptionPlaceholder": "अपनी सामग्री का वर्णन करें...",
+    "priceLabel": "मूल्य (USD)",
+    "categoryLabel": "श्रेणी",
+    "categoryPlaceholder": "श्रेणी चुनें",
+    "tagsLabel": "टैग",
+    "tagPlaceholder": "टैग जोड़ें...",
+    "addTag": "जोड़ें",
+    "publishContent": "सामग्री प्रकाशित करें",
+    "verifying": "सत्यापन हो रहा है...",
+    "uploadFileFirst": "कृपया पहले एक फ़ाइल अपलोड करें",
+    "failedToCreate": "सामग्री बनाने में विफल",
+    "runningVerification": "सत्यापन चल रहा है...",
+    "verifiedAndPublished": "सामग्री सत्यापित और प्रकाशित!",
+    "submittedForReview": "सामग्री मैन्युअल समीक्षा के लिए जमा की गई।",
+    "couldNotVerify": "सामग्री सत्यापित नहीं हो सकी।"
+  },
+  "blog": {
+    "title": "ब्लॉग",
+    "subtitle": "सामग्री प्रामाणिकता, C2PA तकनीक और निर्माता अर्थव्यवस्था पर अंतर्दृष्टि।",
+    "readMore": "और पढ़ें",
+    "backToBlog": "ब्लॉग पर वापस जाएं"
+  },
+  "legal": {
+    "termsTitle": "सेवा की शर्तें",
+    "privacyTitle": "गोपनीयता नीति",
+    "lastUpdated": "अंतिम अपडेट: {date}"
   }
 }

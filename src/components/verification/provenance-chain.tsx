@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Camera, Pencil, Upload, Globe } from "lucide-react";
 import { formatDate } from "@/lib/utils/format";
+import { useTranslations } from "next-intl";
 
 interface ProvenanceEvent {
   action: string;
@@ -25,12 +26,14 @@ const actionIcons: Record<string, typeof Camera> = {
 };
 
 export function ProvenanceChain({ events }: ProvenanceChainProps) {
+  const t = useTranslations("provenance");
+
   if (!events?.length) return null;
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg">Provenance Chain</CardTitle>
+        <CardTitle className="text-lg">{t("title")}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="relative">
@@ -48,11 +51,11 @@ export function ProvenanceChain({ events }: ProvenanceChainProps) {
                       {event.action}
                     </p>
                     <div className="text-xs text-muted-foreground space-y-0.5 mt-0.5">
-                      {event.device && <p>Device: {event.device}</p>}
-                      {event.software && <p>Software: {event.software}</p>}
-                      {event.platform && <p>Platform: {event.platform}</p>}
+                      {event.device && <p>{t("device", { value: event.device })}</p>}
+                      {event.software && <p>{t("software", { value: event.software })}</p>}
+                      {event.platform && <p>{t("platform", { value: event.platform })}</p>}
                       {event.changes?.length && (
-                        <p>Changes: {event.changes.join(", ")}</p>
+                        <p>{t("changes", { value: event.changes.join(", ") })}</p>
                       )}
                       <p>{formatDate(event.timestamp)}</p>
                     </div>

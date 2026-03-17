@@ -2,21 +2,23 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatPrice } from "@/lib/utils/format";
+import { useTranslations } from "next-intl";
 
 interface EarningsChartProps {
   data: { date: string; amount: number }[];
 }
 
 export function EarningsChart({ data }: EarningsChartProps) {
+  const t = useTranslations("earnings");
   if (!data?.length) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Revenue</CardTitle>
+          <CardTitle>{t("revenue")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="h-48 flex items-center justify-center text-muted-foreground">
-            No earnings data yet
+            {t("noData")}
           </div>
         </CardContent>
       </Card>

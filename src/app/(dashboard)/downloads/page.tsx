@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useAuth } from "@/hooks/use-auth";
 import { createClient } from "@/lib/supabase/client";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,6 +18,8 @@ export default function DownloadsPage() {
   const { user } = useAuth();
   const [purchases, setPurchases] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const t = useTranslations("buyer");
+  const tc = useTranslations("common");
 
   useEffect(() => {
     async function fetchPurchases() {
@@ -61,12 +64,12 @@ export default function DownloadsPage() {
       const json = await res.json();
       if (json.download_url) {
         window.open(json.download_url, "_blank");
-        toast.success("Download started");
+        toast.success(t("downloadStarted"));
       } else {
-        toast.error(json.error || "Download failed");
+        toast.error(json.error || t("downloadFailed"));
       }
     } catch {
-      toast.error("Download failed");
+      toast.error(t("downloadFailed"));
     }
   };
 
@@ -74,7 +77,7 @@ export default function DownloadsPage() {
     <div>
       <div className="flex items-center gap-3 mb-6">
         <Package className="h-7 w-7 text-primary" />
-        <h1 className="text-3xl font-bold">Download Library</h1>
+        <h1 className="text-3xl font-bold">{t("downloadPage")}</h1>
       </div>
 
       {isLoading ? (
@@ -87,9 +90,9 @@ export default function DownloadsPage() {
         <Card>
           <CardContent className="py-16 text-center">
             <Download className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground mb-4">No downloads yet</p>
+            <p className="text-muted-foreground mb-4">{t("noDownloadsYet")}</p>
             <Button asChild>
-              <Link href="/explore">Browse Content</Link>
+              <Link href="/explore">{t("browseContent")}</Link>
             </Button>
           </CardContent>
         </Card>
@@ -117,7 +120,7 @@ export default function DownloadsPage() {
                       href={`/content/${purchase.content_id}`}
                       className="font-medium hover:underline"
                     >
-                      {c?.title || "Content"}
+                      {c?.title || tc("content")}
                     </Link>
                     <div className="flex flex-wrap items-center gap-3 mt-1 text-xs text-muted-foreground">
                       <span>{formatPrice(purchase.amount, purchase.currency)}</span>
@@ -126,14 +129,14 @@ export default function DownloadsPage() {
                       </Badge>
                       <span>{formatDate(purchase.created_at)}</span>
                       <span>
-                        Downloads: {purchase.download_count || 0}/{purchase.max_downloads || 10}
+                        {t("downloadsCount", { current: purchase.download_count || 0, max: purchase.max_downloads || 10 })}
                       </span>
                     </div>
                   </div>
                   <div className="flex gap-2 shrink-0">
                     <Button variant="outline" size="sm" asChild>
                       <Link href={`/content/${purchase.content_id}`}>
-                        <ExternalLink className="h-3 w-3 mr-1" /> View
+                        <ExternalLink className="h-3 w-3 mr-1" /> {t("view")}
                       </Link>
                     </Button>
                     <Button
@@ -141,7 +144,7 @@ export default function DownloadsPage() {
                       onClick={() => handleDownload(purchase.content_id)}
                       disabled={(purchase.download_count || 0) >= (purchase.max_downloads || 10)}
                     >
-                      <Download className="h-3 w-3 mr-1" /> Download
+                      <Download className="h-3 w-3 mr-1" /> {tc("download")}
                     </Button>
                   </div>
                 </CardContent>

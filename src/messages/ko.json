@@ -42,7 +42,10 @@
     "views": "조회수",
     "likes": "좋아요",
     "downloads": "다운로드",
-    "sales": "판매"
+    "sales": "판매",
+    "content": "콘텐츠",
+    "view": "보기",
+    "manage": "관리"
   },
   "nav": {
     "explore": "둘러보기",
@@ -54,7 +57,10 @@
     "settings": "설정",
     "blog": "블로그",
     "downloads": "다운로드",
-    "bookmarks": "북마크"
+    "bookmarks": "북마크",
+    "menu": "메뉴",
+    "searchContent": "콘텐츠 검색...",
+    "toggleMenu": "메뉴 전환"
   },
   "landing": {
     "hero": {
@@ -139,15 +145,21 @@
       "continueWith": "{provider}로 계속하기",
       "forgotPassword": "비밀번호를 잊으셨나요?",
       "noAccount": "계정이 없으신가요?",
-      "signUpLink": "회원가입"
+      "signUpLink": "회원가입",
+      "welcomeBack": "다시 오신 것을 환영합니다!",
+      "emailPlaceholder": "you@example.com"
     },
     "register": {
       "title": "계정 만들기",
       "subtitle": "인증된 콘텐츠를 사고팔기 시작하세요",
       "hasAccount": "이미 계정이 있으신가요?",
       "signInLink": "로그인",
-      "success": "계정이 생성되었습니다! 이메일을 확인하여 인증해 주세요."
-    }
+      "success": "계정이 생성되었습니다! 이메일을 확인하여 인증해 주세요.",
+      "createAccount": "계정 만들기",
+      "usernamePlaceholder": "johndoe",
+      "displayNamePlaceholder": "John Doe"
+    },
+    "completingSignIn": "로그인 완료 중..."
   },
   "explore": {
     "title": "둘러보기",
@@ -184,7 +196,24 @@
     "licenseType": "라이선스 유형",
     "relatedContent": "관련 콘텐츠",
     "purchaseComplete": "구매가 완료되었습니다! 이제 콘텐츠를 다운로드할 수 있습니다.",
-    "shareContent": "이 콘텐츠 공유하기"
+    "shareContent": "이 콘텐츠 공유하기",
+    "previewNotAvailable": "미리보기를 사용할 수 없습니다",
+    "bookmark": "북마크",
+    "bookmarked": "북마크됨",
+    "downloadOriginal": "원본 다운로드",
+    "royaltyOnSecondary": "2차 창작물에 {rate}% 로열티",
+    "onPlatform": "{platform}에서",
+    "failedCheckout": "결제 생성에 실패했습니다",
+    "signInToBookmark": "북마크하려면 로그인하세요",
+    "bookmarkAdded": "북마크되었습니다!",
+    "bookmarkRemoved": "북마크가 제거되었습니다",
+    "signInToLike": "좋아요를 하려면 로그인하세요",
+    "downloadFailed": "다운로드에 실패했습니다",
+    "nA": "N/A",
+    "noPreview": "미리보기 없음",
+    "noContentFound": "콘텐츠를 찾을 수 없습니다",
+    "adjustFilters": "필터나 검색어를 조정해 보세요",
+    "unknown": "알 수 없음"
   },
   "license": {
     "personal": "개인 사용",
@@ -212,7 +241,23 @@
     "myUploads": "내 업로드",
     "purchasesCount": "구매 건수",
     "uploadContent": "콘텐츠 업로드",
-    "recentActivity": "최근 활동"
+    "recentActivity": "최근 활동",
+    "quickActions": "빠른 작업",
+    "exploreContent": "콘텐츠 둘러보기",
+    "browseVerified": "인증된 마켓플레이스 둘러보기",
+    "myDownloads": "내 다운로드",
+    "accessPurchased": "구매한 콘텐츠 접근",
+    "savedForLater": "나중에 볼 콘텐츠",
+    "earningsAnalytics": "수익 및 분석",
+    "viewRevenueStats": "수익 및 통계 보기",
+    "myContent": "내 콘텐츠",
+    "manageUploads": "업로드 관리",
+    "connectStripe": "Stripe 연결",
+    "setUpPayments": "결제 설정",
+    "noContentYet": "아직 업로드된 콘텐츠가 없습니다",
+    "uploadFirstContent": "첫 콘텐츠를 업로드하세요",
+    "uploadNew": "새로 업로드",
+    "bookmarks": "북마크"
   },
   "earnings": {
     "title": "수익",
@@ -230,14 +275,19 @@
     "settlementHistory": "정산 내역",
     "dailyRevenue": "일일 수익",
     "weeklyRevenue": "주간 수익",
-    "monthlyRevenue": "월간 수익"
+    "monthlyRevenue": "월간 수익",
+    "revenue": "수익",
+    "revenueByContent": "콘텐츠별 수익",
+    "noSalesData": "아직 판매 데이터가 없습니다",
+    "salesCount": "{count}건 판매"
   },
   "purchases": {
     "title": "내 구매 내역",
     "empty": "아직 구매 내역이 없습니다",
     "browseContent": "콘텐츠 둘러보기",
     "view": "보기",
-    "downloadFile": "다운로드"
+    "downloadFile": "다운로드",
+    "contentFallback": "콘텐츠"
   },
   "settings": {
     "title": "설정",
@@ -253,7 +303,18 @@
     "stripeConnect": "Stripe Connect",
     "stripeConnectDesc": "결제 수령을 위해 Stripe 계정을 연결하세요",
     "connectStripe": "Stripe 계정 연결",
-    "stripeConnected": "Stripe 계정이 연결되었습니다"
+    "stripeConnected": "Stripe 계정이 연결되었습니다",
+    "stripeConnectedSuccess": "Stripe 계정이 성공적으로 연결되었습니다!",
+    "stripeOnboardingDesc": "판매 수익을 받으려면 Stripe 계정을 연결하세요. Stripe로 리디렉션되어 온보딩 프로세스를 완료합니다.",
+    "failedUpdateProfile": "프로필 업데이트에 실패했습니다",
+    "accountUpgraded": "판매자 계정으로 업그레이드되었습니다! 페이지를 새로고침해 주세요.",
+    "failedUpgrade": "계정 업그레이드에 실패했습니다",
+    "failedConnectStripe": "Stripe 연결에 실패했습니다",
+    "commissionDesc1": "수수료 구조: 판매당 15% 플랫폼 수수료",
+    "commissionDesc2": "판매 금액의 85%가 Stripe 계정으로 직접 지급됩니다",
+    "commissionDesc3": "구매자는 추가 15% 검증 수수료를 지불합니다",
+    "accountId": "계정 ID",
+    "manage": "관리"
   },
   "seller": {
     "dashboard": {
@@ -267,11 +328,23 @@
   "buyer": {
     "downloadPage": "다운로드 라이브러리",
     "bookmarks": "북마크",
-    "purchaseHistory": "구매 이력"
+    "purchaseHistory": "구매 이력",
+    "noDownloadsYet": "아직 다운로드가 없습니다",
+    "browseContent": "콘텐츠 둘러보기",
+    "downloadStarted": "다운로드가 시작되었습니다",
+    "downloadFailed": "다운로드에 실패했습니다",
+    "downloadsCount": "다운로드: {current}/{max}",
+    "noBookmarksYet": "아직 북마크가 없습니다",
+    "exploreContent": "콘텐츠 둘러보기",
+    "bookmarkRemoved": "북마크가 제거되었습니다",
+    "view": "보기"
   },
   "search": {
     "placeholder": "인증된 콘텐츠 검색...",
     "tags": "태그",
+    "resultsFor": "\"{query}\" 검색 결과",
+    "resultCount": "{total}개의 결과를 찾았습니다",
+    "resultCountPlural": "{total}개의 결과를 찾았습니다",
     "categories": {
       "photojournalism": "포토저널리즘",
       "nature-wildlife": "자연 & 야생동물",
@@ -307,16 +380,116 @@
     "title": "공유",
     "copyLink": "링크 복사",
     "copied": "링크가 복사되었습니다!",
-    "shareOn": "{platform}에 공유하기"
+    "shareOn": "{platform}에 공유하기",
+    "copiedShort": "복사됨!",
+    "failedCopy": "링크 복사 실패",
+    "copyLinkTitle": "링크 복사"
   },
   "theme": {
     "light": "라이트",
     "dark": "다크",
-    "system": "시스템"
+    "system": "시스템",
+    "toggleTheme": "테마 전환"
   },
   "email": {
     "saleComplete": "판매 완료",
     "purchaseConfirmation": "구매 확인",
     "verificationComplete": "검증 완료"
+  },
+  "upload": {
+    "title": "콘텐츠 업로드",
+    "subtitle": "C2PA 검증 및 등록을 위해 원본 콘텐츠를 업로드하세요.",
+    "fileUpload": "파일 업로드",
+    "fileUploadDesc": "원본 파일을 업로드하세요. 자동으로 검증됩니다.",
+    "fileUploaded": "파일이 성공적으로 업로드되었습니다",
+    "contentDetails": "콘텐츠 상세 정보",
+    "titleLabel": "제목",
+    "titlePlaceholder": "콘텐츠에 제목을 지어주세요",
+    "descriptionLabel": "설명",
+    "descriptionPlaceholder": "콘텐츠를 설명해주세요...",
+    "priceLabel": "가격 (USD)",
+    "categoryLabel": "카테고리",
+    "categoryPlaceholder": "카테고리 선택",
+    "tagsLabel": "태그",
+    "tagPlaceholder": "태그 추가...",
+    "addTag": "추가",
+    "publishContent": "콘텐츠 게시",
+    "verifying": "검증 중...",
+    "uploadFileFirst": "먼저 파일을 업로드하세요",
+    "failedToCreate": "콘텐츠 생성에 실패했습니다",
+    "runningVerification": "검증 실행 중...",
+    "verifiedAndPublished": "콘텐츠가 검증되어 게시되었습니다!",
+    "submittedForReview": "콘텐츠가 수동 검토를 위해 제출되었습니다.",
+    "couldNotVerify": "콘텐츠를 검증할 수 없습니다."
+  },
+  "blog": {
+    "title": "블로그",
+    "subtitle": "콘텐츠 진위, C2PA 기술 및 크리에이터 이코노미에 대한 인사이트.",
+    "readMore": "더 읽기",
+    "backToBlog": "블로그로 돌아가기"
+  },
+  "legal": {
+    "termsTitle": "이용약관",
+    "privacyTitle": "개인정보 처리방침",
+    "lastUpdated": "최종 수정일: {date}"
+  },
+  "uploader": {
+    "dragDrop": "파일을 여기에 드래그 앤 드롭하세요",
+    "browseHint": "또는 클릭하여 찾아보기. JPG, PNG, WebP, TIFF, RAW 지원 (최대 50MB)",
+    "uploading": "업로드 중... {progress}%",
+    "uploadFile": "파일 업로드"
+  },
+  "checkout": {
+    "purchaseContent": "콘텐츠 구매",
+    "contentPrice": "콘텐츠 가격",
+    "verificationFee": "검증 수수료 (5%)",
+    "total": "합계",
+    "pay": "${amount} 결제",
+    "failedCheckout": "결제 생성 실패",
+    "somethingWrong": "문제가 발생했습니다"
+  },
+  "verification": {
+    "c2paDetails": "C2PA 상세정보",
+    "c2paManifestFound": "C2PA 매니페스트 발견",
+    "noC2paManifest": "C2PA 매니페스트 없음",
+    "issuer": "발급자",
+    "timestamp": "타임스탬프",
+    "authenticityScore": "진위 점수",
+    "aiDetection": "AI 감지",
+    "likelyHuman": "{score}% 사람 가능성",
+    "deviceInfo": "기기 정보",
+    "verifying": "검증 중...",
+    "verified": "인증됨",
+    "rejected": "거부됨",
+    "underReview": "심사 중",
+    "unverifiable": "검증 불가",
+    "processingDesc": "C2PA 검증 엔진 실행 중",
+    "verifiedDesc": "모든 검증 확인을 통과했습니다",
+    "rejectedDesc": "콘텐츠가 검증을 통과하지 못했습니다",
+    "reviewDesc": "수동 검토가 필요합니다",
+    "score": "점수: {score}%"
+  },
+  "provenance": {
+    "title": "출처 체인",
+    "device": "기기: {value}",
+    "software": "소프트웨어: {value}",
+    "platform": "플랫폼: {value}",
+    "changes": "변경 사항: {value}"
+  },
+  "filter": {
+    "filters": "필터",
+    "clearAll": "전체 해제",
+    "verification": "인증",
+    "verifiedOnly": "인증된 것만",
+    "category": "카테고리",
+    "contentType": "콘텐츠 유형",
+    "priceRange": "가격 범위",
+    "min": "최소",
+    "max": "최대",
+    "applyPrice": "가격 적용",
+    "sortBy": "정렬 기준"
+  },
+  "language": {
+    "changeLanguage": "언어 변경"
   }
 }

@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ShieldCheck, ShieldX, Clock, Cpu } from "lucide-react";
 import { formatDate } from "@/lib/utils/format";
+import { useTranslations } from "next-intl";
 
 interface C2PADetailsProps {
   hasC2PA: boolean;
@@ -24,12 +25,14 @@ export function C2PADetails({
   exifData,
   deviceInfo,
 }: C2PADetailsProps) {
+  const t = useTranslations("verification");
+
   return (
     <Card>
       <CardHeader>
         <CardTitle className="text-lg flex items-center gap-2">
           <ShieldCheck className="h-5 w-5 text-primary" />
-          C2PA Details
+          {t("c2paDetails")}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -37,12 +40,12 @@ export function C2PADetails({
           {hasC2PA ? (
             <Badge className="bg-emerald/10 text-emerald border-emerald/20">
               <ShieldCheck className="h-3 w-3 mr-1" />
-              C2PA Manifest Found
+              {t("c2paManifestFound")}
             </Badge>
           ) : (
             <Badge variant="outline" className="text-muted-foreground">
               <ShieldX className="h-3 w-3 mr-1" />
-              No C2PA Manifest
+              {t("noC2paManifest")}
             </Badge>
           )}
         </div>
@@ -50,21 +53,21 @@ export function C2PADetails({
         <div className="grid grid-cols-2 gap-4 text-sm">
           {issuer && (
             <div>
-              <p className="text-muted-foreground">Issuer</p>
+              <p className="text-muted-foreground">{t("issuer")}</p>
               <p className="font-medium">{issuer}</p>
             </div>
           )}
           {timestamp && (
             <div>
               <p className="text-muted-foreground flex items-center gap-1">
-                <Clock className="h-3 w-3" /> Timestamp
+                <Clock className="h-3 w-3" /> {t("timestamp")}
               </p>
               <p className="font-medium">{formatDate(timestamp)}</p>
             </div>
           )}
           {overallScore !== null && overallScore !== undefined && (
             <div>
-              <p className="text-muted-foreground">Authenticity Score</p>
+              <p className="text-muted-foreground">{t("authenticityScore")}</p>
               <p className="font-medium text-lg">
                 {(overallScore * 100).toFixed(0)}%
               </p>
@@ -73,10 +76,10 @@ export function C2PADetails({
           {aiScore !== null && aiScore !== undefined && (
             <div>
               <p className="text-muted-foreground flex items-center gap-1">
-                <Cpu className="h-3 w-3" /> AI Detection
+                <Cpu className="h-3 w-3" /> {t("aiDetection")}
               </p>
               <p className="font-medium">
-                {((1 - aiScore) * 100).toFixed(0)}% likely human
+                {t("likelyHuman", { score: ((1 - aiScore) * 100).toFixed(0) })}
               </p>
             </div>
           )}
@@ -84,7 +87,7 @@ export function C2PADetails({
 
         {deviceInfo && typeof deviceInfo === "object" && (
           <div className="text-sm">
-            <p className="text-muted-foreground mb-1">Device Info</p>
+            <p className="text-muted-foreground mb-1">{t("deviceInfo")}</p>
             <div className="flex gap-2 flex-wrap">
               {Object.entries(deviceInfo)
                 .filter(([, v]) => v)

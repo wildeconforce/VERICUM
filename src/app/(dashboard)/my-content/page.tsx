@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useAuth } from "@/hooks/use-auth";
 import { createClient } from "@/lib/supabase/client";
 import { Content } from "@/types/content";
@@ -18,6 +19,8 @@ export default function MyContentPage() {
   const { user } = useAuth();
   const [contents, setContents] = useState<(Content & { _previewUrl?: string })[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const t = useTranslations("dashboard");
+  const tc = useTranslations("common");
 
   useEffect(() => {
     async function fetchContent() {
@@ -57,11 +60,11 @@ export default function MyContentPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold">My Content</h1>
+        <h1 className="text-3xl font-bold">{t("myContent")}</h1>
         <Button asChild>
           <Link href="/upload">
             <Plus className="h-4 w-4 mr-2" />
-            Upload New
+            {t("uploadNew")}
           </Link>
         </Button>
       </div>
@@ -75,9 +78,9 @@ export default function MyContentPage() {
       ) : contents.length === 0 ? (
         <Card>
           <CardContent className="py-16 text-center">
-            <p className="text-muted-foreground mb-4">No content uploaded yet</p>
+            <p className="text-muted-foreground mb-4">{t("noContentYet")}</p>
             <Button asChild>
-              <Link href="/upload">Upload your first content</Link>
+              <Link href="/upload">{t("uploadFirstContent")}</Link>
             </Button>
           </CardContent>
         </Card>

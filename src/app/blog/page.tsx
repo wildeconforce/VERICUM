@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -40,16 +41,17 @@ const posts = [
   },
 ];
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const t = await getTranslations("blog");
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1 container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold mb-4">Blog</h1>
+          <h1 className="text-4xl font-bold mb-4">{t("title")}</h1>
           <p className="text-muted-foreground mb-12">
-            Insights on content authenticity, C2PA technology, and the creator
-            economy.
+            {t("subtitle")}
           </p>
           <div className="space-y-6">
             {posts.map((post) => (
@@ -67,7 +69,7 @@ export default function BlogPage() {
                     </h2>
                     <p className="text-muted-foreground">{post.excerpt}</p>
                     <span className="inline-flex items-center text-sm text-primary mt-3 font-medium">
-                      Read more <ArrowRight className="h-3 w-3 ml-1" />
+                      {t("readMore")} <ArrowRight className="h-3 w-3 ml-1" />
                     </span>
                   </CardContent>
                 </Card>

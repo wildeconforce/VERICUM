@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useState, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { ContentGrid } from "@/components/content/content-grid";
 import { FilterPanel } from "@/components/search/filter-panel";
 import { SortSelector } from "@/components/search/sort-selector";
@@ -12,6 +13,8 @@ import { ChevronLeft, ChevronRight, SlidersHorizontal, Loader2 } from "lucide-re
 function ExploreContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const t = useTranslations("explore");
+  const tc = useTranslations("common");
   const [contents, setContents] = useState<ContentWithSeller[]>([]);
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -63,9 +66,9 @@ function ExploreContent() {
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
         <div>
-          <h1 className="text-3xl font-bold">Explore</h1>
+          <h1 className="text-3xl font-bold">{t("title")}</h1>
           <p className="text-muted-foreground mt-1">
-            {total} verified content{total !== 1 ? "s" : ""} available
+            {t("subtitle", { count: total, plural: total !== 1 ? "s" : "" })}
           </p>
         </div>
         <div className="flex items-center gap-3">
@@ -76,7 +79,7 @@ function ExploreContent() {
             onClick={() => setShowFilters(!showFilters)}
           >
             <SlidersHorizontal className="h-4 w-4 mr-2" />
-            Filters
+            {t("filters.title")}
           </Button>
           <SortSelector value={sort} onChange={(v) => updateParams({ sort: v })} />
         </div>
@@ -92,7 +95,7 @@ function ExploreContent() {
         >
           {showFilters && (
             <div className="flex items-center justify-between mb-4 lg:hidden">
-              <h2 className="text-lg font-semibold">Filters</h2>
+              <h2 className="text-lg font-semibold">{t("filters.title")}</h2>
               <Button variant="ghost" size="sm" onClick={() => setShowFilters(false)}>
                 <SlidersHorizontal className="h-4 w-4" />
               </Button>
@@ -129,7 +132,7 @@ function ExploreContent() {
                 <ChevronLeft className="h-4 w-4" />
               </Button>
               <span className="text-sm text-muted-foreground">
-                Page {page} of {totalPages}
+                {tc("page")} {page} {tc("of")} {totalPages}
               </span>
               <Button
                 variant="outline"

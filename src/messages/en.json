@@ -42,7 +42,10 @@
     "views": "views",
     "likes": "likes",
     "downloads": "downloads",
-    "sales": "sales"
+    "sales": "sales",
+    "content": "Content",
+    "view": "View",
+    "manage": "Manage"
   },
   "nav": {
     "explore": "Explore",
@@ -55,7 +58,10 @@
     "blog": "Blog",
     "overview": "Overview",
     "downloads": "Downloads",
-    "bookmarks": "Bookmarks"
+    "bookmarks": "Bookmarks",
+    "menu": "Menu",
+    "searchContent": "Search content...",
+    "toggleMenu": "Toggle menu"
   },
   "landing": {
     "hero": {
@@ -140,15 +146,21 @@
       "continueWith": "Continue with {provider}",
       "forgotPassword": "Forgot password?",
       "noAccount": "Don't have an account?",
-      "signUpLink": "Sign up"
+      "signUpLink": "Sign up",
+      "welcomeBack": "Welcome back!",
+      "emailPlaceholder": "you@example.com"
     },
     "register": {
       "title": "Create your account",
       "subtitle": "Start buying and selling verified content",
       "hasAccount": "Already have an account?",
       "signInLink": "Sign in",
-      "success": "Account created! Please check your email to confirm."
-    }
+      "success": "Account created! Please check your email to confirm.",
+      "createAccount": "Create Account",
+      "usernamePlaceholder": "johndoe",
+      "displayNamePlaceholder": "John Doe"
+    },
+    "completingSignIn": "Completing sign in..."
   },
   "explore": {
     "title": "Explore",
@@ -185,7 +197,24 @@
     "licenseType": "License Type",
     "relatedContent": "Related Content",
     "purchaseComplete": "Purchase complete! You can now download your content.",
-    "shareContent": "Share this content"
+    "shareContent": "Share this content",
+    "previewNotAvailable": "Preview not available",
+    "bookmark": "Bookmark",
+    "bookmarked": "Bookmarked",
+    "downloadOriginal": "Download Original",
+    "royaltyOnSecondary": "{rate}% royalty on secondary creations",
+    "onPlatform": "on {platform}",
+    "failedCheckout": "Failed to create checkout",
+    "signInToBookmark": "Please sign in to bookmark",
+    "bookmarkAdded": "Bookmarked!",
+    "bookmarkRemoved": "Bookmark removed",
+    "signInToLike": "Please sign in to like",
+    "downloadFailed": "Download failed",
+    "nA": "N/A",
+    "noPreview": "No Preview",
+    "noContentFound": "No content found",
+    "adjustFilters": "Try adjusting your filters or search terms",
+    "unknown": "Unknown"
   },
   "license": {
     "personal": "Personal Use",
@@ -213,7 +242,23 @@
     "myUploads": "My Uploads",
     "purchasesCount": "Purchases",
     "uploadContent": "Upload Content",
-    "recentActivity": "Recent Activity"
+    "recentActivity": "Recent Activity",
+    "quickActions": "Quick Actions",
+    "exploreContent": "Explore Content",
+    "browseVerified": "Browse verified marketplace",
+    "myDownloads": "My Downloads",
+    "accessPurchased": "Access purchased content",
+    "savedForLater": "Saved content for later",
+    "earningsAnalytics": "Earnings & Analytics",
+    "viewRevenueStats": "View revenue and stats",
+    "myContent": "My Content",
+    "manageUploads": "Manage your uploads",
+    "connectStripe": "Connect Stripe",
+    "setUpPayments": "Set up payments",
+    "noContentYet": "No content uploaded yet",
+    "uploadFirstContent": "Upload your first content",
+    "uploadNew": "Upload New",
+    "bookmarks": "Bookmarks"
   },
   "earnings": {
     "title": "Earnings",
@@ -223,6 +268,7 @@
     "lastPayout": "Last Payout",
     "revenueOverTime": "Revenue Over Time",
     "noData": "No earnings data yet",
+    "revenue": "Revenue",
     "week": "Week",
     "month": "Month",
     "year": "Year",
@@ -231,14 +277,18 @@
     "settlementHistory": "Settlement History",
     "dailyRevenue": "Daily Revenue",
     "weeklyRevenue": "Weekly Revenue",
-    "monthlyRevenue": "Monthly Revenue"
+    "monthlyRevenue": "Monthly Revenue",
+    "revenueByContent": "Revenue by Content",
+    "noSalesData": "No sales data yet",
+    "salesCount": "{count} sales"
   },
   "purchases": {
     "title": "My Purchases",
     "empty": "No purchases yet",
     "browseContent": "Browse content",
     "view": "View",
-    "downloadFile": "Download"
+    "downloadFile": "Download",
+    "contentFallback": "Content"
   },
   "settings": {
     "title": "Settings",
@@ -254,7 +304,18 @@
     "stripeConnect": "Stripe Connect",
     "stripeConnectDesc": "Connect your Stripe account to receive payments",
     "connectStripe": "Connect Stripe Account",
-    "stripeConnected": "Stripe account connected"
+    "stripeConnected": "Stripe account connected",
+    "stripeConnectedSuccess": "Stripe account connected successfully!",
+    "stripeOnboardingDesc": "Connect your Stripe account to receive payouts from sales. You'll be redirected to Stripe to complete the onboarding process.",
+    "failedUpdateProfile": "Failed to update profile",
+    "accountUpgraded": "Account upgraded to seller! Please refresh the page.",
+    "failedUpgrade": "Failed to upgrade account",
+    "failedConnectStripe": "Failed to connect Stripe",
+    "commissionDesc1": "Commission structure: 15% platform fee on each sale",
+    "commissionDesc2": "You receive 85% of every sale directly to your Stripe account",
+    "commissionDesc3": "Buyers pay an additional 15% verification fee",
+    "accountId": "Account ID",
+    "manage": "Manage"
   },
   "seller": {
     "dashboard": {
@@ -268,11 +329,23 @@
   "buyer": {
     "downloadPage": "Download Library",
     "bookmarks": "Bookmarks",
-    "purchaseHistory": "Purchase History"
+    "purchaseHistory": "Purchase History",
+    "noDownloadsYet": "No downloads yet",
+    "browseContent": "Browse Content",
+    "downloadStarted": "Download started",
+    "downloadFailed": "Download failed",
+    "downloadsCount": "Downloads: {current}/{max}",
+    "noBookmarksYet": "No bookmarks yet",
+    "exploreContent": "Explore Content",
+    "bookmarkRemoved": "Bookmark removed",
+    "view": "View"
   },
   "search": {
     "placeholder": "Search verified content...",
     "tags": "Tags",
+    "resultsFor": "Results for \"{query}\"",
+    "resultCount": "{total} result found",
+    "resultCountPlural": "{total} results found",
     "categories": {
       "photojournalism": "Photojournalism",
       "nature-wildlife": "Nature & Wildlife",
@@ -308,16 +381,116 @@
     "title": "Share",
     "copyLink": "Copy Link",
     "copied": "Link copied!",
-    "shareOn": "Share on {platform}"
+    "shareOn": "Share on {platform}",
+    "copiedShort": "Copied!",
+    "failedCopy": "Failed to copy link",
+    "copyLinkTitle": "Copy link"
   },
   "theme": {
     "light": "Light",
     "dark": "Dark",
-    "system": "System"
+    "system": "System",
+    "toggleTheme": "Toggle theme"
   },
   "email": {
     "saleComplete": "Sale Complete",
     "purchaseConfirmation": "Purchase Confirmation",
     "verificationComplete": "Verification Complete"
+  },
+  "uploader": {
+    "dragDrop": "Drag & drop your file here",
+    "browseHint": "or click to browse. Supports JPG, PNG, WebP, TIFF, RAW (max 50MB)",
+    "uploading": "Uploading... {progress}%",
+    "uploadFile": "Upload File"
+  },
+  "checkout": {
+    "purchaseContent": "Purchase Content",
+    "contentPrice": "Content price",
+    "verificationFee": "Verification fee (5%)",
+    "total": "Total",
+    "pay": "Pay ${amount}",
+    "failedCheckout": "Failed to create checkout",
+    "somethingWrong": "Something went wrong"
+  },
+  "verification": {
+    "c2paDetails": "C2PA Details",
+    "c2paManifestFound": "C2PA Manifest Found",
+    "noC2paManifest": "No C2PA Manifest",
+    "issuer": "Issuer",
+    "timestamp": "Timestamp",
+    "authenticityScore": "Authenticity Score",
+    "aiDetection": "AI Detection",
+    "likelyHuman": "{score}% likely human",
+    "deviceInfo": "Device Info",
+    "verifying": "Verifying...",
+    "verified": "Verified",
+    "rejected": "Rejected",
+    "underReview": "Under Review",
+    "unverifiable": "Unverifiable",
+    "processingDesc": "Running C2PA verification engine",
+    "verifiedDesc": "Content passed all verification checks",
+    "rejectedDesc": "Content did not pass verification",
+    "reviewDesc": "Content requires manual review",
+    "score": "Score: {score}%"
+  },
+  "provenance": {
+    "title": "Provenance Chain",
+    "device": "Device: {value}",
+    "software": "Software: {value}",
+    "platform": "Platform: {value}",
+    "changes": "Changes: {value}"
+  },
+  "filter": {
+    "filters": "Filters",
+    "clearAll": "Clear all",
+    "verification": "Verification",
+    "verifiedOnly": "Verified only",
+    "category": "Category",
+    "contentType": "Content Type",
+    "priceRange": "Price Range",
+    "min": "Min",
+    "max": "Max",
+    "applyPrice": "Apply Price",
+    "sortBy": "Sort by"
+  },
+  "upload": {
+    "title": "Upload Content",
+    "subtitle": "Upload your original content for C2PA verification and listing.",
+    "fileUpload": "File Upload",
+    "fileUploadDesc": "Upload your original file. It will be verified automatically.",
+    "fileUploaded": "File uploaded successfully",
+    "contentDetails": "Content Details",
+    "titleLabel": "Title",
+    "titlePlaceholder": "Give your content a title",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Describe your content...",
+    "priceLabel": "Price (USD)",
+    "categoryLabel": "Category",
+    "categoryPlaceholder": "Select category",
+    "tagsLabel": "Tags",
+    "tagPlaceholder": "Add a tag...",
+    "addTag": "Add",
+    "publishContent": "Publish Content",
+    "verifying": "Verifying...",
+    "uploadFileFirst": "Please upload a file first",
+    "failedToCreate": "Failed to create content",
+    "runningVerification": "Running verification...",
+    "verifiedAndPublished": "Content verified and published!",
+    "submittedForReview": "Content submitted for manual review.",
+    "couldNotVerify": "Content could not be verified."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Insights on content authenticity, C2PA technology, and the creator economy.",
+    "readMore": "Read more",
+    "backToBlog": "Back to Blog"
+  },
+  "language": {
+    "changeLanguage": "Change language"
+  },
+  "legal": {
+    "termsTitle": "Terms of Service",
+    "privacyTitle": "Privacy Policy",
+    "lastUpdated": "Last updated: {date}"
   }
 }

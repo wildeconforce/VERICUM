@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useParams, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -33,6 +34,10 @@ function ContentDetailContent() {
   const params = useParams();
   const searchParams = useSearchParams();
   const { user, isAuthenticated } = useAuth();
+  const t = useTranslations("content");
+  const tl = useTranslations("license");
+  const tc = useTranslations("common");
+  const ts = useTranslations("saleType");
   const [data, setData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isPurchasing, setIsPurchasing] = useState(false);
@@ -59,9 +64,9 @@ function ContentDetailContent() {
 
   useEffect(() => {
     if (justPurchased) {
-      toast.success("Purchase complete! You can now download your content.");
+      toast.success(t("purchaseComplete"));
     }
-  }, [justPurchased]);
+  }, [justPurchased, t]);
 
   const handlePurchase = async () => {
     if (!isAuthenticated) {
@@ -83,17 +88,17 @@ function ContentDetailContent() {
       if (json.checkout_url) {
         window.location.href = json.checkout_url;
       } else {
-        toast.error(json.error || "Failed to create checkout");
+        toast.error(json.error || t("failedCheckout"));
       }
     } catch {
-      toast.error("Something went wrong");
+      toast.error(tc("error"));
     }
     setIsPurchasing(false);
   };
 
   const handleBookmark = async () => {
     if (!isAuthenticated) {
-      toast.error("Please sign in to bookmark");
+      toast.error(t("signInToBookmark"));
       return;
     }
     const res = await fetch("/api/bookmarks", {
@@ -104,13 +109,13 @@ function ContentDetailContent() {
     if (res.ok) {
       const json = await res.json();
       setIsBookmarked(json.bookmarked);
-      toast.success(json.bookmarked ? "Bookmarked!" : "Bookmark removed");
+      toast.success(json.bookmarked ? t("bookmarkAdded") : t("bookmarkRemoved"));
     }
   };
 
   const handleLike = async () => {
     if (!isAuthenticated) {
-      toast.error("Please sign in to like");
+      toast.error(t("signInToLike"));
       return;
     }
     const supabaseModule = await import("@/lib/supabase/client");
@@ -130,10 +135,10 @@ function ContentDetailContent() {
       if (json.download_url) {
         window.open(json.download_url, "_blank");
       } else {
-        toast.error(json.error || "Download failed");
+        toast.error(json.error || t("downloadFailed"));
       }
     } catch {
-      toast.error("Download failed");
+      toast.error(t("downloadFailed"));
     }
   };
 
@@ -148,7 +153,7 @@ function ContentDetailContent() {
   if (!data?.content) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
-        <p className="text-muted-foreground text-lg">Content not found</p>
+        <p className="text-muted-foreground text-lg">{t("notFound")}</p>
       </div>
     );
   }
@@ -175,7 +180,7 @@ function ContentDetailContent() {
               />
             ) : (
               <div className="flex items-center justify-center h-full text-muted-foreground">
-                Preview not available
+                {t("previewNotAvailable")}
               </div>
             )}
           </div>
@@ -194,16 +199,16 @@ function ContentDetailContent() {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1">
-                <Eye className="h-4 w-4" /> {content.view_count} views
+                <Eye className="h-4 w-4" /> {content.view_count} {tc("views")}
               </span>
               <button
                 onClick={handleLike}
                 className={`flex items-center gap-1 hover:text-primary transition-colors ${isLiked ? "text-primary" : ""}`}
               >
-                <Heart className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`} /> {likeCount} likes
+                <Heart className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`} /> {likeCount} {tc("likes")}
               </button>
               <span className="flex items-center gap-1">
-                <Download className="h-4 w-4" /> {content.download_count} downloads
+                <Download className="h-4 w-4" /> {content.download_count} {tc("downloads")}
               </span>
               <span className="flex items-center gap-1">
                 <Calendar className="h-4 w-4" /> {formatDate(content.created_at)}
@@ -221,7 +226,7 @@ function ContentDetailContent() {
                 ) : (
                   <Bookmark className="h-4 w-4 mr-2" />
                 )}
-                {isBookmarked ? "Bookmarked" : "Bookmark"}
+                {isBookmarked ? t("bookmarked") : t("bookmark")}
               </Button>
               <ShareButtons url={contentUrl} title={content.title} compact />
             </div>
@@ -231,11 +236,11 @@ function ContentDetailContent() {
           {content.sale_type && (
             <div className="flex items-center gap-2">
               <Badge variant={content.sale_type === "premium" ? "default" : "secondary"}>
-                {content.sale_type === "premium" ? "Premium Sale" : "Royalty Sale"}
+                {content.sale_type === "premium" ? ts("premium") : ts("royalty")}
               </Badge>
               {content.sale_type === "royalty" && content.royalty_rate > 0 && (
                 <span className="text-xs text-muted-foreground">
-                  {(content.royalty_rate * 100).toFixed(0)}% royalty on secondary creations
+                  {t("royaltyOnSecondary", { rate: (content.royalty_rate * 100).toFixed(0) })}
                 </span>
               )}
             </div>
@@ -257,33 +262,33 @@ function ContentDetailContent() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
                   <ShieldCheck className="h-5 w-5 text-primary" />
-                  Verification Details
+                  {t("verificationDetails")}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                   <div>
-                    <p className="text-muted-foreground">Overall Score</p>
+                    <p className="text-muted-foreground">{t("overallScore")}</p>
                     <p className="font-semibold text-lg">
                       {((verification.overall_score || 0) * 100).toFixed(0)}%
                     </p>
                   </div>
                   <div>
-                    <p className="text-muted-foreground">C2PA</p>
+                    <p className="text-muted-foreground">{t("c2pa")}</p>
                     <p className="font-semibold">
-                      {verification.has_c2pa ? "Present" : "Not found"}
+                      {verification.has_c2pa ? t("present") : t("notFoundShort")}
                     </p>
                   </div>
                   <div>
-                    <p className="text-muted-foreground">AI Score</p>
+                    <p className="text-muted-foreground">{t("aiScore")}</p>
                     <p className="font-semibold">
                       {verification.ai_score !== null
-                        ? `${((1 - verification.ai_score) * 100).toFixed(0)}% Human`
-                        : "N/A"}
+                        ? `${((1 - verification.ai_score) * 100).toFixed(0)}% ${t("human")}`
+                        : t("nA")}
                     </p>
                   </div>
                   <div>
-                    <p className="text-muted-foreground">Status</p>
+                    <p className="text-muted-foreground">{t("status")}</p>
                     <p className="font-semibold capitalize">{verification.status}</p>
                   </div>
                 </div>
@@ -291,7 +296,7 @@ function ContentDetailContent() {
                   <>
                     <Separator />
                     <div>
-                      <p className="text-sm font-medium mb-2">Provenance Chain</p>
+                      <p className="text-sm font-medium mb-2">{t("provenanceChain")}</p>
                       <div className="space-y-2">
                         {(verification.provenance as any[]).map((event: any, i: number) => (
                           <div key={i} className="flex items-center gap-3 text-sm">
@@ -304,7 +309,7 @@ function ContentDetailContent() {
                                 </span>
                               )}
                               {event.platform && (
-                                <span className="text-muted-foreground"> on {event.platform}</span>
+                                <span className="text-muted-foreground"> {t("onPlatform", { platform: event.platform })}</span>
                               )}
                             </div>
                           </div>
@@ -333,7 +338,7 @@ function ContentDetailContent() {
                 <div>
                   <p className="font-medium">{seller?.display_name || seller?.username}</p>
                   <p className="text-xs text-muted-foreground">
-                    {seller?.total_sales || 0} sales
+                    {seller?.total_sales || 0} {tc("sales")}
                   </p>
                 </div>
                 {seller?.is_verified && (
@@ -349,11 +354,11 @@ function ContentDetailContent() {
               <CardContent className="p-4 space-y-4">
                 <div className="flex items-center gap-2 text-primary">
                   <CheckCircle className="h-5 w-5" />
-                  <span className="font-medium">Purchased</span>
+                  <span className="font-medium">{tc("purchased")}</span>
                 </div>
                 <Button className="w-full" size="lg" onClick={handleDownload}>
                   <Download className="h-4 w-4 mr-2" />
-                  Download Original
+                  {t("downloadOriginal")}
                 </Button>
               </CardContent>
             </Card>
@@ -369,7 +374,7 @@ function ContentDetailContent() {
                 />
                 <Separator />
                 <div className="space-y-2">
-                  <p className="text-sm font-medium">License Type</p>
+                  <p className="text-sm font-medium">{t("licenseType")}</p>
                   {["personal", "standard", "extended"].map((license) => (
                     <label
                       key={license}
@@ -388,9 +393,9 @@ function ContentDetailContent() {
                         className="accent-primary"
                       />
                       <div>
-                        <p className="text-sm font-medium">{LICENSE_LABELS[license]}</p>
+                        <p className="text-sm font-medium">{tl(license as any)}</p>
                         <p className="text-xs text-muted-foreground">
-                          {LICENSE_DESCRIPTIONS[license]}
+                          {tl(`${license}Desc` as any)}
                         </p>
                       </div>
                     </label>
@@ -407,7 +412,7 @@ function ContentDetailContent() {
                   ) : (
                     <Download className="h-4 w-4 mr-2" />
                   )}
-                  Purchase
+                  {tc("purchase")}
                 </Button>
               </CardContent>
             </Card>
@@ -418,7 +423,7 @@ function ContentDetailContent() {
       {/* Related content */}
       {related?.length > 0 && (
         <div className="mt-16">
-          <h2 className="text-2xl font-bold mb-6">Related Content</h2>
+          <h2 className="text-2xl font-bold mb-6">{t("relatedContent")}</h2>
           <ContentGrid contents={related} />
         </div>
       )}

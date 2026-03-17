@@ -42,7 +42,10 @@
     "views": "vues",
     "likes": "j'aime",
     "downloads": "téléchargements",
-    "sales": "ventes"
+    "sales": "ventes",
+    "content": "Contenu",
+    "view": "Voir",
+    "manage": "Gérer"
   },
   "nav": {
     "explore": "Explorer",
@@ -54,7 +57,10 @@
     "settings": "Paramètres",
     "blog": "Blog",
     "downloads": "Téléchargements",
-    "bookmarks": "Favoris"
+    "bookmarks": "Favoris",
+    "menu": "Menu",
+    "searchContent": "Rechercher du contenu...",
+    "toggleMenu": "Basculer le menu"
   },
   "landing": {
     "hero": {
@@ -139,15 +145,21 @@
       "continueWith": "Continuer avec {provider}",
       "forgotPassword": "Mot de passe oublié ?",
       "noAccount": "Vous n'avez pas de compte ?",
-      "signUpLink": "S'inscrire"
+      "signUpLink": "S'inscrire",
+      "welcomeBack": "Bon retour !",
+      "emailPlaceholder": "vous@exemple.com"
     },
     "register": {
       "title": "Créez votre compte",
       "subtitle": "Commencez à acheter et vendre du contenu vérifié",
       "hasAccount": "Vous avez déjà un compte ?",
       "signInLink": "Se connecter",
-      "success": "Compte créé ! Veuillez vérifier votre e-mail pour confirmer."
-    }
+      "success": "Compte créé ! Veuillez vérifier votre e-mail pour confirmer.",
+      "createAccount": "Créer un compte",
+      "usernamePlaceholder": "jeandupont",
+      "displayNamePlaceholder": "Jean Dupont"
+    },
+    "completingSignIn": "Connexion en cours..."
   },
   "explore": {
     "title": "Explorer",
@@ -184,7 +196,24 @@
     "licenseType": "Type de licence",
     "relatedContent": "Contenu associé",
     "purchaseComplete": "Achat terminé ! Vous pouvez maintenant télécharger votre contenu.",
-    "shareContent": "Partager ce contenu"
+    "shareContent": "Partager ce contenu",
+    "previewNotAvailable": "Aperçu non disponible",
+    "bookmark": "Favori",
+    "bookmarked": "En favoris",
+    "downloadOriginal": "Télécharger l'original",
+    "royaltyOnSecondary": "{rate}% de redevance sur les créations secondaires",
+    "onPlatform": "sur {platform}",
+    "failedCheckout": "Échec de la création du paiement",
+    "signInToBookmark": "Connectez-vous pour mettre en favori",
+    "bookmarkAdded": "Ajouté aux favoris !",
+    "bookmarkRemoved": "Favori supprimé",
+    "signInToLike": "Connectez-vous pour aimer",
+    "downloadFailed": "Échec du téléchargement",
+    "nA": "N/D",
+    "noPreview": "Pas d'aperçu",
+    "noContentFound": "Aucun contenu trouvé",
+    "adjustFilters": "Essayez d'ajuster vos filtres ou termes de recherche",
+    "unknown": "Inconnu"
   },
   "license": {
     "personal": "Usage personnel",
@@ -212,7 +241,23 @@
     "myUploads": "Mes imports",
     "purchasesCount": "Achats",
     "uploadContent": "Importer du contenu",
-    "recentActivity": "Activité récente"
+    "recentActivity": "Activité récente",
+    "quickActions": "Actions rapides",
+    "exploreContent": "Explorer le contenu",
+    "browseVerified": "Parcourir le marché vérifié",
+    "myDownloads": "Mes téléchargements",
+    "accessPurchased": "Accéder au contenu acheté",
+    "savedForLater": "Contenu sauvegardé pour plus tard",
+    "earningsAnalytics": "Revenus et analyses",
+    "viewRevenueStats": "Voir les revenus et statistiques",
+    "myContent": "Mon contenu",
+    "manageUploads": "Gérer vos téléversements",
+    "connectStripe": "Connecter Stripe",
+    "setUpPayments": "Configurer les paiements",
+    "noContentYet": "Aucun contenu téléversé pour l'instant",
+    "uploadFirstContent": "Téléversez votre premier contenu",
+    "uploadNew": "Nouveau téléversement",
+    "bookmarks": "Favoris"
   },
   "earnings": {
     "title": "Revenus",
@@ -230,14 +275,19 @@
     "settlementHistory": "Historique des règlements",
     "dailyRevenue": "Revenus quotidiens",
     "weeklyRevenue": "Revenus hebdomadaires",
-    "monthlyRevenue": "Revenus mensuels"
+    "monthlyRevenue": "Revenus mensuels",
+    "revenue": "Revenus",
+    "revenueByContent": "Revenus par contenu",
+    "noSalesData": "Pas encore de données de ventes",
+    "salesCount": "{count} ventes"
   },
   "purchases": {
     "title": "Mes achats",
     "empty": "Aucun achat pour l'instant",
     "browseContent": "Parcourir le contenu",
     "view": "Voir",
-    "downloadFile": "Télécharger"
+    "downloadFile": "Télécharger",
+    "contentFallback": "Contenu"
   },
   "settings": {
     "title": "Paramètres",
@@ -253,7 +303,18 @@
     "stripeConnect": "Stripe Connect",
     "stripeConnectDesc": "Connectez votre compte Stripe pour recevoir des paiements",
     "connectStripe": "Connecter un compte Stripe",
-    "stripeConnected": "Compte Stripe connecté"
+    "stripeConnected": "Compte Stripe connecté",
+    "stripeConnectedSuccess": "Compte Stripe connecté avec succès !",
+    "stripeOnboardingDesc": "Connectez votre compte Stripe pour recevoir les paiements de ventes. Vous serez redirigé vers Stripe pour compléter le processus d'intégration.",
+    "failedUpdateProfile": "Échec de la mise à jour du profil",
+    "accountUpgraded": "Compte mis à niveau en vendeur ! Veuillez rafraîchir la page.",
+    "failedUpgrade": "Échec de la mise à niveau du compte",
+    "failedConnectStripe": "Échec de la connexion à Stripe",
+    "commissionDesc1": "Structure des commissions : 15% de frais de plateforme par vente",
+    "commissionDesc2": "Vous recevez 85% de chaque vente directement sur votre compte Stripe",
+    "commissionDesc3": "Les acheteurs paient des frais de vérification supplémentaires de 15%",
+    "accountId": "ID du compte",
+    "manage": "Gérer"
   },
   "seller": {
     "dashboard": {
@@ -267,11 +328,23 @@
   "buyer": {
     "downloadPage": "Bibliothèque de téléchargements",
     "bookmarks": "Favoris",
-    "purchaseHistory": "Historique des achats"
+    "purchaseHistory": "Historique des achats",
+    "noDownloadsYet": "Pas encore de téléchargements",
+    "browseContent": "Parcourir le contenu",
+    "downloadStarted": "Téléchargement démarré",
+    "downloadFailed": "Échec du téléchargement",
+    "downloadsCount": "Téléchargements : {current}/{max}",
+    "noBookmarksYet": "Pas encore de favoris",
+    "exploreContent": "Explorer le contenu",
+    "bookmarkRemoved": "Favori supprimé",
+    "view": "Voir"
   },
   "search": {
     "placeholder": "Rechercher du contenu vérifié...",
     "tags": "Tags",
+    "resultsFor": "Résultats pour \"{query}\"",
+    "resultCount": "{total} résultat trouvé",
+    "resultCountPlural": "{total} résultats trouvés",
     "categories": {
       "photojournalism": "Photojournalisme",
       "nature-wildlife": "Nature et faune",
@@ -307,16 +380,116 @@
     "title": "Partager",
     "copyLink": "Copier le lien",
     "copied": "Lien copié !",
-    "shareOn": "Partager sur {platform}"
+    "shareOn": "Partager sur {platform}",
+    "copiedShort": "Copié !",
+    "failedCopy": "Échec de la copie du lien",
+    "copyLinkTitle": "Copier le lien"
   },
   "theme": {
     "light": "Clair",
     "dark": "Sombre",
-    "system": "Système"
+    "system": "Système",
+    "toggleTheme": "Changer de thème"
   },
   "email": {
     "saleComplete": "Vente terminée",
     "purchaseConfirmation": "Confirmation d'achat",
     "verificationComplete": "Vérification terminée"
+  },
+  "upload": {
+    "title": "Importer du contenu",
+    "subtitle": "Importez votre contenu original pour vérification C2PA et mise en ligne.",
+    "fileUpload": "Import de fichier",
+    "fileUploadDesc": "Importez votre fichier original. Il sera vérifié automatiquement.",
+    "fileUploaded": "Fichier importé avec succès",
+    "contentDetails": "Détails du contenu",
+    "titleLabel": "Titre",
+    "titlePlaceholder": "Donnez un titre à votre contenu",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Décrivez votre contenu...",
+    "priceLabel": "Prix (USD)",
+    "categoryLabel": "Catégorie",
+    "categoryPlaceholder": "Sélectionner une catégorie",
+    "tagsLabel": "Tags",
+    "tagPlaceholder": "Ajouter un tag...",
+    "addTag": "Ajouter",
+    "publishContent": "Publier le contenu",
+    "verifying": "Vérification...",
+    "uploadFileFirst": "Veuillez d'abord importer un fichier",
+    "failedToCreate": "Échec de la création du contenu",
+    "runningVerification": "Vérification en cours...",
+    "verifiedAndPublished": "Contenu vérifié et publié !",
+    "submittedForReview": "Contenu soumis pour révision manuelle.",
+    "couldNotVerify": "Le contenu n'a pas pu être vérifié."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Perspectives sur l'authenticité du contenu, la technologie C2PA et l'économie des créateurs.",
+    "readMore": "Lire la suite",
+    "backToBlog": "Retour au blog"
+  },
+  "legal": {
+    "termsTitle": "Conditions d'utilisation",
+    "privacyTitle": "Politique de confidentialité",
+    "lastUpdated": "Dernière mise à jour : {date}"
+  },
+  "uploader": {
+    "dragDrop": "Glissez-déposez votre fichier ici",
+    "browseHint": "ou cliquez pour parcourir. Prend en charge JPG, PNG, WebP, TIFF, RAW (max 50 Mo)",
+    "uploading": "Envoi en cours... {progress}%",
+    "uploadFile": "Envoyer le fichier"
+  },
+  "checkout": {
+    "purchaseContent": "Acheter le contenu",
+    "contentPrice": "Prix du contenu",
+    "verificationFee": "Frais de vérification (5%)",
+    "total": "Total",
+    "pay": "Payer ${amount}",
+    "failedCheckout": "Échec de la création du paiement",
+    "somethingWrong": "Une erreur est survenue"
+  },
+  "verification": {
+    "c2paDetails": "Détails C2PA",
+    "c2paManifestFound": "Manifeste C2PA trouvé",
+    "noC2paManifest": "Pas de manifeste C2PA",
+    "issuer": "Émetteur",
+    "timestamp": "Horodatage",
+    "authenticityScore": "Score d'authenticité",
+    "aiDetection": "Détection IA",
+    "likelyHuman": "{score}% probablement humain",
+    "deviceInfo": "Informations sur l'appareil",
+    "verifying": "Vérification en cours...",
+    "verified": "Vérifié",
+    "rejected": "Rejeté",
+    "underReview": "En cours de révision",
+    "unverifiable": "Non vérifiable",
+    "processingDesc": "Exécution du moteur de vérification C2PA",
+    "verifiedDesc": "Le contenu a passé toutes les vérifications",
+    "rejectedDesc": "Le contenu n'a pas passé la vérification",
+    "reviewDesc": "Le contenu nécessite une révision manuelle",
+    "score": "Score : {score}%"
+  },
+  "provenance": {
+    "title": "Chaîne de provenance",
+    "device": "Appareil : {value}",
+    "software": "Logiciel : {value}",
+    "platform": "Plateforme : {value}",
+    "changes": "Modifications : {value}"
+  },
+  "filter": {
+    "filters": "Filtres",
+    "clearAll": "Tout effacer",
+    "verification": "Vérification",
+    "verifiedOnly": "Vérifiés uniquement",
+    "category": "Catégorie",
+    "contentType": "Type de contenu",
+    "priceRange": "Fourchette de prix",
+    "min": "Min",
+    "max": "Max",
+    "applyPrice": "Appliquer le prix",
+    "sortBy": "Trier par"
+  },
+  "language": {
+    "changeLanguage": "Changer de langue"
   }
 }

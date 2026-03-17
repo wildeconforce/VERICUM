@@ -7,12 +7,14 @@ import { validateFile, getAcceptedMimeTypes } from "@/lib/utils/image";
 import { Button } from "@/components/ui/button";
 import { Upload, X, FileImage, Loader2 } from "lucide-react";
 import { formatFileSize } from "@/lib/utils/format";
+import { useTranslations } from "next-intl";
 
 interface ContentUploaderProps {
   onUploadComplete: (result: { fileKey: string; contentId: string }) => void;
 }
 
 export function ContentUploader({ onUploadComplete }: ContentUploaderProps) {
+  const t = useTranslations("uploader");
   const { user } = useAuth();
   const { progress, isUploading, error, upload, reset } = useUpload();
   const [dragActive, setDragActive] = useState(false);
@@ -85,10 +87,10 @@ export function ContentUploader({ onUploadComplete }: ContentUploaderProps) {
           />
           <Upload className="h-10 w-10 mx-auto text-muted-foreground mb-4" />
           <p className="text-lg font-medium mb-1">
-            Drag & drop your file here
+            {t("dragDrop")}
           </p>
           <p className="text-sm text-muted-foreground">
-            or click to browse. Supports JPG, PNG, WebP, TIFF, RAW (max 50MB)
+            {t("browseHint")}
           </p>
         </div>
       ) : (
@@ -118,14 +120,14 @@ export function ContentUploader({ onUploadComplete }: ContentUploaderProps) {
                 />
               </div>
               <p className="text-xs text-muted-foreground mt-1">
-                Uploading... {progress}%
+                {t("uploading", { progress })}
               </p>
             </div>
           )}
           {!isUploading && (
             <Button onClick={handleUpload} className="mt-3 w-full" disabled={!user}>
               <Upload className="h-4 w-4 mr-2" />
-              Upload File
+              {t("uploadFile")}
             </Button>
           )}
         </div>

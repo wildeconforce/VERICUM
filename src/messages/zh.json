@@ -42,7 +42,10 @@
     "views": "浏览量",
     "likes": "点赞",
     "downloads": "下载量",
-    "sales": "销售量"
+    "sales": "销售量",
+    "content": "内容",
+    "view": "查看",
+    "manage": "管理"
   },
   "nav": {
     "explore": "探索",
@@ -54,7 +57,10 @@
     "settings": "设置",
     "blog": "博客",
     "downloads": "下载",
-    "bookmarks": "收藏夹"
+    "bookmarks": "收藏夹",
+    "menu": "菜单",
+    "searchContent": "搜索内容...",
+    "toggleMenu": "切换菜单"
   },
   "landing": {
     "hero": {
@@ -139,15 +145,21 @@
       "continueWith": "使用{provider}继续",
       "forgotPassword": "忘记密码？",
       "noAccount": "还没有账户？",
-      "signUpLink": "注册"
+      "signUpLink": "注册",
+      "welcomeBack": "欢迎回来！",
+      "emailPlaceholder": "you@example.com"
     },
     "register": {
       "title": "创建您的账户",
       "subtitle": "开始购买和销售认证内容",
       "hasAccount": "已经有账户了？",
       "signInLink": "登录",
-      "success": "账户已创建！请检查您的电子邮件以确认。"
-    }
+      "success": "账户已创建！请检查您的电子邮件以确认。",
+      "createAccount": "创建账户",
+      "usernamePlaceholder": "johndoe",
+      "displayNamePlaceholder": "John Doe"
+    },
+    "completingSignIn": "正在完成登录..."
   },
   "explore": {
     "title": "探索",
@@ -184,7 +196,24 @@
     "licenseType": "许可类型",
     "relatedContent": "相关内容",
     "purchaseComplete": "购买完成！您现在可以下载内容了。",
-    "shareContent": "分享此内容"
+    "shareContent": "分享此内容",
+    "previewNotAvailable": "预览不可用",
+    "bookmark": "收藏",
+    "bookmarked": "已收藏",
+    "downloadOriginal": "下载原始文件",
+    "royaltyOnSecondary": "二次创作需支付{rate}%版税",
+    "onPlatform": "在{platform}上",
+    "failedCheckout": "创建结账失败",
+    "signInToBookmark": "请登录以收藏",
+    "bookmarkAdded": "已收藏！",
+    "bookmarkRemoved": "已取消收藏",
+    "signInToLike": "请登录以点赞",
+    "downloadFailed": "下载失败",
+    "nA": "N/A",
+    "noPreview": "无预览",
+    "noContentFound": "未找到内容",
+    "adjustFilters": "尝试调整您的筛选条件或搜索词",
+    "unknown": "未知"
   },
   "license": {
     "personal": "个人使用",
@@ -212,7 +241,23 @@
     "myUploads": "我的上传",
     "purchasesCount": "购买次数",
     "uploadContent": "上传内容",
-    "recentActivity": "最近活动"
+    "recentActivity": "最近活动",
+    "quickActions": "快速操作",
+    "exploreContent": "探索内容",
+    "browseVerified": "浏览认证市场",
+    "myDownloads": "我的下载",
+    "accessPurchased": "访问已购内容",
+    "savedForLater": "稍后查看的内容",
+    "earningsAnalytics": "收入与分析",
+    "viewRevenueStats": "查看收入和统计数据",
+    "myContent": "我的内容",
+    "manageUploads": "管理上传",
+    "connectStripe": "连接Stripe",
+    "setUpPayments": "设置支付",
+    "noContentYet": "尚未上传内容",
+    "uploadFirstContent": "上传您的第一个内容",
+    "uploadNew": "新上传",
+    "bookmarks": "书签"
   },
   "earnings": {
     "title": "收益",
@@ -230,14 +275,19 @@
     "settlementHistory": "结算记录",
     "dailyRevenue": "日收益",
     "weeklyRevenue": "周收益",
-    "monthlyRevenue": "月收益"
+    "monthlyRevenue": "月收益",
+    "revenue": "收入",
+    "revenueByContent": "按内容的收入",
+    "noSalesData": "暂无销售数据",
+    "salesCount": "{count}笔销售"
   },
   "purchases": {
     "title": "我的购买",
     "empty": "暂无购买记录",
     "browseContent": "浏览内容",
     "view": "查看",
-    "downloadFile": "下载"
+    "downloadFile": "下载",
+    "contentFallback": "内容"
   },
   "settings": {
     "title": "设置",
@@ -253,7 +303,18 @@
     "stripeConnect": "Stripe Connect",
     "stripeConnectDesc": "连接您的Stripe账户以接收付款",
     "connectStripe": "连接Stripe账户",
-    "stripeConnected": "Stripe账户已连接"
+    "stripeConnected": "Stripe账户已连接",
+    "stripeConnectedSuccess": "Stripe账户已成功连接！",
+    "stripeOnboardingDesc": "连接您的Stripe账户以接收销售款项。您将被重定向到Stripe完成入职流程。",
+    "failedUpdateProfile": "更新个人资料失败",
+    "accountUpgraded": "账户已升级为卖家！请刷新页面。",
+    "failedUpgrade": "账户升级失败",
+    "failedConnectStripe": "连接Stripe失败",
+    "commissionDesc1": "佣金结构：每笔销售15%平台费用",
+    "commissionDesc2": "您将收到每笔销售85%直接到您的Stripe账户",
+    "commissionDesc3": "买家需支付额外15%的验证费用",
+    "accountId": "账户ID",
+    "manage": "管理"
   },
   "seller": {
     "dashboard": {
@@ -267,11 +328,23 @@
   "buyer": {
     "downloadPage": "下载库",
     "bookmarks": "收藏夹",
-    "purchaseHistory": "购买历史"
+    "purchaseHistory": "购买历史",
+    "noDownloadsYet": "暂无下载",
+    "browseContent": "浏览内容",
+    "downloadStarted": "下载已开始",
+    "downloadFailed": "下载失败",
+    "downloadsCount": "下载次数：{current}/{max}",
+    "noBookmarksYet": "暂无书签",
+    "exploreContent": "探索内容",
+    "bookmarkRemoved": "书签已移除",
+    "view": "查看"
   },
   "search": {
     "placeholder": "搜索认证内容...",
     "tags": "标签",
+    "resultsFor": "\"{query}\" 的搜索结果",
+    "resultCount": "找到 {total} 个结果",
+    "resultCountPlural": "找到 {total} 个结果",
     "categories": {
       "photojournalism": "新闻摄影",
       "nature-wildlife": "自然与野生动物",
@@ -307,16 +380,79 @@
     "title": "分享",
     "copyLink": "复制链接",
     "copied": "链接已复制！",
-    "shareOn": "分享到{platform}"
+    "shareOn": "分享到{platform}",
+    "copiedShort": "已复制！",
+    "failedCopy": "复制链接失败",
+    "copyLinkTitle": "复制链接"
   },
   "theme": {
     "light": "浅色",
     "dark": "深色",
-    "system": "跟随系统"
+    "system": "跟随系统",
+    "toggleTheme": "切换主题"
   },
   "email": {
     "saleComplete": "销售完成",
     "purchaseConfirmation": "购买确认",
     "verificationComplete": "验证完成"
+  },
+  "uploader": {
+    "dragDrop": "将文件拖放到此处",
+    "browseHint": "或点击浏览。支持JPG、PNG、WebP、TIFF、RAW（最大50MB）",
+    "uploading": "上传中... {progress}%",
+    "uploadFile": "上传文件"
+  },
+  "checkout": {
+    "purchaseContent": "购买内容",
+    "contentPrice": "内容价格",
+    "verificationFee": "验证费用（5%）",
+    "total": "总计",
+    "pay": "支付${amount}",
+    "failedCheckout": "创建结账失败",
+    "somethingWrong": "出了点问题"
+  },
+  "verification": {
+    "c2paDetails": "C2PA详情",
+    "c2paManifestFound": "发现C2PA清单",
+    "noC2paManifest": "无C2PA清单",
+    "issuer": "颁发者",
+    "timestamp": "时间戳",
+    "authenticityScore": "真实性评分",
+    "aiDetection": "AI检测",
+    "likelyHuman": "{score}%可能为人类",
+    "deviceInfo": "设备信息",
+    "verifying": "验证中...",
+    "verified": "已认证",
+    "rejected": "已拒绝",
+    "underReview": "审核中",
+    "unverifiable": "无法验证",
+    "processingDesc": "正在运行C2PA验证引擎",
+    "verifiedDesc": "内容通过了所有验证检查",
+    "rejectedDesc": "内容未通过验证",
+    "reviewDesc": "内容需要人工审核",
+    "score": "评分：{score}%"
+  },
+  "provenance": {
+    "title": "来源链",
+    "device": "设备：{value}",
+    "software": "软件：{value}",
+    "platform": "平台：{value}",
+    "changes": "更改：{value}"
+  },
+  "filter": {
+    "filters": "筛选",
+    "clearAll": "清除全部",
+    "verification": "认证",
+    "verifiedOnly": "仅显示已认证",
+    "category": "分类",
+    "contentType": "内容类型",
+    "priceRange": "价格范围",
+    "min": "最低",
+    "max": "最高",
+    "applyPrice": "应用价格",
+    "sortBy": "排序方式"
+  },
+  "language": {
+    "changeLanguage": "更改语言"
   }
 }

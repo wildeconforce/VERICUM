@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { ContentGrid } from "@/components/content/content-grid";
 import { ContentWithSeller } from "@/types/content";
 import { SearchBar } from "@/components/search/search-bar";
@@ -10,6 +11,7 @@ import { Loader2 } from "lucide-react";
 function SearchContent() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q") || "";
+  const t = useTranslations("search");
   const [results, setResults] = useState<ContentWithSeller[]>([]);
   const [total, setTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -36,10 +38,10 @@ function SearchContent() {
       {query && (
         <div className="mb-6">
           <h1 className="text-2xl font-bold">
-            Results for &ldquo;{query}&rdquo;
+            {t("resultsFor", { query })}
           </h1>
           <p className="text-muted-foreground mt-1">
-            {total} result{total !== 1 ? "s" : ""} found
+            {total !== 1 ? t("resultCountPlural", { total }) : t("resultCount", { total })}
           </p>
         </div>
       )}

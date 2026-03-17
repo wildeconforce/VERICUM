@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useAuth } from "@/hooks/use-auth";
 import { createClient } from "@/lib/supabase/client";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,6 +17,7 @@ export default function PurchasesPage() {
   const { user } = useAuth();
   const [purchases, setPurchases] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const t = useTranslations("purchases");
 
   useEffect(() => {
     async function fetchPurchases() {
@@ -55,7 +57,7 @@ export default function PurchasesPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">My Purchases</h1>
+      <h1 className="text-3xl font-bold mb-6">{t("title")}</h1>
       {isLoading ? (
         <div className="space-y-4">
           {Array.from({ length: 3 }).map((_, i) => (
@@ -65,9 +67,9 @@ export default function PurchasesPage() {
       ) : purchases.length === 0 ? (
         <Card>
           <CardContent className="py-16 text-center">
-            <p className="text-muted-foreground mb-4">No purchases yet</p>
+            <p className="text-muted-foreground mb-4">{t("empty")}</p>
             <Button asChild>
-              <Link href="/explore">Browse content</Link>
+              <Link href="/explore">{t("browseContent")}</Link>
             </Button>
           </CardContent>
         </Card>
@@ -92,7 +94,7 @@ export default function PurchasesPage() {
                   </Link>
                   <div className="flex-1 min-w-0">
                     <Link href={`/content/${purchase.content_id}`} className="font-medium hover:underline">
-                      {c?.title || "Content"}
+                      {c?.title || t("contentFallback")}
                     </Link>
                     <div className="flex items-center gap-3 mt-1 text-xs text-muted-foreground">
                       <span>{formatPrice(purchase.amount, purchase.currency)}</span>
@@ -105,12 +107,12 @@ export default function PurchasesPage() {
                   <div className="flex gap-2">
                     <Button variant="outline" size="sm" asChild>
                       <Link href={`/content/${purchase.content_id}`}>
-                        <ExternalLink className="h-3 w-3 mr-1" /> View
+                        <ExternalLink className="h-3 w-3 mr-1" /> {t("view")}
                       </Link>
                     </Button>
                     {purchase.payment_status === "completed" && (
                       <Button size="sm">
-                        <Download className="h-3 w-3 mr-1" /> Download
+                        <Download className="h-3 w-3 mr-1" /> {t("downloadFile")}
                       </Button>
                     )}
                   </div>

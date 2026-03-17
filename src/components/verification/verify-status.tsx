@@ -1,6 +1,7 @@
 "use client";
 
 import { Loader2, CheckCircle, XCircle, AlertCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface VerifyStatusProps {
   status: "processing" | "verified" | "rejected" | "manual_review";
@@ -10,35 +11,36 @@ interface VerifyStatusProps {
 const statusConfig = {
   processing: {
     icon: Loader2,
-    label: "Verifying...",
+    labelKey: "verifying" as const,
     color: "text-amber",
-    description: "Running C2PA verification engine",
+    descKey: "processingDesc" as const,
     animate: true,
   },
   verified: {
     icon: CheckCircle,
-    label: "Verified",
+    labelKey: "verified" as const,
     color: "text-emerald",
-    description: "Content passed all verification checks",
+    descKey: "verifiedDesc" as const,
     animate: false,
   },
   rejected: {
     icon: XCircle,
-    label: "Rejected",
+    labelKey: "rejected" as const,
     color: "text-coral",
-    description: "Content did not pass verification",
+    descKey: "rejectedDesc" as const,
     animate: false,
   },
   manual_review: {
     icon: AlertCircle,
-    label: "Under Review",
+    labelKey: "underReview" as const,
     color: "text-amber",
-    description: "Content requires manual review",
+    descKey: "reviewDesc" as const,
     animate: false,
   },
 };
 
 export function VerifyStatus({ status, score }: VerifyStatusProps) {
+  const t = useTranslations("verification");
   const config = statusConfig[status];
   const Icon = config.icon;
 
@@ -50,11 +52,11 @@ export function VerifyStatus({ status, score }: VerifyStatusProps) {
         }`}
       />
       <div>
-        <p className={`font-semibold ${config.color}`}>{config.label}</p>
-        <p className="text-sm text-muted-foreground">{config.description}</p>
+        <p className={`font-semibold ${config.color}`}>{t(config.labelKey)}</p>
+        <p className="text-sm text-muted-foreground">{t(config.descKey)}</p>
         {score !== undefined && (
           <p className="text-xs text-muted-foreground mt-1">
-            Score: {(score * 100).toFixed(0)}%
+            {t("score", { score: (score * 100).toFixed(0) })}
           </p>
         )}
       </div>

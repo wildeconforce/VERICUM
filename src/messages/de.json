@@ -42,7 +42,10 @@
     "views": "Aufrufe",
     "likes": "Gefällt mir",
     "downloads": "Downloads",
-    "sales": "Verkäufe"
+    "sales": "Verkäufe",
+    "content": "Inhalt",
+    "view": "Ansehen",
+    "manage": "Verwalten"
   },
   "nav": {
     "explore": "Entdecken",
@@ -54,7 +57,10 @@
     "settings": "Einstellungen",
     "blog": "Blog",
     "downloads": "Downloads",
-    "bookmarks": "Lesezeichen"
+    "bookmarks": "Lesezeichen",
+    "menu": "Menü",
+    "searchContent": "Inhalte suchen...",
+    "toggleMenu": "Menü umschalten"
   },
   "landing": {
     "hero": {
@@ -139,15 +145,21 @@
       "continueWith": "Weiter mit {provider}",
       "forgotPassword": "Passwort vergessen?",
       "noAccount": "Noch kein Konto?",
-      "signUpLink": "Registrieren"
+      "signUpLink": "Registrieren",
+      "welcomeBack": "Willkommen zurück!",
+      "emailPlaceholder": "du@beispiel.com"
     },
     "register": {
       "title": "Erstellen Sie Ihr Konto",
       "subtitle": "Beginnen Sie mit dem Kauf und Verkauf verifizierter Inhalte",
       "hasAccount": "Haben Sie bereits ein Konto?",
       "signInLink": "Anmelden",
-      "success": "Konto erstellt! Bitte überprüfen Sie Ihre E-Mail zur Bestätigung."
-    }
+      "success": "Konto erstellt! Bitte überprüfen Sie Ihre E-Mail zur Bestätigung.",
+      "createAccount": "Konto erstellen",
+      "usernamePlaceholder": "maxmuster",
+      "displayNamePlaceholder": "Max Mustermann"
+    },
+    "completingSignIn": "Anmeldung wird abgeschlossen..."
   },
   "explore": {
     "title": "Entdecken",
@@ -184,7 +196,24 @@
     "licenseType": "Lizenztyp",
     "relatedContent": "Verwandte Inhalte",
     "purchaseComplete": "Kauf abgeschlossen! Sie können Ihren Inhalt jetzt herunterladen.",
-    "shareContent": "Diesen Inhalt teilen"
+    "shareContent": "Diesen Inhalt teilen",
+    "previewNotAvailable": "Vorschau nicht verfügbar",
+    "bookmark": "Lesezeichen",
+    "bookmarked": "Gespeichert",
+    "downloadOriginal": "Original herunterladen",
+    "royaltyOnSecondary": "{rate}% Lizenzgebühr auf Sekundärkreationen",
+    "onPlatform": "auf {platform}",
+    "failedCheckout": "Checkout konnte nicht erstellt werden",
+    "signInToBookmark": "Bitte anmelden zum Speichern",
+    "bookmarkAdded": "Gespeichert!",
+    "bookmarkRemoved": "Lesezeichen entfernt",
+    "signInToLike": "Bitte anmelden zum Liken",
+    "downloadFailed": "Download fehlgeschlagen",
+    "nA": "k.A.",
+    "noPreview": "Keine Vorschau",
+    "noContentFound": "Kein Inhalt gefunden",
+    "adjustFilters": "Versuchen Sie, Ihre Filter oder Suchbegriffe anzupassen",
+    "unknown": "Unbekannt"
   },
   "license": {
     "personal": "Persönliche Nutzung",
@@ -212,7 +241,23 @@
     "myUploads": "Meine Uploads",
     "purchasesCount": "Käufe",
     "uploadContent": "Inhalt hochladen",
-    "recentActivity": "Letzte Aktivitäten"
+    "recentActivity": "Letzte Aktivitäten",
+    "quickActions": "Schnellaktionen",
+    "exploreContent": "Inhalte entdecken",
+    "browseVerified": "Verifizierten Marktplatz durchsuchen",
+    "myDownloads": "Meine Downloads",
+    "accessPurchased": "Auf gekaufte Inhalte zugreifen",
+    "savedForLater": "Für später gespeicherte Inhalte",
+    "earningsAnalytics": "Einnahmen & Analysen",
+    "viewRevenueStats": "Einnahmen und Statistiken anzeigen",
+    "myContent": "Meine Inhalte",
+    "manageUploads": "Uploads verwalten",
+    "connectStripe": "Stripe verbinden",
+    "setUpPayments": "Zahlungen einrichten",
+    "noContentYet": "Noch keine Inhalte hochgeladen",
+    "uploadFirstContent": "Laden Sie Ihren ersten Inhalt hoch",
+    "uploadNew": "Neu hochladen",
+    "bookmarks": "Lesezeichen"
   },
   "earnings": {
     "title": "Einnahmen",
@@ -230,14 +275,19 @@
     "settlementHistory": "Abrechnungsverlauf",
     "dailyRevenue": "Tagesumsatz",
     "weeklyRevenue": "Wochenumsatz",
-    "monthlyRevenue": "Monatsumsatz"
+    "monthlyRevenue": "Monatsumsatz",
+    "revenue": "Umsatz",
+    "revenueByContent": "Einnahmen nach Inhalt",
+    "noSalesData": "Noch keine Verkaufsdaten",
+    "salesCount": "{count} Verkäufe"
   },
   "purchases": {
     "title": "Meine Käufe",
     "empty": "Noch keine Käufe",
     "browseContent": "Inhalte durchsuchen",
     "view": "Anzeigen",
-    "downloadFile": "Herunterladen"
+    "downloadFile": "Herunterladen",
+    "contentFallback": "Inhalt"
   },
   "settings": {
     "title": "Einstellungen",
@@ -253,7 +303,18 @@
     "stripeConnect": "Stripe Connect",
     "stripeConnectDesc": "Verbinden Sie Ihr Stripe-Konto, um Zahlungen zu erhalten",
     "connectStripe": "Stripe-Konto verbinden",
-    "stripeConnected": "Stripe-Konto verbunden"
+    "stripeConnected": "Stripe-Konto verbunden",
+    "stripeConnectedSuccess": "Stripe-Konto erfolgreich verbunden!",
+    "stripeOnboardingDesc": "Verbinden Sie Ihr Stripe-Konto, um Auszahlungen aus Verkäufen zu erhalten. Sie werden zu Stripe weitergeleitet, um den Onboarding-Prozess abzuschließen.",
+    "failedUpdateProfile": "Profil konnte nicht aktualisiert werden",
+    "accountUpgraded": "Konto zum Verkäufer aufgewertet! Bitte aktualisieren Sie die Seite.",
+    "failedUpgrade": "Konto-Upgrade fehlgeschlagen",
+    "failedConnectStripe": "Stripe-Verbindung fehlgeschlagen",
+    "commissionDesc1": "Provisionsstruktur: 15% Plattformgebühr pro Verkauf",
+    "commissionDesc2": "Sie erhalten 85% jedes Verkaufs direkt auf Ihr Stripe-Konto",
+    "commissionDesc3": "Käufer zahlen eine zusätzliche Verifizierungsgebühr von 15%",
+    "accountId": "Konto-ID",
+    "manage": "Verwalten"
   },
   "seller": {
     "dashboard": {
@@ -267,11 +328,23 @@
   "buyer": {
     "downloadPage": "Download-Bibliothek",
     "bookmarks": "Lesezeichen",
-    "purchaseHistory": "Kaufverlauf"
+    "purchaseHistory": "Kaufverlauf",
+    "noDownloadsYet": "Noch keine Downloads",
+    "browseContent": "Inhalte durchsuchen",
+    "downloadStarted": "Download gestartet",
+    "downloadFailed": "Download fehlgeschlagen",
+    "downloadsCount": "Downloads: {current}/{max}",
+    "noBookmarksYet": "Noch keine Lesezeichen",
+    "exploreContent": "Inhalte entdecken",
+    "bookmarkRemoved": "Lesezeichen entfernt",
+    "view": "Ansehen"
   },
   "search": {
     "placeholder": "Verifizierte Inhalte suchen...",
     "tags": "Tags",
+    "resultsFor": "Ergebnisse für \"{query}\"",
+    "resultCount": "{total} Ergebnis gefunden",
+    "resultCountPlural": "{total} Ergebnisse gefunden",
     "categories": {
       "photojournalism": "Fotojournalismus",
       "nature-wildlife": "Natur & Wildtiere",
@@ -307,16 +380,116 @@
     "title": "Teilen",
     "copyLink": "Link kopieren",
     "copied": "Link kopiert!",
-    "shareOn": "Auf {platform} teilen"
+    "shareOn": "Auf {platform} teilen",
+    "copiedShort": "Kopiert!",
+    "failedCopy": "Link konnte nicht kopiert werden",
+    "copyLinkTitle": "Link kopieren"
   },
   "theme": {
     "light": "Hell",
     "dark": "Dunkel",
-    "system": "System"
+    "system": "System",
+    "toggleTheme": "Thema wechseln"
   },
   "email": {
     "saleComplete": "Verkauf abgeschlossen",
     "purchaseConfirmation": "Kaufbestätigung",
     "verificationComplete": "Verifizierung abgeschlossen"
+  },
+  "upload": {
+    "title": "Inhalt hochladen",
+    "subtitle": "Laden Sie Ihren Originalinhalt zur C2PA-Verifizierung und Auflistung hoch.",
+    "fileUpload": "Datei hochladen",
+    "fileUploadDesc": "Laden Sie Ihre Originaldatei hoch. Sie wird automatisch verifiziert.",
+    "fileUploaded": "Datei erfolgreich hochgeladen",
+    "contentDetails": "Inhaltsdetails",
+    "titleLabel": "Titel",
+    "titlePlaceholder": "Geben Sie Ihrem Inhalt einen Titel",
+    "descriptionLabel": "Beschreibung",
+    "descriptionPlaceholder": "Beschreiben Sie Ihren Inhalt...",
+    "priceLabel": "Preis (USD)",
+    "categoryLabel": "Kategorie",
+    "categoryPlaceholder": "Kategorie auswählen",
+    "tagsLabel": "Tags",
+    "tagPlaceholder": "Tag hinzufügen...",
+    "addTag": "Hinzufügen",
+    "publishContent": "Inhalt veröffentlichen",
+    "verifying": "Verifizierung...",
+    "uploadFileFirst": "Bitte laden Sie zuerst eine Datei hoch",
+    "failedToCreate": "Inhalt konnte nicht erstellt werden",
+    "runningVerification": "Verifizierung läuft...",
+    "verifiedAndPublished": "Inhalt verifiziert und veröffentlicht!",
+    "submittedForReview": "Inhalt zur manuellen Überprüfung eingereicht.",
+    "couldNotVerify": "Inhalt konnte nicht verifiziert werden."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Einblicke in Inhaltsauthentizität, C2PA-Technologie und die Creator Economy.",
+    "readMore": "Weiterlesen",
+    "backToBlog": "Zurück zum Blog"
+  },
+  "legal": {
+    "termsTitle": "Nutzungsbedingungen",
+    "privacyTitle": "Datenschutzrichtlinie",
+    "lastUpdated": "Zuletzt aktualisiert: {date}"
+  },
+  "uploader": {
+    "dragDrop": "Datei hierher ziehen",
+    "browseHint": "oder klicken zum Durchsuchen. Unterstützt JPG, PNG, WebP, TIFF, RAW (max 50MB)",
+    "uploading": "Hochladen... {progress}%",
+    "uploadFile": "Datei hochladen"
+  },
+  "checkout": {
+    "purchaseContent": "Inhalt kaufen",
+    "contentPrice": "Inhaltspreis",
+    "verificationFee": "Verifizierungsgebühr (5%)",
+    "total": "Gesamt",
+    "pay": "${amount} bezahlen",
+    "failedCheckout": "Checkout konnte nicht erstellt werden",
+    "somethingWrong": "Etwas ist schiefgelaufen"
+  },
+  "verification": {
+    "c2paDetails": "C2PA-Details",
+    "c2paManifestFound": "C2PA-Manifest gefunden",
+    "noC2paManifest": "Kein C2PA-Manifest",
+    "issuer": "Aussteller",
+    "timestamp": "Zeitstempel",
+    "authenticityScore": "Authentizitätsbewertung",
+    "aiDetection": "KI-Erkennung",
+    "likelyHuman": "{score}% wahrscheinlich menschlich",
+    "deviceInfo": "Geräteinformationen",
+    "verifying": "Verifizierung...",
+    "verified": "Verifiziert",
+    "rejected": "Abgelehnt",
+    "underReview": "In Überprüfung",
+    "unverifiable": "Nicht verifizierbar",
+    "processingDesc": "C2PA-Verifizierungsengine wird ausgeführt",
+    "verifiedDesc": "Inhalt hat alle Verifizierungsprüfungen bestanden",
+    "rejectedDesc": "Inhalt hat die Verifizierung nicht bestanden",
+    "reviewDesc": "Inhalt erfordert manuelle Überprüfung",
+    "score": "Bewertung: {score}%"
+  },
+  "provenance": {
+    "title": "Herkunftskette",
+    "device": "Gerät: {value}",
+    "software": "Software: {value}",
+    "platform": "Plattform: {value}",
+    "changes": "Änderungen: {value}"
+  },
+  "filter": {
+    "filters": "Filter",
+    "clearAll": "Alle löschen",
+    "verification": "Verifizierung",
+    "verifiedOnly": "Nur verifizierte",
+    "category": "Kategorie",
+    "contentType": "Inhaltstyp",
+    "priceRange": "Preisbereich",
+    "min": "Min",
+    "max": "Max",
+    "applyPrice": "Preis anwenden",
+    "sortBy": "Sortieren nach"
+  },
+  "language": {
+    "changeLanguage": "Sprache ändern"
   }
 }

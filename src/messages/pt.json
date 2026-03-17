@@ -42,7 +42,10 @@
     "views": "visualizações",
     "likes": "curtidas",
     "downloads": "downloads",
-    "sales": "vendas"
+    "sales": "vendas",
+    "content": "Conteúdo",
+    "view": "Ver",
+    "manage": "Gerenciar"
   },
   "nav": {
     "explore": "Explorar",
@@ -54,7 +57,10 @@
     "settings": "Configurações",
     "blog": "Blog",
     "downloads": "Downloads",
-    "bookmarks": "Favoritos"
+    "bookmarks": "Favoritos",
+    "menu": "Menu",
+    "searchContent": "Pesquisar conteúdo...",
+    "toggleMenu": "Alternar menu"
   },
   "landing": {
     "hero": {
@@ -139,15 +145,21 @@
       "continueWith": "Continuar com {provider}",
       "forgotPassword": "Esqueceu a senha?",
       "noAccount": "Não tem uma conta?",
-      "signUpLink": "Cadastre-se"
+      "signUpLink": "Cadastre-se",
+      "welcomeBack": "Bem-vindo de volta!",
+      "emailPlaceholder": "voce@exemplo.com"
     },
     "register": {
       "title": "Crie sua conta",
       "subtitle": "Comece a comprar e vender conteúdo verificado",
       "hasAccount": "Já tem uma conta?",
       "signInLink": "Entrar",
-      "success": "Conta criada! Verifique seu e-mail para confirmar."
-    }
+      "success": "Conta criada! Verifique seu e-mail para confirmar.",
+      "createAccount": "Criar conta",
+      "usernamePlaceholder": "joaosilva",
+      "displayNamePlaceholder": "João Silva"
+    },
+    "completingSignIn": "Concluindo login..."
   },
   "explore": {
     "title": "Explorar",
@@ -184,7 +196,24 @@
     "licenseType": "Tipo de licença",
     "relatedContent": "Conteúdo relacionado",
     "purchaseComplete": "Compra concluída! Agora você pode baixar seu conteúdo.",
-    "shareContent": "Compartilhar este conteúdo"
+    "shareContent": "Compartilhar este conteúdo",
+    "previewNotAvailable": "Visualização não disponível",
+    "bookmark": "Favoritar",
+    "bookmarked": "Favoritado",
+    "downloadOriginal": "Baixar original",
+    "royaltyOnSecondary": "{rate}% de royalty em criações secundárias",
+    "onPlatform": "em {platform}",
+    "failedCheckout": "Falha ao criar pagamento",
+    "signInToBookmark": "Entre para favoritar",
+    "bookmarkAdded": "Favoritado!",
+    "bookmarkRemoved": "Favorito removido",
+    "signInToLike": "Entre para curtir",
+    "downloadFailed": "Falha no download",
+    "nA": "N/D",
+    "noPreview": "Sem pré-visualização",
+    "noContentFound": "Nenhum conteúdo encontrado",
+    "adjustFilters": "Tente ajustar seus filtros ou termos de pesquisa",
+    "unknown": "Desconhecido"
   },
   "license": {
     "personal": "Uso pessoal",
@@ -212,7 +241,23 @@
     "myUploads": "Meus uploads",
     "purchasesCount": "Compras",
     "uploadContent": "Enviar conteúdo",
-    "recentActivity": "Atividade recente"
+    "recentActivity": "Atividade recente",
+    "quickActions": "Ações rápidas",
+    "exploreContent": "Explorar conteúdo",
+    "browseVerified": "Navegar pelo marketplace verificado",
+    "myDownloads": "Meus downloads",
+    "accessPurchased": "Acessar conteúdo comprado",
+    "savedForLater": "Conteúdo salvo para depois",
+    "earningsAnalytics": "Ganhos e análises",
+    "viewRevenueStats": "Ver receita e estatísticas",
+    "myContent": "Meu conteúdo",
+    "manageUploads": "Gerenciar uploads",
+    "connectStripe": "Conectar Stripe",
+    "setUpPayments": "Configurar pagamentos",
+    "noContentYet": "Nenhum conteúdo enviado ainda",
+    "uploadFirstContent": "Envie seu primeiro conteúdo",
+    "uploadNew": "Novo upload",
+    "bookmarks": "Favoritos"
   },
   "earnings": {
     "title": "Ganhos",
@@ -230,14 +275,19 @@
     "settlementHistory": "Histórico de liquidações",
     "dailyRevenue": "Receita diária",
     "weeklyRevenue": "Receita semanal",
-    "monthlyRevenue": "Receita mensal"
+    "monthlyRevenue": "Receita mensal",
+    "revenue": "Receita",
+    "revenueByContent": "Receita por conteúdo",
+    "noSalesData": "Ainda sem dados de vendas",
+    "salesCount": "{count} vendas"
   },
   "purchases": {
     "title": "Minhas compras",
     "empty": "Nenhuma compra ainda",
     "browseContent": "Explorar conteúdo",
     "view": "Ver",
-    "downloadFile": "Baixar"
+    "downloadFile": "Baixar",
+    "contentFallback": "Conteúdo"
   },
   "settings": {
     "title": "Configurações",
@@ -253,7 +303,18 @@
     "stripeConnect": "Stripe Connect",
     "stripeConnectDesc": "Conecte sua conta Stripe para receber pagamentos",
     "connectStripe": "Conectar conta Stripe",
-    "stripeConnected": "Conta Stripe conectada"
+    "stripeConnected": "Conta Stripe conectada",
+    "stripeConnectedSuccess": "Conta Stripe conectada com sucesso!",
+    "stripeOnboardingDesc": "Conecte sua conta Stripe para receber pagamentos de vendas. Você será redirecionado ao Stripe para concluir o processo de integração.",
+    "failedUpdateProfile": "Falha ao atualizar o perfil",
+    "accountUpgraded": "Conta atualizada para vendedor! Por favor, atualize a página.",
+    "failedUpgrade": "Falha ao atualizar a conta",
+    "failedConnectStripe": "Falha ao conectar Stripe",
+    "commissionDesc1": "Estrutura de comissão: 15% de taxa da plataforma por venda",
+    "commissionDesc2": "Você recebe 85% de cada venda diretamente na sua conta Stripe",
+    "commissionDesc3": "Compradores pagam uma taxa de verificação adicional de 15%",
+    "accountId": "ID da conta",
+    "manage": "Gerenciar"
   },
   "seller": {
     "dashboard": {
@@ -267,11 +328,23 @@
   "buyer": {
     "downloadPage": "Biblioteca de downloads",
     "bookmarks": "Favoritos",
-    "purchaseHistory": "Histórico de compras"
+    "purchaseHistory": "Histórico de compras",
+    "noDownloadsYet": "Ainda sem downloads",
+    "browseContent": "Explorar conteúdo",
+    "downloadStarted": "Download iniciado",
+    "downloadFailed": "Falha no download",
+    "downloadsCount": "Downloads: {current}/{max}",
+    "noBookmarksYet": "Ainda sem favoritos",
+    "exploreContent": "Explorar conteúdo",
+    "bookmarkRemoved": "Favorito removido",
+    "view": "Ver"
   },
   "search": {
     "placeholder": "Pesquisar conteúdo verificado...",
     "tags": "Tags",
+    "resultsFor": "Resultados para \"{query}\"",
+    "resultCount": "{total} resultado encontrado",
+    "resultCountPlural": "{total} resultados encontrados",
     "categories": {
       "photojournalism": "Fotojornalismo",
       "nature-wildlife": "Natureza e vida selvagem",
@@ -307,16 +380,116 @@
     "title": "Compartilhar",
     "copyLink": "Copiar link",
     "copied": "Link copiado!",
-    "shareOn": "Compartilhar no {platform}"
+    "shareOn": "Compartilhar no {platform}",
+    "copiedShort": "Copiado!",
+    "failedCopy": "Falha ao copiar o link",
+    "copyLinkTitle": "Copiar link"
   },
   "theme": {
     "light": "Claro",
     "dark": "Escuro",
-    "system": "Sistema"
+    "system": "Sistema",
+    "toggleTheme": "Alternar tema"
   },
   "email": {
     "saleComplete": "Venda concluída",
     "purchaseConfirmation": "Confirmação de compra",
     "verificationComplete": "Verificação concluída"
+  },
+  "upload": {
+    "title": "Enviar conteúdo",
+    "subtitle": "Envie seu conteúdo original para verificação C2PA e publicação.",
+    "fileUpload": "Envio de arquivo",
+    "fileUploadDesc": "Envie seu arquivo original. Ele será verificado automaticamente.",
+    "fileUploaded": "Arquivo enviado com sucesso",
+    "contentDetails": "Detalhes do conteúdo",
+    "titleLabel": "Título",
+    "titlePlaceholder": "Dê um título ao seu conteúdo",
+    "descriptionLabel": "Descrição",
+    "descriptionPlaceholder": "Descreva seu conteúdo...",
+    "priceLabel": "Preço (USD)",
+    "categoryLabel": "Categoria",
+    "categoryPlaceholder": "Selecionar categoria",
+    "tagsLabel": "Tags",
+    "tagPlaceholder": "Adicionar tag...",
+    "addTag": "Adicionar",
+    "publishContent": "Publicar conteúdo",
+    "verifying": "Verificando...",
+    "uploadFileFirst": "Por favor, envie um arquivo primeiro",
+    "failedToCreate": "Falha ao criar conteúdo",
+    "runningVerification": "Executando verificação...",
+    "verifiedAndPublished": "Conteúdo verificado e publicado!",
+    "submittedForReview": "Conteúdo enviado para revisão manual.",
+    "couldNotVerify": "Não foi possível verificar o conteúdo."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Perspectivas sobre autenticidade de conteúdo, tecnologia C2PA e a economia criativa.",
+    "readMore": "Leia mais",
+    "backToBlog": "Voltar ao blog"
+  },
+  "legal": {
+    "termsTitle": "Termos de serviço",
+    "privacyTitle": "Política de privacidade",
+    "lastUpdated": "Última atualização: {date}"
+  },
+  "uploader": {
+    "dragDrop": "Arraste e solte seu arquivo aqui",
+    "browseHint": "ou clique para navegar. Suporta JPG, PNG, WebP, TIFF, RAW (máx. 50MB)",
+    "uploading": "Enviando... {progress}%",
+    "uploadFile": "Enviar arquivo"
+  },
+  "checkout": {
+    "purchaseContent": "Comprar conteúdo",
+    "contentPrice": "Preço do conteúdo",
+    "verificationFee": "Taxa de verificação (5%)",
+    "total": "Total",
+    "pay": "Pagar ${amount}",
+    "failedCheckout": "Falha ao criar o pagamento",
+    "somethingWrong": "Algo deu errado"
+  },
+  "verification": {
+    "c2paDetails": "Detalhes C2PA",
+    "c2paManifestFound": "Manifesto C2PA encontrado",
+    "noC2paManifest": "Sem manifesto C2PA",
+    "issuer": "Emissor",
+    "timestamp": "Data e hora",
+    "authenticityScore": "Pontuação de autenticidade",
+    "aiDetection": "Detecção de IA",
+    "likelyHuman": "{score}% provavelmente humano",
+    "deviceInfo": "Informações do dispositivo",
+    "verifying": "Verificando...",
+    "verified": "Verificado",
+    "rejected": "Rejeitado",
+    "underReview": "Em revisão",
+    "unverifiable": "Não verificável",
+    "processingDesc": "Executando motor de verificação C2PA",
+    "verifiedDesc": "O conteúdo passou em todas as verificações",
+    "rejectedDesc": "O conteúdo não passou na verificação",
+    "reviewDesc": "O conteúdo requer revisão manual",
+    "score": "Pontuação: {score}%"
+  },
+  "provenance": {
+    "title": "Cadeia de procedência",
+    "device": "Dispositivo: {value}",
+    "software": "Software: {value}",
+    "platform": "Plataforma: {value}",
+    "changes": "Alterações: {value}"
+  },
+  "filter": {
+    "filters": "Filtros",
+    "clearAll": "Limpar tudo",
+    "verification": "Verificação",
+    "verifiedOnly": "Apenas verificados",
+    "category": "Categoria",
+    "contentType": "Tipo de conteúdo",
+    "priceRange": "Faixa de preço",
+    "min": "Mín",
+    "max": "Máx",
+    "applyPrice": "Aplicar preço",
+    "sortBy": "Ordenar por"
+  },
+  "language": {
+    "changeLanguage": "Mudar idioma"
   }
 }

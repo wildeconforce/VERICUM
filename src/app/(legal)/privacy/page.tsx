@@ -1,14 +1,17 @@
+import { getTranslations } from "next-intl/server";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
-export default function PrivacyPage() {
+export default async function PrivacyPage() {
+  const t = await getTranslations("legal");
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1 container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto prose prose-neutral dark:prose-invert">
-          <h1>Privacy Policy</h1>
-          <p className="text-muted-foreground">Last updated: February 12, 2026</p>
+          <h1>{t("privacyTitle")}</h1>
+          <p className="text-muted-foreground">{t("lastUpdated", { date: "February 12, 2026" })}</p>
 
           <h2>1. Information We Collect</h2>
           <p>We collect information you provide directly:</p>

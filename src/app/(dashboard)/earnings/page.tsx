@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -37,6 +38,7 @@ export default function EarningsPage() {
   const [earnings, setEarnings] = useState<EarningsData | null>(null);
   const [period, setPeriod] = useState("month");
   const [isLoading, setIsLoading] = useState(true);
+  const t = useTranslations("earnings");
 
   useEffect(() => {
     async function fetchEarnings() {
@@ -53,23 +55,23 @@ export default function EarningsPage() {
   return (
     <div>
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
-        <h1 className="text-3xl font-bold">Earnings</h1>
+        <h1 className="text-3xl font-bold">{t("title")}</h1>
         <Tabs value={period} onValueChange={setPeriod}>
           <TabsList>
-            <TabsTrigger value="week">Week</TabsTrigger>
-            <TabsTrigger value="month">Month</TabsTrigger>
-            <TabsTrigger value="year">Year</TabsTrigger>
-            <TabsTrigger value="all">All Time</TabsTrigger>
+            <TabsTrigger value="week">{t("week")}</TabsTrigger>
+            <TabsTrigger value="month">{t("month")}</TabsTrigger>
+            <TabsTrigger value="year">{t("year")}</TabsTrigger>
+            <TabsTrigger value="all">{t("allTime")}</TabsTrigger>
           </TabsList>
         </Tabs>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {[
-          { title: "Total Earnings", value: earnings?.total_earnings, icon: DollarSign },
-          { title: "Total Sales", value: earnings?.sales_count, icon: TrendingUp, isCurrency: false },
-          { title: "Pending Payout", value: earnings?.pending_payout, icon: Clock },
-          { title: "Last Payout", value: earnings?.last_payout, icon: CreditCard },
+          { title: t("totalEarnings"), value: earnings?.total_earnings, icon: DollarSign },
+          { title: t("totalSales"), value: earnings?.sales_count, icon: TrendingUp, isCurrency: false },
+          { title: t("pendingPayout"), value: earnings?.pending_payout, icon: Clock },
+          { title: t("lastPayout"), value: earnings?.last_payout, icon: CreditCard },
         ].map(({ title, value, icon: Icon, isCurrency = true }) => (
           <Card key={title}>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -92,7 +94,7 @@ export default function EarningsPage() {
       {/* Revenue Chart */}
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>Revenue Over Time</CardTitle>
+          <CardTitle>{t("revenueOverTime")}</CardTitle>
         </CardHeader>
         <CardContent>
           {isLoading ? (
@@ -142,7 +144,7 @@ export default function EarningsPage() {
             </div>
           ) : (
             <div className="h-64 flex items-center justify-center text-muted-foreground">
-              No earnings data yet
+              {t("noData")}
             </div>
           )}
         </CardContent>
@@ -151,7 +153,7 @@ export default function EarningsPage() {
       {/* Content Sales Stats */}
       <Card>
         <CardHeader>
-          <CardTitle>Revenue by Content</CardTitle>
+          <CardTitle>{t("revenueByContent")}</CardTitle>
         </CardHeader>
         <CardContent>
           {isLoading ? (
@@ -175,7 +177,7 @@ export default function EarningsPage() {
                           return (
                             <div className="rounded-lg border bg-background p-3 shadow-md">
                               <p className="text-sm font-medium">{item.title}</p>
-                              <p className="text-sm text-muted-foreground">{item.total_sales} sales</p>
+                              <p className="text-sm text-muted-foreground">{t("salesCount", { count: item.total_sales })}</p>
                               <p className="text-sm font-bold">{formatPrice(item.total_revenue)}</p>
                             </div>
                           );
@@ -194,7 +196,7 @@ export default function EarningsPage() {
                       <span className="text-sm font-medium truncate">{stat.title}</span>
                     </div>
                     <div className="flex items-center gap-4 text-sm text-muted-foreground shrink-0">
-                      <span>{stat.total_sales} sales</span>
+                      <span>{t("salesCount", { count: stat.total_sales })}</span>
                       <span className="font-medium text-foreground">{formatPrice(stat.total_revenue)}</span>
                     </div>
                   </div>
@@ -203,7 +205,7 @@ export default function EarningsPage() {
             </div>
           ) : (
             <div className="h-32 flex items-center justify-center text-muted-foreground">
-              No sales data yet
+              {t("noSalesData")}
             </div>
           )}
         </CardContent>

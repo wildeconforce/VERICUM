@@ -12,11 +12,14 @@ import {
 } from "@/components/ui/sheet";
 import { Menu, Search } from "lucide-react";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const { isAuthenticated, isSeller, signOut } = useAuth();
+  const t = useTranslations("nav");
+  const tc = useTranslations("common");
 
   const close = () => setOpen(false);
 
@@ -25,11 +28,11 @@ export function MobileNav() {
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon" className="md:hidden">
           <Menu className="h-5 w-5" />
-          <span className="sr-only">Toggle menu</span>
+          <span className="sr-only">{t("toggleMenu")}</span>
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="w-72">
-        <SheetTitle className="font-serif text-lg">Menu</SheetTitle>
+        <SheetTitle className="font-serif text-lg">{t("menu")}</SheetTitle>
         <div className="flex flex-col gap-4 mt-6">
           <div className="flex items-center gap-2 rounded-lg border px-3 py-2">
             <Search className="h-4 w-4 text-muted-foreground" />
@@ -38,7 +41,7 @@ export function MobileNav() {
               className="text-sm text-muted-foreground"
               onClick={close}
             >
-              Search content...
+              {t("searchContent")}
             </Link>
           </div>
           <nav className="flex flex-col gap-1">
@@ -51,37 +54,37 @@ export function MobileNav() {
                   : "hover:bg-accent"
               }`}
             >
-              Explore
+              {t("explore")}
             </Link>
             {isAuthenticated && (
               <>
                 <Link href="/dashboard" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                  Dashboard
+                  {t("dashboard")}
                 </Link>
                 {isSeller && (
                   <>
                     <Link href="/upload" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                      Upload
+                      {t("upload")}
                     </Link>
                     <Link href="/my-content" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                      My Content
+                      {t("myContent")}
                     </Link>
                     <Link href="/earnings" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                      Earnings
+                      {t("earnings")}
                     </Link>
                   </>
                 )}
                 <Link href="/purchases" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                  Purchases
+                  {t("purchases")}
                 </Link>
                 <Link href="/downloads" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                  Downloads
+                  {t("downloads")}
                 </Link>
                 <Link href="/bookmarks" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                  Bookmarks
+                  {t("bookmarks")}
                 </Link>
                 <Link href="/settings" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                  Settings
+                  {t("settings")}
                 </Link>
                 <button
                   onClick={() => {
@@ -90,17 +93,17 @@ export function MobileNav() {
                   }}
                   className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent text-left text-destructive"
                 >
-                  Sign Out
+                  {tc("signOut")}
                 </button>
               </>
             )}
             {!isAuthenticated && (
               <>
                 <Link href="/login" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
-                  Sign In
+                  {tc("signIn")}
                 </Link>
                 <Link href="/register" onClick={close} className="rounded-lg px-3 py-2 text-sm font-medium bg-primary text-primary-foreground text-center">
-                  Get Started
+                  {tc("getStarted")}
                 </Link>
               </>
             )}

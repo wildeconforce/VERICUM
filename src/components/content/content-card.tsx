@@ -8,6 +8,7 @@ import { VerificationBadge } from "./verification-badge";
 import { PriceTag } from "./price-tag";
 import { Heart, Eye } from "lucide-react";
 import { formatNumber } from "@/lib/utils/format";
+import { useTranslations } from "next-intl";
 
 interface ContentCardProps {
   id: string;
@@ -35,6 +36,7 @@ export function ContentCard({
   likeCount = 0,
   viewCount = 0,
 }: ContentCardProps) {
+  const t = useTranslations("content");
   return (
     <Link href={`/content/${id}`}>
       <Card className="group overflow-hidden transition-shadow hover:shadow-lg hover:-translate-y-1 transition-transform">
@@ -49,7 +51,7 @@ export function ContentCard({
             />
           ) : (
             <div className="flex items-center justify-center h-full text-muted-foreground">
-              No Preview
+              {t("noPreview")}
             </div>
           )}
           <div className="absolute top-2 left-2">

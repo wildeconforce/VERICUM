@@ -42,7 +42,10 @@
     "views": "閲覧数",
     "likes": "いいね",
     "downloads": "ダウンロード数",
-    "sales": "販売数"
+    "sales": "販売数",
+    "content": "コンテンツ",
+    "view": "表示",
+    "manage": "管理"
   },
   "nav": {
     "explore": "探索",
@@ -54,7 +57,10 @@
     "settings": "設定",
     "blog": "ブログ",
     "downloads": "ダウンロード",
-    "bookmarks": "ブックマーク"
+    "bookmarks": "ブックマーク",
+    "menu": "メニュー",
+    "searchContent": "コンテンツを検索...",
+    "toggleMenu": "メニュー切替"
   },
   "landing": {
     "hero": {
@@ -139,15 +145,21 @@
       "continueWith": "{provider}で続ける",
       "forgotPassword": "パスワードをお忘れですか？",
       "noAccount": "アカウントをお持ちでないですか？",
-      "signUpLink": "新規登録"
+      "signUpLink": "新規登録",
+      "welcomeBack": "おかえりなさい!",
+      "emailPlaceholder": "you@example.com"
     },
     "register": {
       "title": "アカウントを作成",
       "subtitle": "認証済みコンテンツの売買を始めましょう",
       "hasAccount": "すでにアカウントをお持ちですか？",
       "signInLink": "ログイン",
-      "success": "アカウントが作成されました！メールを確認して認証してください。"
-    }
+      "success": "アカウントが作成されました！メールを確認して認証してください。",
+      "createAccount": "アカウント作成",
+      "usernamePlaceholder": "johndoe",
+      "displayNamePlaceholder": "John Doe"
+    },
+    "completingSignIn": "サインイン完了中..."
   },
   "explore": {
     "title": "探索",
@@ -184,7 +196,24 @@
     "licenseType": "ライセンスタイプ",
     "relatedContent": "関連コンテンツ",
     "purchaseComplete": "購入が完了しました！コンテンツをダウンロードできます。",
-    "shareContent": "このコンテンツを共有"
+    "shareContent": "このコンテンツを共有",
+    "previewNotAvailable": "プレビューは利用できません",
+    "bookmark": "ブックマーク",
+    "bookmarked": "ブックマーク済み",
+    "downloadOriginal": "オリジナルをダウンロード",
+    "royaltyOnSecondary": "二次創作に{rate}%のロイヤリティ",
+    "onPlatform": "{platform}で",
+    "failedCheckout": "チェックアウトの作成に失敗しました",
+    "signInToBookmark": "ブックマークするにはログインしてください",
+    "bookmarkAdded": "ブックマークしました！",
+    "bookmarkRemoved": "ブックマークを解除しました",
+    "signInToLike": "いいねするにはログインしてください",
+    "downloadFailed": "ダウンロードに失敗しました",
+    "nA": "N/A",
+    "noPreview": "プレビューなし",
+    "noContentFound": "コンテンツが見つかりません",
+    "adjustFilters": "フィルターや検索条件を調整してみてください",
+    "unknown": "不明"
   },
   "license": {
     "personal": "個人使用",
@@ -212,7 +241,23 @@
     "myUploads": "マイアップロード",
     "purchasesCount": "購入数",
     "uploadContent": "コンテンツをアップロード",
-    "recentActivity": "最近のアクティビティ"
+    "recentActivity": "最近のアクティビティ",
+    "quickActions": "クイックアクション",
+    "exploreContent": "コンテンツを探す",
+    "browseVerified": "認証済みマーケットプレイスを閲覧",
+    "myDownloads": "マイダウンロード",
+    "accessPurchased": "購入したコンテンツにアクセス",
+    "savedForLater": "後で見るために保存",
+    "earningsAnalytics": "収益と分析",
+    "viewRevenueStats": "収益と統計を表示",
+    "myContent": "マイコンテンツ",
+    "manageUploads": "アップロードを管理",
+    "connectStripe": "Stripe接続",
+    "setUpPayments": "支払い設定",
+    "noContentYet": "まだコンテンツがアップロードされていません",
+    "uploadFirstContent": "最初のコンテンツをアップロード",
+    "uploadNew": "新規アップロード",
+    "bookmarks": "ブックマーク"
   },
   "earnings": {
     "title": "収益",
@@ -230,14 +275,19 @@
     "settlementHistory": "精算履歴",
     "dailyRevenue": "日次収益",
     "weeklyRevenue": "週次収益",
-    "monthlyRevenue": "月次収益"
+    "monthlyRevenue": "月次収益",
+    "revenue": "収益",
+    "revenueByContent": "コンテンツ別収益",
+    "noSalesData": "まだ販売データがありません",
+    "salesCount": "{count}件の販売"
   },
   "purchases": {
     "title": "購入履歴",
     "empty": "まだ購入履歴がありません",
     "browseContent": "コンテンツを閲覧",
     "view": "表示",
-    "downloadFile": "ダウンロード"
+    "downloadFile": "ダウンロード",
+    "contentFallback": "コンテンツ"
   },
   "settings": {
     "title": "設定",
@@ -253,7 +303,18 @@
     "stripeConnect": "Stripe Connect",
     "stripeConnectDesc": "支払いを受け取るためにStripeアカウントを接続してください",
     "connectStripe": "Stripeアカウントを接続",
-    "stripeConnected": "Stripeアカウントが接続されました"
+    "stripeConnected": "Stripeアカウントが接続されました",
+    "stripeConnectedSuccess": "Stripeアカウントが正常に接続されました!",
+    "stripeOnboardingDesc": "販売収益を受け取るためにStripeアカウントを接続してください。Stripeにリダイレクトされ、オンボーディングプロセスを完了します。",
+    "failedUpdateProfile": "プロフィールの更新に失敗しました",
+    "accountUpgraded": "販売者アカウントにアップグレードされました！ページを更新してください。",
+    "failedUpgrade": "アカウントのアップグレードに失敗しました",
+    "failedConnectStripe": "Stripeの接続に失敗しました",
+    "commissionDesc1": "手数料構造：販売ごとに15%のプラットフォーム手数料",
+    "commissionDesc2": "販売額の85%がStripeアカウントに直接支払われます",
+    "commissionDesc3": "購入者は追加の15%認証手数料を支払います",
+    "accountId": "アカウントID",
+    "manage": "管理"
   },
   "seller": {
     "dashboard": {
@@ -267,11 +328,23 @@
   "buyer": {
     "downloadPage": "ダウンロードライブラリ",
     "bookmarks": "ブックマーク",
-    "purchaseHistory": "購入履歴"
+    "purchaseHistory": "購入履歴",
+    "noDownloadsYet": "まだダウンロードがありません",
+    "browseContent": "コンテンツを閲覧",
+    "downloadStarted": "ダウンロードが開始されました",
+    "downloadFailed": "ダウンロードに失敗しました",
+    "downloadsCount": "ダウンロード: {current}/{max}",
+    "noBookmarksYet": "まだブックマークがありません",
+    "exploreContent": "コンテンツを探す",
+    "bookmarkRemoved": "ブックマークを削除しました",
+    "view": "表示"
   },
   "search": {
     "placeholder": "認証済みコンテンツを検索...",
     "tags": "タグ",
+    "resultsFor": "「{query}」の検索結果",
+    "resultCount": "{total}件の結果が見つかりました",
+    "resultCountPlural": "{total}件の結果が見つかりました",
     "categories": {
       "photojournalism": "フォトジャーナリズム",
       "nature-wildlife": "自然・野生動物",
@@ -307,16 +380,116 @@
     "title": "共有",
     "copyLink": "リンクをコピー",
     "copied": "リンクがコピーされました！",
-    "shareOn": "{platform}で共有"
+    "shareOn": "{platform}で共有",
+    "copiedShort": "コピー済み！",
+    "failedCopy": "リンクのコピーに失敗",
+    "copyLinkTitle": "リンクをコピー"
   },
   "theme": {
     "light": "ライト",
     "dark": "ダーク",
-    "system": "システム"
+    "system": "システム",
+    "toggleTheme": "テーマ切替"
   },
   "email": {
     "saleComplete": "販売完了",
     "purchaseConfirmation": "購入確認",
     "verificationComplete": "検証完了"
+  },
+  "upload": {
+    "title": "コンテンツをアップロード",
+    "subtitle": "C2PA検証とリスティングのためにオリジナルコンテンツをアップロードしてください。",
+    "fileUpload": "ファイルアップロード",
+    "fileUploadDesc": "オリジナルファイルをアップロードしてください。自動的に検証されます。",
+    "fileUploaded": "ファイルが正常にアップロードされました",
+    "contentDetails": "コンテンツ詳細",
+    "titleLabel": "タイトル",
+    "titlePlaceholder": "コンテンツにタイトルをつけてください",
+    "descriptionLabel": "説明",
+    "descriptionPlaceholder": "コンテンツを説明してください...",
+    "priceLabel": "価格（USD）",
+    "categoryLabel": "カテゴリー",
+    "categoryPlaceholder": "カテゴリーを選択",
+    "tagsLabel": "タグ",
+    "tagPlaceholder": "タグを追加...",
+    "addTag": "追加",
+    "publishContent": "コンテンツを公開",
+    "verifying": "検証中...",
+    "uploadFileFirst": "まずファイルをアップロードしてください",
+    "failedToCreate": "コンテンツの作成に失敗しました",
+    "runningVerification": "検証を実行中...",
+    "verifiedAndPublished": "コンテンツが検証・公開されました！",
+    "submittedForReview": "コンテンツは手動レビューに提出されました。",
+    "couldNotVerify": "コンテンツを検証できませんでした。"
+  },
+  "blog": {
+    "title": "ブログ",
+    "subtitle": "コンテンツの真正性、C2PA技術、クリエイターエコノミーに関する洞察。",
+    "readMore": "続きを読む",
+    "backToBlog": "ブログに戻る"
+  },
+  "legal": {
+    "termsTitle": "利用規約",
+    "privacyTitle": "プライバシーポリシー",
+    "lastUpdated": "最終更新日: {date}"
+  },
+  "uploader": {
+    "dragDrop": "ここにファイルをドラッグ＆ドロップ",
+    "browseHint": "またはクリックして参照。JPG、PNG、WebP、TIFF、RAW対応（最大50MB）",
+    "uploading": "アップロード中... {progress}%",
+    "uploadFile": "ファイルをアップロード"
+  },
+  "checkout": {
+    "purchaseContent": "コンテンツを購入",
+    "contentPrice": "コンテンツ価格",
+    "verificationFee": "検証手数料（5%）",
+    "total": "合計",
+    "pay": "${amount}を支払う",
+    "failedCheckout": "チェックアウトの作成に失敗",
+    "somethingWrong": "問題が発生しました"
+  },
+  "verification": {
+    "c2paDetails": "C2PA詳細",
+    "c2paManifestFound": "C2PAマニフェスト発見",
+    "noC2paManifest": "C2PAマニフェストなし",
+    "issuer": "発行者",
+    "timestamp": "タイムスタンプ",
+    "authenticityScore": "真正性スコア",
+    "aiDetection": "AI検出",
+    "likelyHuman": "{score}%が人間である可能性",
+    "deviceInfo": "デバイス情報",
+    "verifying": "検証中...",
+    "verified": "認証済み",
+    "rejected": "却下",
+    "underReview": "審査中",
+    "unverifiable": "検証不可",
+    "processingDesc": "C2PA検証エンジン実行中",
+    "verifiedDesc": "すべての検証チェックに合格しました",
+    "rejectedDesc": "コンテンツは検証に合格しませんでした",
+    "reviewDesc": "手動レビューが必要です",
+    "score": "スコア: {score}%"
+  },
+  "provenance": {
+    "title": "来歴チェーン",
+    "device": "デバイス: {value}",
+    "software": "ソフトウェア: {value}",
+    "platform": "プラットフォーム: {value}",
+    "changes": "変更: {value}"
+  },
+  "filter": {
+    "filters": "フィルター",
+    "clearAll": "すべてクリア",
+    "verification": "検証",
+    "verifiedOnly": "認証済みのみ",
+    "category": "カテゴリー",
+    "contentType": "コンテンツタイプ",
+    "priceRange": "価格帯",
+    "min": "最小",
+    "max": "最大",
+    "applyPrice": "価格を適用",
+    "sortBy": "並べ替え"
+  },
+  "language": {
+    "changeLanguage": "言語を変更"
   }
 }

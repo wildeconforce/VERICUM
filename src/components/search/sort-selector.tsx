@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useTranslations } from "next-intl";
 
 interface SortSelectorProps {
   value: string;
@@ -14,16 +15,19 @@ interface SortSelectorProps {
 }
 
 export function SortSelector({ value, onChange }: SortSelectorProps) {
+  const t = useTranslations("explore.sort");
+  const tf = useTranslations("filter");
+
   return (
     <Select value={value} onValueChange={onChange}>
       <SelectTrigger className="w-[160px]">
-        <SelectValue placeholder="Sort by" />
+        <SelectValue placeholder={tf("sortBy")} />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="newest">Newest</SelectItem>
-        <SelectItem value="popular">Most Popular</SelectItem>
-        <SelectItem value="price_asc">Price: Low to High</SelectItem>
-        <SelectItem value="price_desc">Price: High to Low</SelectItem>
+        <SelectItem value="newest">{t("newest")}</SelectItem>
+        <SelectItem value="popular">{t("popular")}</SelectItem>
+        <SelectItem value="price_asc">{t("priceAsc")}</SelectItem>
+        <SelectItem value="price_desc">{t("priceDesc")}</SelectItem>
       </SelectContent>
     </Select>
   );

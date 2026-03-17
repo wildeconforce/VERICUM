@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Globe } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const LOCALES = [
   { code: "en", name: "English", flag: "🇺🇸" },
@@ -24,6 +25,7 @@ const LOCALES = [
 ] as const;
 
 export function LanguageSelector() {
+  const t = useTranslations("language");
   const [isPending, startTransition] = useTransition();
 
   const handleLocaleChange = (locale: string) => {
@@ -46,7 +48,7 @@ export function LanguageSelector() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="h-9 w-9" disabled={isPending}>
           <Globe className="h-4 w-4" />
-          <span className="sr-only">Change language</span>
+          <span className="sr-only">{t("changeLanguage")}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48 max-h-80 overflow-y-auto">
