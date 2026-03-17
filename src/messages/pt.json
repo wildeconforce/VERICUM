@@ -52,13 +52,14 @@
     "earnings": "Ganhos",
     "purchases": "Compras",
     "settings": "Configurações",
-    "blog": "Blog"
+    "blog": "Blog",
+    "downloads": "Downloads",
+    "bookmarks": "Favoritos"
   },
   "landing": {
     "hero": {
       "badge": "Alimentado pela tecnologia de autenticidade C2PA",
-      "title": "O marketplace de conteúdo digital {highlight}",
-      "highlight": "verificado",
+      "title": "O marketplace de conteúdo digital <highlight>verificado</highlight>",
       "subtitle": "Compre e venda fotos autênticas com procedência garantida. Todo conteúdo é verificado usando padrões C2PA para total transparência.",
       "exploreBtn": "Explorar conteúdo",
       "sellBtn": "Começar a vender"
@@ -103,7 +104,26 @@
       "buyerFee": "Taxa de verificação do comprador",
       "noMonthly": "Sem mensalidades ou assinaturas",
       "instantPayouts": "Pagamentos instantâneos via Stripe Connect",
-      "freeVerification": "Verificação C2PA gratuita em todos os uploads"
+      "freeVerification": "Verificação C2PA gratuita em todos os uploads",
+      "licenseOptions": "Opções de licença Pessoal, Padrão, Estendida e Exclusiva"
+    },
+    "saleTypes": {
+      "title": "Opções de venda flexíveis",
+      "subtitle": "Escolha como deseja vender seu conteúdo. Dois tipos de venda para se adequar à sua estratégia.",
+      "premium": {
+        "title": "Venda premium",
+        "description": "Preço mais alto sem royalties sobre criações secundárias. Compradores obtêm direitos de uso completos para seu tipo de licença.",
+        "benefit1": "Preço integral por licença",
+        "benefit2": "Sem obrigações contínuas de royalties",
+        "benefit3": "Ideal para conteúdo exclusivo"
+      },
+      "royalty": {
+        "title": "Venda com royalties",
+        "description": "Preço mais baixo com 5-10% de royalty sobre criações secundárias. Mais acessível para compradores, receita contínua para vendedores.",
+        "benefit1": "Preço com 40% de desconto para compradores",
+        "benefit2": "5-10% de royalty sobre obras derivadas",
+        "benefit3": "Ideal para conteúdo de alto volume"
+      }
     },
     "cta": {
       "title": "Pronto para negociar conteúdo verificado?",
@@ -277,7 +297,11 @@
     "privacy": "Política de privacidade",
     "startSelling": "Começar a vender",
     "uploadContent": "Enviar conteúdo",
-    "copyright": "\u00a9 {year} Vericum. Todos os direitos reservados."
+    "copyright": "© {year} Vericum. Todos os direitos reservados.",
+    "earnings": "Ganhos",
+    "photojournalism": "Fotojornalismo",
+    "natureWildlife": "Natureza e vida selvagem",
+    "portrait": "Retrato"
   },
   "share": {
     "title": "Compartilhar",

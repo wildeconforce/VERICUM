@@ -52,13 +52,14 @@
     "earnings": "Revenus",
     "purchases": "Achats",
     "settings": "Paramètres",
-    "blog": "Blog"
+    "blog": "Blog",
+    "downloads": "Téléchargements",
+    "bookmarks": "Favoris"
   },
   "landing": {
     "hero": {
       "badge": "Propulsé par la technologie d'authenticité C2PA",
-      "title": "Le marketplace pour le contenu numérique {highlight}",
-      "highlight": "vérifié",
+      "title": "Le marketplace pour le contenu numérique <highlight>vérifié</highlight>",
       "subtitle": "Achetez et vendez des photos authentiques avec une provenance garantie. Chaque contenu est vérifié selon les normes C2PA pour une transparence totale.",
       "exploreBtn": "Explorer le contenu",
       "sellBtn": "Commencer à vendre"
@@ -103,7 +104,26 @@
       "buyerFee": "Frais de vérification acheteur",
       "noMonthly": "Pas de frais mensuels ni d'abonnements",
       "instantPayouts": "Paiements instantanés via Stripe Connect",
-      "freeVerification": "Vérification C2PA gratuite sur tous les imports"
+      "freeVerification": "Vérification C2PA gratuite sur tous les imports",
+      "licenseOptions": "Options de licence Personnelle, Standard, Étendue et Exclusive"
+    },
+    "saleTypes": {
+      "title": "Options de vente flexibles",
+      "subtitle": "Choisissez comment vous souhaitez vendre votre contenu. Deux types de vente pour s'adapter à votre stratégie.",
+      "premium": {
+        "title": "Vente premium",
+        "description": "Prix plus élevé sans redevances sur les créations secondaires. Les acheteurs obtiennent les droits d'utilisation complets pour leur type de licence.",
+        "benefit1": "Prix complet par licence",
+        "benefit2": "Aucune obligation de redevance continue",
+        "benefit3": "Idéal pour le contenu exclusif"
+      },
+      "royalty": {
+        "title": "Vente avec redevances",
+        "description": "Prix plus bas avec 5-10 % de redevance sur les créations secondaires. Plus accessible pour les acheteurs, revenus continus pour les vendeurs.",
+        "benefit1": "Prix réduit de 40 % pour les acheteurs",
+        "benefit2": "5-10 % de redevance sur les œuvres dérivées",
+        "benefit3": "Idéal pour le contenu à fort volume"
+      }
     },
     "cta": {
       "title": "Prêt à échanger du contenu vérifié ?",
@@ -277,7 +297,11 @@
     "privacy": "Politique de confidentialité",
     "startSelling": "Commencer à vendre",
     "uploadContent": "Importer du contenu",
-    "copyright": "\u00a9 {year} Vericum. Tous droits réservés."
+    "copyright": "© {year} Vericum. Tous droits réservés.",
+    "earnings": "Revenus",
+    "photojournalism": "Photojournalisme",
+    "natureWildlife": "Nature et faune",
+    "portrait": "Portrait"
   },
   "share": {
     "title": "Partager",

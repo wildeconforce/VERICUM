@@ -52,13 +52,14 @@
     "earnings": "Einnahmen",
     "purchases": "Käufe",
     "settings": "Einstellungen",
-    "blog": "Blog"
+    "blog": "Blog",
+    "downloads": "Downloads",
+    "bookmarks": "Lesezeichen"
   },
   "landing": {
     "hero": {
       "badge": "Basierend auf C2PA-Authentizitätstechnologie",
-      "title": "Der Marktplatz für {highlight} digitale Inhalte",
-      "highlight": "verifizierte",
+      "title": "Der Marktplatz für <highlight>verifizierte</highlight> digitale Inhalte",
       "subtitle": "Kaufen und verkaufen Sie authentische Fotos mit garantierter Herkunft. Jeder Inhalt wird nach C2PA-Standards für vollständige Transparenz verifiziert.",
       "exploreBtn": "Inhalte entdecken",
       "sellBtn": "Verkauf starten"
@@ -103,7 +104,26 @@
       "buyerFee": "Verifizierungsgebühr für Käufer",
       "noMonthly": "Keine monatlichen Gebühren oder Abonnements",
       "instantPayouts": "Sofortige Auszahlungen über Stripe Connect",
-      "freeVerification": "Kostenlose C2PA-Verifizierung bei allen Uploads"
+      "freeVerification": "Kostenlose C2PA-Verifizierung bei allen Uploads",
+      "licenseOptions": "Persönliche, Standard-, Erweiterte und Exklusive Lizenzoptionen"
+    },
+    "saleTypes": {
+      "title": "Flexible Verkaufsoptionen",
+      "subtitle": "Wählen Sie, wie Sie Ihre Inhalte verkaufen möchten. Zwei Verkaufstypen passend zu Ihrer Strategie.",
+      "premium": {
+        "title": "Premium-Verkauf",
+        "description": "Höherer Preis ohne Lizenzgebühren für Sekundärkreationen. Käufer erhalten volle Nutzungsrechte für ihren Lizenztyp.",
+        "benefit1": "Voller Preis pro Lizenz",
+        "benefit2": "Keine laufenden Lizenzgebührenpflichten",
+        "benefit3": "Ideal für exklusive Inhalte"
+      },
+      "royalty": {
+        "title": "Lizenzgebühren-Verkauf",
+        "description": "Niedrigerer Preis mit 5-10 % Lizenzgebühr auf Sekundärkreationen. Zugänglicher für Käufer, laufende Einnahmen für Verkäufer.",
+        "benefit1": "40 % reduzierter Preis für Käufer",
+        "benefit2": "5-10 % Lizenzgebühr auf abgeleitete Werke",
+        "benefit3": "Ideal für Inhalte mit hohem Volumen"
+      }
     },
     "cta": {
       "title": "Bereit, mit verifizierten Inhalten zu handeln?",
@@ -277,7 +297,11 @@
     "privacy": "Datenschutzrichtlinie",
     "startSelling": "Verkauf starten",
     "uploadContent": "Inhalt hochladen",
-    "copyright": "\u00a9 {year} Vericum. Alle Rechte vorbehalten."
+    "copyright": "© {year} Vericum. Alle Rechte vorbehalten.",
+    "earnings": "Einnahmen",
+    "photojournalism": "Fotojournalismus",
+    "natureWildlife": "Natur & Wildtiere",
+    "portrait": "Porträt"
   },
   "share": {
     "title": "Teilen",

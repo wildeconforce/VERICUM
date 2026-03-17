@@ -52,13 +52,15 @@
     "earnings": "Earnings",
     "purchases": "Purchases",
     "settings": "Settings",
-    "blog": "Blog"
+    "blog": "Blog",
+    "overview": "Overview",
+    "downloads": "Downloads",
+    "bookmarks": "Bookmarks"
   },
   "landing": {
     "hero": {
       "badge": "Powered by C2PA authenticity technology",
-      "title": "The Marketplace for {highlight} Digital Content",
-      "highlight": "Verified",
+      "title": "The Marketplace for <highlight>Verified</highlight> Digital Content",
       "subtitle": "Buy and sell authentic photos with guaranteed provenance. Every piece of content is verified using C2PA standards for complete transparency.",
       "exploreBtn": "Explore Content",
       "sellBtn": "Start Selling"
@@ -99,11 +101,30 @@
       "title": "Simple, Transparent Pricing",
       "subtitle": "No hidden fees. Sellers keep the majority of every sale.",
       "sellerReceives": "Seller receives",
-      "platformCommission": "Platform commission",
+      "platformCommission": "Platform commission (seller side)",
       "buyerFee": "Buyer verification fee",
       "noMonthly": "No monthly fees or subscriptions",
       "instantPayouts": "Instant payouts via Stripe Connect",
-      "freeVerification": "Free C2PA verification on all uploads"
+      "freeVerification": "Free C2PA verification on all uploads",
+      "licenseOptions": "Personal, Standard, Extended & Exclusive license options"
+    },
+    "saleTypes": {
+      "title": "Flexible Sale Options",
+      "subtitle": "Choose how you want to sell your content. Two sale types to fit your strategy.",
+      "premium": {
+        "title": "Premium Sale",
+        "description": "Higher price with no secondary creation royalties. Buyers get full usage rights for their license type.",
+        "benefit1": "Full price per license",
+        "benefit2": "No ongoing royalty obligations",
+        "benefit3": "Best for exclusive content"
+      },
+      "royalty": {
+        "title": "Royalty Sale",
+        "description": "Lower price with 5-10% royalty on secondary creations. More accessible to buyers, ongoing revenue for sellers.",
+        "benefit1": "40% discounted price for buyers",
+        "benefit2": "5-10% royalty on derivative works",
+        "benefit3": "Great for high-volume content"
+      }
     },
     "cta": {
       "title": "Ready to trade in verified content?",
@@ -277,7 +298,11 @@
     "privacy": "Privacy Policy",
     "startSelling": "Start Selling",
     "uploadContent": "Upload Content",
-    "copyright": "\u00a9 {year} Vericum. All rights reserved."
+    "earnings": "Earnings",
+    "photojournalism": "Photojournalism",
+    "natureWildlife": "Nature & Wildlife",
+    "portrait": "Portrait",
+    "copyright": "© {year} Vericum. All rights reserved."
   },
   "share": {
     "title": "Share",

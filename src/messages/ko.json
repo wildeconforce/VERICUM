@@ -52,13 +52,14 @@
     "earnings": "수익",
     "purchases": "구매 내역",
     "settings": "설정",
-    "blog": "블로그"
+    "blog": "블로그",
+    "downloads": "다운로드",
+    "bookmarks": "북마크"
   },
   "landing": {
     "hero": {
       "badge": "C2PA 진위 확인 기술 기반",
-      "title": "{highlight} 디지털 콘텐츠를 위한 마켓플레이스",
-      "highlight": "인증된",
+      "title": "<highlight>인증된</highlight> 디지털 콘텐츠를 위한 마켓플레이스",
       "subtitle": "보장된 출처와 함께 정품 사진을 사고파세요. 모든 콘텐츠는 완전한 투명성을 위해 C2PA 표준으로 검증됩니다.",
       "exploreBtn": "콘텐츠 둘러보기",
       "sellBtn": "판매 시작하기"
@@ -103,7 +104,26 @@
       "buyerFee": "구매자 검증 수수료",
       "noMonthly": "월 이용료 또는 구독료 없음",
       "instantPayouts": "Stripe Connect를 통한 즉시 지급",
-      "freeVerification": "모든 업로드에 무료 C2PA 검증"
+      "freeVerification": "모든 업로드에 무료 C2PA 검증",
+      "licenseOptions": "개인, 표준, 확장 및 독점 라이선스 옵션"
+    },
+    "saleTypes": {
+      "title": "유연한 판매 옵션",
+      "subtitle": "콘텐츠 판매 방식을 선택하세요. 전략에 맞는 두 가지 판매 유형.",
+      "premium": {
+        "title": "프리미엄 판매",
+        "description": "2차 창작 로열티 없는 높은 가격. 구매자는 라이선스 유형에 따른 전체 사용 권한을 획득합니다.",
+        "benefit1": "라이선스당 전체 가격",
+        "benefit2": "지속적인 로열티 의무 없음",
+        "benefit3": "독점 콘텐츠에 최적"
+      },
+      "royalty": {
+        "title": "로열티 판매",
+        "description": "2차 창작물에 5-10% 로열티가 적용되는 낮은 가격. 구매자에게 더 접근 가능하며 판매자에게 지속적인 수익.",
+        "benefit1": "구매자를 위한 40% 할인 가격",
+        "benefit2": "파생 작품에 5-10% 로열티",
+        "benefit3": "대량 콘텐츠에 적합"
+      }
     },
     "cta": {
       "title": "인증된 콘텐츠를 거래할 준비가 되셨나요?",
@@ -277,7 +297,11 @@
     "privacy": "개인정보 처리방침",
     "startSelling": "판매 시작하기",
     "uploadContent": "콘텐츠 업로드",
-    "copyright": "\u00a9 {year} Vericum. 모든 권리 보유."
+    "copyright": "© {year} Vericum. 모든 권리 보유.",
+    "earnings": "수익",
+    "photojournalism": "포토저널리즘",
+    "natureWildlife": "자연 & 야생동물",
+    "portrait": "인물"
   },
   "share": {
     "title": "공유",

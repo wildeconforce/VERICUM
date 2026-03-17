@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/use-auth";
 import {
@@ -15,20 +16,21 @@ import {
   Download,
 } from "lucide-react";
 
-const sidebarItems = [
-  { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
-  { href: "/my-content", label: "My Content", icon: Package, sellerOnly: true },
-  { href: "/upload", label: "Upload", icon: Upload, sellerOnly: true },
-  { href: "/purchases", label: "Purchases", icon: ShoppingBag },
-  { href: "/downloads", label: "Downloads", icon: Download },
-  { href: "/bookmarks", label: "Bookmarks", icon: Heart },
-  { href: "/earnings", label: "Earnings", icon: DollarSign, sellerOnly: true },
-  { href: "/settings", label: "Settings", icon: Settings },
-];
-
 export function Sidebar() {
   const pathname = usePathname();
   const { isSeller } = useAuth();
+  const t = useTranslations('nav');
+
+  const sidebarItems = [
+    { href: "/dashboard", label: t('overview'), icon: LayoutDashboard },
+    { href: "/my-content", label: t('myContent'), icon: Package, sellerOnly: true },
+    { href: "/upload", label: t('upload'), icon: Upload, sellerOnly: true },
+    { href: "/purchases", label: t('purchases'), icon: ShoppingBag },
+    { href: "/downloads", label: t('downloads'), icon: Download },
+    { href: "/bookmarks", label: t('bookmarks'), icon: Heart },
+    { href: "/earnings", label: t('earnings'), icon: DollarSign, sellerOnly: true },
+    { href: "/settings", label: t('settings'), icon: Settings },
+  ];
 
   const filteredItems = sidebarItems.filter(
     (item) => !item.sellerOnly || isSeller
