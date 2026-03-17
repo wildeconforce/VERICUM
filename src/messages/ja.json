@@ -52,13 +52,14 @@
     "earnings": "収益",
     "purchases": "購入履歴",
     "settings": "設定",
-    "blog": "ブログ"
+    "blog": "ブログ",
+    "downloads": "ダウンロード",
+    "bookmarks": "ブックマーク"
   },
   "landing": {
     "hero": {
       "badge": "C2PA認証技術を搭載",
-      "title": "{highlight}デジタルコンテンツのためのマーケットプレイス",
-      "highlight": "認証済み",
+      "title": "<highlight>認証済み</highlight>デジタルコンテンツのためのマーケットプレイス",
       "subtitle": "保証された出所とともに本物の写真を売買しましょう。すべてのコンテンツは完全な透明性のためにC2PA基準で検証されています。",
       "exploreBtn": "コンテンツを探す",
       "sellBtn": "販売を始める"
@@ -103,7 +104,26 @@
       "buyerFee": "購入者検証手数料",
       "noMonthly": "月額料金やサブスクリプションなし",
       "instantPayouts": "Stripe Connectによる即時支払い",
-      "freeVerification": "すべてのアップロードでC2PA検証が無料"
+      "freeVerification": "すべてのアップロードでC2PA検証が無料",
+      "licenseOptions": "パーソナル、スタンダード、エクステンデッド、エクスクルーシブのライセンスオプション"
+    },
+    "saleTypes": {
+      "title": "柔軟な販売オプション",
+      "subtitle": "コンテンツの販売方法を選択してください。戦略に合わせた2つの販売タイプ。",
+      "premium": {
+        "title": "プレミアム販売",
+        "description": "二次創作ロイヤリティなしの高価格。購入者はライセンスタイプに応じた完全な使用権を取得します。",
+        "benefit1": "ライセンスごとの全額価格",
+        "benefit2": "継続的なロイヤリティ義務なし",
+        "benefit3": "独占コンテンツに最適"
+      },
+      "royalty": {
+        "title": "ロイヤリティ販売",
+        "description": "二次創作に5-10%のロイヤリティが付く低価格。購入者にとってよりアクセスしやすく、販売者には継続的な収益。",
+        "benefit1": "購入者向け40%割引価格",
+        "benefit2": "派生作品に5-10%のロイヤリティ",
+        "benefit3": "大量コンテンツに最適"
+      }
     },
     "cta": {
       "title": "認証済みコンテンツの取引を始めませんか？",
@@ -277,7 +297,11 @@
     "privacy": "プライバシーポリシー",
     "startSelling": "販売を始める",
     "uploadContent": "コンテンツをアップロード",
-    "copyright": "\u00a9 {year} Vericum. All rights reserved."
+    "copyright": "© {year} Vericum. All rights reserved.",
+    "earnings": "収益",
+    "photojournalism": "フォトジャーナリズム",
+    "natureWildlife": "自然・野生動物",
+    "portrait": "ポートレート"
   },
   "share": {
     "title": "共有",

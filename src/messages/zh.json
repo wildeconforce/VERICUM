@@ -52,13 +52,14 @@
     "earnings": "收益",
     "purchases": "购买记录",
     "settings": "设置",
-    "blog": "博客"
+    "blog": "博客",
+    "downloads": "下载",
+    "bookmarks": "收藏夹"
   },
   "landing": {
     "hero": {
       "badge": "由C2PA真实性技术驱动",
-      "title": "{highlight}数字内容的交易平台",
-      "highlight": "认证",
+      "title": "<highlight>认证</highlight>数字内容的交易平台",
       "subtitle": "购买和出售具有保证来源的真实照片。每件内容均通过C2PA标准验证，确保完全透明。",
       "exploreBtn": "探索内容",
       "sellBtn": "开始销售"
@@ -103,7 +104,26 @@
       "buyerFee": "买家验证费用",
       "noMonthly": "无月费或订阅费",
       "instantPayouts": "通过Stripe Connect即时付款",
-      "freeVerification": "所有上传均可免费进行C2PA验证"
+      "freeVerification": "所有上传均可免费进行C2PA验证",
+      "licenseOptions": "个人、标准、扩展和独家许可选项"
+    },
+    "saleTypes": {
+      "title": "灵活的销售选项",
+      "subtitle": "选择您想要的内容销售方式。两种销售类型，适合您的策略。",
+      "premium": {
+        "title": "高级销售",
+        "description": "较高价格，无二次创作版税。买家获得其许可类型的完整使用权。",
+        "benefit1": "每个许可证全价",
+        "benefit2": "无持续版税义务",
+        "benefit3": "最适合独家内容"
+      },
+      "royalty": {
+        "title": "版税销售",
+        "description": "较低价格，二次创作需支付5-10%版税。对买家更实惠，为卖家提供持续收入。",
+        "benefit1": "买家享受40%折扣价",
+        "benefit2": "衍生作品5-10%版税",
+        "benefit3": "非常适合大量内容"
+      }
     },
     "cta": {
       "title": "准备好交易认证内容了吗？",
@@ -277,7 +297,11 @@
     "privacy": "隐私政策",
     "startSelling": "开始销售",
     "uploadContent": "上传内容",
-    "copyright": "\u00a9 {year} Vericum. 保留所有权利。"
+    "copyright": "© {year} Vericum. 保留所有权利。",
+    "earnings": "收益",
+    "photojournalism": "新闻摄影",
+    "natureWildlife": "自然与野生动物",
+    "portrait": "人像"
   },
   "share": {
     "title": "分享",

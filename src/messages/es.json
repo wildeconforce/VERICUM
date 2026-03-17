@@ -52,13 +52,14 @@
     "earnings": "Ganancias",
     "purchases": "Compras",
     "settings": "Configuración",
-    "blog": "Blog"
+    "blog": "Blog",
+    "downloads": "Descargas",
+    "bookmarks": "Marcadores"
   },
   "landing": {
     "hero": {
       "badge": "Impulsado por tecnología de autenticidad C2PA",
-      "title": "El marketplace de contenido digital {highlight}",
-      "highlight": "verificado",
+      "title": "El marketplace de contenido digital <highlight>verificado</highlight>",
       "subtitle": "Compra y vende fotos auténticas con procedencia garantizada. Cada pieza de contenido está verificada con estándares C2PA para total transparencia.",
       "exploreBtn": "Explorar contenido",
       "sellBtn": "Empezar a vender"
@@ -103,7 +104,26 @@
       "buyerFee": "Tarifa de verificación del comprador",
       "noMonthly": "Sin cuotas mensuales ni suscripciones",
       "instantPayouts": "Pagos instantáneos a través de Stripe Connect",
-      "freeVerification": "Verificación C2PA gratuita en todas las cargas"
+      "freeVerification": "Verificación C2PA gratuita en todas las cargas",
+      "licenseOptions": "Opciones de licencia Personal, Estándar, Extendida y Exclusiva"
+    },
+    "saleTypes": {
+      "title": "Opciones de venta flexibles",
+      "subtitle": "Elige cómo quieres vender tu contenido. Dos tipos de venta para adaptarse a tu estrategia.",
+      "premium": {
+        "title": "Venta premium",
+        "description": "Precio más alto sin regalías por creaciones secundarias. Los compradores obtienen derechos de uso completos para su tipo de licencia.",
+        "benefit1": "Precio completo por licencia",
+        "benefit2": "Sin obligaciones de regalías continuas",
+        "benefit3": "Ideal para contenido exclusivo"
+      },
+      "royalty": {
+        "title": "Venta con regalías",
+        "description": "Precio más bajo con 5-10% de regalía en creaciones secundarias. Más accesible para compradores, ingresos continuos para vendedores.",
+        "benefit1": "Precio con 40% de descuento para compradores",
+        "benefit2": "5-10% de regalía en obras derivadas",
+        "benefit3": "Ideal para contenido de alto volumen"
+      }
     },
     "cta": {
       "title": "¿Listo para comerciar con contenido verificado?",
@@ -277,7 +297,11 @@
     "privacy": "Política de privacidad",
     "startSelling": "Empezar a vender",
     "uploadContent": "Subir contenido",
-    "copyright": "\u00a9 {year} Vericum. Todos los derechos reservados."
+    "copyright": "© {year} Vericum. Todos los derechos reservados.",
+    "earnings": "Ganancias",
+    "photojournalism": "Fotoperiodismo",
+    "natureWildlife": "Naturaleza y vida silvestre",
+    "portrait": "Retrato"
   },
   "share": {
     "title": "Compartir",

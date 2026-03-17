@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -30,6 +31,8 @@ import {
 
 export function Header() {
   const { user, profile, isAuthenticated, isSeller, signOut } = useAuth();
+  const t = useTranslations('nav');
+  const tc = useTranslations('common');
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -38,7 +41,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-2">
             <ShieldCheck className="h-7 w-7 text-primary" />
             <span className="text-xl font-bold font-serif tracking-tight">
-              Vericum
+              {tc('appName')}
             </span>
           </Link>
           <nav className="hidden md:flex items-center gap-4">
@@ -46,14 +49,14 @@ export function Header() {
               href="/explore"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Explore
+              {t('explore')}
             </Link>
             {isSeller && (
               <Link
                 href="/upload"
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                Upload
+                {t('upload')}
               </Link>
             )}
           </nav>
@@ -72,7 +75,7 @@ export function Header() {
                 <Button variant="outline" size="sm" asChild className="hidden sm:flex ml-2">
                   <Link href="/upload">
                     <Upload className="h-4 w-4 mr-2" />
-                    Upload
+                    {t('upload')}
                   </Link>
                 </Button>
               )}
@@ -110,7 +113,7 @@ export function Header() {
                   <DropdownMenuItem asChild>
                     <Link href="/dashboard">
                       <LayoutDashboard className="h-4 w-4 mr-2" />
-                      Dashboard
+                      {t('dashboard')}
                     </Link>
                   </DropdownMenuItem>
                   {isSeller && (
@@ -118,13 +121,13 @@ export function Header() {
                       <DropdownMenuItem asChild>
                         <Link href="/my-content">
                           <Package className="h-4 w-4 mr-2" />
-                          My Content
+                          {t('myContent')}
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
                         <Link href="/earnings">
                           <DollarSign className="h-4 w-4 mr-2" />
-                          Earnings
+                          {t('earnings')}
                         </Link>
                       </DropdownMenuItem>
                     </>
@@ -132,31 +135,31 @@ export function Header() {
                   <DropdownMenuItem asChild>
                     <Link href="/purchases">
                       <ShoppingBag className="h-4 w-4 mr-2" />
-                      Purchases
+                      {t('purchases')}
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link href="/downloads">
                       <Download className="h-4 w-4 mr-2" />
-                      Downloads
+                      {t('downloads')}
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link href="/bookmarks">
                       <Heart className="h-4 w-4 mr-2" />
-                      Bookmarks
+                      {t('bookmarks')}
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
                     <Link href="/settings">
                       <Settings className="h-4 w-4 mr-2" />
-                      Settings
+                      {t('settings')}
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={signOut}>
                     <LogOut className="h-4 w-4 mr-2" />
-                    Sign Out
+                    {tc('signOut')}
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -164,10 +167,10 @@ export function Header() {
           ) : (
             <div className="flex items-center gap-2 ml-2">
               <Button variant="ghost" size="sm" asChild>
-                <Link href="/login">Sign In</Link>
+                <Link href="/login">{tc('signIn')}</Link>
               </Button>
               <Button size="sm" asChild>
-                <Link href="/register">Get Started</Link>
+                <Link href="/register">{tc('getStarted')}</Link>
               </Button>
             </div>
           )}

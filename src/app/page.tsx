@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
+import { getTranslations } from "next-intl/server";
 import {
   ShieldCheck,
   Upload,
@@ -15,7 +16,8 @@ import {
   Percent,
 } from "lucide-react";
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const t = await getTranslations('landing');
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -26,26 +28,25 @@ export default function LandingPage() {
           <div className="container mx-auto px-4 text-center relative">
             <div className="inline-flex items-center gap-2 rounded-full border bg-background/80 px-4 py-1.5 text-sm mb-8 backdrop-blur">
               <ShieldCheck className="h-4 w-4 text-primary" />
-              <span>Powered by C2PA authenticity technology</span>
+              <span>{t('hero.badge')}</span>
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl mx-auto leading-[1.1]">
-              The Marketplace for{" "}
-              <span className="text-primary">Verified</span> Digital Content
+              {t.rich('hero.title', {
+                highlight: (chunks) => <span className="text-primary">{chunks}</span>
+              })}
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mt-6">
-              Buy and sell authentic photos with guaranteed provenance.
-              Every piece of content is verified using C2PA standards for
-              complete transparency.
+              {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
               <Button size="lg" asChild className="text-base px-8">
                 <Link href="/explore">
-                  Explore Content
+                  {t('hero.exploreBtn')}
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild className="text-base px-8">
-                <Link href="/register">Start Selling</Link>
+                <Link href="/register">{t('hero.sellBtn')}</Link>
               </Button>
             </div>
           </div>
@@ -56,36 +57,35 @@ export default function LandingPage() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold">
-                Why Vericum?
+                {t('features.title')}
               </h2>
               <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-                The first content marketplace that guarantees authenticity
-                through cutting-edge verification technology.
+                {t('features.subtitle')}
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
                   icon: Fingerprint,
-                  title: "C2PA Verification",
-                  description:
-                    "Every upload is analyzed for C2PA manifests, EXIF data, and AI-generation markers. Know exactly where your content comes from.",
+                  key: "c2pa",
+                  title: t('features.c2pa.title'),
+                  description: t('features.c2pa.description'),
                 },
                 {
                   icon: Camera,
-                  title: "Provenance Tracking",
-                  description:
-                    "Complete chain of custody from camera to marketplace. See the full history of how content was created and edited.",
+                  key: "provenance",
+                  title: t('features.provenance.title'),
+                  description: t('features.provenance.description'),
                 },
                 {
                   icon: BarChart3,
-                  title: "Fair Marketplace",
-                  description:
-                    "Sellers keep 85% of every sale. Transparent 15% commission structure with instant payouts via Stripe Connect.",
+                  key: "marketplace",
+                  title: t('features.marketplace.title'),
+                  description: t('features.marketplace.description'),
                 },
               ].map((feature) => (
                 <div
-                  key={feature.title}
+                  key={feature.key}
                   className="relative rounded-2xl border bg-card p-8 hover:shadow-lg transition-all hover:-translate-y-1"
                 >
                   <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
@@ -103,9 +103,9 @@ export default function LandingPage() {
         <section className="py-24">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold">How It Works</h2>
+              <h2 className="text-3xl md:text-4xl font-bold">{t('howItWorks.title')}</h2>
               <p className="text-muted-foreground mt-3">
-                Three simple steps to verified content
+                {t('howItWorks.subtitle')}
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-12 max-w-4xl mx-auto">
@@ -113,23 +113,20 @@ export default function LandingPage() {
                 {
                   step: "01",
                   icon: Upload,
-                  title: "Upload",
-                  description:
-                    "Drag and drop your original photo. We support JPG, PNG, WebP, TIFF, and RAW formats up to 50MB.",
+                  title: t('howItWorks.step1.title'),
+                  description: t('howItWorks.step1.description'),
                 },
                 {
                   step: "02",
                   icon: ShieldCheck,
-                  title: "Verify",
-                  description:
-                    "Our engine automatically checks C2PA manifests, EXIF metadata, and runs AI detection to score authenticity.",
+                  title: t('howItWorks.step2.title'),
+                  description: t('howItWorks.step2.description'),
                 },
                 {
                   step: "03",
                   icon: CreditCard,
-                  title: "Sell",
-                  description:
-                    "Set your price and license type. Buyers can purchase with confidence knowing every piece is verified.",
+                  title: t('howItWorks.step3.title'),
+                  description: t('howItWorks.step3.description'),
                 },
               ].map((step) => (
                 <div key={step.step} className="text-center">
@@ -152,10 +149,10 @@ export default function LandingPage() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold">
-                Flexible Sale Options
+                {t('saleTypes.title')}
               </h2>
               <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-                Choose how you want to sell your content. Two sale types to fit your strategy.
+                {t('saleTypes.subtitle')}
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -163,22 +160,22 @@ export default function LandingPage() {
                 <div className="h-12 w-12 rounded-xl bg-amber/10 flex items-center justify-center mb-5">
                   <Crown className="h-6 w-6 text-amber" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Premium Sale</h3>
+                <h3 className="text-xl font-semibold mb-2">{t('saleTypes.premium.title')}</h3>
                 <p className="text-muted-foreground mb-4">
-                  Higher price with no secondary creation royalties. Buyers get full usage rights for their license type.
+                  {t('saleTypes.premium.description')}
                 </p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-primary shrink-0" />
-                    Full price per license
+                    {t('saleTypes.premium.benefit1')}
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-primary shrink-0" />
-                    No ongoing royalty obligations
+                    {t('saleTypes.premium.benefit2')}
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-primary shrink-0" />
-                    Best for exclusive content
+                    {t('saleTypes.premium.benefit3')}
                   </li>
                 </ul>
               </div>
@@ -186,22 +183,22 @@ export default function LandingPage() {
                 <div className="h-12 w-12 rounded-xl bg-emerald/10 flex items-center justify-center mb-5">
                   <Percent className="h-6 w-6 text-emerald" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Royalty Sale</h3>
+                <h3 className="text-xl font-semibold mb-2">{t('saleTypes.royalty.title')}</h3>
                 <p className="text-muted-foreground mb-4">
-                  Lower price with 5-10% royalty on secondary creations. More accessible to buyers, ongoing revenue for sellers.
+                  {t('saleTypes.royalty.description')}
                 </p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-primary shrink-0" />
-                    40% discounted price for buyers
+                    {t('saleTypes.royalty.benefit1')}
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-primary shrink-0" />
-                    5-10% royalty on derivative works
+                    {t('saleTypes.royalty.benefit2')}
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-primary shrink-0" />
-                    Great for high-volume content
+                    {t('saleTypes.royalty.benefit3')}
                   </li>
                 </ul>
               </div>
@@ -214,27 +211,27 @@ export default function LandingPage() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold">
-                Simple, Transparent Pricing
+                {t('pricing.title')}
               </h2>
               <p className="text-muted-foreground mt-3">
-                No hidden fees. Sellers keep the majority of every sale.
+                {t('pricing.subtitle')}
               </p>
             </div>
             <div className="max-w-lg mx-auto rounded-2xl border bg-card p-8">
               <div className="space-y-4">
                 <div className="flex items-center justify-between py-3 border-b">
-                  <span className="text-muted-foreground">Seller receives</span>
+                  <span className="text-muted-foreground">{t('pricing.sellerReceives')}</span>
                   <span className="text-2xl font-bold text-primary">85%</span>
                 </div>
                 <div className="flex items-center justify-between py-3 border-b">
                   <span className="text-muted-foreground">
-                    Platform commission (seller side)
+                    {t('pricing.platformCommission')}
                   </span>
                   <span className="text-lg font-semibold">15%</span>
                 </div>
                 <div className="flex items-center justify-between py-3">
                   <span className="text-muted-foreground">
-                    Buyer verification fee
+                    {t('pricing.buyerFee')}
                   </span>
                   <span className="text-lg font-semibold">15%</span>
                 </div>
@@ -242,19 +239,19 @@ export default function LandingPage() {
               <div className="mt-6 space-y-2 text-sm text-muted-foreground">
                 <div className="flex items-start gap-2">
                   <CheckCircle className="h-4 w-4 text-emerald mt-0.5 shrink-0" />
-                  <span>No monthly fees or subscriptions</span>
+                  <span>{t('pricing.noMonthly')}</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle className="h-4 w-4 text-emerald mt-0.5 shrink-0" />
-                  <span>Instant payouts via Stripe Connect</span>
+                  <span>{t('pricing.instantPayouts')}</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle className="h-4 w-4 text-emerald mt-0.5 shrink-0" />
-                  <span>Free C2PA verification on all uploads</span>
+                  <span>{t('pricing.freeVerification')}</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle className="h-4 w-4 text-emerald mt-0.5 shrink-0" />
-                  <span>Personal, Standard, Extended &amp; Exclusive license options</span>
+                  <span>{t('pricing.licenseOptions')}</span>
                 </div>
               </div>
             </div>
@@ -265,21 +262,20 @@ export default function LandingPage() {
         <section className="py-24 bg-gradient-to-t from-primary/5 to-background">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold max-w-2xl mx-auto">
-              Ready to trade in verified content?
+              {t('cta.title')}
             </h2>
             <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-              Join Vericum today and be part of the movement toward
-              authentic, verified digital content.
+              {t('cta.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
               <Button size="lg" asChild className="text-base px-8">
                 <Link href="/register">
-                  Create Free Account
+                  {t('cta.createAccount')}
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild className="text-base px-8">
-                <Link href="/explore">Browse Content</Link>
+                <Link href="/explore">{t('cta.browseContent')}</Link>
               </Button>
             </div>
           </div>
