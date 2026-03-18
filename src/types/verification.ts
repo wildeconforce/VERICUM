@@ -1,3 +1,5 @@
+import type { VTLResult } from "@/lib/c2pa/trust-layer";
+
 export interface VerificationResult {
   overallScore: number;
   status: "verified" | "rejected" | "manual_review";
@@ -38,9 +40,14 @@ export interface VerificationResult {
     isDuplicate: boolean;
     similarContentIds: string[];
     score: number;
+    /** Perceptually similar content (pHash-based) */
+    perceptuallySimilar?: { contentId: string; distance: number }[];
   };
 
   provenance: ProvenanceEvent[];
+
+  /** Vericum Trust Layer result — our proprietary verification on top of C2PA */
+  vtl?: VTLResult;
 }
 
 export interface ProvenanceEvent {
@@ -52,11 +59,13 @@ export interface ProvenanceEvent {
   changes?: string[];
 }
 
+/** Base C2PA layer weights */
 export const VERIFICATION_WEIGHTS = {
-  c2pa: 0.50,
-  metadata: 0.15,
-  aiDetection: 0.20,
-  uniqueness: 0.15,
+  c2pa: 0.35,
+  metadata: 0.10,
+  aiDetection: 0.15,
+  uniqueness: 0.10,
+  vtl: 0.30,
 } as const;
 
 export const VERIFICATION_THRESHOLDS = {

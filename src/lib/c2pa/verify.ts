@@ -1,4 +1,4 @@
-import { generateHashes, checkDuplicateHash } from "./hash";
+import { generateHashes, checkDuplicateHash, checkPerceptualDuplicates } from "./hash";
 import { extractExifData, extractDeviceInfo, scoreMetadata } from "./extract";
 import { VerificationInput, C2PAManifest } from "./types";
 import {
@@ -7,6 +7,8 @@ import {
   VerificationResult,
   ProvenanceEvent,
 } from "@/types/verification";
+import { computeVericumTrustLayer } from "./trust-layer";
+import { runExternalAIDetectors } from "./ai-detectors";
 
 let createC2pa: any = null;
 
@@ -573,20 +575,62 @@ export async function verifyContent(
   // Step 4: AI detection (multi-signal heuristic)
   const aiDetection = scoreAIDetection(exif, input.fileBuffer);
 
-  // Step 5: Duplicate check
-  const uniqueness = await checkDuplicateHash(hashes.sha256, supabaseAdmin);
-  const uniquenessScore = uniqueness.isDuplicate ? 0 : 1;
+  // Step 5: Duplicate check (SHA-256 exact + pHash perceptual)
+  const [uniqueness, perceptualDuplicates] = await Promise.all([
+    checkDuplicateHash(hashes.sha256, supabaseAdmin),
+    hashes.perceptualHash
+      ? checkPerceptualDuplicates(hashes.perceptualHash, supabaseAdmin)
+      : Promise.resolve([]),
+  ]);
+  const uniquenessScore = uniqueness.isDuplicate ? 0 : perceptualDuplicates.length > 0 ? 0.3 : 1;
 
-  // Step 6: Calculate composite score
+  // Step 6: External AI detection (Hive, Optic, Illuminarty — parallel)
+  const externalAIResults = await runExternalAIDetectors(
+    input.fileBuffer,
+    input.mimeType
+  );
+
+  // Step 7: Vericum Trust Layer (VTL) — our proprietary verification
+  const vtl = computeVericumTrustLayer(
+    {
+      overallScore: 0, // Will be calculated after
+      status: "manual_review",
+      c2pa: c2paResult,
+      metadata: metadataScore,
+      aiDetection,
+      uniqueness: {
+        isDuplicate: uniqueness.isDuplicate,
+        similarContentIds: uniqueness.similarContentIds,
+        score: uniquenessScore,
+        perceptuallySimilar: perceptualDuplicates,
+      },
+      provenance: [],
+    },
+    exif as Record<string, unknown> | null,
+    externalAIResults,
+    input.fileName, // contentId placeholder — real ID set by API route
+    hashes.sha256
+  );
+
+  console.log(`[VTL] Trust score: ${vtl.trustScore.toFixed(3)}, tier: ${vtl.trustTier}, flags: ${vtl.flags.length}`);
+
+  // Step 8: Calculate composite score (C2PA base + VTL layer)
   let overallScore =
     c2paResult.score * VERIFICATION_WEIGHTS.c2pa +
     metadataScore.score * VERIFICATION_WEIGHTS.metadata +
     aiDetection.score * VERIFICATION_WEIGHTS.aiDetection +
-    uniquenessScore * VERIFICATION_WEIGHTS.uniqueness;
+    uniquenessScore * VERIFICATION_WEIGHTS.uniqueness +
+    vtl.trustScore * VERIFICATION_WEIGHTS.vtl;
 
   // C2PA validity bonus: a valid C2PA manifest is strong proof of provenance
   if (c2paResult.present && c2paResult.valid) {
     overallScore = Math.max(overallScore, VERIFICATION_THRESHOLDS.verified);
+  }
+
+  // VTL critical flag override: can downgrade verified content
+  const hasCriticalFlag = vtl.flags.some((f) => f.type === "critical");
+  if (hasCriticalFlag && overallScore >= VERIFICATION_THRESHOLDS.verified) {
+    overallScore = Math.min(overallScore, VERIFICATION_THRESHOLDS.manual_review + 0.05);
   }
 
   // Determine status
@@ -601,7 +645,7 @@ export async function verifyContent(
 
   const provenance = buildProvenance(exif, c2paResult.manifest, c2paReadResult);
 
-  console.log(`[VVE] Verification complete: score=${overallScore.toFixed(3)}, status=${status}, c2pa=${c2paResult.present}, valid=${c2paResult.valid}`);
+  console.log(`[VVE] Verification complete: score=${overallScore.toFixed(3)}, status=${status}, c2pa=${c2paResult.present}, vtl=${vtl.trustTier}`);
 
   return {
     overallScore,
@@ -613,7 +657,9 @@ export async function verifyContent(
       isDuplicate: uniqueness.isDuplicate,
       similarContentIds: uniqueness.similarContentIds,
       score: uniquenessScore,
+      perceptuallySimilar: perceptualDuplicates,
     },
     provenance,
+    vtl,
   };
 }

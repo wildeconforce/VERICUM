@@ -1,17 +1,16 @@
 import { createHash } from "crypto";
 import { HashResult } from "./types";
+import { computePerceptualHash, hammingDistance } from "./phash";
 
 export async function generateHashes(buffer: Buffer): Promise<HashResult> {
   const sha256 = createHash("sha256").update(buffer).digest("hex");
 
-  // For MVP, perceptual hash is simplified
-  // Post-MVP: integrate proper pHash library
+  // Compute real DCT-based perceptual hash
   let perceptualHash: string | null = null;
   try {
-    // Simple average hash as placeholder
-    perceptualHash = createHash("md5").update(buffer.subarray(0, Math.min(buffer.length, 1024))).digest("hex");
+    perceptualHash = await computePerceptualHash(buffer);
   } catch {
-    // perceptual hash generation failed, non-critical
+    // pHash generation failed, non-critical
   }
 
   return { sha256, perceptualHash };
@@ -31,4 +30,39 @@ export async function checkDuplicateHash(
     isDuplicate: ids.length > 0,
     similarContentIds: ids,
   };
+}
+
+/**
+ * Check for perceptually similar images in the database.
+ * Uses Hamming distance on pHash values.
+ * Returns matching content IDs with similarity scores.
+ */
+export async function checkPerceptualDuplicates(
+  perceptualHash: string,
+  supabaseAdmin: {
+    from: (table: string) => {
+      select: (columns: string) => {
+        neq: (column: string, value: null) => Promise<{ data: unknown[] | null }>;
+      };
+    };
+  },
+  threshold = 10
+): Promise<{ contentId: string; distance: number }[]> {
+  const { data } = await supabaseAdmin
+    .from("verifications")
+    .select("content_id, perceptual_hash")
+    .neq("perceptual_hash", null);
+
+  if (!data) return [];
+
+  const matches: { contentId: string; distance: number }[] = [];
+  for (const row of data as { content_id: string; perceptual_hash: string }[]) {
+    if (!row.perceptual_hash) continue;
+    const dist = hammingDistance(perceptualHash, row.perceptual_hash);
+    if (dist <= threshold) {
+      matches.push({ contentId: row.content_id, distance: dist });
+    }
+  }
+
+  return matches.sort((a, b) => a.distance - b.distance);
 }

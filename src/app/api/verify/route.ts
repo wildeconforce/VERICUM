@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     const buffer = Buffer.from(await fileData.arrayBuffer());
     const adminClient = createAdminClient();
 
-    // Run verification
+    // Run full verification pipeline (C2PA + VTL)
     const result = await verifyContent(
       {
         fileBuffer: buffer,
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
       adminClient
     );
 
-    // Store verification result
+    // Store verification result with VTL data
     const { data: verification, error: insertError } = await adminClient
       .from("verifications")
       .insert({
@@ -61,16 +61,24 @@ export async function POST(request: NextRequest) {
         c2pa_manifest: result.c2pa.manifest as any,
         c2pa_issuer: result.c2pa.issuer,
         c2pa_timestamp: result.c2pa.timestamp?.toISOString(),
-        content_hash: "", // Will be set below
+        content_hash: "",
         perceptual_hash: null,
         exif_data: result.metadata as any,
         device_info: null,
         capture_date: result.metadata.captureDate?.toISOString(),
         ai_score: result.aiDetection.isAiGenerated ? 1 - result.aiDetection.score : result.aiDetection.score,
         ai_detector: result.aiDetection.detector,
+        ai_details: result.aiDetection.details as any,
         overall_score: result.overallScore,
         status: result.status === "manual_review" ? "manual_review" : result.status,
         provenance: result.provenance as any,
+        // VTL fields
+        vtl_score: result.vtl?.trustScore,
+        vtl_tier: result.vtl?.trustTier,
+        vtl_layers: result.vtl?.layers as any,
+        vtl_flags: result.vtl?.flags as any,
+        external_ai_results: result.vtl?.layers.aiEnsemble.detectors as any,
+        engine_version: result.vtl?.auditEntry.engineVersion || "VTL-1.0.0",
       })
       .select()
       .single();
@@ -78,6 +86,38 @@ export async function POST(request: NextRequest) {
     if (insertError) {
       console.error("Verification insert error:", insertError);
       return NextResponse.json({ error: "Failed to store verification result" }, { status: 500 });
+    }
+
+    // Store audit log entry
+    if (result.vtl?.auditEntry) {
+      const audit = result.vtl.auditEntry;
+      await adminClient.from("verification_audit_log").insert({
+        verification_id: audit.verificationId,
+        content_id,
+        timestamp: audit.timestamp,
+        engine_version: audit.engineVersion,
+        input_hash: audit.inputHash,
+        c2pa_present: audit.c2paPresent,
+        vtl_score: audit.vtlScore,
+        trust_tier: audit.trustTier,
+        layers: audit.layers as any,
+        flags: audit.flags as any,
+        processing_time_ms: audit.processingTimeMs,
+      });
+    }
+
+    // Update device fingerprint for this user
+    if (result.vtl?.layers.device) {
+      const dev = result.vtl.layers.device;
+      if (dev.checks.hasRealDevice) {
+        await adminClient.rpc("upsert_device_fingerprint", {
+          p_user_id: user.id,
+          p_make: (result.metadata as any)?.make || null,
+          p_model: (result.metadata as any)?.model || null,
+          p_category: dev.deviceCategory,
+          p_trust_score: result.vtl.trustScore,
+        });
+      }
     }
 
     // Update content verification status
@@ -99,6 +139,10 @@ export async function POST(request: NextRequest) {
       has_c2pa: result.c2pa.present,
       ai_score: result.aiDetection.score,
       overall_score: result.overallScore,
+      // VTL data
+      vtl_score: result.vtl?.trustScore,
+      vtl_tier: result.vtl?.trustTier,
+      vtl_flags: result.vtl?.flags,
       provenance: result.provenance,
     });
   } catch (err) {
