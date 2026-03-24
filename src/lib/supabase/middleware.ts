@@ -62,7 +62,7 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   // Protected routes
-  const protectedRoutes = ["/dashboard", "/my-content", "/purchases", "/earnings", "/settings", "/upload"];
+  const protectedRoutes = ["/dashboard", "/my-content", "/purchases", "/earnings", "/settings", "/upload", "/admin"];
   const isProtected = protectedRoutes.some((route) => pathname.startsWith(route));
 
   if (isProtected && !user) {
@@ -84,6 +84,21 @@ export async function updateSession(request: NextRequest) {
       .single();
 
     if (profile && profile.role === "user") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/dashboard";
+      return applySecurityHeaders(NextResponse.redirect(url));
+    }
+  }
+
+  // Admin-only routes
+  if (pathname.startsWith("/admin") && user) {
+    const { data: adminProfile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", user.id)
+      .single();
+
+    if (!adminProfile || adminProfile.role !== "admin") {
       const url = request.nextUrl.clone();
       url.pathname = "/dashboard";
       return applySecurityHeaders(NextResponse.redirect(url));

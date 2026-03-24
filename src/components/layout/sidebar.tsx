@@ -14,11 +14,12 @@ import {
   Upload,
   Heart,
   Download,
+  Shield,
 } from "lucide-react";
 
 export function Sidebar() {
   const pathname = usePathname();
-  const { isSeller } = useAuth();
+  const { isSeller, isAdmin } = useAuth();
   const t = useTranslations('nav');
 
   const sidebarItems = [
@@ -30,10 +31,15 @@ export function Sidebar() {
     { href: "/bookmarks", label: t('bookmarks'), icon: Heart },
     { href: "/earnings", label: t('earnings'), icon: DollarSign, sellerOnly: true },
     { href: "/settings", label: t('settings'), icon: Settings },
+    { href: "/admin", label: "Admin", icon: Shield, adminOnly: true },
   ];
 
   const filteredItems = sidebarItems.filter(
-    (item) => !item.sellerOnly || isSeller
+    (item) => {
+      if ((item as any).adminOnly) return isAdmin;
+      if (item.sellerOnly) return isSeller;
+      return true;
+    }
   );
 
   return (

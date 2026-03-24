@@ -133,6 +133,46 @@ export async function POST(request: NextRequest) {
       })
       .eq("id", content_id);
 
+    // Send email notification for verified/rejected (not manual_review — those notify after admin action)
+    if (result.status !== "manual_review") {
+      try {
+        const { data: profile } = await adminClient
+          .from("profiles")
+          .select("email")
+          .eq("id", user.id)
+          .single();
+
+        const { data: content } = await adminClient
+          .from("contents")
+          .select("title")
+          .eq("id", content_id)
+          .single();
+
+        if (profile?.email) {
+          const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://vericum.com";
+          await fetch(`${baseUrl}/api/email`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-internal-secret": process.env.INTERNAL_EMAIL_SECRET || "",
+            },
+            body: JSON.stringify({
+              type: "verification_complete",
+              to: profile.email,
+              data: {
+                contentTitle: content?.title || "Your content",
+                status: result.status,
+                score: (result.overallScore * 100).toFixed(1),
+                contentUrl: `${baseUrl}/content/${content_id}`,
+              },
+            }),
+          });
+        }
+      } catch {
+        // Email failure should not block verification response
+      }
+    }
+
     return NextResponse.json({
       verification_id: verification.id,
       status: result.status,

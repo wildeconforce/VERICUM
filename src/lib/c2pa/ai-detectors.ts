@@ -40,7 +40,7 @@ async function detectWithHive(
 
   try {
     const formData = new FormData();
-    const blob = new Blob([fileBuffer], { type: mimeType });
+    const blob = new Blob([new Uint8Array(fileBuffer)], { type: mimeType });
     formData.append("media", blob, "image.jpg");
 
     const response = await fetch("https://api.thehive.ai/api/v2/task/sync", {
@@ -109,7 +109,7 @@ async function detectWithOptic(
 
   try {
     const formData = new FormData();
-    const blob = new Blob([fileBuffer], { type: mimeType });
+    const blob = new Blob([new Uint8Array(fileBuffer)], { type: mimeType });
     formData.append("file", blob, "image.jpg");
 
     const response = await fetch("https://api.optic.xyz/v1/detect", {
@@ -159,7 +159,7 @@ async function detectWithIlluminarty(
 
   try {
     const formData = new FormData();
-    const blob = new Blob([fileBuffer], { type: mimeType });
+    const blob = new Blob([new Uint8Array(fileBuffer)], { type: mimeType });
     formData.append("image", blob, "image.jpg");
 
     const response = await fetch("https://api.illuminarty.ai/v1/analyze", {
