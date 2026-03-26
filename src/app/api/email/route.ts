@@ -96,12 +96,14 @@ export async function POST(request: NextRequest) {
     process.env.INTERNAL_EMAIL_SECRET.length >= 32 &&
     internalSecret === process.env.INTERNAL_EMAIL_SECRET;
 
+  let authenticatedUserEmail: string | null = null;
   if (!isInternalCall) {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    authenticatedUserEmail = user.email || null;
   }
 
   if (!process.env.RESEND_API_KEY) {
@@ -114,6 +116,11 @@ export async function POST(request: NextRequest) {
   // Validate email recipient format
   if (!to || typeof to !== "string" || !to.includes("@")) {
     return NextResponse.json({ error: "Invalid recipient" }, { status: 400 });
+  }
+
+  // Non-internal calls can only send emails to the authenticated user's own address
+  if (authenticatedUserEmail && to !== authenticatedUserEmail) {
+    return NextResponse.json({ error: "Can only send emails to your own address" }, { status: 403 });
   }
 
   const template = EMAIL_TEMPLATES[type];
