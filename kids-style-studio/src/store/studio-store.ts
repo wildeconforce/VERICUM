@@ -7,7 +7,8 @@ import type {
   PhotoFrame,
   StudioItem,
 } from "@/types/studio";
-import { DEMO_CHARACTERS } from "@/lib/demo-data";
+import { CATEGORY_ORDER } from "@/types/studio";
+import { DEMO_CHARACTERS, DEMO_ITEMS, getItemsForCategory } from "@/lib/demo-data";
 
 type ViewMode = "customize" | "photoframe" | "profile";
 
@@ -30,6 +31,7 @@ interface StudioStore {
   setUserPhoto: (photo: string | null) => void;
   setCharacterPosition: (position: "left" | "right") => void;
   resetCharacter: () => void;
+  randomize: () => void;
 }
 
 const emptyEquipped: Record<ItemCategory, StudioItem | null> = {
@@ -45,6 +47,20 @@ const emptyEquipped: Record<ItemCategory, StudioItem | null> = {
 
 function getDefaultBase(gender: Gender): CharacterBase | null {
   return DEMO_CHARACTERS.find((c) => c.gender === gender) ?? null;
+}
+
+/** Pick a random item (or null) for each category - inspired by hackrew's randomize() */
+function randomOutfit(gender: Gender): Record<ItemCategory, StudioItem | null> {
+  const equipped = { ...emptyEquipped };
+  for (const cat of CATEGORY_ORDER) {
+    const items = getItemsForCategory(cat, gender);
+    if (items.length === 0) continue;
+    // 30% chance to leave empty for optional categories
+    const optional = cat !== "tops" && cat !== "bottoms";
+    if (optional && Math.random() < 0.3) continue;
+    equipped[cat] = items[Math.floor(Math.random() * items.length)];
+  }
+  return equipped;
 }
 
 export const useStudioStore = create<StudioStore>((set) => ({
@@ -92,11 +108,20 @@ export const useStudioStore = create<StudioStore>((set) => ({
   setSelectedFrame: (frame) => set({ selectedFrame: frame }),
   setUserPhoto: (photo) => set({ userPhoto: photo }),
   setCharacterPosition: (pos) => set({ characterPosition: pos }),
+
   resetCharacter: () =>
     set((s) => ({
       character: {
         base: getDefaultBase(s.selectedGender),
         equippedItems: { ...emptyEquipped },
+      },
+    })),
+
+  randomize: () =>
+    set((s) => ({
+      character: {
+        base: getDefaultBase(s.selectedGender),
+        equippedItems: randomOutfit(s.selectedGender),
       },
     })),
 }));
