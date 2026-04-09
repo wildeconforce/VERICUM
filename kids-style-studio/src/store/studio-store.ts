@@ -7,6 +7,7 @@ import type {
   PhotoFrame,
   StudioItem,
 } from "@/types/studio";
+import { DEMO_CHARACTERS } from "@/lib/demo-data";
 
 type ViewMode = "customize" | "photoframe" | "profile";
 
@@ -42,13 +43,15 @@ const emptyEquipped: Record<ItemCategory, StudioItem | null> = {
   accessories: null,
 };
 
-const initialCharacter: CharacterState = {
-  base: null,
-  equippedItems: { ...emptyEquipped },
-};
+function getDefaultBase(gender: Gender): CharacterBase | null {
+  return DEMO_CHARACTERS.find((c) => c.gender === gender) ?? null;
+}
 
 export const useStudioStore = create<StudioStore>((set) => ({
-  character: initialCharacter,
+  character: {
+    base: getDefaultBase("girl"),
+    equippedItems: { ...emptyEquipped },
+  },
   selectedGender: "girl",
   activeCategory: "tops",
   viewMode: "customize",
@@ -57,7 +60,13 @@ export const useStudioStore = create<StudioStore>((set) => ({
   characterPosition: "left",
 
   setGender: (gender) =>
-    set({ selectedGender: gender, character: { base: null, equippedItems: { ...emptyEquipped } } }),
+    set({
+      selectedGender: gender,
+      character: {
+        base: getDefaultBase(gender),
+        equippedItems: { ...emptyEquipped },
+      },
+    }),
 
   setBase: (base) =>
     set((s) => ({ character: { ...s.character, base } })),
@@ -83,5 +92,11 @@ export const useStudioStore = create<StudioStore>((set) => ({
   setSelectedFrame: (frame) => set({ selectedFrame: frame }),
   setUserPhoto: (photo) => set({ userPhoto: photo }),
   setCharacterPosition: (pos) => set({ characterPosition: pos }),
-  resetCharacter: () => set({ character: { base: null, equippedItems: { ...emptyEquipped } } }),
+  resetCharacter: () =>
+    set((s) => ({
+      character: {
+        base: getDefaultBase(s.selectedGender),
+        equippedItems: { ...emptyEquipped },
+      },
+    })),
 }));

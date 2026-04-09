@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useStudioStore } from "@/store/studio-store";
 import { getItemsForCategory } from "@/lib/demo-data";
 import { cn } from "@/lib/utils";
@@ -17,9 +18,25 @@ const GRADIENT: Record<ItemCategory, string> = {
 };
 
 function Thumb({ item }: { item: StudioItem }) {
+  const [imgError, setImgError] = useState(false);
+
+  if (imgError) {
+    return (
+      <div className={cn("w-full aspect-square rounded-xl bg-gradient-to-br flex items-center justify-center", GRADIENT[item.category])}>
+        <span className="text-[11px] font-bold text-white/90 text-center leading-tight px-1">{item.name}</span>
+      </div>
+    );
+  }
+
   return (
-    <div className={cn("w-full aspect-square rounded-xl bg-gradient-to-br flex items-center justify-center", GRADIENT[item.category])}>
-      <span className="text-[11px] font-bold text-white/90 text-center leading-tight px-1">{item.name}</span>
+    <div className="w-full aspect-square rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden p-1">
+      <img
+        src={item.thumbnail}
+        alt={item.name}
+        className="w-full h-full object-contain"
+        draggable={false}
+        onError={() => setImgError(true)}
+      />
     </div>
   );
 }
