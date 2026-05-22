@@ -79,7 +79,7 @@ export function useAuth() {
     profile,
     isLoading,
     isAuthenticated: !!user,
-    isSeller: !!user,
+    isSeller: profile?.role === "seller" || profile?.role === "admin",
     isAdmin: profile?.role === "admin",
     signOut,
   };

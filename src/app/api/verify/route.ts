@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createHash } from "crypto";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { verifyContent } from "@/lib/c2pa/verify";
@@ -40,6 +41,7 @@ export async function POST(request: NextRequest) {
     }
 
     const buffer = Buffer.from(await fileData.arrayBuffer());
+    const contentHash = createHash("sha256").update(buffer).digest("hex");
     const adminClient = createAdminClient();
 
     // Run verification
@@ -61,7 +63,7 @@ export async function POST(request: NextRequest) {
         c2pa_manifest: result.c2pa.manifest as any,
         c2pa_issuer: result.c2pa.issuer,
         c2pa_timestamp: result.c2pa.timestamp?.toISOString(),
-        content_hash: "", // Will be set below
+        content_hash: contentHash,
         perceptual_hash: null,
         exif_data: result.metadata as any,
         device_info: null,

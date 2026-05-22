@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/use-auth";
+import { createClient } from "@/lib/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -21,8 +22,9 @@ import {
 import { formatPrice } from "@/lib/utils/format";
 
 export default function DashboardPage() {
-  const { profile, isSeller } = useAuth();
+  const { user, profile, isSeller } = useAuth();
   const [earnings, setEarnings] = useState<any>(null);
+  const [purchasesCount, setPurchasesCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -33,10 +35,19 @@ export default function DashboardPage() {
           setEarnings(await res.json());
         }
       }
+      if (user) {
+        const supabase = createClient();
+        const { count } = await supabase
+          .from("purchases")
+          .select("id", { count: "exact", head: true })
+          .eq("buyer_id", user.id)
+          .eq("payment_status", "completed");
+        setPurchasesCount(count || 0);
+      }
       setIsLoading(false);
     }
     fetchData();
-  }, [isSeller]);
+  }, [isSeller, user]);
 
   return (
     <div>
@@ -108,7 +119,11 @@ export default function DashboardPage() {
             <ShoppingBag className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold">0</p>
+            {isLoading ? (
+              <Skeleton className="h-8 w-16" />
+            ) : (
+              <p className="text-2xl font-bold">{purchasesCount}</p>
+            )}
           </CardContent>
         </Card>
       </div>

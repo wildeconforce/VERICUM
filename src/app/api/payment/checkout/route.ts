@@ -58,6 +58,7 @@ export async function POST(request: NextRequest) {
     amount: commission.totalCharge,
     currency: content.currency,
     buyerEmail: user.email!,
+    buyerId: user.id,
     sellerStripeAccountId: sellerProfile?.stripe_account_id || null,
     commissionAmount: commission.commissionAmount,
     successUrl: `${appUrl}/content/${content_id}?purchased=true`,
