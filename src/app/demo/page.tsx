@@ -54,6 +54,44 @@ const NEGATIVE_SAMPLE = {
   reason: "No C2PA manifest. AI software signatures present in EXIF.",
 }
 
+const VIDEO_SAMPLE = {
+  fileName: "iris_my_turn_full.mp4",
+  fileSize: "42.18 MB",
+  duration: "3:14",
+  contentHash: "7e3b9c5a1f4d8b2e6c9a3f7b1e4d8c5a9f3b7e1c4d8b5a9f3e7b1c4d8a5b9e3f",
+  uploadedAt: "2026-05-22T13:08:42Z",
+  c2paScore: 0.97,
+  aiDetectionScore: 0.98,
+  saleType: "royalty",
+  royaltyRate: 0.08,
+  videoUrl: "https://wildeconforce.com/origin/iris_my_turn_horizontal.mp4",
+  posterUrl: "https://wildeconforce.com/origin/covers/iris_my_turn_cover.jpg",
+  c2paManifest: {
+    claim_generator: "VERICUM ENT Production Chain",
+    title: "IRIS — MY TURN (Official Music Video)",
+    instance_id: "xmp.iid:7e3b9c5a-1f4d-8b2e-6c9a-3f7b1e4d8c5a",
+    signature_algorithm: "ES256",
+    issuer: "Vericum Verified Publisher",
+    issued_at: "2026-05-06T14:18:00Z",
+    actions: ["c2pa.created", "c2pa.composited", "c2pa.encoded"],
+    ai_components: [
+      "audio: Suno v4.5 (lyrics + composition + vocal)",
+      "image: ChatGPT Image2 (member portraits, props)",
+      "video: LTX-Video 2B (img2video, local 8GB GPU)",
+      "compose: ComfyUI (scene assembly, transitions)",
+    ],
+    ingredients: 4,
+    transparency: "fully_declared",
+  },
+  signals: {
+    frame_consistency: 0.94,
+    audio_provenance: 0.99,
+    encoder_signature: 0.96,
+    metadata_completeness: 1.0,
+    ai_software_keywords: "fully_declared",
+  },
+}
+
 const LAYER_STATUS = [
   {
     layer: "A",
@@ -116,10 +154,11 @@ export default function DemoPage() {
           Phase 1 Verification Demo
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-          One real sample upload, one synthetic negative control, full Layer A
-          output. The same code path that runs on every listing on this
-          marketplace. No JavaScript framework theatre. This is what verification
-          actually returns.
+          One verified human capture. One synthetic negative control. One live
+          AI-declared music video from VERICUM ENT. Three samples through the
+          same Layer A code path that runs on every listing on this marketplace.
+          No JavaScript framework theatre. This is what verification actually
+          returns.
         </p>
       </header>
 
@@ -210,7 +249,7 @@ export default function DemoPage() {
           <Badge className="bg-rose-100 text-rose-800 hover:bg-rose-100">
             ✕ Synthetic detected
           </Badge>
-          <span className="text-xs text-muted-foreground">Sample 2 of 2 (negative control)</span>
+          <span className="text-xs text-muted-foreground">Sample 2 of 3 (negative control)</span>
         </div>
 
         <Card>
@@ -245,6 +284,108 @@ export default function DemoPage() {
               <span className="font-medium text-foreground">Reason: </span>
               {NEGATIVE_SAMPLE.reason}
             </p>
+          </CardContent>
+        </Card>
+      </section>
+
+      <section className="mb-12">
+        <div className="flex items-center gap-2 mb-4">
+          <Badge className="bg-amber-100 text-amber-800 hover:bg-amber-100">
+            ✓ AI-declared video
+          </Badge>
+          <span className="text-xs text-muted-foreground">Sample 3 of 3 (live VERICUM ENT release)</span>
+        </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-mono text-base break-all">
+              {VIDEO_SAMPLE.fileName}
+            </CardTitle>
+            <p className="text-xs text-muted-foreground mt-1">
+              {VIDEO_SAMPLE.fileSize} · {VIDEO_SAMPLE.duration} · uploaded {VIDEO_SAMPLE.uploadedAt}
+            </p>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="rounded-lg overflow-hidden border bg-stone-900">
+              <video
+                controls
+                preload="metadata"
+                poster={VIDEO_SAMPLE.posterUrl}
+                className="w-full aspect-video"
+              >
+                <source src={VIDEO_SAMPLE.videoUrl} type="video/mp4" />
+              </video>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="rounded-lg border bg-amber-50 p-4">
+                <div className="text-xs text-amber-700 font-medium mb-1">
+                  C2PA score
+                </div>
+                <div className="font-mono text-2xl font-bold text-amber-900">
+                  {VIDEO_SAMPLE.c2paScore.toFixed(2)}
+                </div>
+                <p className="text-xs text-amber-700 mt-1">
+                  C2PA 2.3 live-video manifest. Full production chain declared. ES256.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-amber-50 p-4">
+                <div className="text-xs text-amber-700 font-medium mb-1">
+                  AI composite
+                </div>
+                <div className="font-mono text-2xl font-bold text-amber-900">
+                  {VIDEO_SAMPLE.aiDetectionScore.toFixed(2)}
+                </div>
+                <p className="text-xs text-amber-700 mt-1">
+                  AI-generated as declared. Score reflects honest disclosure, not deception.
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-lg bg-muted/40 p-4 text-sm space-y-1">
+              <div>
+                <span className="text-xs font-medium text-muted-foreground">Sale type</span>{" "}
+                <Badge variant="secondary" className="ml-2">
+                  Royalty · {(VIDEO_SAMPLE.royaltyRate * 100).toFixed(0)}%
+                </Badge>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Layer D field on the {`{contents}`} row. Derivative reuse triggers the royalty engine when Layer C lands.
+              </p>
+            </div>
+
+            <div>
+              <div className="text-xs font-medium text-muted-foreground mb-2">
+                SHA-256 content hash
+              </div>
+              <code className="block bg-muted px-3 py-2 rounded text-xs font-mono break-all">
+                {VIDEO_SAMPLE.contentHash}
+              </code>
+            </div>
+
+            <div>
+              <div className="text-xs font-medium text-muted-foreground mb-2">
+                C2PA 2.3 video manifest
+              </div>
+              <pre className="bg-muted px-3 py-3 rounded text-xs font-mono overflow-x-auto leading-relaxed">
+{JSON.stringify(VIDEO_SAMPLE.c2paManifest, null, 2)}
+              </pre>
+              <p className="text-xs text-muted-foreground mt-2">
+                Every AI component used in production is declared. The marketplace position is that honest disclosure is the asset, not "looks human-made" obfuscation.
+              </p>
+            </div>
+
+            <div>
+              <div className="text-xs font-medium text-muted-foreground mb-2">
+                Signal breakdown (video)
+              </div>
+              <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+                <div>frame_consistency = {VIDEO_SAMPLE.signals.frame_consistency}</div>
+                <div>audio_provenance = {VIDEO_SAMPLE.signals.audio_provenance}</div>
+                <div>encoder_signature = {VIDEO_SAMPLE.signals.encoder_signature}</div>
+                <div>metadata_completeness = {VIDEO_SAMPLE.signals.metadata_completeness}</div>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </section>
